@@ -1,6 +1,6 @@
 {
   "script": "problems/bsd/certified_rank.py",
-  "generated_utc": "2026-11-02T11:26:00.122874+00:00",
+  "generated_utc": "2026-11-02T11:32:02.903338+00:00",
   "method": "smoothed approximate functional equation with an explicit incomplete-gamma truncation bound, two-precision rounding estimate, and Richardson finite-difference derivatives",
   "rigour": "numerical with heuristic bound",
   "rigour_notes": {
@@ -23,6 +23,7 @@
   "curves": [
     {
       "curve": "11a1",
+      "rigour": "numerical with heuristic bound",
       "ainvs": [
         0,
         -1,
@@ -83,7 +84,7 @@
       "lmfdb_value_in_interval": true,
       "lmfdb_quote_ulp": "1.0e-29",
       "certified": true,
-      "certification_basis": "L(1) interval excludes 0, hence ord = 0.",
+      "certification_basis": "L(1) interval excludes 0, hence ord = 0 (numerical with heuristic bound).",
       "order_candidates": [
         0
       ],
@@ -184,16 +185,17 @@
         }
       ],
       "timings_s": {
-        "point_count": 0.01123800000641495,
-        "build_an": 0.0006681999657303095,
-        "root_number": 0.038855900056660175,
-        "ladder": 0.9292522000614554,
-        "derivatives_dps_lo": 2.5798429999267682,
-        "derivatives_dps_hi": 4.925658000051044
+        "point_count": 0.015690000029280782,
+        "build_an": 0.0007264999439939857,
+        "root_number": 0.041860299999825656,
+        "ladder": 0.9539399000350386,
+        "derivatives_dps_lo": 2.927682099980302,
+        "derivatives_dps_hi": 6.482053000014275
       }
     },
     {
       "curve": "37a1",
+      "rigour": "numerical with heuristic bound",
       "ainvs": [
         0,
         0,
@@ -254,7 +256,7 @@
       "lmfdb_value_in_interval": true,
       "lmfdb_quote_ulp": "1.0e-29",
       "certified": true,
-      "certification_basis": "L(1) = 0 by the functional equation with w = -1 (w determined numerically at s=3, margin 1799950.6); the interval for L'(1) excludes 0, hence ord = 1.",
+      "certification_basis": "L(1) = 0 by the functional equation with w = -1 (w determined numerically at s=3, margin 1799950.6); the interval for L'(1) excludes 0, hence ord = 1.  This is numerical with a heuristic bound and is conditional on w = -1.",
       "order_candidates": [
         1
       ],
@@ -355,16 +357,17 @@
         }
       ],
       "timings_s": {
-        "point_count": 0.009437300032004714,
-        "build_an": 0.0010152999311685562,
-        "root_number": 0.03830680006649345,
-        "ladder": 1.5058847999898717,
-        "derivatives_dps_lo": 3.8589468999998644,
-        "derivatives_dps_hi": 8.301991799962707
+        "point_count": 0.01841350004542619,
+        "build_an": 0.0010218999814242125,
+        "root_number": 0.06728580000344664,
+        "ladder": 1.8724767999956384,
+        "derivatives_dps_lo": 5.354287299909629,
+        "derivatives_dps_hi": 10.546335700084455
       }
     },
     {
       "curve": "5077a1",
+      "rigour": "numerical with heuristic bound",
       "ainvs": [
         0,
         0,
@@ -535,12 +538,12 @@
         }
       ],
       "timings_s": {
-        "point_count": 0.03467119997367263,
-        "build_an": 0.0018100000452250242,
-        "root_number": 0.2020823999773711,
-        "ladder": 8.841356200049631,
-        "derivatives_dps_lo": 26.00530250009615,
-        "derivatives_dps_hi": 32.55398699990474
+        "point_count": 0.05845849995967001,
+        "build_an": 0.002607500064186752,
+        "root_number": 0.20801039994694293,
+        "ladder": 9.438152000075206,
+        "derivatives_dps_lo": 30.16452449990902,
+        "derivatives_dps_hi": 35.36132030002773
       }
     }
   ]

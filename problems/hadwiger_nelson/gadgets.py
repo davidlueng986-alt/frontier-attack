@@ -755,48 +755,28 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
     seen = set()
     records = []
     constructed = []      # (chi, gadget) for every distinct graph built
+    examined_keys = set()
     lifts = []
     forcing = []          # graphs with at least one forced-equal pair at some k
     level_pairs = {3: [], 4: [], 5: []}
 
-    def push(g):
+    def register(g, enqueue):
+        """Record a distinct graph once; optionally put it in the BFS queue."""
         key = g.structural_key()
         if key in seen:
             return False
         seen.add(key)
         constructed.append((g.chromatic_number(), g))
-        queue.append(g)
+        if enqueue:
+            queue.append(g)
         return True
 
     for _name, g in bases:
-        push(g)
+        register(g, True)
 
-    best_key = None
-    best = None
-
-    while queue and len(records) < max_graphs:
-        g = queue.pop(0)
-        chi = g.chromatic_number()
-        geometry_ok, geometry_errors = g.verify()
-        if not geometry_ok:
-            raise AssertionError(
-                f"record {g.label} failed exact geometry: {geometry_errors[:3]}"
-            )
-        rec = {
-            "label": g.label,
-            "n": g.n,
-            "m": g.m,
-            "chi": chi,
-            "geometry_ok": True,
-        }
-        records.append(rec)
-        key = (chi, -g.n, -g.m)
-        if best_key is None or key > best_key:
-            best_key = key
-            best = g
-
-        # ---- forced-relation analysis at every relevant level -----------
-        local_forcing = []
+    def analyse_forcing(g, chi):
+        """Full pair relations at every level k at which g is k-colourable."""
+        found = []
         for k in (3, 4, 5):
             if k < chi:
                 continue
@@ -810,18 +790,20 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
                     "n": g.n,
                     "pairs": [list(p) for p in eq],
                 })
-                local_forcing.append((k, eq))
-        if local_forcing:
+                found.append((k, eq))
+        if found:
             forcing.append({
                 "graph": g.label,
                 "n": g.n,
                 "chi": chi,
                 "levels": {
-                    str(k): [list(p) for p in eq] for k, eq in local_forcing
+                    str(k): [list(p) for p in eq] for k, eq in found
                 },
             })
+        return found
 
-        # ---- forced-equality lifts --------------------------------------
+    def attempt_lifts(g, local_forcing, enqueue):
+        """Build forced-equality spindle lifts and check the k+1 lower bound."""
         for k, eq in local_forcing:
             attempts = []
             # self-lifts: two forced pairs sharing a vertex
@@ -872,8 +854,35 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
                         "forced-equality lift failed its lower bound: "
                         f"k={k}, chi={hchi}"
                     )
-                if h.n <= max_vertices:
-                    push(h)
+                register(h, enqueue and h.n <= max_vertices)
+
+    best_key = None
+    best = None
+
+    while queue and len(records) < max_graphs:
+        g = queue.pop(0)
+        chi = g.chromatic_number()
+        geometry_ok, geometry_errors = g.verify()
+        if not geometry_ok:
+            raise AssertionError(
+                f"record {g.label} failed exact geometry: {geometry_errors[:3]}"
+            )
+        rec = {
+            "label": g.label,
+            "n": g.n,
+            "m": g.m,
+            "chi": chi,
+            "geometry_ok": True,
+        }
+        records.append(rec)
+        key = (chi, -g.n, -g.m)
+        if best_key is None or key > best_key:
+            best_key = key
+            best = g
+
+        # ---- forced-relation analysis and forced-equality lifts ----------
+        local_forcing = analyse_forcing(g, chi)
+        attempt_lifts(g, local_forcing, enqueue=True)
 
         # ---- rigid edge gluing with each base ---------------------------
         for _bname, base in bases:
@@ -889,7 +898,35 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
                     except (ArithmeticError, ValueError):
                         continue
                     if g.n < cand.n <= max_vertices:
-                        push(cand)
+                        register(cand, True)
+
+    # ---- post-scan: every constructed graph, not just the BFS sample ----
+    # A 3-chromatic graph with a forced-equal pair at k=4 also lifts to
+    # chi=5, so the scan is not restricted to the 4-chromatic graphs.
+    postscan = []
+    for chi, h in list(constructed):
+        key = h.structural_key()
+        if key in examined_keys:
+            continue
+        geometry_ok, geometry_errors = h.verify()
+        if not geometry_ok:
+            raise AssertionError(
+                f"post-scan graph {h.label} failed exact geometry: "
+                f"{geometry_errors[:3]}"
+            )
+        local_forcing = analyse_forcing(h, chi)
+        attempt_lifts(h, local_forcing, enqueue=False)
+        postscan.append({
+            "label": h.label,
+            "n": h.n,
+            "m": h.m,
+            "chi": chi,
+            "geometry_ok": True,
+            "forced_equal_levels": {
+                str(k): [list(p) for p in eq]
+                for k, eq in local_forcing
+            },
+        })
 
     if best is None:
         best = diamond_g
@@ -917,8 +954,13 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
         "graphs_examined": len(records),
         "graphs_constructed": len(constructed),
         "max_constructed_chi": top_chi,
+        "constructed_histogram": {
+            str(c): sum(1 for chi, _ in constructed if chi == c)
+            for c in sorted({chi for chi, _ in constructed})
+        },
         "histogram": {str(k): v for k, v in sorted(histogram.items())},
         "records": records,
+        "postscan": postscan,
         "best_chi": best.chromatic_number(),
         "best": best.to_dict(include_points=True, include_chi=True),
         "best_certificate": certify(best),
