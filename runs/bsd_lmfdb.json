@@ -1,0 +1,9 @@
+{
+  "fetched": 50,
+  "verdicts": {
+    "NOT_A_COUNTEREXAMPLE": 50
+  },
+  "mismatches": [],
+  "offline": false,
+  "nonzero_discriminants": 50
+}
