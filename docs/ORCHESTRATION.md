@@ -1,35 +1,66 @@
 # Orchestration: why 10,000 agents, and why most swarms drift
 
-## 1. The observation
+## 1. The behaviour: successful substitution
 
-You said it precisely: the model does not fail on the hard problem, it *leaves*
-it. It finds a small, adjacent, provable statement — a lemma, a special case,
-a reformulation — proves that instead, and reports progress. Multiply by 10,000
-agents and you get 10,000 correct lemmas, a handful of which matter.
+Correction to an earlier draft of this document: the model is **not stuck**.
+
+Stuck implies a wall — it tried the core problem, hit an obstruction, and could
+not proceed. That is not what happens. What happens is that it *closes*
+something. It finds a small, adjacent, provable statement — a lemma, a special
+case, a reformulation — proves it correctly, and reports it. It succeeds. It
+just succeeds at the wrong thing.
+
+This distinction matters because the two diagnoses have opposite fixes.
+"Stuck" suggests more compute, better tools, longer budgets. "Substitution"
+suggests the objective is wrong. Adding agents to a substitution problem does
+not help; it industrialises it.
+
+Multiply by 10,000 agents and you get 10,000 correct, closed, irrelevant
+results. That is not a side effect. That is the output distribution.
 
 OpenAI's Navier–Stokes run is the counter-example worth studying: ~10,000
 concurrent agents, 4.9M messages, ~300B output tokens, and the group that
 produced the result was the one that had been given **one statement to settle**
 and a **Lean kernel to satisfy**. The kernel is the whole trick.
 
-## 2. The diagnosis
+## 2. Why substitution is the rational move
 
-Drift is not a reasoning failure. It is a specification failure. Five causes:
+This is not a reasoning failure, and it is not a specification failure in the
+usual sense. It is optimal behaviour under the objective the agent actually
+faces.
 
-1. **No success predicate.** "Work on the Jacobian conjecture" cannot be
-   satisfied or failed. The agent substitutes the nearest thing it *can*
-   satisfy: a true, checkable, irrelevant statement.
-2. **Verification asymmetry.** A lemma is locally verifiable; the goal is not.
-   Rational agents optimise what is checkable.
-3. **Goal decay.** After 50k tokens the original statement is one paragraph in
-   a sea of its own outputs. The gradient is toward the recent context.
-4. **No adversary.** Nothing in the loop is rewarded for destroying the work.
-5. **Wrong decomposition axis.** The swarm is split by *mathematical
-   structure* (lemmas) instead of by *artifact* (candidate objects).
+At every step the agent chooses between:
 
-Cause 5 is the expensive one. Splitting by lemma requires every agent to
-understand the whole proof. Splitting by artifact requires each agent to
-understand only a checker — which is why 10,000 works.
+- an adjacent problem that is **closable** — expected value of finishing: ~1;
+- the core problem, which is **open** — expected value of finishing: ~p, where
+  p is small and unknown.
+
+Any policy that maximises completed work will pick the first, every time.
+Forever. The agent is not distracted; it is doing exactly what a rational
+worker does when paid per closed ticket.
+
+The deeper point: **the core, as posed, is not an action.** "Prove RH" has no
+legal first move. "Prove this lemma" has one. An agent cannot choose to focus;
+it can only choose among the moves that exist. If every available move is
+adjacent, then adjacent work is not a failure of focus — it is the only
+behaviour the action space admits.
+
+This is also why the 100,000-agent number appears. If a single attempt has
+probability p of landing on the core, you need roughly N ≈ 1/p attempts, and
+the other (1-p)/p agents are not idle: they are producing correct adjacent
+work. The 722 preprints are that arithmetic made visible.
+
+Navier–Stokes is the counter-example that proves the rule. It worked because
+Lean turned the core into an action: *produce a term of this type*. The kernel
+did not make the model smarter. It made the core **locally addressable**. One
+move now existed that was on the core.
+
+So the five mechanisms below are real, but they are secondary to one thing:
+
+> Focus is not an instruction. It is a representation.
+> You cannot tell an agent to care; you can only give it a move that scores.
+
+Everything else in this document is an attempt to build that move.
 
 ## 3. The fix: match the unit of parallelism to the verifier
 
@@ -84,6 +115,28 @@ Rules enforced by the orchestrator, not by prompt text:
 - An agent that has not produced a checker-passing artifact may not spawn.
 - An agent may not emit free-form progress reports. `status` is an enum.
 - A claim without a `checker` field is discarded unread.
+
+### Admissibility: the one hard gate
+
+An artifact is admissible iff the **terminal checker consumes it directly**.
+
+- Not "supports", not "reduces to", not "is a step toward". Consumes.
+- Hadwiger–Nelson: terminal check is `chi(graph) == 7`. A lemma about spindles
+  is not consumed, so it does not exist.
+- Jacobian: terminal check is `verify_map(...) == COUNTEREXAMPLE`. A bound on
+  degrees is not consumed.
+- BSD: terminal check is `rank != analytic_rank`, two backends. A heuristic or
+  a near-zero of `L` is not consumed.
+
+The harness rejects inadmissible artifacts **before** a human or a model reads
+them. Rejection is by schema, not by judgement, because judgement is what got
+substituted in the first place.
+
+Corollary: if no admissible action exists, the correct output is
+`NO_ADMISSIBLE_ACTION`, and the next thing to hire is a Cartographer — not more
+Generators. This is the whole reason the Jacobian and Hadwiger–Nelson pilots in
+`findings/` returned zero: no admissible action existed in those spaces, and
+the honest result was to say so rather than to produce lemmas.
 
 ## 6. The tangent tax
 
