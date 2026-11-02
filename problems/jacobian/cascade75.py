@@ -405,10 +405,22 @@ def gb_child(spec_path):
     basis = sp.groebner(eqs, *gens, **kwargs)
     seconds = time.perf_counter() - t0
 
+    # Leading monomials must be taken with the order that was actually used.
+    # SymPy rebuilds Poly objects in the default (lex) order, so taking
+    # ``basis.polys[i].monoms()[0]`` would silently give the lex leader.
+    from sympy.polys.orderings import grevlex as _grevlex_key
+
+    order_name = kwargs["order"]
     supports = []
-    for poly in basis.polys:
-        monom = poly.monoms()[0]
-        supports.append([k for k, e in enumerate(monom) if e])
+    for expr in basis.exprs:
+        monoms = sp.Poly(expr, *gens).monoms()
+        if order_name in ("grevlex", "degrevlex"):
+            lead = max(monoms, key=_grevlex_key)
+        elif order_name == "grlex":
+            lead = max(monoms, key=lambda m: (sum(m), m))
+        else:
+            lead = monoms[0]
+        supports.append([k for k, e in enumerate(lead) if e])
 
     sample = []
     for expr in basis.exprs[:8]:
@@ -419,6 +431,7 @@ def gb_child(spec_path):
         "status": "ok",
         "basis_size": len(basis.exprs),
         "lm_supports": supports,
+        "gens": [str(g) for g in gens],
         "seconds": seconds,
         "sample": sample,
         "n_vars": len(gens),
@@ -749,7 +762,7 @@ def certificate_degenerate_component(slot):
 # stage 2: the top edge
 # --------------------------------------------------------------------------
 
-def analyse_top_edge(slot, cap_q, cap_modp):
+def analyse_top_edge(slot, next_slot, cap_q, cap_modp):
     pts_p, pts_q = slot["points_P"], slot["points_Q"]
     system = build_edge_system(pts_p, pts_q)
     a, b = system["a"], system["b"]
@@ -769,24 +782,46 @@ def analyse_top_edge(slot, cap_q, cap_modp):
         "all_equations_homogeneous_degree_2": bool(all(
             sp.Poly(eq, *(a + b)).total_degree() == 2
             for eq in system["equations"])),
+        "edge_points_P": pts_p,
+        "edge_points_Q": pts_q,
+        "base_point_P": pts_p[0],
+        "base_point_Q": pts_q[0],
+        "t_monomial_P": "x^%d*y^%d" % slot["edge_P"]["direction"],
         "leading_form": (
             "det J(P_e,Q_e) = y^38 * (25 p'(u) q(u) - 15 p(u) q'(u)), "
-            "u = x/y, p = sum a_(i,15-i) u^i, q = sum b_(j,25-j) u^j"),
+            "u = x/y, p = sum a_(i,15-i) u^i, q = sum b_(j,25-j) u^j; "
+            "equivalently x^12*y^3*f(y/x) and x^20*y^5*g(y/x)"),
         "leading_form_identity": certificate_leading_form(slot),
         "wronskian": certificate_wronskian(),
         "condition": "25 p' q - 15 p q' = 0 identically  (31 equations)",
     }
 
-    # (1) direct Groebner over Q, strict chart, with a hard cap
-    fix = {"a_%d_%d" % tuple(pts_p[-1]): 1, "b_%d_%d" % tuple(pts_q[-1]): 1}
+    # strict chart: normalise the two vertex coefficients that the top edge
+    # shares with the next edge of the cascade (they are nonzero because they
+    # are vertices of N(P), N(Q)); this is exactly the substitution used
+    # again when descending
+    shared_p, shared_q = shared_vertices(slot, next_slot)
+    fix = {}
+    for p in shared_p:
+        fix["a_%d_%d" % tuple(p)] = 1
+    for p in shared_q:
+        fix["b_%d_%d" % tuple(p)] = 1
+    if not fix:
+        raise AssertionError("the top edge has no shared vertex with the "
+                             "next edge; cannot fix the scaling consistently")
     payload["strict_chart"] = {
         "normalization": fix,
+        "normalized_vertices": {
+            "P": [list(p) for p in shared_p],
+            "Q": [list(p) for p in shared_q],
+        },
         "why": (
-            "the coefficients of the lattice vertices (12,3) and (20,5) are "
-            "nonzero because those points are vertices of N(P), N(Q); the "
-            "equations are homogeneous of degree 1 in each block, so setting "
-            "them to 1 removes exactly the two scalings"),
-        "unknowns": n_unknowns - 2,
+            "the coefficients of lattice vertices are nonzero because those "
+            "points are vertices of N(P), N(Q); the equations are homogeneous "
+            "of degree 1 in each block, so setting the two shared vertex "
+            "coefficients to 1 removes exactly the two scalings, and the "
+            "normalisation is the same one used on the descending edge"),
+        "unknowns": n_unknowns - len(fix),
         "equations": len(system["equations"]),
     }
     gb_q = groebner_capped(slot["normal"], fix, cap_q)
@@ -872,7 +907,19 @@ def analyse_top_edge(slot, cap_q, cap_modp):
 # stage 3: descend
 # --------------------------------------------------------------------------
 
-def analyse_descent_edge(slot, index, previous, cap):
+def shared_vertices(slot_a, slot_b):
+    """Vertices common to two consecutive edges, per polygon."""
+    if slot_a is None or slot_b is None:
+        return [], []
+    va = {tuple(p) for p in slot_a["vertices_P"]}
+    vb = {tuple(p) for p in slot_b["vertices_P"]}
+    qa = {tuple(p) for p in slot_a["vertices_Q"]}
+    qb = {tuple(p) for p in slot_b["vertices_Q"]}
+    return (sorted(va & vb, key=lambda z: (z[0], z[1])),
+            sorted(qa & qb, key=lambda z: (z[0], z[1])))
+
+
+def analyse_descent_edge(slot, index, previous, cap, fixed_symbols=None):
     """Solve one further edge condition in its own edge coefficients."""
     pts_p, pts_q = slot["points_P"], slot["points_Q"]
     system = build_edge_system(pts_p, pts_q)
@@ -941,20 +988,27 @@ def analyse_descent_edge(slot, index, previous, cap):
     # substitute the solved values at the shared vertices: the top-edge chart
     # fixes a_(12,3) = c1 = 1 and b_(20,5) = c2 = 1, and those two points are
     # exactly the vertices shared by the top and the second edge
+    fixed_symbols = fixed_symbols or set()
     fix = {}
     for p in shared_p:
         name = "a_%d_%d" % p
-        if any(str(s) == name for s in system["a"]):
+        if name in fixed_symbols:
             fix[name] = 1
     for p in shared_q:
         name = "b_%d_%d" % p
-        if any(str(s) == name for s in system["b"]):
+        if name in fixed_symbols:
             fix[name] = 1
     record["substitution"] = {
         "fix": fix,
         "values": "1 (the top-edge family gives a_(12,3) = c1 and "
                   "b_(20,5) = c2; both were normalised to 1)",
         "consistent": True,
+        "shared_but_not_fixed": {
+            "P": [list(p) for p in shared_p
+                  if "a_%d_%d" % tuple(p) not in fixed_symbols],
+            "Q": [list(p) for p in shared_q
+                  if "b_%d_%d" % tuple(p) not in fixed_symbols],
+        },
     }
 
     gb = groebner_capped(slot["normal"], fix, cap)
@@ -1017,7 +1071,7 @@ def _edge_family_check(slot):
     }
 
 
-def run_descent(decomp, top_payload, cap):
+def run_descent(decomp, top_payload, cap, fixed_symbols=None):
     order = decomp["order"]
     slots = decomp["slots"]
     records = []
@@ -1029,7 +1083,8 @@ def run_descent(decomp, top_payload, cap):
         if step >= len(order):
             break
         slot = slots[order[step]]
-        rec = analyse_descent_edge(slot, step + 1, previous_slot, cap)
+        rec = analyse_descent_edge(slot, step + 1, previous_slot, cap,
+                                   fixed_symbols)
         records.append(rec)
         processed += 1
         previous_slot = slot
@@ -1105,7 +1160,7 @@ def build_report(cap_top_q=TOP_GB_Q_CAP_S, cap_top_p=TOP_GB_MODP_CAP_S,
         "cascade_order": [e["normal"] for e in stage1["cascade_order"]],
     })
 
-    top_payload = analyse_top_edge(top, cap_top_q, cap_top_p)
+    top_payload = analyse_top_edge(top, slots[order[1]], cap_top_q, cap_top_p)
     log_stage("2_top_edge", {
         "normal": top_payload["slot_normal"],
         "unknowns": top_payload["unknowns"],
@@ -1116,7 +1171,9 @@ def build_report(cap_top_q=TOP_GB_Q_CAP_S, cap_top_p=TOP_GB_MODP_CAP_S,
         "empty": top_payload["empty"],
     })
 
-    descent, first_empty, processed = run_descent(decomp, top_payload, cap_edge)
+    descent, first_empty, processed = run_descent(
+        decomp, top_payload, cap_edge,
+        set(top_payload["strict_chart"]["normalization"]))
 
     if top_payload["empty"]:
         verdict = "TOP_EDGE_EMPTY"

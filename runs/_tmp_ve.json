@@ -4,7 +4,7 @@
   "m": null,
   "uv_dist2": "3 (target; no gadget found)",
   "candidates": 220,
-  "seconds": 1.08,
+  "seconds": 86.02,
   "gadget": null,
   "level_obstruction": {
     "statement": "If G is (k-1)-colourable and u,v are non-adjacent, then colouring G-{u,v} with k-1 colours and giving u and v a fresh k-th colour is a proper k-colouring with u=v. Hence a level-k virtual edge has chromatic number at least k; at k=5 it is a 5-chromatic unit-distance graph.",
@@ -18,7 +18,7 @@
     "brute_force_graphs": 40,
     "brute_force_pair_checks": 400,
     "mismatches": [],
-    "seconds": 0.2706467000534758,
+    "seconds": 0.266790600027889,
     "ok": true
   },
   "stage2_search": {
@@ -190,9 +190,25 @@
     },
     "witnesses_ok": 220,
     "witness_failures": [],
-    "seconds": 0.8032984999008477
+    "seconds": 0.7103694999823347
   },
-  "stage2b_509_probe": null,
+  "stage2b_509_probe": {
+    "graph": "research/scratch/509_parts.vtx",
+    "n": 509,
+    "m": 2442,
+    "worst_abs_d2_minus_1": "1.49675e-49",
+    "k": 5,
+    "nonadjacent_pairs": 126844,
+    "pairs_tested": 126844,
+    "complete": true,
+    "aborted": false,
+    "batches": 16,
+    "forced_different_nonadjacent": [],
+    "sqrt3_targets": [],
+    "points": null,
+    "edges": null,
+    "seconds": 85.02876110002398
+  },
   "stage4_verification": null,
   "conclusion": "NEGATIVE for the covered space. Every generated candidate (n=8..18) is 4-colourable, so by the level obstruction it has a 5-colouring with the terminals equal; relation() returned 'different' for none. The 509-vertex record graph is also not a level-5 virtual edge: all non-adjacent pairs admit a 5-colouring with equal colours, so in particular no sqrt(3) pair is forced different. A level-5 virtual edge therefore requires a 5-chromatic unit-distance graph with a critical non-adjacent pair -- a strictly stronger object than the known 509-vertex record, not a small composition."
 }

@@ -231,11 +231,35 @@ The published data do not supply:
    the `(8,14),(8,16)` vertices);
 3. a proof that a config-2 solution lies in the image `A(K[x,y])`.
 
-**Consequence: the config-2 system is necessary, not sufficient.** It cannot
-produce a terminal object. The branch is **BLOCKED at the published interface**,
-not at the mathematics of the conjecture. Any further elimination (including the
-edge cascade) produces structure, not a counterexample, until the image
-conditions are derived.
+**What this blocks, and what it does not.** The implication runs
+
+```
+counterexample  ⇒  normalized pair with [P,Q] = x²
+```
+
+so:
+
+- **The success direction is blocked.** A normalized *solution* cannot be turned
+  into a counterexample without an inverse. That is all `PARTIAL` means.
+- **The emptiness direction is unaffected.** If the normalized system is empty,
+  there is no counterexample of that degree. No reconstruction is needed,
+  because the implication is used in the direction in which it actually holds.
+
+Every computation run so far is an emptiness result, and emptiness is exactly
+what a **degree-bound** proof consumes. The branch was not blocked; it was
+mis-aimed.
+
+The live target is therefore:
+
+> **raise the planar degree bound from 104 to 125, and past it, by proving each
+> normalized corner empty.**
+
+That is a theorem we can finish with the tools already built, and it does not
+require the inverse normalisation. A counterexample remains the long shot, gated
+on reconstruction; a degree bound is the deliverable that is actually reachable.
+
+The `(75,125)` cascade is now on-core again: an empty cascade at that corner is a
+degree-bound step, not a dead end.
 
 ## 4. Load-bearing decomposition
 

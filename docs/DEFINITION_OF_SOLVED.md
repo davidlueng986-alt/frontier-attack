@@ -75,6 +75,28 @@ unit-distance edges.
 - A shear `(x, y + h(x))`. Invertible by construction. This is exactly what the
   degree-3 pilot produced, and it must never be reported again.
 
+### Jacobian, secondary target: the degree bound
+
+A different and finishable claim:
+
+> every planar Keller map of total degree ≤ D is invertible, for a new D.
+
+**Accept:**
+
+| # | condition |
+|---|---|
+| D1 | every counterexample with `max(deg) < D` must normalise into one of finitely many corners (GGHV) |
+| D2 | each of those corner systems is proved empty |
+| D3 | the emptiness proof is machine-checked or symbolically certified |
+
+**No reconstruction is required.** The implication is used only in the direction
+`counterexample ⇒ normalized pair`, so emptiness of the normalized system
+suffices.
+
+This does not solve JC. It raises the bound. It is a theorem, and it is the
+target the current tooling can actually reach. It must be labelled as a degree
+bound, never as a solution to the conjecture.
+
 ## BSD: a counterexample
 
 **Claim object.** `(E, r, k)` with `r` the algebraic rank and `k` the analytic
