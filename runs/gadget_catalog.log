@@ -1,37 +1,34 @@
-[2026-11-02T13:38:47Z] run: gadget_catalog.py start (abstract catalog -> geometric filter)
-[2026-11-02T13:38:47Z] stage0: audit: G+uv UNSAT <=> forced EQUAL; G/uv UNSAT <=> forced DIFFERENT.  K6-e: relation(0,1,5)=equal, so the literal route yields equality gadgets; the virtual edge is the split route B
-[2026-11-02T13:39:09Z] stage1: parsed 1497264 graphs in 22.2s
-[2026-11-02T13:39:09Z] stage1: catalog complete: 1497264 edge-6-critical graphs on n=6..13, counts match Lalonde/McKay; min degree = 5
-[2026-11-02T13:39:19Z] stage1: criticality re-check on 423 graphs: all chi=6 and chi(H-e)=5
-[2026-11-02T13:39:19Z] stage1: u(n): u(13)=30 u(14)=33 u(15)=37; density recursion consistent=True
-[2026-11-02T13:39:23Z] stage2A: literal route: 64744218 (H,edge) pairs; dedupe for n<=11 -> 9667 classes
-[2026-11-02T13:39:23Z] stage2B: corrected route: 19446524 (H, w) splits; core has |V(H)|+1 vertices and m >= m(H)
-[2026-11-02T13:39:24Z] stage2B: abstract split search: 398 splits sampled, 320 5-colourable, 320 with relation 'different'
-[2026-11-02T13:39:24Z] stage3a: route A edge count: killed 64744218 (H,edge) pairs; survivor sizes = []
-[2026-11-02T13:39:24Z] stage3a: route B edge count: killed 19446524 (H,w) splits; survivor core sizes = []
-[2026-11-02T13:39:24Z] stage3b: clique<=3: 0/9667 literal classes pass
-[2026-11-02T13:39:24Z] stage3c: K_2,3-free and edges in <=2 triangles: 0/9667 pass; both: 0
-[2026-11-02T13:39:24Z] stage3d: direct interval certification of 7 sparsest catalog members: CERTIFIED-EXCLUDED
-[2026-11-02T13:39:24Z] stage3d: certified embedder controls: k6_minus_edge=CERTIFIED-EXCLUDED, diamond=PLACEMENT-FOUND, wheel7=PLACEMENT-FOUND
-[2026-11-02T13:39:24Z] stage4: no candidate reached the embedder on either route; found=False
-[2026-11-02T13:39:24Z] stage5: written runs\hn_gadget_catalog.json
-[2026-11-02T13:40:03Z] run: gadget_catalog.py start (abstract catalog -> geometric filter)
-[2026-11-02T13:40:03Z] stage0: audit: G+uv UNSAT <=> forced EQUAL; G/uv UNSAT <=> forced DIFFERENT.  K6-e: relation(0,1,5)=equal, so the literal route yields equality gadgets; the virtual edge is the split route B
-[2026-11-02T13:40:03Z] stage1: downloading https://users.cecs.anu.edu.au/~bdm/data/crit/crit_6_6.g6.gz
-[2026-11-02T13:40:04Z] stage1: CATALOG UNAVAILABLE: download failed for n=6: HTTP Error 404: Not Found; falling back to SAT sample
-[2026-11-02T13:40:04Z] stage1: catalog unreachable -> SAT-regenerated fallback sample
-[2026-11-02T13:40:34Z] run: gadget_catalog.py start (abstract catalog -> geometric filter)
-[2026-11-02T13:40:34Z] stage0: audit: G+uv UNSAT <=> forced EQUAL; G/uv UNSAT <=> forced DIFFERENT.  K6-e: relation(0,1,5)=equal, so the literal route yields equality gadgets; the virtual edge is the split route B
-[2026-11-02T13:40:34Z] stage1: downloading https://users.cecs.anu.edu.au/~bdm/data/crit/crit_6_6.g6
-[2026-11-02T13:40:35Z] stage1: downloaded n=6 bytes=5 in 1.0s
-[2026-11-02T13:40:35Z] stage1: downloading https://users.cecs.anu.edu.au/~bdm/data/crit/crit_8_6.g6
-[2026-11-02T13:40:36Z] stage1: downloaded n=8 bytes=7 in 0.8s
-[2026-11-02T13:40:36Z] stage1: downloading https://users.cecs.anu.edu.au/~bdm/data/crit/crit_9_6.g6
-[2026-11-02T13:40:37Z] stage1: downloaded n=9 bytes=16 in 0.9s
-[2026-11-02T13:40:37Z] stage1: downloading https://users.cecs.anu.edu.au/~bdm/data/crit/crit_10_6.g6
-[2026-11-02T13:40:37Z] stage1: downloaded n=10 bytes=220 in 0.8s
-[2026-11-02T13:40:37Z] stage1: downloading https://users.cecs.anu.edu.au/~bdm/data/crit/crit_11_6.g6
-[2026-11-02T13:40:38Z] stage1: downloaded n=11 bytes=4716 in 0.8s
-[2026-11-02T13:40:38Z] stage1: downloading https://users.cecs.anu.edu.au/~bdm/data/crit/crit_12_6.g6
-[2026-11-02T13:40:40Z] stage1: downloaded n=12 bytes=221468 in 1.8s
-[2026-11-02T13:40:40Z] stage1: downloading https://users.cecs.anu.edu.au/~bdm/data/crit/crit_13_6.g6
+[2026-11-02T13:42:03Z] run: gadget_catalog.py start (abstract catalog -> geometric filter)
+[2026-11-02T13:42:03Z] stage0: audit: G+uv UNSAT <=> forced EQUAL; G/uv UNSAT <=> forced DIFFERENT.  K6-e: relation(0,1,5)=equal, so the literal route yields equality gadgets; the virtual edge is the split route B
+[2026-11-02T13:42:22Z] stage1: parsed 1497264 graphs in 19.5s
+[2026-11-02T13:42:22Z] stage1: catalog complete: 1497264 edge-6-critical graphs on n=6..13, counts match Lalonde/McKay; min degree = 5
+[2026-11-02T13:42:30Z] stage1: criticality re-check on 423 graphs: all chi=6 and chi(H-e)=5
+[2026-11-02T13:42:30Z] stage1: u(n): u(13)=30 u(14)=33 u(15)=37; density recursion consistent=True
+[2026-11-02T13:42:34Z] stage2A: literal route: 64744218 (H,edge) pairs; dedupe for n<=11 -> 9667 classes
+[2026-11-02T13:42:34Z] stage2B: corrected route: 19446524 (H, w) splits; core has |V(H)|+1 vertices and m >= m(H)
+[2026-11-02T13:42:35Z] stage2B: abstract split search: 398 splits sampled, 320 5-colourable, 320 with relation 'different'
+[2026-11-02T13:42:35Z] stage3a: route A edge count: killed 64744218 (H,edge) pairs; survivor sizes = []
+[2026-11-02T13:42:35Z] stage3a: route B edge count: killed 19446524 (H,w) splits; survivor core sizes = []
+[2026-11-02T13:42:35Z] stage3b: clique<=3: 0/9667 literal classes pass
+[2026-11-02T13:42:35Z] stage3c: K_2,3-free and edges in <=2 triangles: 0/9667 pass; both: 0
+[2026-11-02T13:42:35Z] stage3d: direct interval certification of 7 sparsest catalog members: CERTIFIED-EXCLUDED
+[2026-11-02T13:42:35Z] stage3d: certified embedder controls: k6_minus_edge=CERTIFIED-EXCLUDED, diamond=PLACEMENT-FOUND, wheel7=PLACEMENT-FOUND
+[2026-11-02T13:42:35Z] stage4: no candidate reached the embedder on either route; found=False
+[2026-11-02T13:42:35Z] stage5: written runs\hn_gadget_catalog.json
+[2026-11-02T13:43:00Z] run: gadget_catalog.py start (abstract catalog -> geometric filter)
+[2026-11-02T13:43:01Z] stage0: audit: G+uv UNSAT <=> forced EQUAL; G/uv UNSAT <=> forced DIFFERENT.  K6-e: relation(0,1,5)=equal, so the literal route yields equality gadgets; the virtual edge is the split route B
+[2026-11-02T13:43:18Z] stage1: parsed 1497264 graphs in 17.8s
+[2026-11-02T13:43:18Z] stage1: catalog complete: 1497264 edge-6-critical graphs on n=6..13, counts match Lalonde/McKay; min degree = 5
+[2026-11-02T13:43:25Z] stage1: criticality re-check on 423 graphs: all chi=6 and chi(H-e)=5
+[2026-11-02T13:43:25Z] stage1: u(n): u(13)=30 u(14)=33 u(15)=37; density recursion consistent=True
+[2026-11-02T13:43:29Z] stage2A: literal route: 64744218 (H,edge) pairs; dedupe for n<=11 -> 9667 classes
+[2026-11-02T13:43:29Z] stage2B: corrected route: 19446524 (H, w) splits; core has |V(H)|+1 vertices and m >= m(H)
+[2026-11-02T13:43:30Z] stage2B: abstract split search: 398 splits sampled, 320 5-colourable, 320 with relation 'different'
+[2026-11-02T13:43:30Z] stage3a: route A edge count: killed 64744218 (H,edge) pairs; survivor sizes = []
+[2026-11-02T13:43:30Z] stage3a: route B edge count: killed 19446524 (H,w) splits; survivor core sizes = []
+[2026-11-02T13:43:30Z] stage3b: clique<=3: 0/9667 literal classes pass
+[2026-11-02T13:43:30Z] stage3c: K_2,3-free and edges in <=2 triangles: 0/9667 pass; both: 0
+[2026-11-02T13:43:30Z] stage3d: direct interval certification of 7 sparsest catalog members: CERTIFIED-EXCLUDED
+[2026-11-02T13:43:30Z] stage3d: certified embedder controls: k6_minus_edge=CERTIFIED-EXCLUDED, diamond=PLACEMENT-FOUND, wheel7=PLACEMENT-FOUND
+[2026-11-02T13:43:30Z] stage4: no candidate reached the embedder on either route; found=False
+[2026-11-02T13:43:30Z] stage5: written runs\hn_gadget_catalog.json

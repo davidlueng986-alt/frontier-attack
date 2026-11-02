@@ -178,6 +178,26 @@ corpus method that has produced a new minimum χ=6 object before
 (`github:HeliCorgi/fourteen-points-six-colors`, 14-vertex three-distance graph).
 The catalog task is queued.
 
+**Catalog result: a decisive negative with a bound.** `gadget_catalog.py` parsed
+the complete catalog of **1,497,264 edge-6-critical graphs** on `n = 6..13`
+(counts match Lalonde–McKay, minimum degree 5, `u(13) = 30`).
+
+| route | objects | survivors |
+|---|---|---|
+| A (literal, `G = H − uv`) | 64,744,218 `(H, edge)` pairs | **0** — all killed by edge-count necessary conditions |
+| B (split) | 19,446,524 splits | **0** — all killed by edge count |
+| clique ≤ 3 filter | 9,667 classes | 0 |
+| `K_{2,3}`-free and ≤ 2 triangles | 9,667 classes | 0 |
+| direct interval certification, 7 sparsest | 7 | **CERTIFIED-EXCLUDED** |
+
+Controls confirm the certifier is not broken: diamond and the 7-wheel are
+`PLACEMENT-FOUND`.
+
+So **no level-5 virtual edge can come from a 6-critical graph on ≤ 13 vertices**,
+because those graphs are too dense to be unit-distance graphs. The first possible
+size is `n = 13` (route B core) or `n = 15` (route A). That is a real lower
+bound, produced by generation rather than by search.
+
 **χ=7 is out of reach by composition.** Any 7-chromatic unit-distance graph has
 at least **6,993 vertices** (Parts 2020, Table 2, cited). A 509-plus-gadget
 composition is ~516 vertices and is provably 6-colourable. The old step 5 was
