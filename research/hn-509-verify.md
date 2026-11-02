@@ -2,16 +2,17 @@
 
 ## Answer
 
-Yes. `vtx/509_parts.vtx` from `vasnesterov/HadwigerNelson` (master, commit
+The record checks out. `vtx/509_parts.vtx` from `vasnesterov/HadwigerNelson` (master, commit
 `ad7843546da5f4db4fcf9827e0951f34295ad7cc`) is a **509-vertex unit-distance graph with 2442 unit-distance
 edges**, connected, minimum degree 4. Its **4-colouring instance is UNSAT** and it **is 5-colourable**, so this
 graph has chromatic number exactly 5. Since every edge is exactly unit length, any proper 4-colouring of the
 plane would induce a proper 4-colouring of this graph; therefore **chi(R^2) >= 5**.
 
-Two independent CaDiCaL versions return UNSAT (133.2 s and 122.2 s against a 600 s cap), and a third,
-structurally different binary encoding is [see below]. The file contains **coordinates only** — there is no
-`p edge` header and no edge list; the 2442 edges are recovered from exact unit-distance relations, and every
-one of them was proved symbolically to have squared length exactly 1.
+Three independent solvers return UNSAT (CaDiCaL 1.9.5 133.2 s, CaDiCaL 1.5.3 122.2 s, Glucose 4.2.1 103.2 s,
+all inside a 600 s cap), and a structurally different binary encoding gives the same verdict. The file
+contains **coordinates only** —there is no `p edge` header and no edge list; the 2442 edges are recovered from
+exact unit-distance relations, and every one of them was proved symbolically to have squared length exactly 1.
+The derived count matches the published record (Jaan Parts, arXiv:2010.12665: 509 vertices, 2442 edges).
 
 ## Objects and numbers
 
@@ -19,6 +20,7 @@ one of them was proved symbolically to have squared length exactly 1.
 |---|---|---|---|
 | vertices `N` | **509** | 509 non-empty lines, each a `{x, y}` pair; no header, no comments, no DIMACS records | yes |
 | edges `M` | **2442** | all pairs with `abs(d^2 - 1) < 1e-50` at 100-digit precision; nearest non-edge has `abs(d^2-1) = 1.602e-4`, so the cut is unambiguous | yes |
+| published value of `M` | **2442** | Jaan Parts, *Graph minimization...*, arXiv:2010.12665, abstract and Table 1 ("509 vertices and 2442 edges"); also MathWorld "Parts Graphs" table (509 / 2442) | matches derived `M` |
 | coordinates present? | **yes, exact algebraic** | Mathematica syntax: rationals and `Sqrt[...]`, incl. nested radicals `Sqrt[(5*(7 ± Sqrt[33]))/2]` at 4 vertices | yes |
 | explicit edge list present? | **no** | only `{x, y}` lines; graph is implied by geometry (repo's `ParseVtx.lean`/`BuildEdge.lean` do the same) | yes |
 | max edge deviation `abs(d^2 - 1)` | **1.457e-99** | 100-digit `mpmath` arithmetic over all 2442 edges (numerically zero) | yes |
@@ -30,7 +32,8 @@ one of them was proved symbolically to have squared length exactly 1.
 | 5-colouring | **SAT**, 5 colours used, 0 monochromatic edges | CaDiCaL 1.9.5, 0.011 s | yes |
 | 4-colouring, one-hot CNF | **UNSAT**, 2036 vars, 13331 clauses | CaDiCaL 1.9.5, **133.208 s** | yes |
 | 4-colouring, one-hot CNF (2nd solver) | **UNSAT** | CaDiCaL 1.5.3, **122.245 s** | yes |
-| 4-colouring, binary CNF | **UNSAT**, 1018 vars, 9768 clauses | CaDiCaL 1.9.5, PENDING_BINARY | yes |
+| 4-colouring, one-hot CNF (3rd solver) | **UNSAT** | Glucose 4.2.1 (`glucose4`), **103.180 s** | yes |
+| 4-colouring, binary CNF | **UNSAT**, 1018 vars, 9768 clauses | CaDiCaL 1.9.5, **132.400 s** | yes |
 | encoding self-test | K4: UNSAT at k=1,2,3 and SAT at k=4; C5: UNSAT at k=1,2, SAT at k=3; K3 likewise | same `build()` code used for the 509 instance | yes |
 | negative control, exact check | perturbing one coordinate by 1/1000 makes `simplify(d^2 - 1) != 0` (3/3) | guards against a vacuous exact check | yes |
 | provenance | blob `854a7df2d17d6f3e0aeaab53db0dd6eefa7935c5`, 25,515 bytes, sha256 `770a585a6c1e1222355322707479cb826e9ada560279da904ef89c15c99ff0b5` | `git hash-object` of downloaded file equals GitHub blob SHA (byte-identical) | yes |
@@ -39,7 +42,7 @@ Interpretation of the SAT run: variables `x[v][c]` ("vertex v has colour c", one
 clauses are one at-least-one per vertex (509 x size 4), six at-most-one pairs per vertex (3054 binary), and
 `not(x[u][c] and x[v][c])` for every edge and colour (2442 x 4 = 9768). Total 13,331 clauses. UNSAT means no
 proper 4-colouring exists. The binary encoding uses 2 bits per vertex (1018 vars) and no one-hot clauses at
-all — only the 4 clauses per edge forbidding equal 2-bit patterns — so it is an independent CNF for the same
+all —only the 4 clauses per edge forbidding equal 2-bit patterns —so it is an independent CNF for the same
 combinatorial claim.
 
 Environment: Windows, Python 3.14.2, `python-sat 1.9.dev17` (bundled CaDiCaL 1.9.5 = `cadical195` and CaDiCaL
@@ -127,9 +130,16 @@ n=509 m=2442 k=4 vars=2036 clauses=13331 solver=cadical153
 {"verdict": "UNSAT", "solver": "cadical153", "seconds": 122.245, "timeout": 600.0,
  "vars": 2036, "clauses": 13331}
 
+PS> python research\scratch\solve_color.py --colors 4 --solver glucose4 --timeout 600
+n=509 m=2442 k=4 vars=2036 clauses=13331 solver=glucose4
+{"verdict": "UNSAT", "solver": "glucose4", "seconds": 103.18, "timeout": 600.0,
+ "vars": 2036, "clauses": 13331}
+
 PS> python research\scratch\binary_solve.py
+binary clause semantics self-test: OK
 n=509 m=2442 binary k=4 vars=1018 clauses=9768
-{"verdict": "PENDING_BINARY", ...}
+{"verdict": "UNSAT", "solver": "cadical195", "seconds": 132.4,
+ "vars": 1018, "clauses": 9768}
 
 PS> python research\scratch\solve_color.py --colors 5 --solver cadical195 --timeout 600
 n=509 m=2442 k=5 vars=2545 clauses=17809 solver=cadical195
@@ -137,7 +147,7 @@ n=509 m=2442 k=5 vars=2545 clauses=17809 solver=cadical195
 colours used: 5 bad edges: 0
 ```
 
-The 600 s cap was enforced by a timer calling `solver.interrupt()`; both 4-colour runs finished well inside it,
+The 600 s cap was enforced by a timer calling `solver.interrupt()`; all 4-colour runs finished well inside it,
 so the verdicts are not timeout artefacts. Encoding self-test (`research/scratch/encoding_selftest.py`, same
 `build()` function):
 
@@ -151,8 +161,8 @@ K3: k=1 UNSAT OK   k=2 UNSAT OK   k=3 SAT OK
 
 - **No explicit edge list or DIMACS graph header in the file.** `509_parts.vtx` is a bare list of 509
   Mathematica-syntax coordinate pairs; the 2442 edges are *derived* (all unit-distance pairs), not stated.
-  Any published `M` for this graph is therefore a claim about this distance test, and I report the value my
-  exact test produces.
+  Parts' paper (arXiv:2010.12665) also defines *strict* unit-distance graphs —every pair at distance exactly 1
+  is an edge —so the derivation matches the published convention, and the derived `M = 2442` matches Table 1.
 - **No machine-checked proof of non-4-colourability for the 509-vertex graph in the repository.** The README
   says the smallest known Parts graph is "currently beyond the capabilities of `build_edge`" and lists its
   formalization as TODO; only the 510-vertex Heule graph is formalized there.
@@ -160,8 +170,10 @@ K3: k=1 UNSAT OK   k=2 UNSAT OK   k=3 SAT OK
   (1.9.5, 1.5.3) plus a structurally different binary encoding, all agreeing, and on encoding self-tests.
   A DRAT proof would make the result independently machine-checkable; `python-sat`'s CaDiCaL wrappers do not
   expose proof logging here.
-- **Two solvers could not be used as extra cross-checks.** The `kissat404` wrapper in this `python-sat` build
-  crashes the interpreter (no output, exit 1) on even a 2-clause CNF. A `glucose4` run was started with the
-  same 600 s cap but had not reported by the time this note was written; it is not part of the verdict.
+- **One solver wrapper could not be used as an extra cross-check.** The `kissat404` wrapper in this
+  `python-sat` build crashes the interpreter (no output, exit 1) on even a 2-clause CNF; it was dropped.
+  (Glucose 4.2.1 did finish —UNSAT in 103.18 s —and is included above.)
 - **No claim about minimality.** I verified that *this* graph is 5-chromatic; I did not verify that 509 is the
-  smallest known, nor compare against Parts' paper or Heule's 510-vertex graph.
+  smallest possible, nor re-derive the graph. Parts (2020) likewise does not claim vertex-minimality —the
+  paper's method returns a minimum among the subgraphs it searches —and the file is not checked against the
+  paper's own vertex list beyond the matching vertex/edge counts.

@@ -87,9 +87,14 @@ explicit finite point set. That is a research question, not an assumption.
 
 Ordered by cost, not by appeal:
 
-1. **Read `PlanarCovers.lean` and decide whether the obstruction is finitary.**
-   If yes, the witness is a finite instantiation of an existing proof, which is
-   far cheaper than SAT search. If no, this branch dies here.
+1. ~~Read `PlanarCovers.lean` and decide whether the obstruction is finitary.~~
+   **Resolved negative.** The obstruction is a finite *open cover*, not a finite
+   graph: `elim_finite_subcover` (`PlanarCovers.lean:381`) produces a `Finset ι`
+   of cover elements, and the closing lemma `finite_partition_impossible`
+   (`:302`) is a Lebesgue covering-dimension argument that never mentions 5
+   colours. There is no vertex set, no edge list, no coordinates, and no size
+   bound on a graph. `s.card ≥ 25` is a bound on **cover elements**, not
+   vertices — do not confuse the two. Extraction is dead.
 2. **Load `509_parts.vtx` and verify it with `hn.py`.** Confirms our exact
    arithmetic on the current record and gives us a seed. Cheap, and it tests the
    gate on a real object rather than a 7-vertex toy.
@@ -116,6 +121,12 @@ Before: "find colour-forcing gadgets with two terminals (equal / different)."
 After: the primitive is a **3-vertex pattern** (monochromatic √3-triangle), and
 equality is a *property of the diamond*, not a general two-terminal gadget.
 
-The earlier plan was looking for the wrong object. That is exactly the failure
-the Think phase is supposed to prevent, and it was caught by Phase 1 for the
-price of one research agent.
+Before: "extract the finite witness from the Lean proof."
+After: **impossible.** The 2026 theorem is proved by a covering-dimension
+argument; it is not a finite-graph proof and never names 5 colours. The witness
+exists only by de Bruijn–Erdős, non-constructively, with no size bound.
+
+Consequence: an explicit 6-chromatic unit-distance graph would be genuinely new
+— not a re-reading of an existing proof. That makes the search target worth the
+compute, and it makes "we could not find one" an honest result rather than a
+failure to transcribe.
