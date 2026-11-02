@@ -64,12 +64,22 @@ already survived every test.
 ## 5. Admissible actions
 
 1. Install PARI/GP 2.19 (native Windows, `Pari64-2-19-0.exe`) and verify
-   `ellrank` on `234446.a1` reproduces rank 4 with `r1 = r2`.
-2. Verify `ellanalyticrank` on `37a1`, `11a1`, `389a1` (the last is the
-   numerical-noise calibration).
-3. Sweep `500,000 < N < 1,000,000` for curves with `k ≤ 3`, recording
+   `ellrank` on `234446.a1` reproduces rank 4 with `r1 = r2`. **Still needed:
+   there is no algebraic-rank backend without it.**
+2. ~~Build an analytic-rank estimator.~~ **Done as a prototype.**
+   `research/bsd-rank-smoke.md` has a PARI-free AFE estimator that returns
+   0, 1, 2, 3 on `11a1`, `37a1`, `389a1`, `5077a1`, and matches LMFDB's
+   `L(1)` to 29 digits. It is **numerical, not certified**: the returned order
+   has no interval bound, so it cannot yet serve as the `k` in the terminal
+   object.
+3. Sweep `500,000 < N < 10,000,000` for curves with `k ≤ 3`, recording
    `(r1, r2, k)` and flagging `r1 == r2 != k`.
 4. Report the count and the first mismatch, or the absence of one.
+
+The gap between 2 and the terminal object is now specific: turn the AFE ladder
+into a **certified** order of vanishing (interval arithmetic on the ladder, or
+modular-symbol methods), or accept that the search can only produce
+`COUNTEREXAMPLE_CANDIDATE`, never `COUNTEREXAMPLE`.
 
 Step 4 is the only one that could produce the terminal object. Steps 1–2 are
 prerequisites, not progress.

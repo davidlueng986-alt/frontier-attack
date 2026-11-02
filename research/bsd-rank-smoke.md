@@ -18,7 +18,7 @@ With only brute-force point counts mod $p$ ($p \le 20000$) and mpmath, the reque
 
 | item | value | source | checked |
 |---|---|---|---|
-| 11a1 model | `[0,-1,1,-10,-20]`, conductor 11 | task; LMFDB `11.a1` (Cremona 11a2) is isogenous | ran: point counts; $L(1)$ matches |
+| 11a1 model | `[0,-1,1,-10,-20]`, conductor 11 | task model (Cremona 11a1); LMFDB `11.a1` (Cremona 11a2) is isogenous | ran: point counts; $L(1)$ matches |
 | 37a1 model | `[0,0,1,-1,0]`, conductor 37 | LMFDB `37.a1` (Cremona 37a1) | ran: `ainvs` match API |
 | 5077a1 model | `[0,0,1,-7,6]`, conductor 5077 | LMFDB `5077.a1` (Cremona 5077a1) | ran: `ainvs` match API |
 | 5077a1 note | smallest conductor of an elliptic curve of rank 3 over Q | <https://www.lmfdb.org/EllipticCurve/Q/5077/a/1> | cited |
@@ -82,6 +82,8 @@ The two positive-rank values also satisfy the BSD quotient $\Omega\cdot\mathrm{R
 | 37a1 | 0.384 s | 0.128 s | 2.427 s | 1.420 s | 1.821 s | 6.18 s |
 | 5077a1 | 0.364 s | 0.376 s | 2.342 s | 12.783 s | 18.572 s | 34.44 s |
 
+The AFE itself needs $a_p$ only for $p\le n_{\max}$ ($955$ for $N=5077$), not for all $p\le20000$; the 20k point count is required by the naive baseline. That is why the AFE-only runtimes (0.82/1.55/13.16 s) are smaller than the full smoke-test runtimes.
+
 | item | value | source | checked |
 |---|---|---|---|
 | point counts $p\le20000$ | 2262 primes, $\sum p=21{,}171{,}191$, $0.287$--$0.384$ s | `analytic_rank.py` | ran |
@@ -90,7 +92,7 @@ The two positive-rank values also satisfy the BSD quotient $\Omega\cdot\mathrm{R
 | AFE evaluation scaling, actual $a_n$ | $n_{\max}=1000$: 1.011 s; 5000: 1.531 s; 10000: 2.247 s | `bench_scaling.py` | ran |
 | AFE evaluation scaling, dummy $a_n$ | $n_{\max}=100000$: 17.633 s; 200000: 37.212 s | `bench_afe2.py` | ran |
 | AFE-only estimator runtime | 11a1 0.82 s; 37a1 1.55 s; 5077a1 13.16 s | `analytic_rank.py` timings + `bench_scaling.py` | ran |
-| full smoke-test runtime | 11a1 4.03 s; 37a1 6.18 s; 5077a1 34.44 s | `analytic_rank.py` summary | ran |
+| full smoke-test runtime | 11a1 4.03 s; 37a1 6.18 s; 5077a1 34.44 s (sum of section timings; add ~0.5 s for Python import/startup) | `analytic_rank.py` summary | ran |
 | break, sharp truncation | already at $N=37$ for rank 1; at $N=11$ (rank 0) $L(1)$ off by $17.45\%$ | `analytic_rank.py` | ran |
 | break, smoothed AFE | $\sim N=10^{10}$ (about 1 h) to $\sim N=10^{12}$ (about 1--1.5 days), extrapolated | measured per-term costs | extrap. |
 | method assumptions | conductor $N$ supplied; bad primes multiplicative ($a_p=\pm1$) or additive with $a_p=0$; no Tate algorithm | `analytic_rank.py` docstring | -- |
@@ -226,7 +228,7 @@ curve          N  r_LMFDB  r_naive   r_AFE  gap_naive  gap_AFE  t_total
 results written to C:\Users\daive\Downloads\frontier-attack\research\scratch\analytic_rank_results.json
 ```
 
-The central-difference check is consistent with the ladder: for 37a1 the first stable nonzero derivative is $D_1$; for 5077a1, $D_1$ and $D_2$ shrink by a factor 100 when $h$ is reduced from $10^{-2}$ to $10^{-3}$ (pure truncation error), while $D_3$ stays at $10.39$, so the first stable nonzero derivative is $D_3$ (and $D_3/6$ is compared with LMFDB's $L'''(1)/3!$ below).
+The $L_{\rm AFE}(1+\epsilon)$ column is evaluated at $\epsilon>0$, not at $s=1$; the exact $s=1$ values used for the 29-digit comparison are in the high-accuracy table below. The central-difference check is consistent with the ladder: for 37a1 the first stable nonzero derivative is $D_1$; for 5077a1, $D_1$ and $D_2$ shrink by a factor 100 when $h$ is reduced from $10^{-2}$ to $10^{-3}$ (pure truncation error), while $D_3$ stays at $10.39$, so the first stable nonzero derivative is $D_3$ (and $D_3/6$ is compared with LMFDB's $L'''(1)/3!$ below).
 
 ### High-accuracy special values (mp.dps = 45)
 
@@ -354,5 +356,6 @@ tail 1.9999953391648864
 - No reliable way was found to make the sharp 20,000-term Dirichlet truncation estimate rank $\ge1$ on these curves: at $s=1$ its partial sums oscillate with the cutoff (11a1: 0.2754, 0.2095, 0.2252, 0.2675 at 10k/20k/50k/100k; 37a1: -0.0508, 0.0658, -0.0511, -0.0241), so 20k is neither sufficient nor special. This is a property of conditional convergence at $s=1$, not an implementation bug.
 - No implementation of Tate's algorithm: the script takes the conductor $N$ as an input from LMFDB. Computing $N$ from $(a_1,a_2,a_3,a_4,a_6)$, and detecting all local reduction types, is out of scope. The bad-prime treatment here is exact for the three test curves (prime conductor, multiplicative) and for additive primes with $a_p=0$, but not a general local-factor implementation.
 - No direct run at $N>5077$: the break-conductor numbers ($N\approx10^{10}$--$10^{12}$) are extrapolated from measured point-count and incomplete-gamma costs, not measured at those conductors. The extra 389a1 check ($N=389$, rank 2, gap 0) is a calibration, not a large-conductor test.
+- At 30 digits, the rank-3 AFE value at $\epsilon=10^{-6}$ has about $2\times10^{-6}$ relative error from cancellation in the $w=-1$ sum ($1.7318467\times10^{-18}$ vs $1.7318499\times10^{-18}$); the slope still gives 3.000, but the special-value comparison was run at dps=45.
 - No independent proof of the AFE formula was attempted; it is derived from $\Lambda(s)=w\Lambda(2-s)$ in the script docstring and validated numerically against LMFDB's special values. The root number $w$ is determined numerically by matching the AFE to the Dirichlet sum at $s=2$, not from local root-number theory.
 - LMFDB's `11.a1` is not the same Weierstrass model as the task's `11a1`; the comparison relies on the isogeny class (same $L$-function). The numerical $L(1)$ match to 29 digits is the check that this is the right $L$-function, but the exact `ainvs` differ (LMFDB: `[0,-1,1,-7820,-263580]`; task: `[0,-1,1,-10,-20]`).
