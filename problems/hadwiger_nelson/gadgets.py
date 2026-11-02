@@ -927,40 +927,44 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
                 attempts.append((g, u, a, base, bu, ba, "base"))
 
             for (g1_, u1_, a1_, g2_, u2_, a2_, kind) in attempts[:4]:
-                try:
-                    h = spindle(
-                        g1_, g2_,
-                        share1=u1_, tip1=a1_, share2=u2_, tip2=a2_,
-                        label=f"lift[{g1_.label}|{g2_.label}]@k{k}",
-                    )
-                except InfeasibleSpindle:
-                    continue
-                hchi = h.chromatic_number()
-                ok_lb = hchi >= k + 1
-                lifts.append({
-                    "kind": kind,
-                    "base": g1_.label,
-                    "partner": g2_.label,
-                    "k": k,
-                    "pair1": [u1_, a1_],
-                    "pair2": [u2_, a2_],
-                    "result_label": h.label,
-                    "result_n": h.n,
-                    "result_m": h.m,
-                    "result_chi": hchi,
-                    "theorem_lower_bound_ok": ok_lb,
-                })
-                if not ok_lb:
-                    raise AssertionError(
-                        "forced-equality lift failed its lower bound: "
-                        f"k={k}, chi={hchi}"
-                    )
-                if h.n <= max_vertices:
-                    register(h, enqueue)
-                elif hchi > 4:
-                    # Keep a genuine high-chi outlier even though it exceeds
-                    # the size budget; never silently drop a possible hit.
-                    oversized.append((hchi, h))
+                for branch in (1, -1):
+                    try:
+                        h = spindle(
+                            g1_, g2_,
+                            share1=u1_, tip1=a1_, share2=u2_, tip2=a2_,
+                            branch=branch,
+                            label=f"lift[{g1_.label}|{g2_.label}]@k{k}b{branch}",
+                        )
+                    except InfeasibleSpindle:
+                        continue
+                    hchi = h.chromatic_number()
+                    ok_lb = hchi >= k + 1
+                    lifts.append({
+                        "kind": kind,
+                        "base": g1_.label,
+                        "partner": g2_.label,
+                        "k": k,
+                        "branch": branch,
+                        "pair1": [u1_, a1_],
+                        "pair2": [u2_, a2_],
+                        "result_label": h.label,
+                        "result_n": h.n,
+                        "result_m": h.m,
+                        "result_chi": hchi,
+                        "theorem_lower_bound_ok": ok_lb,
+                    })
+                    if not ok_lb:
+                        raise AssertionError(
+                            "forced-equality lift failed its lower bound: "
+                            f"k={k}, chi={hchi}"
+                        )
+                    if h.n <= max_vertices:
+                        register(h, enqueue)
+                    elif hchi > 4:
+                        # Keep a genuine high-chi outlier even though it
+                        # exceeds the size budget; never silently drop a
+                        # possible hit.
+                        oversized.append((hchi, h))
 
     best_key = None
     best = None

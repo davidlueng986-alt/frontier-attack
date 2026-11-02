@@ -73,6 +73,10 @@ exists in `hn.py`.
 k = 3 — as the gadget theory says — but those apices are **free at k = 4 and at
 k = 5**.
 
+H1 then confirmed the consequence directly: the diamond composition reproduces
+the Moser spindle at χ = 4 and **saturates there**, across every composition
+tried (`best_chi = 4`).
+
 Consequence: equality gadgets are a **3-colouring tool**. Composing diamonds
 therefore cannot produce anything above 4 colours, which is exactly what
 `glue2.py` observed. At 5 colours the primitive is a forced *pattern*
