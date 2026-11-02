@@ -54,3 +54,17 @@ by enumerating the identity map.
 Negative result. No claim about the planar Jacobian conjecture is made or
 implied. This only says: this particular family is the wrong place to look, and
 now we know why.
+
+## Addendum (after Phase 1 research)
+
+`research/jacobian-enumeration.md` establishes that the planar case is **proved
+for total degree ≤ 104** (Moh 1983 gives ≤ 100; Nguyen 2025 gives ≤ 104; the
+unrefereed GGHV preprint gives < 125 except (72, 108)).
+
+So this box was not merely degenerate — it was **provably empty by theorem**.
+The 0 counterexamples were guaranteed before the first sample was drawn. The
+correct search region is total degree ≥ 105 with `gcd(deg P, deg Q) ≥ 16` and a
+constrained trapezoidal Newton polygon; see `plan/jacobian.md`.
+
+This is a better outcome than the original framing: the negative result now has
+a theorem behind it instead of an empirical observation.

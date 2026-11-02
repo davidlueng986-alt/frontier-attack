@@ -104,11 +104,53 @@ def find_collision(F, vars, samples=12, starts=6, seed=0, tol=1e-8):
     return hits
 
 
+def alpoge_counterexample():
+    """The July 2026 C^3 counterexample (Alpoge, credited to Claude Fable 5).
+
+    Component degrees (7, 6, 4), total degree 7, det J == -2, three distinct
+    points with the same image.  This is a real object, not a synthetic test:
+    it is the regression that proves the verifier accepts a genuine
+    counterexample.
+    """
+    x, y, z = sp.symbols("x y z")
+    F = [
+        (1 + x * y) ** 3 * z + y ** 2 * (1 + x * y) * (4 + 3 * x * y),
+        y + 3 * x * (1 + x * y) ** 2 * z + 3 * x * y ** 2 * (4 + 3 * x * y),
+        2 * x - 3 * x ** 2 * y - x ** 3 * z,
+    ]
+    pts = [
+        (0, 0, sp.Rational(-1, 4)),
+        (1, sp.Rational(-3, 2), sp.Rational(13, 2)),
+        (-1, sp.Rational(3, 2), sp.Rational(13, 2)),
+    ]
+    return F, [x, y, z], pts
+
+
 # --------------------------------------------------------------------------
 # self-check
 # --------------------------------------------------------------------------
 
+def run_claim(path: str) -> int:
+    """CLI gate: `python jac.py --claim claim.json` -> exit 0 iff COUNTEREXAMPLE."""
+    import json
+    from pathlib import Path
+
+    spec = json.loads(Path(path).read_text(encoding="utf-8"))
+    syms = sp.symbols(" ".join(spec["vars"]))
+    vars_ = list(syms) if isinstance(syms, tuple) else [syms]
+    F = [sp.sympify(s) for s in spec["F"]]
+    pts = [tuple(sp.sympify(c) for c in p) for p in spec["points"]]
+    result = verify_map(F, vars_, pts)
+    print(json.dumps(result, indent=2))
+    return 0 if result["verdict"] == "COUNTEREXAMPLE" else 1
+
+
 if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) > 2 and sys.argv[1] == "--claim":
+        raise SystemExit(run_claim(sys.argv[2]))
+
     x, y = sp.symbols("x y")
 
     # 1. triangular map: det = 1, invertible, must be INCOMPLETE not a counterexample
@@ -135,4 +177,13 @@ if __name__ == "__main__":
     r5 = verify_map(F1, [x, y], collision_points=[(0, 0), (1, 1)])
     print("bad claim  :", r5)
     assert r5["verdict"] == "REJECTED"
+
+    # 6. regression: the real 2026 C^3 counterexample must be accepted
+    F6, v6, pts6 = alpoge_counterexample()
+    r6 = verify_map(F6, v6, pts6[:2])
+    print("Alpoge 2026:", r6["verdict"], "det =", r6["det"])
+    assert r6["verdict"] == "COUNTEREXAMPLE" and r6["det"] == "-2"
+    r6b = verify_map(F6, v6, pts6[1:])
+    assert r6b["verdict"] == "COUNTEREXAMPLE"
+
     print("OK")
