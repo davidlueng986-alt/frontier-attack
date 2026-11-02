@@ -4,3 +4,4 @@ runs/_smoke_*.json
 .env
 
 research/scratch/
+scratch_*.py
