@@ -1,0 +1,170 @@
+{
+  "quadratic": {
+    "family": "quadratic",
+    "coefficient_range": [
+      -2,
+      2
+    ],
+    "grid_size": 15625,
+    "constant_jacobian_survivors": 13,
+    "counterexamples_found": 0,
+    "seconds": 0.01,
+    "samples": [
+      {
+        "coeffs": [
+          -1,
+          -2,
+          -1,
+          1,
+          2,
+          1
+        ],
+        "F": [
+          "-x**2 - 2*x*y + x - y**2",
+          "x**2 + 2*x*y + y**2 + y"
+        ],
+        "verdict": "INCOMPLETE",
+        "collisions": 0
+      },
+      {
+        "coeffs": [
+          -1,
+          2,
+          -1,
+          -1,
+          2,
+          -1
+        ],
+        "F": [
+          "-x**2 + 2*x*y + x - y**2",
+          "-x**2 + 2*x*y - y**2 + y"
+        ],
+        "verdict": "INCOMPLETE",
+        "collisions": 0
+      },
+      {
+        "coeffs": [
+          0,
+          0,
+          -2,
+          0,
+          0,
+          0
+        ],
+        "F": [
+          "x - 2*y**2",
+          "y"
+        ],
+        "verdict": "INCOMPLETE",
+        "collisions": 0
+      },
+      {
+        "coeffs": [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        "F": [
+          "x - y**2",
+          "y"
+        ],
+        "verdict": "INCOMPLETE",
+        "collisions": 0
+      },
+      {
+        "coeffs": [
+          0,
+          0,
+          0,
+          -2,
+          0,
+          0
+        ],
+        "F": [
+          "x",
+          "-2*x**2 + y"
+        ],
+        "verdict": "INCOMPLETE",
+        "collisions": 0
+      },
+      {
+        "coeffs": [
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "F": [
+          "x",
+          "-x**2 + y"
+        ],
+        "verdict": "INCOMPLETE",
+        "collisions": 0
+      },
+      {
+        "coeffs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "F": [
+          "x",
+          "y"
+        ],
+        "verdict": "INCOMPLETE",
+        "collisions": 0
+      },
+      {
+        "coeffs": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "F": [
+          "x",
+          "x**2 + y"
+        ],
+        "verdict": "INCOMPLETE",
+        "collisions": 0
+      }
+    ]
+  },
+  "cubic_sparse": {
+    "family": "cubic_sparse",
+    "coefficient_range": [
+      -2,
+      2
+    ],
+    "grid_size": 625,
+    "constant_jacobian_survivors": 1,
+    "counterexamples_found": 0,
+    "seconds": 0.0,
+    "samples": [
+      {
+        "coeffs": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "F": [
+          "x",
+          "y"
+        ],
+        "verdict": "INCOMPLETE",
+        "collisions": 0
+      }
+    ]
+  }
+}
