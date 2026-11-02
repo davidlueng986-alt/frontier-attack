@@ -1,0 +1,12 @@
+2026-11-02T11:43:24Z stage=1 {"det_monomials": 6, "equations": 7, "min_x_degree": 8, "seconds": 0.05, "status": "ok", "target_present": false, "unknowns": 8}
+2026-11-02T11:43:25Z stage=2 {"basis_size": 1, "inconsistent": true, "intermediate_basis_size": null, "seconds": 0.788, "status": "ok", "timed_out": false}
+2026-11-02T11:43:25Z stage=3 {"reason": "basis == [1]", "solutions": 0, "status": "skipped"}
+2026-11-02T11:43:25Z stage=4 {"exact_collisions": 0, "reason": "no solution set to search", "status": "skipped"}
+2026-11-02T11:43:25Z stage=5 {"accepted": null, "exit_code": null, "reason": "no candidate", "status": "skipped"}
+2026-11-02T11:43:25Z stage=6 {"basis_size": 1, "inconsistent": true, "path": "C:\\Users\\daive\\Downloads\\frontier-attack\\runs\\jacobian_75_125_solve.json", "seconds": 0.851, "status": "written", "verdict": "INCONSISTENT"}
+2026-11-02T11:43:49Z stage=1 {"det_monomials": 6, "equations": 7, "min_x_degree": 8, "seconds": 0.052, "status": "ok", "target_present": false, "unknowns": 8}
+2026-11-02T11:43:50Z stage=2 {"basis_size": 1, "inconsistent": true, "intermediate_basis_size": null, "seconds": 0.806, "status": "ok", "timed_out": false}
+2026-11-02T11:43:50Z stage=3 {"reason": "basis == [1]", "solutions": 0, "status": "skipped"}
+2026-11-02T11:43:50Z stage=4 {"exact_collisions": 0, "reason": "no solution set to search", "status": "skipped"}
+2026-11-02T11:43:50Z stage=5 {"accepted": null, "exit_code": null, "reason": "no candidate", "status": "skipped"}
+2026-11-02T11:43:50Z stage=6 {"basis_size": 1, "inconsistent": true, "path": "C:\\Users\\daive\\Downloads\\frontier-attack\\runs\\jacobian_75_125_solve.json", "seconds": 0.867, "status": "written", "verdict": "INCONSISTENT"}

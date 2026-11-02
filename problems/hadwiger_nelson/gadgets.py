@@ -849,6 +849,7 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
     seen = set()
     records = []
     constructed = []      # (chi, gadget) for every distinct graph built
+    oversized = []        # (chi, gadget) lifts above max_vertices, chi > 4 only
     examined_keys = set()
     lifts = []
     forcing = []          # graphs with at least one forced-equal pair at some k
@@ -954,7 +955,12 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
                         "forced-equality lift failed its lower bound: "
                         f"k={k}, chi={hchi}"
                     )
-                register(h, enqueue and h.n <= max_vertices)
+                if h.n <= max_vertices:
+                    register(h, enqueue)
+                elif hchi > 4:
+                    # Keep a genuine high-chi outlier even though it exceeds
+                    # the size budget; never silently drop a possible hit.
+                    oversized.append((hchi, h))
 
     best_key = None
     best = None
@@ -1000,20 +1006,26 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
                     if g.n < cand.n <= max_vertices:
                         register(cand, True)
 
-    # ---- post-scan: every constructed graph, not just the BFS sample ----
-    # A 3-chromatic graph with a forced-equal pair at k=4 also lifts to
-    # chi=5, so the scan is not restricted to the 4-chromatic graphs.
+    # ---- post-scan: close over every constructed graph -------------------
+    # A 3-chromatic graph can have a forced-equal pair at k=4, and a level-3
+    # lift creates new 4-chromatic graphs; those must themselves be scanned
+    # at k=4.  The worklist runs to closure over newly built graphs.
     postscan = []
-    for chi, h in list(constructed):
+    scanned = set(examined_keys)
+    work = list(constructed)
+    while work:
+        chi, h = work.pop(0)
         key = h.structural_key()
-        if key in examined_keys:
+        if key in scanned:
             continue
+        scanned.add(key)
         geometry_ok, geometry_errors = h.verify()
         if not geometry_ok:
             raise AssertionError(
                 f"post-scan graph {h.label} failed exact geometry: "
                 f"{geometry_errors[:3]}"
             )
+        before = len(constructed)
         local_forcing = analyse_forcing(h, chi)
         attempt_lifts(h, local_forcing, enqueue=False)
         postscan.append({
@@ -1027,6 +1039,8 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
                 for k, eq in local_forcing
             },
         })
+        if len(constructed) > before:
+            work.extend(constructed[before:])
 
     if best is None:
         best = diamond_g
@@ -1035,7 +1049,7 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
     # The chi claim is over *every* distinct composition constructed, not
     # only the ones popped before the record budget ran out.
     top_chi, top_g = max(
-        constructed + [(best.chromatic_number(), best)],
+        constructed + oversized + [(best.chromatic_number(), best)],
         key=lambda t: (t[0], -t[1].n, -t[1].m),
     )
     best = top_g
@@ -1054,6 +1068,8 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
         "graphs_examined": len(records),
         "graphs_constructed": len(constructed),
         "max_constructed_chi": top_chi,
+        "max_lift_chi": max((l["result_chi"] for l in lifts), default=0),
+        "oversized_lift_count": len(oversized),
         "constructed_histogram": {
             str(c): sum(1 for chi, _ in constructed if chi == c)
             for c in sorted({chi for chi, _ in constructed})

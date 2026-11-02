@@ -260,7 +260,7 @@
         "constant_term_zero": false,
         "constant_coefficient": "-a1*b26 + a16*b1",
         "pair_products": 66570,
-        "seconds": 0.021
+        "seconds": 0.025
       },
       "target_x2": {
         "label": "full_lattice/detJ-x^2",
@@ -19286,7 +19286,7 @@
           }
         ]
       },
-      "seconds": 0.024
+      "seconds": 0.028
     },
     "vertices_only": {
       "label": "vertices_only",
@@ -19804,6 +19804,8 @@
       }
     ],
     "classification": "tool",
+    "verdict_on_exclusion": "does NOT exclude (75,125)",
+    "is_obstruction_to_case": false,
     "excludes_75_125": false,
     "headline": "Theorem 11.4 does NOT exclude (75,125). It is a criterion for the existence of the K-syzygy relation c*Phi = e*B. At (75,125), q_window = 29 = M and w(e) = 5, so no admissible split has carry 0; the relation cannot exist. The theorem therefore removes the (72,108) syzygy route at this corner; it says nothing about whether a Jacobian pair with these Newton polygons exists.",
     "role": "negative/diagnostic tool for the K-syzygy mechanism, not an obstruction to the (75,125) coefficient system",
@@ -19880,7 +19882,7 @@
     }
   },
   "timings": {
-    "full_lattice_seconds": 0.024,
+    "full_lattice_seconds": 0.028,
     "vertices_only_seconds": 0.0,
     "expanded_dense": true,
     "blow_up": false,
@@ -19894,5 +19896,5 @@
     "No nonvanishing constraint is imposed on the vertex coefficients; solutions whose support drops to a smaller Newton polygon are included in the generic ansatz as boundary strata.",
     "Theorem 11.4 is not an exclusion of (75,125); see theorem_11_4 above."
   ],
-  "elapsed_seconds": 0.091
+  "elapsed_seconds": 0.095
 }

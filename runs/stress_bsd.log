@@ -1,0 +1,1 @@
+STAGE 1 2026-11-02T19:43:12.8157209+08:00 tooling: gp=ABSENT (PowerShell alias Get-ItemProperty, no pari binary); sage=ABSENT; cypari2=ABSENT; pari-python=ABSENT. No algebraic-rank backend. 37a1/234446 rank verification impossible. Continuing with LMFDB rank/analytic_rank as DECLARED inputs, not proofs.

@@ -706,6 +706,8 @@ def build_report(slow_cross_check=False):
             },
         ],
         "classification": "tool",
+        "verdict_on_exclusion": "does NOT exclude (75,125)",
+        "is_obstruction_to_case": False,
         "excludes_75_125": False,
         "headline": (
             "Theorem 11.4 does NOT exclude (75,125). It is a criterion for the "

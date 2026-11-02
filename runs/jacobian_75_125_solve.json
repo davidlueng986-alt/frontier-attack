@@ -1,0 +1,419 @@
+{
+  "problem": "jacobian-75-125-vertices",
+  "case": "F_2(3,5), j=1",
+  "corner": {
+    "Delta_prime": [
+      [
+        0,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        0,
+        5
+      ]
+    ],
+    "N_P": [
+      [
+        0,
+        0
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        0,
+        15
+      ]
+    ],
+    "N_Q": [
+      [
+        0,
+        0
+      ],
+      [
+        15,
+        0
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        0,
+        25
+      ]
+    ],
+    "normalisation": "[P,Q] = x^2",
+    "reduced_degrees": [
+      15,
+      25
+    ]
+  },
+  "support_convention": "vertices_only (four corners per component)",
+  "target": "det J(P,Q) - x^2 = 0",
+  "unknowns": 8,
+  "equations": 7,
+  "equation_monomials": [
+    [
+      2,
+      0
+    ],
+    [
+      14,
+      14
+    ],
+    [
+      26,
+      2
+    ],
+    [
+      8,
+      24
+    ],
+    [
+      28,
+      4
+    ],
+    [
+      11,
+      27
+    ],
+    [
+      19,
+      19
+    ]
+  ],
+  "det_monomials": [
+    [
+      8,
+      24
+    ],
+    [
+      11,
+      27
+    ],
+    [
+      14,
+      14
+    ],
+    [
+      19,
+      19
+    ],
+    [
+      26,
+      2
+    ],
+    [
+      28,
+      4
+    ]
+  ],
+  "basis_size": 1,
+  "basis": [
+    "1"
+  ],
+  "intermediate_basis_size": null,
+  "inconsistent": true,
+  "inconsistency_flag": true,
+  "inconsistency_method": "reduced grevlex Groebner basis is [1]",
+  "timed_out": false,
+  "support_obstruction": {
+    "det_monomials": [
+      [
+        8,
+        24
+      ],
+      [
+        11,
+        27
+      ],
+      [
+        14,
+        14
+      ],
+      [
+        19,
+        19
+      ],
+      [
+        26,
+        2
+      ],
+      [
+        28,
+        4
+      ]
+    ],
+    "min_x_degree_of_det_J": 8,
+    "target": "x^2",
+    "target_x_degree": 2,
+    "target_monomial_present_in_det_J": false,
+    "target_coefficient_equation": "-1",
+    "decisive": true,
+    "argument": "Every monomial of det J has x-degree at least 8, so the coefficient of x^2 in det J is identically zero.  The identity det J = x^2 requires that coefficient to be 1, so the (2,0) coefficient equation is -1 = 0.  No Groebner basis is needed for this contradiction.",
+    "scope": "This is a support obstruction of the vertices-only specialization.  It says nothing about the full-lattice system, where x^2 is present in det J."
+  },
+  "solutions": [],
+  "collisions": [],
+  "accept": {
+    "status": "skipped",
+    "reason": "no solution set to submit (see stage 3)",
+    "ran": false,
+    "verdict": "NOT_RUN",
+    "accepted": null,
+    "exit_code": null,
+    "stdout": null
+  },
+  "accept_verdict": "NOT_RUN",
+  "accept_accepted": null,
+  "stages": {
+    "1_build": {
+      "status": "ok",
+      "support_convention": "vertices_only (four corners per component)",
+      "Delta_prime": [
+        [
+          0,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "support_P": [
+        [
+          0,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          0,
+          15
+        ]
+      ],
+      "support_Q": [
+        [
+          0,
+          0
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          20,
+          5
+        ],
+        [
+          0,
+          25
+        ]
+      ],
+      "unknowns": 8,
+      "equations": 7,
+      "equation_monomials": [
+        [
+          2,
+          0
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          26,
+          2
+        ],
+        [
+          8,
+          24
+        ],
+        [
+          28,
+          4
+        ],
+        [
+          11,
+          27
+        ],
+        [
+          19,
+          19
+        ]
+      ],
+      "det_monomials": [
+        [
+          8,
+          24
+        ],
+        [
+          11,
+          27
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          19,
+          19
+        ],
+        [
+          26,
+          2
+        ],
+        [
+          28,
+          4
+        ]
+      ],
+      "det_J": "45*a1*b2*x**28*y**4 + 225*a1*b3*x**8*y**24 - 45*a2*b1*x**26*y**2 + 300*a2*b3*x**11*y**27 - 225*a3*b1*x**14*y**14 - 300*a3*b2*x**19*y**19",
+      "degrees": [
+        15,
+        25
+      ],
+      "target": "det J(P,Q) - x^2 = 0",
+      "min_x_degree_of_det_J": 8,
+      "target_monomial_present_in_det_J": false,
+      "target_coefficient_equation": {
+        "monomial": [
+          2,
+          0
+        ],
+        "polynomial": "-1"
+      },
+      "pair_products": 8,
+      "cross_checks": {
+        "unknowns_is_8": true,
+        "equations_is_7": true,
+        "reconstruction_ok": true,
+        "det_monomial_count_matches_bilinear_accumulator": true,
+        "det_coefficient_map_matches_bilinear_accumulator": true,
+        "config75_agrees_on_unknowns": true,
+        "config75_agrees_on_equations": true,
+        "config75_agrees_target_absent": true,
+        "config75_agrees_target_equation": true,
+        "target_equation_is_minus_one": true
+      },
+      "all_critical_checks_pass": true,
+      "seconds": 0.052
+    },
+    "2_groebner": {
+      "status": "ok",
+      "order": "grevlex",
+      "timeout_seconds": 900.0,
+      "timed_out": false,
+      "basis": [
+        "1"
+      ],
+      "basis_size": 1,
+      "inconsistent": true,
+      "seconds": 0.806,
+      "progress_cross_check": {
+        "ok": true,
+        "timed_out": false,
+        "basis_size": 1,
+        "basis": [
+          "1"
+        ],
+        "pairs_processed": 0,
+        "pairs_left": 0,
+        "seconds": 0.0008
+      },
+      "certificate": {
+        "each_equation_reduces_to_zero": true,
+        "recomputed_basis": [
+          "1"
+        ],
+        "recomputed_basis_size": 1,
+        "matches_returned_basis": true,
+        "seconds": 0.003
+      },
+      "support_obstruction": {
+        "det_monomials": [
+          [
+            8,
+            24
+          ],
+          [
+            11,
+            27
+          ],
+          [
+            14,
+            14
+          ],
+          [
+            19,
+            19
+          ],
+          [
+            26,
+            2
+          ],
+          [
+            28,
+            4
+          ]
+        ],
+        "min_x_degree_of_det_J": 8,
+        "target": "x^2",
+        "target_x_degree": 2,
+        "target_monomial_present_in_det_J": false,
+        "target_coefficient_equation": "-1",
+        "decisive": true,
+        "argument": "Every monomial of det J has x-degree at least 8, so the coefficient of x^2 in det J is identically zero.  The identity det J = x^2 requires that coefficient to be 1, so the (2,0) coefficient equation is -1 = 0.  No Groebner basis is needed for this contradiction.",
+        "scope": "This is a support obstruction of the vertices-only specialization.  It says nothing about the full-lattice system, where x^2 is present in det J."
+      }
+    },
+    "3_solutions": {
+      "status": "skipped",
+      "reason": "Groebner basis == [1]: no solutions over C, so there is nothing to extract"
+    },
+    "4_collisions": {
+      "status": "skipped",
+      "reason": "no solution set to search"
+    },
+    "5_accept": {
+      "status": "skipped",
+      "reason": "no solution set to submit (see stage 3)",
+      "ran": false,
+      "verdict": "NOT_RUN",
+      "accepted": null,
+      "exit_code": null,
+      "stdout": null
+    }
+  },
+  "verdict": "INCONSISTENT",
+  "verdict_detail": "det J = x^2 has no solution on the vertices-only support.  The reduced grevlex basis is [1].  Independently, every monomial of det J has x-degree >= 8, so the x^2 coefficient equation is -1 = 0.  This is a support obstruction of the minimal-support specialization and does not exclude the full-lattice system.",
+  "seconds": 0.867
+}

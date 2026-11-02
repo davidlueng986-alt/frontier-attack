@@ -1,0 +1,2 @@
+stage1 verify_509 n=509 m=2442 k=5 SAT (verify_509 exit 1 by its SAT convention) worst|d2-1|=1.49675e-49
+stage2 patterns forced_mono brute-force validation: 1096 graphs, 10504 (graph,triple) checks at k=3, 0 mismatches (7.5s)

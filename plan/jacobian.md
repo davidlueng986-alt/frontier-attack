@@ -114,7 +114,31 @@ N(Q) = 5*Delta' = {(0,0),(15,0),(20,5),(0,25)}
 system, that independently supports Theorem A and raises confidence that
 `(75,125)` is the right place to look.
 
-**J3 result (exact, 1.27 s).** The Groebner basis is
+**Second result, same pattern.** The `(75,125)` corner (`N(P) = 3Δ'`,
+`N(Q) = 5Δ'`) is also empty at the vertices-only level, and for a clean reason:
+
+```
+det J = 45*a1*b2*x^28*y^4 + 225*a1*b3*x^8*y^24 - 45*a2*b1*x^26*y^2
+      + 300*a2*b3*x^11*y^27 - 225*a3*b1*x^14*y^14 - 300*a3*b2*x^19*y^19
+min x-degree = 8
+```
+
+so the coefficient of `x^2` is identically zero and the equation reads
+`-1 = 0`. Groebner returns `[1]` in 0.8 s, but no elimination is needed.
+
+**The general lesson is the useful part: the interior lattice points are
+load-bearing.** At both `(72,108)` and `(75,125)` the four-corner
+specialisation fails, and it fails precisely because the low-degree monomials of
+`det J` can only be produced by interior terms. A "minimal support" model is
+therefore never a valid reduction — it deletes the terms that make the identity
+possible.
+
+The real target is the full-lattice system: 72 unknowns, 92 equations for
+`(72,108)`. That is too large for a Groebner basis and needs the graded
+structure instead: the top-degree block is determinantal, and the low-degree
+block is where the obstruction lives.
+
+**J3 result, for contrast.** On `(72,108)` the basis is
 
 ```
 a1*b1 - 1,  a2,  a3,  b2,  b3
@@ -126,19 +150,18 @@ so every solution forces `a2 = a3 = b2 = b3 = 0`. The 3-parameter family is
 P = a0 + a1*x,   Q = b0 + b1*x^2*y,   a1*b1 = 1,   det J = x^2
 ```
 
-which **does not have the required Newton polygon** — the four genuine corners
+which does **not** have the required Newton polygon — the four genuine corners
 are absent. It is also not a Keller map (`det J = x^2`, not constant), and its
 only collision lies on the critical locus `x = 0`.
 
-Adding the strict-support condition `a2*a3*b2*b3 ≠ 0` (all four corners
-present) and saturating gives the unit ideal:
+Adding the strict-support condition `a2*a3*b2*b3 ≠ 0` and saturating gives the
+unit ideal:
 
 > **no solution of `det J = x^2` on config 2 uses all four corners.**
 
-That is a conditional negative for config 2 at the vertices-only level, and it
-is consistent with the wstrinz exclusion. It is not a proof of it: the full
-lattice (72 unknowns) is untouched, and the theorem's normal form lives in a
-localised ring.
+That is a conditional negative for config 2 at the vertices-only level,
+consistent with the wstrinz exclusion. It is not a proof: the full lattice (72
+unknowns) is untouched.
 
 ## 4. Load-bearing decomposition
 

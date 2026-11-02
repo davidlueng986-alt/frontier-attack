@@ -249,7 +249,6 @@ def stage1(data, seconds):
             variant["target_x2"]["target_monomial_equation"]["coefficient"]
             == "-1"),
         "target_equation_is_minus_one": data["target_equation"] == -1,
-        "pair_products": pair_products,
     }
     critical = [
         "unknowns_is_8",
@@ -284,8 +283,8 @@ def stage1(data, seconds):
             "monomial": list(TARGET),
             "polynomial": sp.sstr(data["target_equation"]),
         },
-        "cross_checks": {k: (v if isinstance(v, (bool, int)) else str(v))
-                         for k, v in checks.items()},
+        "pair_products": pair_products,
+        "cross_checks": checks,
         "all_critical_checks_pass": not bad,
         "seconds": round(seconds, 3),
     }
@@ -603,12 +602,25 @@ def stage4(solutions):
 
 
 def stage5(collision_stage):
+    if collision_stage.get("status") != "ok":
+        return {
+            "status": "skipped",
+            "reason": "no solution set to submit (see stage 3)",
+            "ran": False,
+            "verdict": "NOT_RUN",
+            "accepted": None,
+            "exit_code": None,
+            "stdout": None,
+        }
     exact = [c for c in collision_stage.get("collisions", []) if c["exact"]]
     if not exact:
         return {
             "status": "skipped",
-            "reason": "no exact collision; numerical leads cannot be a claim",
+            "reason": (
+                "non-triangular solutions exist, but no exact collision; "
+                "numerical leads cannot be a claim"),
             "ran": False,
+            "verdict": "NOT_RUN",
             "accepted": None,
             "exit_code": None,
             "stdout": None,
@@ -641,6 +653,7 @@ def stage5(collision_stage):
         "accepted": proc.returncode == 0,
         "stdout": proc.stdout,
         "stderr": proc.stderr,
+        "verdict": proc.stdout.strip(),
         "verdict_verbatim": proc.stdout.strip(),
     }
 
@@ -733,7 +746,8 @@ def run(out_path: Path, timeout: float, write: bool = True):
         collision_record = stage4(None)
         stages["4_collisions"] = collision_record
         log_stage(4, {"status": "skipped",
-                      "reason": stages["3_solutions"]["status"],
+                      "reason": stages["4_collisions"].get(
+                          "reason", "no solution set"),
                       "exact_collisions": 0})
         stages["5_accept"] = stage5(collision_record)
         log_stage(5, {"status": "skipped", "reason": "no candidate",
@@ -804,6 +818,7 @@ def run(out_path: Path, timeout: float, write: bool = True):
         "intermediate_basis_size": stages["2_groebner"].get(
             "intermediate_basis_size"),
         "inconsistent": inconsistent_flag,
+        "inconsistency_flag": inconsistent_flag,
         "inconsistency_method": inconsistency_method,
         "timed_out": bool(timed_out),
         "support_obstruction": obstruction,
@@ -813,7 +828,8 @@ def run(out_path: Path, timeout: float, write: bool = True):
         "collisions": stages["4_collisions"].get("collisions", []),
         "accept": accept_stage,
         "accept_verdict": (
-            accept_stage.get("stdout") if accept_stage.get("ran") else None),
+            (accept_stage.get("stdout") or "").strip()
+            if accept_stage.get("ran") else "NOT_RUN"),
         "accept_accepted": accept_stage.get("accepted"),
         "stages": stages,
         "verdict": verdict,
