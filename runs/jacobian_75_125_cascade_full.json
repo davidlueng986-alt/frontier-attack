@@ -1,0 +1,1168 @@
+{
+  "problem": "jacobian-75-125-cascade-full",
+  "case": "F_2(3,5), j=1",
+  "method": "Newton-polygon edge filtration / leading-form cascade, all genuine edge conditions",
+  "task_premise": {
+    "declared_edge_conditions": 16,
+    "geometric_edge_conditions": 4,
+    "finding": "the corner has 4 genuine edge conditions, not 16.  The 4 x 4 reading (16 pairs of a P-edge with a Q-edge) contains 4 valid diagonal pairs and 12 off-diagonal pairs whose normal cones are disjoint, so no single weight exposes both faces and det J(P_ei,Q_ej) = 0 is not a leading-form condition.  The 4 matched vertex pairs are also vacuous because the vertices are proportional.  See rejected_candidate_conditions for a witness where the off-diagonal determinants fail at a point that satisfies every genuine edge condition."
+  },
+  "premise_audit": {
+    "declared_in_task": 16,
+    "geometric_edge_slots": 4,
+    "slots": [
+      {
+        "edge": 1,
+        "hull_index": 2,
+        "normal": [
+          1,
+          1
+        ],
+        "d_P": 15,
+        "d_Q": 25,
+        "filtration_degree": 38,
+        "n_points_P": 13,
+        "n_points_Q": 21
+      },
+      {
+        "edge": 2,
+        "hull_index": 1,
+        "normal": [
+          1,
+          -1
+        ],
+        "d_P": 9,
+        "d_Q": 15,
+        "filtration_degree": 24,
+        "n_points_P": 4,
+        "n_points_Q": 6
+      },
+      {
+        "edge": 3,
+        "hull_index": 0,
+        "normal": [
+          0,
+          -1
+        ],
+        "d_P": 0,
+        "d_Q": 0,
+        "filtration_degree": 1,
+        "n_points_P": 10,
+        "n_points_Q": 16
+      },
+      {
+        "edge": 4,
+        "hull_index": 3,
+        "normal": [
+          -1,
+          0
+        ],
+        "d_P": 0,
+        "d_Q": 0,
+        "filtration_degree": 1,
+        "n_points_P": 16,
+        "n_points_Q": 26
+      }
+    ],
+    "normal_fans_identical": true,
+    "edge_pair_grid_16": [
+      {
+        "edge_P": 0,
+        "edge_Q": 0,
+        "normal_P": [
+          0,
+          -1
+        ],
+        "normal_Q": [
+          0,
+          -1
+        ],
+        "paired_by_a_common_weight": true,
+        "classification": "edge condition"
+      },
+      {
+        "edge_P": 0,
+        "edge_Q": 1,
+        "normal_P": [
+          0,
+          -1
+        ],
+        "normal_Q": [
+          1,
+          -1
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 0,
+        "edge_Q": 2,
+        "normal_P": [
+          0,
+          -1
+        ],
+        "normal_Q": [
+          1,
+          1
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 0,
+        "edge_Q": 3,
+        "normal_P": [
+          0,
+          -1
+        ],
+        "normal_Q": [
+          -1,
+          0
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 1,
+        "edge_Q": 0,
+        "normal_P": [
+          1,
+          -1
+        ],
+        "normal_Q": [
+          0,
+          -1
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 1,
+        "edge_Q": 1,
+        "normal_P": [
+          1,
+          -1
+        ],
+        "normal_Q": [
+          1,
+          -1
+        ],
+        "paired_by_a_common_weight": true,
+        "classification": "edge condition"
+      },
+      {
+        "edge_P": 1,
+        "edge_Q": 2,
+        "normal_P": [
+          1,
+          -1
+        ],
+        "normal_Q": [
+          1,
+          1
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 1,
+        "edge_Q": 3,
+        "normal_P": [
+          1,
+          -1
+        ],
+        "normal_Q": [
+          -1,
+          0
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 2,
+        "edge_Q": 0,
+        "normal_P": [
+          1,
+          1
+        ],
+        "normal_Q": [
+          0,
+          -1
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 2,
+        "edge_Q": 1,
+        "normal_P": [
+          1,
+          1
+        ],
+        "normal_Q": [
+          1,
+          -1
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 2,
+        "edge_Q": 2,
+        "normal_P": [
+          1,
+          1
+        ],
+        "normal_Q": [
+          1,
+          1
+        ],
+        "paired_by_a_common_weight": true,
+        "classification": "edge condition"
+      },
+      {
+        "edge_P": 2,
+        "edge_Q": 3,
+        "normal_P": [
+          1,
+          1
+        ],
+        "normal_Q": [
+          -1,
+          0
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 3,
+        "edge_Q": 0,
+        "normal_P": [
+          -1,
+          0
+        ],
+        "normal_Q": [
+          0,
+          -1
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 3,
+        "edge_Q": 1,
+        "normal_P": [
+          -1,
+          0
+        ],
+        "normal_Q": [
+          1,
+          -1
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 3,
+        "edge_Q": 2,
+        "normal_P": [
+          -1,
+          0
+        ],
+        "normal_Q": [
+          1,
+          1
+        ],
+        "paired_by_a_common_weight": false,
+        "classification": "invalid (normal cones disjoint)"
+      },
+      {
+        "edge_P": 3,
+        "edge_Q": 3,
+        "normal_P": [
+          -1,
+          0
+        ],
+        "normal_Q": [
+          -1,
+          0
+        ],
+        "paired_by_a_common_weight": true,
+        "classification": "edge condition"
+      }
+    ],
+    "genuine_edge_conditions": 4,
+    "invalid_off_diagonal_pairs": 12,
+    "vertex_face_conditions": [
+      {
+        "P": [
+          0,
+          0
+        ],
+        "Q": [
+          0,
+          0
+        ],
+        "proportional": true,
+        "det_J_identically_zero": true
+      },
+      {
+        "P": [
+          9,
+          0
+        ],
+        "Q": [
+          15,
+          0
+        ],
+        "proportional": true,
+        "det_J_identically_zero": true
+      },
+      {
+        "P": [
+          12,
+          3
+        ],
+        "Q": [
+          20,
+          5
+        ],
+        "proportional": true,
+        "det_J_identically_zero": true
+      },
+      {
+        "P": [
+          0,
+          15
+        ],
+        "Q": [
+          0,
+          25
+        ],
+        "proportional": true,
+        "det_J_identically_zero": true
+      }
+    ],
+    "vertex_face_conditions_all_vacuous": true,
+    "finding": "the corner has 4 genuine edge conditions, not 16.  The 4 x 4 reading (16 pairs of a P-edge with a Q-edge) contains 4 valid diagonal pairs and 12 off-diagonal pairs whose normal cones are disjoint, so no single weight exposes both faces and det J(P_ei,Q_ej) = 0 is not a leading-form condition.  The 4 matched vertex pairs are also vacuous because the vertices are proportional.  See rejected_candidate_conditions for a witness where the off-diagonal determinants fail at a point that satisfies every genuine edge condition."
+  },
+  "edges": [
+    {
+      "edge": 1,
+      "normal": [
+        1,
+        1
+      ],
+      "d_P": 15,
+      "d_Q": 25,
+      "filtration_degree": 38,
+      "target_weight": 2,
+      "n_points_P": 13,
+      "n_points_Q": 21,
+      "unknowns": 34,
+      "equations": 31,
+      "leading_form": "det J(P_e,Q_e) = x^30*y^8 * [15*f*g' - 25*f'*g], t = x^-1*y^1, f = sum a_k t^k with k = 0 at [12, 3], g = sum b_k t^k",
+      "leading_form_identically_zero": false,
+      "groebner_cap_seconds": 180.0,
+      "shared_points_with_previous": {
+        "P": [],
+        "Q": []
+      },
+      "vacuous": false,
+      "power_structure": {
+        "g": 5,
+        "p_power": 3,
+        "q_power": 5,
+        "deg_k": 4
+      },
+      "dimension_scaled": 6,
+      "dimension": 4,
+      "dimension_method": "structure theorem (Wronskian + unique factorisation) and an explicit 6-parameter family; strict chart removes the two vertex scalings",
+      "leading_form_identity": {
+        "identity": "det J(P_e,Q_e) = x^(p0+r0-1) y^(q0+s0-1) * [(p0*s0-q0*r0)*f*g + (p0*v-q0*u)*t*f*g' + (u*s0-v*r0)*t*f'*g]",
+        "trials": 2,
+        "all_pass": true,
+        "per_trial": [
+          true,
+          true
+        ]
+      },
+      "family_certificate": {
+        "applicable": true,
+        "family": "P_e = c1 G^3, Q_e = c2 G^5, G = x^4*y^1*k(t), t = x^-1*y^1, k(0) = 1, deg k = 4",
+        "parameters_scaled": 6,
+        "parameters_strict": 4,
+        "trial_point_coefficients": {
+          "k": [
+            -7,
+            -7,
+            -3,
+            -7
+          ],
+          "c1": 2,
+          "c2": 3
+        },
+        "equations_checked": 31,
+        "nonzero_residuals": 0,
+        "all_equations_vanish": true,
+        "det_J_identically_zero_for_symbolic_k": true,
+        "symbolic_family": "P_e = G^3, Q_e = G^5, G = x^4*y^1*k(t), t = x^-1*y^1, deg k = 4",
+        "lower_bound": "the explicit family is a 6-parameter solution set, so the edge variety is non-empty of dimension >= 6",
+        "upper_bound": "det J(P_e,Q_e) = monomial * (d_Q f g' - d_P f' g); dividing by f g (f,g != 0) gives (f^(d_Q) / g^(d_P))' = 0, hence f^(d_Q) = C g^(d_P); unique factorisation gives f = c1 k^3, g = c2 k^5 with deg k <= 4, i.e. exactly the family above"
+      },
+      "empty": false,
+      "non_empty_certificate": "explicit rational point (family_certificate) satisfies every equation exactly; nonzero_residuals = 0",
+      "groebner": {
+        "status": "timeout",
+        "cap_seconds": 180.0,
+        "seconds": 180.018,
+        "basis_size": null,
+        "dimension": null,
+        "empty": null,
+        "carried_from": "runs\\jacobian_75_125_cascade.json",
+        "note": "a 34-variable direct Groebner basis was attempted in the previous run and exceeded the cap; it is not repeated here because the dimension is settled exactly by the structure theorem plus the explicit family certificate"
+      }
+    },
+    {
+      "edge": 2,
+      "normal": [
+        1,
+        -1
+      ],
+      "d_P": 9,
+      "d_Q": 15,
+      "filtration_degree": 24,
+      "target_weight": 2,
+      "n_points_P": 4,
+      "n_points_Q": 6,
+      "unknowns": 10,
+      "equations": 7,
+      "leading_form": "det J(P_e,Q_e) = x^24*y^0 * [9*f*g' - 15*f'*g], t = x^1*y^1, f = sum a_k t^k with k = 0 at [9, 0], g = sum b_k t^k",
+      "leading_form_identically_zero": false,
+      "groebner_cap_seconds": 180.0,
+      "shared_points_with_previous": {
+        "P": [
+          [
+            12,
+            3
+          ]
+        ],
+        "Q": [
+          [
+            20,
+            5
+          ]
+        ]
+      },
+      "vacuous": false,
+      "power_structure": {
+        "g": 3,
+        "p_power": 3,
+        "q_power": 5,
+        "deg_k": 1
+      },
+      "dimension_scaled": 3,
+      "dimension": 1,
+      "dimension_method": "structure theorem (Wronskian + unique factorisation) and an explicit 3-parameter family; strict chart removes the two vertex scalings",
+      "leading_form_identity": {
+        "identity": "det J(P_e,Q_e) = x^(p0+r0-1) y^(q0+s0-1) * [(p0*s0-q0*r0)*f*g + (p0*v-q0*u)*t*f*g' + (u*s0-v*r0)*t*f'*g]",
+        "trials": 2,
+        "all_pass": true,
+        "per_trial": [
+          true,
+          true
+        ]
+      },
+      "family_certificate": {
+        "applicable": true,
+        "family": "P_e = c1 G^3, Q_e = c2 G^5, G = x^3*y^0*k(t), t = x^1*y^1, k(0) = 1, deg k = 1",
+        "parameters_scaled": 3,
+        "parameters_strict": 1,
+        "trial_point_coefficients": {
+          "k": [
+            -6
+          ],
+          "c1": 2,
+          "c2": 3
+        },
+        "equations_checked": 7,
+        "nonzero_residuals": 0,
+        "all_equations_vanish": true,
+        "det_J_identically_zero_for_symbolic_k": true,
+        "symbolic_family": "P_e = G^3, Q_e = G^5, G = x^3*y^0*k(t), t = x^1*y^1, deg k = 1",
+        "lower_bound": "the explicit family is a 3-parameter solution set, so the edge variety is non-empty of dimension >= 3",
+        "upper_bound": "det J(P_e,Q_e) = monomial * (d_Q f g' - d_P f' g); dividing by f g (f,g != 0) gives (f^(d_Q) / g^(d_P))' = 0, hence f^(d_Q) = C g^(d_P); unique factorisation gives f = c1 k^3, g = c2 k^5 with deg k <= 1, i.e. exactly the family above"
+      },
+      "empty": false,
+      "non_empty_certificate": "explicit rational point (family_certificate) satisfies every equation exactly; nonzero_residuals = 0",
+      "groebner": {
+        "status": "ok",
+        "basis_size": 41,
+        "lm_supports": [
+          [
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            4,
+            5,
+            7
+          ],
+          [
+            4,
+            5,
+            7
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            4,
+            6,
+            7
+          ],
+          [
+            4,
+            5,
+            6,
+            7
+          ],
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            4,
+            6
+          ],
+          [
+            0,
+            5,
+            6
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6
+          ],
+          [
+            0,
+            4,
+            7
+          ],
+          [
+            0,
+            5,
+            7
+          ],
+          [
+            0,
+            6,
+            7
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            7
+          ],
+          [
+            2
+          ]
+        ],
+        "gens": [
+          "a_9_0",
+          "a_10_1",
+          "a_11_2",
+          "b_15_0",
+          "b_16_1",
+          "b_17_2",
+          "b_18_3",
+          "b_19_4"
+        ],
+        "seconds": 1.295,
+        "sample": [
+          "-125*b_15_0**3*b_19_4 + 50*b_15_0**2*b_16_1*b_18_3 + 25*b_15_0**2*b_17_2**2 - 35*b_15_0*b_16_1**2*b_17_2 + 7*b_16_1**4",
+          "-625*b_15_0**3 - 175*b_15_0**2*b_16_1*b_19_4 + 250*b_15_0**2*b_17_2*b_18_3 - 5*b_15_0*b_16_1**2*b_18_3 - 90*b_15_0*b_16_1*b_17_2**2 + 21*b_16_1**3*b_17_2",
+          "-1000*b_15_0**2*b_16_1 + 500*b_15_0**2*b_17_2*b_19_4 + 75*b_15_0**2*b_18_3**2 - 240*b_15_0*b_16_1**2*b_19_4 + 110*b_15_0*b_16_1*b_17_2*b_18_3 - 105*b_15_0*b_17_2**3 + 21*b_16_1**2*b_17_2**2",
+          "8000*b_15_0**2*b_17_2 - 1300*b_15_0**2*b_18_3*b_19_4 - 4400*b_15_0*b_16_1**2 + 380*b_15_0*b_16_1*b_17_2*b_19_4 + 700*b_15_0*b_16_1*b_18_3**2 - 455*b_15_0*b_17_2**2*b_18_3 + 21*b_16_1*b_17_2**3",
+          "118125*a_9_0**2*b_15_0*b_19_4 + 13000*a_9_0*b_15_0*b_16_1 - 108250*b_15_0**2*b_18_3 + 8575*b_15_0*b_16_1*b_17_2 + 2375*b_15_0*b_16_1*b_18_3*b_19_4 - 970*b_15_0*b_17_2**2*b_19_4 - 1125*b_16_1**3 + 3*b_17_2**4",
+          "-125*b_15_0**2*b_16_1 - 25*b_15_0**2*b_17_2*b_19_4 + 75*b_15_0**2*b_18_3**2 + 5*b_15_0*b_16_1**2*b_19_4 - 30*b_15_0*b_16_1*b_17_2*b_18_3 + 7*b_16_1**3*b_18_3",
+          "125*b_15_0**2*b_17_2 + 100*b_15_0**2*b_18_3*b_19_4 - 200*b_15_0*b_16_1**2 - 5*b_15_0*b_16_1*b_17_2*b_19_4 + 35*b_15_0*b_16_1*b_18_3**2 - 35*b_15_0*b_17_2**2*b_18_3 + 7*b_16_1**2*b_17_2*b_18_3",
+          "10500*a_9_0**2*b_15_0*b_19_4 + 375*a_9_0*b_15_0*b_16_1 - 9000*b_15_0**2*b_18_3 + 700*b_15_0*b_16_1*b_17_2 + 210*b_15_0*b_16_1*b_18_3*b_19_4 - 95*b_15_0*b_17_2**2*b_19_4 - 75*b_16_1**3 + b_16_1*b_17_2**2*b_18_3"
+        ],
+        "n_vars": 8,
+        "n_equations": 7,
+        "modulus": null,
+        "method": "buchberger",
+        "order": "grevlex",
+        "cap_seconds": 180.0,
+        "dimension": 1,
+        "empty": false,
+        "dimension_detail": {
+          "dimension": 1,
+          "unit_ideal": false,
+          "empty": false,
+          "method": "exhaustive subset scan over 8 variables",
+          "min_supports": 7,
+          "seconds": 0.0
+        },
+        "agrees_with_structure_theorem": true
+      }
+    },
+    {
+      "edge": 3,
+      "normal": [
+        0,
+        -1
+      ],
+      "d_P": 0,
+      "d_Q": 0,
+      "filtration_degree": 1,
+      "target_weight": 0,
+      "n_points_P": 10,
+      "n_points_Q": 16,
+      "unknowns": 26,
+      "equations": 0,
+      "leading_form": "det J(P_e,Q_e) = x^0*y^-1 * [0], t = x^1*y^0, f = sum a_k t^k with k = 0 at [0, 0], g = sum b_k t^k",
+      "leading_form_identically_zero": true,
+      "groebner_cap_seconds": 180.0,
+      "shared_points_with_previous": {
+        "P": [
+          [
+            9,
+            0
+          ]
+        ],
+        "Q": [
+          [
+            15,
+            0
+          ]
+        ]
+      },
+      "vacuous": true,
+      "reason": "both edge forms are univariate in the same variable (horizontal edge), so det J(P_e,Q_e) = 0 identically for every choice of edge coefficients",
+      "dimension": 26,
+      "dimension_scaled": 26,
+      "dimension_method": "no equation: every edge coefficient is free",
+      "empty": false,
+      "non_empty_certificate": "the edge system has 0 equations",
+      "groebner": {
+        "status": "not_run",
+        "reason": "edge system is empty (0 equations)"
+      }
+    },
+    {
+      "edge": 4,
+      "normal": [
+        -1,
+        0
+      ],
+      "d_P": 0,
+      "d_Q": 0,
+      "filtration_degree": 1,
+      "target_weight": -2,
+      "n_points_P": 16,
+      "n_points_Q": 26,
+      "unknowns": 42,
+      "equations": 0,
+      "leading_form": "det J(P_e,Q_e) = x^-1*y^38 * [0], t = x^0*y^-1, f = sum a_k t^k with k = 0 at [0, 15], g = sum b_k t^k",
+      "leading_form_identically_zero": true,
+      "groebner_cap_seconds": 180.0,
+      "shared_points_with_previous": {
+        "P": [
+          [
+            0,
+            0
+          ]
+        ],
+        "Q": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "vacuous": true,
+      "reason": "both edge forms are univariate in the same variable (vertical edge), so det J(P_e,Q_e) = 0 identically for every choice of edge coefficients",
+      "dimension": 42,
+      "dimension_scaled": 42,
+      "dimension_method": "no equation: every edge coefficient is free",
+      "empty": false,
+      "non_empty_certificate": "the edge system has 0 equations",
+      "groebner": {
+        "status": "not_run",
+        "reason": "edge system is empty (0 equations)"
+      }
+    }
+  ],
+  "edge_dimensions": {
+    "per_edge_strict": [
+      4,
+      1,
+      26,
+      42
+    ],
+    "per_edge_scaled": [
+      6,
+      3,
+      26,
+      42
+    ],
+    "order_normals": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        -1
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        -1,
+        0
+      ]
+    ],
+    "convention": "strict fixes a_(12,3) = b_(20,5); vacuous edges report all their coefficients as free"
+  },
+  "joint_solution_set": {
+    "definition": "dimension of the common solution set of all genuine edge leading-form conditions, in the full 445-dimensional coefficient space; not the dimension of det J = x^2",
+    "unknowns_total": 445,
+    "interior_coefficients_free": 341,
+    "boundary_coefficients": 104,
+    "boundary_coefficients_constrained": 42,
+    "boundary_coefficients_free": 62,
+    "edge_family_parameters": 9,
+    "gluing_conditions": 2,
+    "edge_family_parameters_after_gluing": 7,
+    "per_edge": [
+      {
+        "edge": 1,
+        "normal": [
+          1,
+          1
+        ],
+        "family_parameters": 6
+      },
+      {
+        "edge": 2,
+        "normal": [
+          1,
+          -1
+        ],
+        "family_parameters": 3
+      }
+    ],
+    "codimension": 35,
+    "dimension_scaled": 410,
+    "dimension_strict": 408,
+    "breakdown": {
+      "interior": 341,
+      "free_boundary": 62,
+      "edge_parameters_after_gluing": 7,
+      "strict_chart_fixes": -2,
+      "total_strict": 408
+    },
+    "consistent_with_recorded_per_edge_dimensions": true,
+    "convention": "scaled counts all 445 coefficients; strict fixes a_(12,3) = b_(20,5) = 1, the chart used by cascade75.py",
+    "explicit_joint_point_checks": [
+      {
+        "edge": 1,
+        "normal": [
+          1,
+          1
+        ],
+        "equations": 31,
+        "nonzero_residuals": 0
+      },
+      {
+        "edge": 2,
+        "normal": [
+          1,
+          -1
+        ],
+        "equations": 7,
+        "nonzero_residuals": 0
+      },
+      {
+        "edge": 3,
+        "normal": [
+          0,
+          -1
+        ],
+        "equations": 0,
+        "nonzero_residuals": 0
+      },
+      {
+        "edge": 4,
+        "normal": [
+          -1,
+          0
+        ],
+        "equations": 0,
+        "nonzero_residuals": 0
+      }
+    ]
+  },
+  "rejected_candidate_conditions": {
+    "pairs": [
+      {
+        "edge_P": 0,
+        "edge_Q": 1,
+        "normal_P": [
+          0,
+          -1
+        ],
+        "normal_Q": [
+          1,
+          -1
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 0,
+        "edge_Q": 2,
+        "normal_P": [
+          0,
+          -1
+        ],
+        "normal_Q": [
+          1,
+          1
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 0,
+        "edge_Q": 3,
+        "normal_P": [
+          0,
+          -1
+        ],
+        "normal_Q": [
+          -1,
+          0
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 1,
+        "edge_Q": 0,
+        "normal_P": [
+          1,
+          -1
+        ],
+        "normal_Q": [
+          0,
+          -1
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 1,
+        "edge_Q": 2,
+        "normal_P": [
+          1,
+          -1
+        ],
+        "normal_Q": [
+          1,
+          1
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 1,
+        "edge_Q": 3,
+        "normal_P": [
+          1,
+          -1
+        ],
+        "normal_Q": [
+          -1,
+          0
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 2,
+        "edge_Q": 0,
+        "normal_P": [
+          1,
+          1
+        ],
+        "normal_Q": [
+          0,
+          -1
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 2,
+        "edge_Q": 1,
+        "normal_P": [
+          1,
+          1
+        ],
+        "normal_Q": [
+          1,
+          -1
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 2,
+        "edge_Q": 3,
+        "normal_P": [
+          1,
+          1
+        ],
+        "normal_Q": [
+          -1,
+          0
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 3,
+        "edge_Q": 0,
+        "normal_P": [
+          -1,
+          0
+        ],
+        "normal_Q": [
+          0,
+          -1
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 3,
+        "edge_Q": 1,
+        "normal_P": [
+          -1,
+          0
+        ],
+        "normal_Q": [
+          1,
+          -1
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      },
+      {
+        "edge_P": 3,
+        "edge_Q": 2,
+        "normal_P": [
+          -1,
+          0
+        ],
+        "normal_Q": [
+          1,
+          1
+        ],
+        "normal_cones_intersect": false,
+        "mixed_det_at_joint_point_is_zero": false,
+        "classification": "invalid: normal cones disjoint"
+      }
+    ],
+    "count": 12,
+    "structural_certificate": "for i != j the primitive outward normals are not parallel (cross product non-zero), so the normal cones -- which are the rays through those normals -- are disjoint; no weight w is maximal on both faces, hence det J(P_ei,Q_ej) is never LP_w(det J) and imposing it is unjustified",
+    "numerical_witness": {
+      "point": "exact rational assignment in joint_point (satisfies all four genuine edge conditions)",
+      "mixed_determinants_nonzero": 12,
+      "mixed_determinants_tested": 12,
+      "meaning": "a cascade that descended these 12 pairs would report an emptiness that is an artefact: the conditions fail at a point the genuine cascade admits"
+    },
+    "verdict": "REJECTED_NOT_CONDITIONS"
+  },
+  "next_level_after_vacuous": [
+    {
+      "normal": [
+        0,
+        -1
+      ],
+      "kind": "horizontal",
+      "next_layer": "y^1",
+      "condition": "P_0' Q_1 - P_1 Q_0' = 0",
+      "explicit_lift": "(P_1,Q_1) = (P_0',Q_0')",
+      "condition_vanishes_identically": true,
+      "lift_inside_newton_polygon": true,
+      "conclusion": "the next level is non-empty as well"
+    },
+    {
+      "normal": [
+        -1,
+        0
+      ],
+      "kind": "vertical",
+      "next_layer": "x^1",
+      "condition": "P_1 Q_0' - P_0' Q_1 = 0",
+      "explicit_lift": "(P_1,Q_1) = (P_0',Q_0')",
+      "condition_vanishes_identically": true,
+      "lift_inside_newton_polygon": true,
+      "conclusion": "the next level is non-empty as well"
+    }
+  ],
+  "first_empty_edge": null,
+  "edges_done": 4,
+  "verdict": "SURVIVES_ALL_EDGES",
+  "verdict_detail": "all 4 genuine edge conditions are non-empty; the two diagonal edges carry the (3,5) power family (dimensions 4 and 1 in the strict chart) and the two horizontal/vertical edges are vacuous. The 12 off-diagonal pairs in the 4x4 grid are not leading-form conditions and are rejected, not descended. The edge conditions cut the 445-dimensional coefficient space down to dimension 410 (strict chart 408), so the cascade is a filter that cannot decide this corner: it is non-empty by structure, not by accident.",
+  "verdict_reading": "no genuine edge condition is empty; the final dimension is in joint_solution_set",
+  "checks": {
+    "all_pass": true,
+    "checks": {
+      "four_genuine_edge_conditions": true,
+      "declared_16_is_not_the_geometric_count": true,
+      "all_four_vertex_pairs_vacuous": true,
+      "four_edges_descended": true,
+      "no_edge_empty": true,
+      "every_non_vacuous_edge_has_an_explicit_solution": true,
+      "every_non_vacuous_edge_family_has_identically_zero_det_J": true,
+      "joint_point_satisfies_all_edges": true,
+      "joint_dimension_bookkeeping_closes": true,
+      "per_edge_dimensions_match_cascade75": true,
+      "all_twelve_off_diagonal_cones_disjoint": true,
+      "mixed_conditions_fail_at_joint_point": true,
+      "vacuous_edges_non_empty_at_next_level": true,
+      "lead_verdict_is_one_of_the_three_allowed_forms": true
+    }
+  },
+  "conventions": {
+    "leading_part": "LP_w(det J) = det J(P_w, Q_w)",
+    "strict_chart": "a_(12,3) = b_(20,5) = 1",
+    "dimension": "affine dimension of the edge-condition variety in the stated chart; not the dimension of det J = x^2",
+    "edge_order": "boundary cycle from the top edge, clockwise; equals decreasing filtration degree"
+  },
+  "timings": {
+    "total_seconds": 12.201
+  },
+  "elapsed_seconds": 12.201
+}

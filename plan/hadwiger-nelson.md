@@ -144,6 +144,23 @@ subproblem**. Finding one is a reformulation of the target, not a step toward it
 What the search does buy is a constraint: the gadget is not small, and it is not
 inside the record graph.
 
+**Second search, and the reason it is circular.** `virtual_edge2.py` took the 32
+√3 edges of the 33-vertex graph as seeds and grew 50,000 supergraphs (max
+n = 520). All were 4-colourable; every one admitted `u = v`.
+
+The cause is structural: **the entire unit part of the 33-vertex graph is
+3-colourable.** So every √3 seed is 3-colourable, hence free at k = 5, hence
+cannot be a partial gadget. A level-5 virtual edge must contain a 5-chromatic
+unit-distance graph, and the smallest known is 509 vertices. The missing
+ingredient is therefore the full open problem again, not a local extension.
+
+**Conclusion for HN: geometry-first search is the wrong order.** The corpus
+transfer analysis says generate the abstract graph first (`G` 5-colourable,
+`G + uv` not, edge-minimal), then test geometric embeddability. That is the only
+corpus method that has produced a new minimum χ=6 object before
+(`github:HeliCorgi/fourteen-points-six-colors`, 14-vertex three-distance graph).
+The catalog task is queued.
+
 **χ=7 is out of reach by composition.** Any 7-chromatic unit-distance graph has
 at least **6,993 vertices** (Parts 2020, Table 2, cited). A 509-plus-gadget
 composition is ~516 vertices and is provably 6-colourable. The old step 5 was

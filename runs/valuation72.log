@@ -1,0 +1,5 @@
+2026-11-02T13:10:30Z stage=1_support {"actual": 92, "attainable": 112, "min_x_degree": 1, "x2_attainable": true, "x2_coefficient": "a1_0*b2_1"}
+2026-11-02T13:10:54Z stage=1_support {"actual": 92, "attainable": 112, "min_x_degree": 1, "x2_attainable": true, "x2_coefficient": "a1_0*b2_1"}
+2026-11-02T13:10:54Z stage=2_lowest_block {"block_monomials": [[1, 0], [1, 1], [1, 2]], "equations": ["a1_0*b1_1", "2*a1_0*b1_2", "a1_1*b1_2 - a1_2*b1_1"], "min_x_degree": 1, "x1_dimension": 2, "x1_plus_x2_dimension": 3}
+2026-11-02T13:11:17Z stage=1_support {"actual": 92, "attainable": 112, "min_x_degree": 1, "x2_attainable": true, "x2_coefficient": "a1_0*b2_1"}
+2026-11-02T13:11:17Z stage=2_lowest_block {"block_monomials": [[1, 0], [1, 1], [1, 2]], "equations": ["a1_0*b1_1", "2*a1_0*b1_2", "a1_1*b1_2 - a1_2*b1_1"], "min_x_degree": 1, "x1_dimension": 2, "x1_plus_x2_dimension": 3}

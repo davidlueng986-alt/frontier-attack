@@ -484,6 +484,56 @@ def stage2_seed(points, seed_indices, unit, d3, u_orig, v_orig) -> dict:
 
 
 # --------------------------------------------------------------------------
+# stage 2b -- the maximal unit structure available from the 33 points
+# --------------------------------------------------------------------------
+
+def stage2b_full_unit_set(points, unit, d3, chosen_u: int, chosen_v: int) -> dict:
+    """The unit graph on *all* 33 points: the largest unit-distance graph that
+    can be built from this point set without adding points.
+
+    If this graph is 3-colourable, then every sqrt(3)-edge seed is 3-colourable
+    and every sqrt(3) pair is 'free' at k=5 by the level lemma -- the unit
+    structure of the whole 33-vertex graph carries no 5-colouring constraint.
+    """
+    t0 = time.perf_counter()
+    n = len(points)
+    edge_set = {tuple(sorted(e)) for e in unit}
+    worst = mp.mpf(0)
+    min_gap = mp.mpf(10) ** 9
+    for i, j in itertools.combinations(range(n), 2):
+        d2 = sqdist(points[i], points[j])
+        if (i, j) in edge_set:
+            worst = max(worst, abs(d2 - 1))
+        else:
+            min_gap = min(min_gap, abs(d2 - 1))
+
+    col = {}
+    for k in (2, 3, 4, 5):
+        col[str(k)] = k_colourable(n, unit, k)
+
+    relations = {}
+    for a, b in d3:
+        relations[f"{a}-{b}"] = R.relation(unit, n, a, b, 5)
+
+    witness = solve_model(R.colouring_cnf(n, unit, 3), n, 3) if col["3"] else None
+    return {
+        "n": n,
+        "m": len(unit),
+        "k_colourable": col,
+        "three_colouring": witness,
+        "three_colouring_valid": check_colouring(witness, n, unit, 3),
+        "relation_chosen_pair_k5": R.relation(unit, n, chosen_u, chosen_v, 5),
+        "relations_all_sqrt3_pairs_k5": relations,
+        "relation_histogram_all_sqrt3_pairs": dict(Counter(relations.values())),
+        "geometry_70": {
+            "worst_abs_d2_minus_1_on_unit_edges": mp.nstr(worst, 6),
+            "min_abs_d2_minus_1_on_non_edges": mp.nstr(min_gap, 10),
+        },
+        "seconds": time.perf_counter() - t0,
+    }
+
+
+# --------------------------------------------------------------------------
 # stage 3 -- growth by unit-circle intersections
 # --------------------------------------------------------------------------
 
@@ -1010,6 +1060,21 @@ def main(argv=None) -> int:
         log_path,
     )
 
+    # ---- stage 2b --------------------------------------------------------
+    st2b = stage2b_full_unit_set(points, unit, d3, ch["u"], ch["v"])
+    log_stage(
+        "stage 2b",
+        f"unit graph on all 33 points (the maximal unit structure of the "
+        f"33-vertex graph): n=33, m={st2b['m']}, "
+        f"chi<=3={st2b['k_colourable']['3']}, "
+        f"chi<=4={st2b['k_colourable']['4']}; relation@k=5 over all 32 "
+        f"sqrt(3) pairs: {st2b['relation_histogram_all_sqrt3_pairs']}. "
+        f"The entire unit part is 3-colourable, so every sqrt(3)-edge seed is "
+        f"3-colourable and every sqrt(3) pair is free at k=5. "
+        f"({st2b['seconds']:.2f}s).",
+        log_path,
+    )
+
     seed_pts = [points[i] for i in seed_indices]
     seed_edges = [tuple(e) for e in st2["edges"]]
 
@@ -1096,14 +1161,19 @@ def main(argv=None) -> int:
             "v with the unused k-th colour."
         ),
         "consequence": (
-            "A level-5 virtual edge must be non-4-colourable, i.e. chi >= 5. "
-            f"The smallest known 5-chromatic unit-distance graph has "
+            "A level-5 virtual edge must be non-4-colourable (else the lemma "
+            "gives a 5-colouring with u=v) and 5-colourable (else relation is "
+            "'unsat', not 'different'), hence exactly 5-chromatic. The smallest "
+            f"known 5-chromatic unit-distance graph has "
             f"{RECORD_5_CHROMATIC_N} vertices (Parts 2020)."
         ),
         "seed_application": (
             f"The chosen seed is 3-colourable, so relation(u,v,5) is "
             f"necessarily 'free'. Every 4-colourable supergraph is 'free' by "
-            f"the same lemma, so success requires a 5-chromatic extension."
+            f"the same lemma, so success requires a 5-chromatic extension. "
+            f"Stronger: the unit graph on all 33 points is itself "
+            f"3-colourable ({st2b['m']} unit edges), so the entire unit part "
+            f"of the 33-vertex graph carries no 5-colouring constraint."
         ),
     }
 
@@ -1127,7 +1197,10 @@ def main(argv=None) -> int:
             f"4-colourable ({st3['k4_histogram']}). The seed itself is "
             f"{'3-colourable' if st2['k_colourable']['3'] else 'not 3-colourable'} "
             f"(n={seed_n}, m={st2['m']}) with relation 'free' at k=4 and k=5; "
-            f"all 32 sqrt(3)-edge seeds are 3-colourable. By the level lemma a "
+            f"all 32 sqrt(3)-edge seeds are 3-colourable and the unit graph on "
+            f"all 33 points is itself 3-colourable, so the whole unit part of "
+            f"the 33-vertex graph carries no 5-colouring constraint. "
+            f"By the level lemma a "
             f"level-5 virtual edge must be 5-chromatic, and no 5-chromatic "
             f"unit-distance graph with fewer than {RECORD_5_CHROMATIC_N} "
             f"vertices is known. The seed therefore cannot be a partial "
@@ -1147,8 +1220,13 @@ def main(argv=None) -> int:
         "n": st4["n"] if found else None,
         "m": st4["m"] if found else None,
         "uv_dist2": "3",
+        "seed_relation_k5": st2["relation"]["5"],
+        "seed_forces_equal": st2["relation"]["5"] == "equal",
+        "seed_is_three_colourable": st2["k_colourable"]["3"],
+        "all_32_seeds_three_colourable": st1["all_seeds_three_colourable"],
         "stage1_seed_selection": st1,
         "stage2_seed_relation": st2,
+        "stage2b_full_unit_set": st2b,
         "stage3_growth": {k: v for k, v in st3.items()
                           if k not in ("hit", "six_chromatic")},
         "stage4_verification": st4,
