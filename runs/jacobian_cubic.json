@@ -1,0 +1,90 @@
+{
+  "samples": 2000,
+  "constant_det": 3,
+  "counterexamples": 0,
+  "survivors": [
+    {
+      "s1": [
+        0,
+        2,
+        6
+      ],
+      "s2": [
+        0,
+        1,
+        4
+      ],
+      "coeffs": [
+        0,
+        0,
+        0,
+        3,
+        0,
+        -1
+      ],
+      "F": [
+        "x",
+        "3*x**3 - x**2 + y"
+      ],
+      "verdict": "INCOMPLETE",
+      "det": "1",
+      "collisions": 0
+    },
+    {
+      "s1": [
+        0,
+        3,
+        5
+      ],
+      "s2": [
+        0,
+        1,
+        4
+      ],
+      "coeffs": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        -2
+      ],
+      "F": [
+        "x",
+        "-x**3 - 2*x**2 + y"
+      ],
+      "verdict": "INCOMPLETE",
+      "det": "1",
+      "collisions": 0
+    },
+    {
+      "s1": [
+        1,
+        2,
+        4
+      ],
+      "s2": [
+        1,
+        2,
+        4
+      ],
+      "coeffs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "F": [
+        "x",
+        "2*x**2 + y"
+      ],
+      "verdict": "INCOMPLETE",
+      "det": "1",
+      "collisions": 0
+    }
+  ],
+  "prescreen_seconds": 6.51,
+  "seconds": 6.62
+}
