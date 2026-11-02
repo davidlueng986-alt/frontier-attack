@@ -131,6 +131,19 @@ by a virtual-edge gadget, and the result is a unit-distance graph with the same
 chromatic number. One missing piece remains, and it is now a single well-posed
 object rather than a vague "gadget".
 
+**Virtual-edge search: bounded negative.** `virtual_edge.py` tested 19,998
+candidates with `n = 8..18` grown by unit-circle intersection from
+`u = (0,0)`, `v = (0,√3)`. Every one was 4-colourable and every one admitted a
+5-colouring with `u = v`. The 509-vertex graph has **0 forced-different
+non-adjacent pairs out of 126,844**.
+
+**And the honest structural point:** if such a gadget exists, composing it with
+the 33-vertex graph *immediately* yields a 6-chromatic unit-distance graph. So
+the gadget is a **sufficient object for the open problem, not a cheaper
+subproblem**. Finding one is a reformulation of the target, not a step toward it.
+What the search does buy is a constraint: the gadget is not small, and it is not
+inside the record graph.
+
 **χ=7 is out of reach by composition.** Any 7-chromatic unit-distance graph has
 at least **6,993 vertices** (Parts 2020, Table 2, cited). A 509-plus-gadget
 composition is ~516 vertices and is provably 6-colourable. The old step 5 was

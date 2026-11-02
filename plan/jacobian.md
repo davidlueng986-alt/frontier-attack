@@ -261,6 +261,18 @@ on reconstruction; a degree bound is the deliverable that is actually reachable.
 The `(75,125)` cascade is now on-core again: an empty cascade at that corner is a
 degree-bound step, not a dead end.
 
+**Cascade result so far (J6).** 3 of the 16 edge conditions descended, no
+contradiction:
+
+| edge | weight | result |
+|---|---|---|
+| 1 | `[1,1]` | dimension **4** (strict chart); family `p = h³`, `q = h⁵`, `h = u⁴ + c3u³ + c2u² + c1u + c0` |
+| 2 | `[1,-1]` | dimension 1 |
+| 3 | `[0,-1]` | **vacuous** — horizontal edge, `det J(P_e,Q_e) ≡ 0` for every choice |
+
+Each edge condition is only *necessary*, so this is a filter, not a solution. The
+next task is to descend all 16 and report the first empty edge, if any.
+
 ## 4. Load-bearing decomposition
 
 1. **Write the coefficient system for config 2.** Unknown coefficients on the

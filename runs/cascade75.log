@@ -1,3 +1,6 @@
-2026-11-02T12:27:32Z stage=1_edges {"cascade_order": [[1, 1], [1, -1], [0, -1], [-1, 0]], "num_edges_NP": 4, "num_edges_NQ": 4, "points_per_edge_NP": [10, 4, 13, 16], "points_per_edge_NQ": [16, 6, 21, 26]}
-2026-11-02T12:32:39Z stage=2_top_edge {"empty": false, "equations": 31, "groebner_mod_p": "timeout", "groebner_over_Q": "timeout", "normal": [1, 1], "top_dim": 4, "unknowns": 34}
-2026-11-02T12:32:40Z stage=3_descent {"edge_dims": [4, 1, 26], "edges_processed": 3, "first_empty_edge": null, "verdict": "DESCENDED 3 EDGES"}
+2026-11-02T12:35:20Z stage=1_edges {"cascade_order": [[1, 1], [1, -1], [0, -1], [-1, 0]], "num_edges_NP": 4, "num_edges_NQ": 4, "points_per_edge_NP": [10, 4, 13, 16], "points_per_edge_NQ": [16, 6, 21, 26]}
+2026-11-02T12:40:26Z stage=2_top_edge {"empty": false, "equations": 31, "groebner_mod_p": "timeout", "groebner_over_Q": "timeout", "normal": [1, 1], "top_dim": 4, "unknowns": 34}
+2026-11-02T12:40:27Z stage=3_descent {"edge_dims": [4, 1, 26], "edges_processed": 3, "first_empty_edge": null, "verdict": "DESCENDED 3 EDGES"}
+2026-11-02T12:41:57Z stage=1_edges {"cascade_order": [[1, 1], [1, -1], [0, -1], [-1, 0]], "num_edges_NP": 4, "num_edges_NQ": 4, "points_per_edge_NP": [10, 4, 13, 16], "points_per_edge_NQ": [16, 6, 21, 26]}
+2026-11-02T12:47:02Z stage=2_top_edge {"empty": false, "equations": 31, "groebner_mod_p": "timeout", "groebner_over_Q": "timeout", "normal": [1, 1], "top_dim": 4, "unknowns": 34}
+2026-11-02T12:47:03Z stage=3_descent {"edge_dims": [4, 1, 26], "edges_processed": 3, "first_empty_edge": null, "verdict": "DESCENDED 3 EDGES"}

@@ -35,8 +35,8 @@ def main():
         return fail("index.json must be a JSON array")
 
     errors = []
-    if len(data) < 40:
-        errors.append("only %d items; need at least 40" % len(data))
+    if len(data) < 110:
+        errors.append("only %d items; need at least 110" % len(data))
 
     seen = set()
     for n, item in enumerate(data):
@@ -77,8 +77,8 @@ def main():
             errors.append("%s has an empty why" % where)
         if not isinstance(item["facts"], list) or not all(isinstance(f, str) and f.strip() for f in item["facts"]):
             errors.append("%s has a bad facts list" % where)
-        if item["role"] == "core" and not item["facts"]:
-            errors.append("%s is core but has no facts" % where)
+        if not item["facts"]:
+            errors.append("%s has no facts and no NO FACT AVAILABLE marker" % where)
         if not isinstance(item["verified"], bool):
             errors.append("%s has a non-boolean verified" % where)
         elif item["verified"] and not item["url"].startswith("https://"):

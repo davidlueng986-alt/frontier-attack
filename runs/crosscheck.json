@@ -1,10 +1,151 @@
 {
-  "generated_utc": "2026-11-02T12:33:55.537874+00:00",
-  "started_utc": "2026-11-02T12:33:53.512903+00:00",
+  "generated_utc": "2026-11-02T12:44:05.401557+00:00",
+  "started_utc": "2026-11-02T12:40:12.880913+00:00",
   "python": "3.14.2",
   "platform": "Windows-11-10.0.26200-SP0",
   "repo": "C:\\Users\\daive\\Downloads\\frontier-attack",
   "stages": {
+    "jacobian": {
+      "method": "exact rational polynomial arithmetic in Q[x,y,z] (hand-written parser, multiplication, differentiation and determinant; no sympy), with exact rational substitution at the two points",
+      "result": {
+        "claim": "problems\\jacobian\\claims\\alpoge-2026.json",
+        "ours": {
+          "verdict": "COUNTEREXAMPLE",
+          "det": "-2",
+          "det_constant": true,
+          "det_zero": false,
+          "distinct_points": true,
+          "images_equal": true,
+          "images": [
+            [
+              "-1/4",
+              "0",
+              "0"
+            ],
+            [
+              "-1/4",
+              "0",
+              "0"
+            ]
+          ],
+          "degrees": [
+            7,
+            6,
+            4
+          ],
+          "total_degree": 7,
+          "reasons": []
+        },
+        "A": {
+          "verdict": "COUNTEREXAMPLE",
+          "det": "-2",
+          "returncode": 0,
+          "stderr_tail": ""
+        },
+        "A_seconds": 0.705,
+        "det_agrees": true,
+        "wrong_claims": [
+          {
+            "name": "nonconstant determinant",
+            "ours": "REJECTED",
+            "A": "REJECTED",
+            "A_returncode": 1,
+            "rejected_by_both": true
+          },
+          {
+            "name": "real map, wrong collision",
+            "ours": "REJECTED",
+            "A": "REJECTED",
+            "A_returncode": 1,
+            "rejected_by_both": true
+          }
+        ],
+        "wrong_claims_all_rejected": true,
+        "verdict": "COUNTEREXAMPLE det -2"
+      },
+      "agrees_with_A": true,
+      "seconds": 2.087
+    },
+    "hadwiger_nelson": {
+      "method": "independent Mathematica-Sqrt[...] parser with 80-digit mpmath and an explicit error budget, exact edge rebuild at |d^2-1| <= 1e-40, and a threshold/order SAT encoding (not one-hot) solved with glucose4",
+      "result": {
+        "graph": "research\\scratch\\509_parts.vtx",
+        "n": 509,
+        "m": 2442,
+        "edge_tolerance": "1.0e-40",
+        "worst_edge_deviation": "9.4879781e-81",
+        "min_nonedge_deviation": "0.00016021785",
+        "precision_dps": 80,
+        "error_budget": "coordinates evaluated at 80 decimal digits; with expression height <= 8 the roundoff in d^2-1 is below 1e-74.  Edges are classified by |d^2-1| <= 1e-40; the nearest non-edge is > 1e-4, so the gap is > 36 orders of magnitude and the classification is unambiguous.",
+        "encoding": "order/threshold (k-1 variables per vertex), not one-hot",
+        "solver": "glucose4",
+        "cnf_variables": 1527,
+        "cnf_clauses": 10786,
+        "k4_sat": false,
+        "k4_unsat": true,
+        "k4_seconds": 81.119,
+        "encoding_selftest": [
+          {
+            "graph": "C5",
+            "n": 5,
+            "m": 5,
+            "k": 2,
+            "sat": false,
+            "expected_sat": false,
+            "ok": true,
+            "seconds": 0.0011,
+            "variables": 5,
+            "clauses": 10
+          },
+          {
+            "graph": "C5",
+            "n": 5,
+            "m": 5,
+            "k": 3,
+            "sat": true,
+            "expected_sat": true,
+            "ok": true,
+            "seconds": 0.0001,
+            "variables": 10,
+            "clauses": 20
+          },
+          {
+            "graph": "K4",
+            "n": 4,
+            "m": 6,
+            "k": 3,
+            "sat": false,
+            "expected_sat": false,
+            "ok": true,
+            "seconds": 0.0001,
+            "variables": 8,
+            "clauses": 22
+          },
+          {
+            "graph": "K4",
+            "n": 4,
+            "m": 6,
+            "k": 4,
+            "sat": true,
+            "expected_sat": true,
+            "ok": true,
+            "seconds": 0.0001,
+            "variables": 12,
+            "clauses": 32
+          }
+        ],
+        "A": {
+          "n": 509,
+          "m": 2442,
+          "k4_unsat": true,
+          "returncode": 0,
+          "seconds": 145.845,
+          "stderr_tail": ""
+        }
+      },
+      "agrees_with_A": true,
+      "seconds": 228.123
+    },
     "bsd": {
       "method": "(a) independent reimplementation of the smoothed AFE at s=1; (b) literal partial Euler product at s=1 with the local factors, a_p from the eta product, stated cutoffs X<=1e6 and a 1/log X Richardson extrapolation.  The sqrt(2) central factor is included and reported.",
       "result": {
@@ -107,7 +248,7 @@
           ],
           "best_ladder_point": {
             "X": 100000,
-            "sqrt2_P": "0.25279325919180178905",
+            "sqrt2_P": "0.25279325919180179278",
             "gap": "-0.00104860166411"
           },
           "richardson_logx": "0.17841072479289706825",
@@ -227,7 +368,7 @@
         ]
       },
       "agrees_with_A": false,
-      "seconds": 1.642
+      "seconds": 2.019
     }
   },
   "all_agree": false

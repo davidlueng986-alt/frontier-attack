@@ -1002,6 +1002,7 @@ def analyse_descent_edge(slot, index, previous, cap, fixed_symbols=None):
             "P": [list(p) for p in shared_p],
             "Q": [list(p) for p in shared_q],
         },
+        "leading_form": edge_leading_form_string(slot),
         "vertices_P": slot["vertices_P"],
         "vertices_Q": slot["vertices_Q"],
     }

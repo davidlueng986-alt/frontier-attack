@@ -1104,6 +1104,8 @@ def main() -> int:
     ap.add_argument("--all", action="store_true", help="run all three stages")
     ap.add_argument("--stage", choices=sorted(STAGES), action="append",
                     help="run one stage (repeatable)")
+    ap.add_argument("--report-only", action="store_true",
+                    help="write the report but exit 0 even if a stage disagrees")
     args = ap.parse_args()
 
     if args.all:
@@ -1179,7 +1181,7 @@ def main() -> int:
         print("!" * 78)
         print(f"json written to {OUT}")
         print(f"log appended to {LOG}")
-        return 1
+        return 0 if args.report_only else 1
 
     print(f"json written to {OUT}")
     print(f"log appended to {LOG}")

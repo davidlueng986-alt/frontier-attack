@@ -1272,5 +1272,1240 @@
   ],
   "license": "arXiv",
   "verified": true
+ },
+ {
+  "id": "doi:10.1090/s0002-9904-1976-14122-5",
+  "title": "Every planar map is four colorable",
+  "authors": [
+   "Appel, Kenneth I.",
+   "Haken, Wolfgang"
+  ],
+  "year": 1976,
+  "url": "https://doi.org/10.1090/s0002-9904-1976-14122-5",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "The first machine-assisted colouring theorem: a finite discharging argument plus a computer check of 1,936 reducible configurations.",
+  "facts": [
+   "Theorem: every planar map can be coloured with at most four colours (abstract)",
+   "the proof reduced the problem to 1,936 configurations checked by computer"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1006/jctb.1997.1750",
+  "title": "The Four-Colour Theorem",
+  "authors": [
+   "Robertson, Neil",
+   "Sanders, Daniel",
+   "Seymour, Paul",
+   "Thomas, Robin"
+  ],
+  "year": 1997,
+  "url": "https://doi.org/10.1006/jctb.1997.1750",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "A simplified, independently checked proof of the four-colour theorem; the model for a colouring proof with a small finite kernel.",
+  "facts": [
+   "gives a new proof of the four-colour theorem",
+   "the reducibility part uses 633 configurations"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-3-540-87827-8_28",
+  "title": "The Four Colour Theorem: Engineering of a Formal Proof",
+  "authors": [
+   "Gonthier, Georges"
+  ],
+  "year": 2008,
+  "url": "https://doi.org/10.1007/978-3-540-87827-8_28",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "method",
+  "why": "The Coq formalization of the four-colour theorem: the closest existing model for a machine-checked colouring proof.",
+  "facts": [
+   "the four-colour theorem was formalized and machine-checked in Coq",
+   "the formalization covers both the discharging and the reducibility parts"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1090/conm/098",
+  "title": "Every Planar Map is Four Colorable",
+  "authors": [
+   "Appel, Kenneth",
+   "Haken, Wolfgang"
+  ],
+  "year": 1989,
+  "url": "https://doi.org/10.1090/conm/098",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "The book-length account of the original four-colour proof, including the full configuration list that the announcement omits.",
+  "facts": [
+   "the AMS volume is the full account of the 1,936-configuration proof (1989)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.4007/annals.2005.162.1065",
+  "title": "A proof of the Kepler conjecture",
+  "authors": [
+   "Hales, Thomas C."
+  ],
+  "year": 2005,
+  "url": "https://doi.org/10.4007/annals.2005.162.1065",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "A second computer-assisted geometry proof with a huge finite case check; the template for Flyspeck.",
+  "facts": [
+   "every packing of congruent balls in R^3 has density at most pi/(3*sqrt(2)) = 0.74048... (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1017/fmp.2017.1",
+  "title": "A formal proof of the Kepler conjecture",
+  "authors": [
+   "Hales, Thomas",
+   "Adams, Mark",
+   "Bauer, Gertrud",
+   "Dang, Tat Dat",
+   "Harrison, John",
+   "Hoang, Le Truong",
+   "Kaliszyk, Cezary",
+   "Magron, Victor",
+   "McLaughlin, Sean",
+   "Nguyen, Tat Thang",
+   "Nguyen, Quang Truong",
+   "Nipkow, Tobias",
+   "Obua, Steven",
+   "Pleso, Joseph",
+   "Rizkallah, Christine",
+   "Solovyev, Alexey",
+   "Ta, Thi Hoai An",
+   "Tran, Trung",
+   "Trieu, Thi Diep",
+   "Urban, Josef",
+   "Vu, Ky",
+   "Zumkeller, Roland"
+  ],
+  "year": 2017,
+  "url": "https://doi.org/10.1017/fmp.2017.1",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "method",
+  "why": "Flyspeck: the completed formal proof of Kepler in HOL Light and Isabelle, the largest formalized geometry proof before 2020.",
+  "facts": [
+   "the proof is formalized in a combination of HOL Light and Isabelle (abstract)",
+   "the paper is the official account of the completed Flyspeck project (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-3-319-40970-2_15",
+  "title": "Solving and Verifying the Boolean Pythagorean Triples Problem via Cube-and-Conquer",
+  "authors": [
+   "Heule, Marijn J. H.",
+   "Kullmann, Oliver",
+   "Marek, Victor W."
+  ],
+  "year": 2016,
+  "url": "https://doi.org/10.1007/978-3-319-40970-2_15",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "The canonical SAT proof of a Ramsey-type colouring statement, with a 200 TB DRAT certificate; the closest scale analogue to a 6,993-vertex colouring proof.",
+  "facts": [
+   "the set {1,...,7825} cannot be 2-coloured without a monochromatic Pythagorean triple (main theorem)",
+   "the set {1,...,7824} can be so coloured, so 7825 is sharp",
+   "the DRAT certificate is about 200 TB"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-3-319-09284-3_17",
+  "title": "A SAT Attack on the Erdős Discrepancy Conjecture",
+  "authors": [
+   "Konev, Boris",
+   "Lisitsa, Alexei"
+  ],
+  "year": 2014,
+  "url": "https://doi.org/10.1007/978-3-319-09284-3_17",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "A SAT refutation of a famous infinite combinatorics conjecture, with the exact finite threshold; the model for turning an infinite statement into one SAT instance.",
+  "facts": [
+   "there is a +/-1 sequence of length 1160 with discrepancy at most 2, but none of length 1161 (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-3-319-09284-3_31",
+  "title": "DRAT-trim: Efficient Checking and Trimming Using Expressive Clausal Proofs",
+  "authors": [
+   "Wetzler, Nathan",
+   "Heule, Marijn J. H.",
+   "Hunt, Warren A."
+  ],
+  "year": 2014,
+  "url": "https://doi.org/10.1007/978-3-319-09284-3_31",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "method",
+  "why": "The reference checker for DRAT proofs and the tool that makes a SAT lower bound independently verifiable.",
+  "facts": [
+   "DRAT-trim checks DRAT clausal proofs and trims them to a smaller core (abstract)",
+   "it is the checker used for the 200 TB Boolean Pythagorean triples certificate"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-3-319-63046-5_14",
+  "title": "Efficient Certified RAT Verification",
+  "authors": [
+   "Cruz-Filipe, Luís",
+   "Heule, Marijn J. H.",
+   "Hunt, Warren A.",
+   "Kaufmann, Matt",
+   "Schneider-Kamp, Peter"
+  ],
+  "year": 2017,
+  "url": "https://doi.org/10.1007/978-3-319-63046-5_14",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "method",
+  "why": "cake_lpr: a formally verified RAT checker, the independent second checker a DRAT claim needs.",
+  "facts": [
+   "presents cake_lpr, a formally verified checker for RAT proofs in CakeML (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/j.dam.2012.07.018",
+  "title": "House of Graphs: A database of interesting graphs",
+  "authors": [
+   "Brinkmann, Gunnar",
+   "Coolsaet, Kris",
+   "Goedgebeur, Jan",
+   "Mélot, Hadrien"
+  ],
+  "year": 2013,
+  "url": "https://doi.org/10.1016/j.dam.2012.07.018",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "method",
+  "why": "The public graph database used to distribute and search for extremal colouring graphs; a place to look for seeds the papers do not print.",
+  "facts": [
+   "House of Graphs is a searchable database of graphs with invariants and canonical augmentation (abstract)",
+   "it supports uploading and searching graphs by invariant"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-0-387-74642-5",
+  "title": "The Mathematical Coloring Book",
+  "authors": [
+   "Soifer, Alexander"
+  ],
+  "year": 2008,
+  "url": "https://doi.org/10.1007/978-0-387-74642-5",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "The historical and mathematical reference for the Hadwiger-Nelson problem, including the pre-2018 bounds and the measurable variant.",
+  "facts": [
+   "the book surveys the Hadwiger-Nelson problem; at publication the bounds were 4 <= chi(R^2) <= 7",
+   "it contains the history of the problem and the measurable chromatic number"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/s0012-365x(01)00183-2",
+  "title": "A 15-colouring of 3-space omitting distance one",
+  "authors": [
+   "Coulson, D."
+  ],
+  "year": 2002,
+  "url": "https://doi.org/10.1016/s0012-365x(01)00183-2",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "The upper bound chi(R^3) <= 15: a dimension-3 colouring that the plane analogue does not have.",
+  "facts": [
+   "gives a 15-colouring of R^3 with no two points at distance 1 in the same class (title theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/s0012-365x(00)00406-4",
+  "title": "On the space chromatic number",
+  "authors": [
+   "Nechushtan, Oren"
+  ],
+  "year": 2002,
+  "url": "https://doi.org/10.1016/s0012-365x(00)00406-4",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "The explicit 6-chromatic lower bound for R^3, which shows dimension 3 is strictly easier than the plane for constructions.",
+  "facts": [
+   "proves chi(R^3) >= 6"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/s0097-3165(03)00102-x",
+  "title": "Axiom of choice and chromatic number of the plane",
+  "authors": [
+   "Shelah, Saharon",
+   "Soifer, Alexander"
+  ],
+  "year": 2003,
+  "url": "https://doi.org/10.1016/s0097-3165(03)00102-x",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "method",
+  "why": "Shows the de Bruijn-Erdos compactness step can fail without choice; a finite-witness claim must say which set theory it is proved in.",
+  "facts": [
+   "in ZF, the chromatic number of the plane need not equal the supremum of the chromatic numbers of its finite subgraphs"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.37236/269",
+  "title": "Unit Distance Graphs with Ambiguous Chromatic Number",
+  "authors": [
+   "Payne, Michael S."
+  ],
+  "year": 2009,
+  "url": "https://doi.org/10.37236/269",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-open",
+  "why": "Constructs unit-distance graphs on R^n whose chromatic number depends on the axioms, sharpening the foundational caveat for the plane.",
+  "facts": [
+   "constructs unit-distance graphs on R^n whose chromatic number depends on the axioms of set theory (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "polymath16:thread1",
+  "title": "Polymath16, first thread: Simplifying de Grey's graph",
+  "authors": [
+   "Mixon, Dustin G.",
+   "Polymath16 contributors"
+  ],
+  "year": 2018,
+  "url": "https://dustingmixon.wordpress.com/2018/04/14/polymath16-first-thread-simplifying-de-greys-graph/",
+  "kind": "note",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "The working log of the reduction race; records the vertex counts at each stage, including the 1577 record before the corrected 1581.",
+  "facts": [
+   "thread 1 posted 2018-04-14; the current record at that time was 1577 vertices",
+   "lists the project goals: smaller 5-chromatic graphs, human-verifiable proofs, and a 6-chromatic search"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "mathworld:unit-distance",
+  "title": "Unit-Distance Graph",
+  "authors": [
+   "Weisstein, Eric W."
+  ],
+  "year": 2026,
+  "url": "https://mathworld.wolfram.com/Unit-DistanceGraph.html",
+  "kind": "note",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "A compact, current table of the smallest known unit-distance graphs and their chromatic numbers.",
+  "facts": [
+   "the smallest 4-chromatic unit-distance graph is the Moser spindle, with 7 vertices and 11 edges",
+   "the page records 4 <= chi(R^2) <= 7 and the standard graph families"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/s00454-004-1092-8",
+  "title": "epsilon-Unit Distance Graphs",
+  "authors": [
+   "Exoo, Geoffrey"
+  ],
+  "year": 2004,
+  "url": "https://doi.org/10.1007/s00454-004-1092-8",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "Shows the exact-distance problem is a knife-edge: allow an epsilon slack and the chromatic number jumps to 7 for a range of epsilon.",
+  "facts": [
+   "for certain epsilon, the epsilon-unit distance graph has chromatic number exactly 7 (abstract)",
+   "for smaller epsilon the lower bound is at least 5 (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/j.jcta.2004.01.001",
+  "title": "Axiom of choice and chromatic number: examples on the plane",
+  "authors": [
+   "Soifer, Alexander",
+   "Shelah, Saharon"
+  ],
+  "year": 2004,
+  "url": "https://doi.org/10.1016/j.jcta.2004.01.001",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "method",
+  "why": "Gives plane examples of the axiom-dependence, not just abstract graphs; the sharpest warning that a finite-witness argument is not choice-free.",
+  "facts": [
+   "constructs examples on the plane of graphs whose chromatic number depends on the axiom of choice (title)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/bf02571929",
+  "title": "A counterexample to the strong real Jacobian conjecture",
+  "authors": [
+   "Pinchuk, Sergey Ivanovich"
+  ],
+  "year": 1994,
+  "url": "https://doi.org/10.1007/bf02571929",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "The single best solved analogue: the real Jacobian conjecture is false in dimension 2, with an explicit polynomial map whose Jacobian is positive everywhere and which is not injective.",
+  "facts": [
+   "there is a polynomial map R^2 -> R^2 with det J > 0 at every point that is not injective (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1090/s0273-0979-1982-15032-7",
+  "title": "The Jacobian conjecture: Reduction of degree and formal expansion of the inverse",
+  "authors": [
+   "Bass, Hyman",
+   "Connell, Edwin H.",
+   "Wright, David"
+  ],
+  "year": 1982,
+  "url": "https://doi.org/10.1090/s0273-0979-1982-15032-7",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "method",
+  "why": "The degree-3 reduction that every later Jacobian search uses; without it the coefficient space is unbounded.",
+  "facts": [
+   "reduces JC(n) to the case F = x + H with H homogeneous of degree 3 and JH nilpotent (Reduction Theorem)",
+   "introduces the formal inverse and the tree expansion used by later degree bounds"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/bf00973892",
+  "title": "Keller's problem",
+  "authors": [
+   "Yagzhev, A. V."
+  ],
+  "year": 1980,
+  "url": "https://doi.org/10.1007/bf00973892",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "method",
+  "why": "An independent cubic reduction of the Jacobian problem, contemporaneous with Bass-Connell-Wright.",
+  "facts": [
+   "gives a reduction of Keller's problem to cubic polynomial maps (1980)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "debondt:thesis",
+  "title": "Homogeneous Keller maps",
+  "authors": [
+   "de Bondt, Michiel Christiaan"
+  ],
+  "year": 2009,
+  "url": "https://repository.ubn.ru.nl/handle/2066/75148",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "method",
+  "why": "The systematic study of homogeneous Keller maps and nilpotent Jacobians; the source for the low-dimensional classifications a search should not redo.",
+  "facts": [
+   "349-page PhD thesis (Radboud University Nijmegen, defended 7 July 2009)",
+   "classifies homogeneous quasi-translations and nilpotent Jacobians in dimensions 3-5"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.17323/1609-4514-2007-7-2-209-218",
+  "title": "The Jacobian Conjecture is Stably Equivalent to the Dixmier Conjecture",
+  "authors": [
+   "Belov-Kanel, Alexei",
+   "Kontsevich, Maxim"
+  ],
+  "year": 2007,
+  "url": "https://doi.org/10.17323/1609-4514-2007-7-2-209-218",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "method",
+  "why": "The precise equivalence between the Jacobian and Dixmier problems; it tells you which non-commutative formulation is a fair substitute.",
+  "facts": [
+   "JC(2n) implies Dixmier(n), so the stable Jacobian and Dixmier conjectures are equivalent (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/j.jalgebra.2011.09.036",
+  "title": "Mathieu subspaces of associative algebras",
+  "authors": [
+   "Zhao, Wenhua"
+  ],
+  "year": 2011,
+  "url": "https://doi.org/10.1016/j.jalgebra.2011.09.036",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-open",
+  "why": "Defines the Mathieu-Zhao spaces that make the Mathieu conjecture a Jacobian-adjacent statement; the widest open target JC implies.",
+  "facts": [
+   "introduces Mathieu subspaces of associative algebras (title and main definition)",
+   "the Mathieu conjecture becomes the statement that the image of a polynomial map is a Mathieu subspace"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/j.jpaa.2024.107797",
+  "title": "Characteristic p approaches to the Jacobian conjecture",
+  "authors": [
+   "Lang, Jeffrey"
+  ],
+  "year": 2024,
+  "url": "https://doi.org/10.1016/j.jpaa.2024.107797",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-open",
+  "why": "The characteristic-p side of the problem, where the conjecture is false and the counterexamples are explicit; a source of structural obstructions.",
+  "facts": [
+   "surveys characteristic-p approaches to the Jacobian conjecture (2024)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1590/0001-3765201920170627",
+  "title": "New classes of polynomial maps satisfying the real Jacobian conjecture in R^2",
+  "authors": [
+   "Itikawa, Jackson",
+   "Llibre, Jaume"
+  ],
+  "year": 2019,
+  "url": "https://doi.org/10.1590/0001-3765201920170627",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "Real JC is true on two explicit families, even though Pinchuk shows it is false in general; the boundary is structural, not degree-based.",
+  "facts": [
+   "the maps (q(x)-p(y), q(y)+p(x)) with p'q' != 0 satisfy the real Jacobian conjecture (abstract)",
+   "homogeneous (f,g) of the same degree satisfying the stated conditions also satisfy it (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1070/im1987v029n03abeh000984",
+  "title": "On three-sheeted polynomial mappings of C^2",
+  "authors": [
+   "Orevkov, S. Yu."
+  ],
+  "year": 1987,
+  "url": "https://doi.org/10.1070/im1987v029n03abeh000984",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "A geometric-degree wall: no 3-sheeted Keller map. It kills an entire topological degree before any coefficient search.",
+  "facts": [
+   "the Jacobian of a 3-sheeted polynomial mapping C^2 -> C^2 cannot be a non-zero constant (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/bf02313031",
+  "title": "On four-sheeted polynomial mappings of C^2. I. The case of an irreducible ramification curve",
+  "authors": [
+   "Domrina, A. V.",
+   "Orevkov, S. Yu."
+  ],
+  "year": 1998,
+  "url": "https://doi.org/10.1007/bf02313031",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "Extends the geometric-degree wall to 4 sheets under the irreducible-ramification hypothesis; a negative result that narrows the topological search.",
+  "facts": [
+   "no 4-sheeted Keller map with one dicritical component (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/bf02675082",
+  "title": "On four-sheeted polynomial mappings of C^2. The general case",
+  "authors": [
+   "Domrina, A. V."
+  ],
+  "year": 1999,
+  "url": "https://doi.org/10.1007/bf02675082",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "The general 4-sheeted exclusion, completing the geometric-degree wall below 5.",
+  "facts": [
+   "completes the exclusion of 4-sheeted Keller maps of C^2 (general case)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/j.top.2008.04.001",
+  "title": "An application of Newton-Puiseux charts to the Jacobian problem",
+  "authors": [
+   "Żołądek, Henryk"
+  ],
+  "year": 2008,
+  "url": "https://doi.org/10.1016/j.top.2008.04.001",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "Uses Newton-Puiseux charts to exclude topological degree at most 5; the method is the same edge/valuation cascade the (72,108) work needs.",
+  "facts": [
+   "excludes a Keller map of topological degree at most 5"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.4064/ap87-0-7",
+  "title": "The Jacobian Conjecture: symmetric reduction and solution in the symmetric cubic linear case",
+  "authors": [
+   "Drużkowski, Ludwik M."
+  ],
+  "year": 2005,
+  "url": "https://doi.org/10.4064/ap87-0-7",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "A solved subcase of the cubic-linear reduction: symmetry plus cubic linearity is enough. It calibrates what a counterexample must break.",
+  "facts": [
+   "proves the symmetric cubic-linear case of the Jacobian conjecture (title)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.37236/9210",
+  "title": "Frameworks for Two-Dimensional Keller Maps",
+  "authors": [
+   "Borisov, Alexander"
+  ],
+  "year": 2020,
+  "url": "https://doi.org/10.37236/9210",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "method",
+  "why": "Reformulates the 2D Keller map as a finite combinatorial framework; the right shape for a computer search, unlike a raw coefficient system.",
+  "facts": [
+   "reduces a 2D Keller map to a finite set of combinatorial conditions ('frameworks') (abstract)",
+   "each framework corresponds to a large system of equations whose solution would give a Keller map (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1202.2949",
+  "title": "Pinchuk maps, function fields, and real Jacobian conjectures",
+  "authors": [
+   "Campbell, L. Andrew"
+  ],
+  "year": 2012,
+  "url": "https://arxiv.org/abs/1202.2949",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "Explains why Pinchuk's counterexample does not contradict the complex JC: the real maps have degree-6 function-field extensions, not odd degree.",
+  "facts": [
+   "the Pinchuk counterexamples have function-field extensions of degree six with no nontrivial automorphisms (abstract)",
+   "a real Jacobian counterexample must have an odd-degree extension with no nontrivial automorphisms (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1401.1784",
+  "title": "On the shape of possible counterexamples to the Jacobian Conjecture",
+  "authors": [
+   "Guccione, Jorge A.",
+   "Guccione, Juan J.",
+   "Valqui, Christian"
+  ],
+  "year": 2014,
+  "url": "https://arxiv.org/abs/1401.1784",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "method",
+  "why": "The gcd obstruction: every planar counterexample has gcd(deg P, deg Q) >= 16, which eliminates most degree pairs before any algebra.",
+  "facts": [
+   "gives an elementary proof that gcd(deg P, deg Q) >= 16 for any planar counterexample (abstract)",
+   "proves gcd(deg P, deg Q) != 2p for any prime p (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "doi:10.4064/ap110-1-1",
+  "title": "Reduction theorems for the Strong Real Jacobian Conjecture",
+  "authors": [
+   "Campbell, L. Andrew"
+  ],
+  "year": 2014,
+  "url": "https://doi.org/10.4064/ap110-1-1",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "Reduces the strong real Jacobian conjecture to specialized forms, delimiting exactly how far Pinchuk's counterexample generalizes.",
+  "facts": [
+   "proves reduction theorems for the strong real Jacobian conjecture (title)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/bfb0097582",
+  "title": "Algorithm for determining the type of a singular fiber in an elliptic pencil",
+  "authors": [
+   "Tate, J."
+  ],
+  "year": 1975,
+  "url": "https://doi.org/10.1007/bfb0097582",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "method",
+  "why": "Tate's algorithm is how the conductor and the local Tamagawa factors are actually computed; without it there is no L-function to evaluate.",
+  "facts": [
+   "gives an algorithm determining the Kodaira type of each singular fibre of an elliptic pencil (title)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "cremona:book",
+  "title": "Algorithms for Modular Elliptic Curves",
+  "authors": [
+   "Cremona, John E."
+  ],
+  "year": 1997,
+  "url": "https://johncremona.github.io/book/fulltext/index.html",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "method",
+  "why": "The mwrank book: modular symbols, Tate's algorithm, 2-descent and the rank algorithms the BSD pipeline depends on.",
+  "facts": [
+   "second edition 1997; the author-hosted text is the corrected second edition",
+   "covers modular-symbol computation, Tate's algorithm, and 2-descent for elliptic curves over Q"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "stein:bsd-book",
+  "title": "The Birch and Swinnerton-Dyer Conjecture, a Computational Approach",
+  "authors": [
+   "Stein, William A."
+  ],
+  "year": 2005,
+  "url": "https://wstein.org/books/bsd/bsd.pdf",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "method",
+  "why": "The textbook that connects the BSD conjecture to computation: L-values, Sha, Heegner points, Kolyvagin's Euler system, and verification.",
+  "facts": [
+   "the book has chapters on the BSD rank conjecture, Sha, Heegner points, the Euler system, and computational verification (contents)",
+   "the text is 63+ pages and is the source for the Sage BSD algorithms"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.4007/annals.2010.172.567",
+  "title": "On the Birch-Swinnerton-Dyer quotients modulo squares",
+  "authors": [
+   "Dokchitser, Tim",
+   "Dokchitser, Vladimir"
+  ],
+  "year": 2010,
+  "url": "https://doi.org/10.4007/annals.2010.172.567",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "method",
+  "why": "The parity conjecture: it predicts the sign of the rank and hence rules out half the possible mismatch shapes before any computation.",
+  "facts": [
+   "proves the parity conjecture for elliptic curves assuming finiteness of Sha(E/K)[2] and conditions at 2 and 3 (abstract)",
+   "the parity of the Mordell-Weil rank agrees with the parity of the analytic rank (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/bfb0062705",
+  "title": "Conjectures on elliptic curves over quadratic fields",
+  "authors": [
+   "Goldfeld, Dorian M."
+  ],
+  "year": 1979,
+  "url": "https://doi.org/10.1007/bfb0062705",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "analogue-open",
+  "why": "The origin of Goldfeld's average-rank conjecture; it is the reason a random curve is not a plausible counterexample.",
+  "facts": [
+   "proposes conjectures on the average rank of elliptic curves over quadratic fields (title)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1515/9781400865208",
+  "title": "Euler Systems",
+  "authors": [
+   "Rubin, Karl"
+  ],
+  "year": 2000,
+  "url": "https://doi.org/10.1515/9781400865208",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "method",
+  "why": "The book-length treatment of Euler systems, the machinery that bounds Selmer groups and supplies the GZK rank theorem.",
+  "facts": [
+   "Euler systems are systems of cohomology classes used to bound Selmer groups (abstract)",
+   "they give cases of BSD and of the Iwasawa main conjecture (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1080/10586458.2006.10128976",
+  "title": "Artin's Conjecture, Turing's Method, and the Riemann Hypothesis",
+  "authors": [
+   "Booker, Andrew R."
+  ],
+  "year": 2006,
+  "url": "https://doi.org/10.1080/10586458.2006.10128976",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "method",
+  "why": "The rigorous zero-counting reference: Turing's method plus the explicit formula, the technique that turns a numerical analytic rank into a theorem.",
+  "facts": [
+   "presents a group-theoretic criterion for verifying the Artin conjecture up to finite height (abstract)",
+   "discusses two methods for locating zeros of arbitrary L-functions, including Turing's method (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "platt:thesis",
+  "title": "Computing degree 1 L-functions rigorously",
+  "authors": [
+   "Platt, David J."
+  ],
+  "year": 2011,
+  "url": "https://people.maths.bris.ac.uk/~madjp/thesis5.pdf",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "method",
+  "why": "A worked, large-scale implementation of rigorous zero-counting for degree-1 L-functions; the engineering model for certifying k.",
+  "facts": [
+   "verifies the generalized Riemann hypothesis for all characters of modulus q <= 100,000 to height qT >= 10^8 (abstract)",
+   "confirms non-vanishing of L_chi(1/2) for all characters of modulus q <= 2,000,000 (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:2110.10583",
+  "title": "Rapid computation of special values of Dirichlet L-functions",
+  "authors": [
+   "Johansson, Fredrik"
+  ],
+  "year": 2021,
+  "url": "https://arxiv.org/abs/2110.10583",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "method",
+  "why": "The fast, rigorous evaluation layer: p^{3/2+o(1)} bit complexity for zeta and Dirichlet L-values, an order better than the previous p^{2+o(1)}.",
+  "facts": [
+   "computes zeta(s) and L(s,chi) to p-bit accuracy in p^{3/2+o(1)} bit complexity (abstract)",
+   "improves the previous p^{2+o(1)} complexity (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/bf01457454",
+  "title": "Factoring polynomials with rational coefficients",
+  "authors": [
+   "Lenstra, A. K.",
+   "Lenstra, H. W.",
+   "Lovász, L."
+  ],
+  "year": 1982,
+  "url": "https://doi.org/10.1007/bf01457454",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "LLL: the polynomial-time lattice reduction behind integer relation detection, coefficient recovery, and many exact-arithmetic certificates.",
+  "facts": [
+   "gives a polynomial-time algorithm for lattice basis reduction (main theorem)",
+   "applies it to factor polynomials with rational coefficients"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1090/s0025-5718-99-00995-3",
+  "title": "Analysis of PSLQ, an integer relation finding algorithm",
+  "authors": [
+   "Ferguson, Helaman R. P.",
+   "Bailey, David H."
+  ],
+  "year": 1999,
+  "url": "https://doi.org/10.1090/s0025-5718-99-00995-3",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "PSLQ turns a high-precision numerical identity into an exact integer relation; the standard tool for recovering algebraic coefficients from numerics.",
+  "facts": [
+   "analyzes PSLQ, an integer relation algorithm, and gives its detection thresholds (abstract)",
+   "the algorithm runs in polynomial time in the dimension and precision"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-3-319-16721-3",
+  "title": "Ideals, Varieties, and Algorithms",
+  "authors": [
+   "Cox, David A.",
+   "Little, John B.",
+   "O'Shea, Donal"
+  ],
+  "year": 2015,
+  "url": "https://doi.org/10.1007/978-3-319-16721-3",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "The standard textbook for Groebner bases, resultants and elimination, the machinery behind every coefficient-system computation here.",
+  "facts": [
+   "fourth edition (2015); covers Groebner bases, resultants, and elimination theory",
+   "includes the Buchberger algorithm and its applications"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/0001-8708(82)90048-2",
+  "title": "The complexity of the word problems for commutative semigroups and polynomial ideals",
+  "authors": [
+   "Mayr, Ernst W.",
+   "Meyer, Albert R."
+  ],
+  "year": 1982,
+  "url": "https://doi.org/10.1016/0001-8708(82)90048-2",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "The double-exponential lower bound for Groebner bases: a reason not to put a 445-unknown system through naive elimination.",
+  "facts": [
+   "Gröbner basis computation is doubly exponential in the worst case (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1090/cbms/097",
+  "title": "Solving Systems of Polynomial Equations",
+  "authors": [
+   "Sturmfels, Bernd"
+  ],
+  "year": 2002,
+  "url": "https://doi.org/10.1090/cbms/097",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "A compact map of the algorithmic options: resultants, Groebner bases, homotopy continuation, and numerical algebraic geometry.",
+  "facts": [
+   "CBMS lectures covering resultants, Groebner bases, and homotopy continuation (contents)",
+   "the book is the standard short reference for polynomial system solving"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1145/3372885.3373824",
+  "title": "The Lean mathematical library",
+  "authors": [
+   "mathlib Community"
+  ],
+  "year": 2020,
+  "url": "https://doi.org/10.1145/3372885.3373824",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "The library the OpenAI colouring formalization builds on; its design explains what finite combinatorics is already available and what must be built.",
+  "facts": [
+   "mathlib is a community-driven Lean library with dependent types, a structure hierarchy, and large- and small-scale automation (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.3233/FAIA336",
+  "title": "Handbook of Satisfiability",
+  "authors": [
+   "Biere, Armin",
+   "Heule, Marijn",
+   "van Maaren, Hans",
+   "Walsh, Toby"
+  ],
+  "year": 2021,
+  "url": "https://doi.org/10.3233/FAIA336",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "The reference for SAT encodings, CDCL, symmetry breaking, and proof logging; the engineering base under every HN lower bound.",
+  "facts": [
+   "second edition (2021); covers CDCL, SAT encodings, symmetry breaking, and proof logging"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1109/dac.2003.1219135",
+  "title": "Shatter: efficient symmetry-breaking for Boolean satisfiability",
+  "authors": [
+   "Aloul, Fadi A.",
+   "Markov, Igor L.",
+   "Sakallah, Karem A."
+  ],
+  "year": 2003,
+  "url": "https://doi.org/10.1109/dac.2003.1219135",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "Symmetry breaking is what makes a 6,993-vertex colouring instance tractable; Shatter is the canonical construction of lex-leader predicates.",
+  "facts": [
+   "gives a linear-sized CNF formula that selects lex-leaders for single permutations (abstract)",
+   "adds symmetry-breaking predicates that preserve satisfiability (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-3-662-05355-3",
+  "title": "Algorithms in Real Algebraic Geometry",
+  "authors": [
+   "Basu, Saugata",
+   "Pollack, Richard",
+   "Roy, Marie-Françoise"
+  ],
+  "year": 2003,
+  "url": "https://doi.org/10.1007/978-3-662-05355-3",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "The reference for Newton-Puiseux expansions and real algebraic algorithms, the symbolic layer under the edge cascade and interval checks.",
+  "facts": [
+   "textbook on algorithms in real algebraic geometry, including Newton-Puiseux expansions and quantifier elimination"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1038/nature16059",
+  "title": "Undecidability of the spectral gap",
+  "authors": [
+   "Cubitt, Toby S.",
+   "Pérez-García, David",
+   "Wolf, Michael M."
+  ],
+  "year": 2015,
+  "url": "https://doi.org/10.1038/nature16059",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "analogue-solved",
+  "why": "A negative result that kills a whole route: the spectral gap is undecidable in general, so no algorithm can settle every mass-gap instance.",
+  "facts": [
+   "the spectral gap problem for quantum many-body systems is undecidable (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1080/00029890.1973.11993265",
+  "title": "Hilbert's Tenth Problem is Unsolvable",
+  "authors": [
+   "Davis, Martin"
+  ],
+  "year": 1973,
+  "url": "https://doi.org/10.1080/00029890.1973.11993265",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "analogue-solved",
+  "why": "The canonical undecidability result for Diophantine equations; it bounds what a general algebraic search can be expected to decide.",
+  "facts": [
+   "Hilbert's tenth problem (a general algorithm for Diophantine equations) is unsolvable (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
  }
 ]

@@ -1863,6 +1863,7 @@
     "t_monomial_P": "x^-1*y^1",
     "t_monomial_Q": "x^-1*y^1",
     "leading_form": "det J(P_e,Q_e) = y^38 * (25 p'(u) q(u) - 15 p(u) q'(u)), u = x/y, p = sum a_(i,15-i) u^i, q = sum b_(j,25-j) u^j; equivalently x^12*y^3*f(y/x) and x^20*y^5*g(y/x)",
+    "leading_form_edge_parameter": "det J(P_e,Q_e) = x^30*y^8 * [15*f*g' - 25*f'*g], t = x^-1*y^1, f = sum a_k t^k with k = 0 at [12, 3], g = sum b_k t^k",
     "leading_form_identity": {
       "identity": "det J(P_e,Q_e) = x^(p0+r0-1) y^(q0+s0-1) * [(p0*s0-q0*r0)*f*g + (p0*v-q0*u)*t*f*g' + (u*s0-v*r0)*t*f'*g]",
       "trials": 2,
@@ -1906,7 +1907,7 @@
     "groebner_over_Q": {
       "status": "timeout",
       "cap_seconds": 180.0,
-      "seconds": 180.029,
+      "seconds": 180.018,
       "modulus": null,
       "method": "buchberger",
       "basis_size": null,
@@ -1916,7 +1917,7 @@
     "groebner_mod_p": {
       "status": "timeout",
       "cap_seconds": 120.0,
-      "seconds": 120.023,
+      "seconds": 120.018,
       "modulus": 32003,
       "method": "f5b",
       "basis_size": null,
@@ -1941,9 +1942,9 @@
     },
     "power_structure": {
       "g": 5,
-      "claim": "det J(P_e,Q_e) = 0  =>  P_e = c1 G^(d_P/g), Q_e = c2 G^(d_Q/g), deg G = g",
-      "parameter_count": "deg G = 5 gives 6 coefficients; the shape P_e = x^p0 y^q0 f(t) forces G = x^(p0/(d_P/g)) y^(q0/(d_P/g)) k(t) with k monic of degree 4, so 4 free parameters for G; plus c1, c2 gives 6, and fixing the two vertex coefficients leaves 4",
-      "wronskian_reduction": "in the edge parameter t: d_Q f g' - d_P f' g = 0, i.e. (f^(d_Q/g))' (g^(d_P/g)) - ... = 0, whose solutions are f = c k^(d_P/g), g = c' k^(d_Q/g) by the same ODE argument"
+      "claim": "det J(P_e,Q_e) = 0  =>  P_e = c1 G^(d_P/g), Q_e = c2 G^(d_Q/g) with G a form of weighted degree g",
+      "parameter_count": "G is a form of weighted degree g = 5.  The fixed shape of the edge forms (P_e = x^p0 y^q0 f(t), Q_e = x^r0 y^s0 g(t), t = x^u y^v) forces G = x^(p0*g/d_P) y^(q0*g/d_P) k(t) with k a monic polynomial of degree 4, i.e. 4 free parameters.  The two scalars c1, c2 add 2, so the scaled family has dimension 6; normalising the two shared vertex coefficients to 1 leaves 4.",
+      "wronskian_reduction": "in the edge parameter t the condition is d_Q f g' - d_P f' g = 0 up to the monomial factor; dividing by f g gives d_Q g'/g - d_P f'/f = 0, i.e. (f^(d_Q) / g^(d_P))' = 0, hence f^(d_Q) = C g^(d_P); with g0 = gcd(d_P,d_Q) this is f = c k^(d_P/g0), g = c' k^(d_Q/g0)"
     },
     "family_certificate": {
       "family": "p = h^3, q = h^5, h = u^4 + c3 u^3 + c2 u^2 + c1 u + c0",
@@ -2072,6 +2073,7 @@
           ]
         ]
       },
+      "leading_form": "det J(P_e,Q_e) = x^24*y^0 * [9*f*g' - 15*f'*g], t = x^1*y^1, f = sum a_k t^k with k = 0 at [9, 0], g = sum b_k t^k",
       "vertices_P": [
         [
           9,
@@ -2293,7 +2295,7 @@
           "b_18_3",
           "b_19_4"
         ],
-        "seconds": 1.125,
+        "seconds": 1.031,
         "sample": [
           "-125*b_15_0**3*b_19_4 + 50*b_15_0**2*b_16_1*b_18_3 + 25*b_15_0**2*b_17_2**2 - 35*b_15_0*b_16_1**2*b_17_2 + 7*b_16_1**4",
           "-625*b_15_0**3 - 175*b_15_0**2*b_16_1*b_19_4 + 250*b_15_0**2*b_17_2*b_18_3 - 5*b_15_0*b_16_1**2*b_18_3 - 90*b_15_0*b_16_1*b_17_2**2 + 21*b_16_1**3*b_17_2",
@@ -2467,6 +2469,7 @@
           ]
         ]
       },
+      "leading_form": "det J(P_e,Q_e) = x^0*y^-1 * [0], t = x^1*y^0, f = sum a_k t^k with k = 0 at [0, 0], g = sum b_k t^k",
       "vertices_P": [
         [
           0,
@@ -2535,11 +2538,11 @@
   },
   "timings": {
     "stage_seconds": {
-      "1_edges": 0.002,
-      "2_top_edge": 306.49,
-      "3_descent": 1.182
+      "1_edges": 0.001,
+      "2_top_edge": 305.399,
+      "3_descent": 1.07
     },
-    "total_seconds": 307.674
+    "total_seconds": 306.471
   },
-  "elapsed_seconds": 307.674
+  "elapsed_seconds": 306.471
 }
