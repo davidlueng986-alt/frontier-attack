@@ -645,7 +645,7 @@ def build_report(slow_cross_check=False):
 
     theorem = {
         "file": "research/scratch/wstrinz/d2/PROOF_72_108.md",
-        "lines": [902, 906, 908, 922],
+        "lines": [858, 902, 906, 908, 922],
         "quotes": [
             {
                 "line": 858,

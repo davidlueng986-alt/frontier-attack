@@ -967,6 +967,7 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
 
     while queue and len(records) < max_graphs:
         g = queue.pop(0)
+        examined_keys.add(g.structural_key())
         chi = g.chromatic_number()
         geometry_ok, geometry_errors = g.verify()
         if not geometry_ok:
@@ -1067,6 +1068,10 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
         "seed": seed,
         "graphs_examined": len(records),
         "graphs_constructed": len(constructed),
+        "graphs_scanned_forcing": len(records) + len(postscan),
+        "all_constructed_scanned": (
+            len(records) + len(postscan) == len(constructed)
+        ),
         "max_constructed_chi": top_chi,
         "max_lift_chi": max((l["result_chi"] for l in lifts), default=0),
         "oversized_lift_count": len(oversized),
@@ -1187,10 +1192,11 @@ def main():
     moser = spindle(d, d)
     moser_chi = moser.chromatic_number()
     moser_cert = certify(moser)
+    wheel = hex_wheel()
 
     search = composition_search()
     best_chi = int(search["best_chi"])
-    n_four = sum(1 for r in search["records"] if r["chi"] == 4)
+    n_four = search["constructed_histogram"].get("4", 0)
 
     payload = {
         "generated_by": "problems/hadwiger_nelson/gadgets.py",
@@ -1209,8 +1215,8 @@ def main():
             "forced_relation_4": moser.forced_relation(4).to_dict(),
         },
         "hex_wheel": {
-            **hex_wheel().to_dict(include_points=True, include_chi=True),
-            "forced_relation_3": hex_wheel().forced_relation(3).to_dict(),
+            **wheel.to_dict(include_points=True, include_chi=True),
+            "forced_relation_3": wheel.forced_relation(3).to_dict(),
         },
         "search": search,
         "conclusion": {
@@ -1226,9 +1232,9 @@ def main():
                 "diamond lift reproduces the Moser spindle (chi=4). "
                 f"All {search['graphs_constructed']} distinct compositions "
                 f"constructed (at most {search['max_vertices']} vertices) "
-                f"have chi <= {search['max_constructed_chi']}. Of the "
-                f"{search['graphs_examined']} examined for forced "
-                f"relations, {n_four} are 4-chromatic, and none has a pair "
+                f"have chi <= {search['max_constructed_chi']}; every one was "
+                "scanned for forced-equal pairs at k=4 and k=5. "
+                f"Of these, {n_four} are 4-chromatic, and none has a pair "
                 "forced equal in every 4-colouring, so the lift cannot be "
                 "iterated to chi=5 inside this family. This is a clean "
                 "negative for the search, not a proof that no such gadget "

@@ -260,7 +260,7 @@
         "constant_term_zero": false,
         "constant_coefficient": "-a1*b26 + a16*b1",
         "pair_products": 66570,
-        "seconds": 0.025
+        "seconds": 0.04
       },
       "target_x2": {
         "label": "full_lattice/detJ-x^2",
@@ -19286,7 +19286,7 @@
           }
         ]
       },
-      "seconds": 0.028
+      "seconds": 0.042
     },
     "vertices_only": {
       "label": "vertices_only",
@@ -19776,6 +19776,7 @@
   "theorem_11_4": {
     "file": "research/scratch/wstrinz/d2/PROOF_72_108.md",
     "lines": [
+      858,
       902,
       906,
       908,
@@ -19877,12 +19878,29 @@
       }
     },
     "full_lattice_sympy_cross_check": {
-      "ran": false,
-      "note": "not run by default; --slow-cross-check runs config2_system.size_system on the full system (about 95-105 s measured)"
+      "ran": true,
+      "ok": true,
+      "checks": {
+        "unknowns": true,
+        "equations": true,
+        "det_monomials": true,
+        "monomials": true,
+        "constant_n_terms": true,
+        "max_total_degree": true,
+        "max_degree_in_coefficients": true
+      },
+      "seconds": 84.35,
+      "sympy": {
+        "unknowns": 445,
+        "equations": 723,
+        "det_monomials": 723,
+        "max_total_degree": 38,
+        "max_total_degree_in_coefficients": 2
+      }
     }
   },
   "timings": {
-    "full_lattice_seconds": 0.028,
+    "full_lattice_seconds": 0.042,
     "vertices_only_seconds": 0.0,
     "expanded_dense": true,
     "blow_up": false,
@@ -19896,5 +19914,5 @@
     "No nonvanishing constraint is imposed on the vertex coefficients; solutions whose support drops to a smaller Newton polygon are included in the generic ansatz as boundary strata.",
     "Theorem 11.4 is not an exclusion of (75,125); see theorem_11_4 above."
   ],
-  "elapsed_seconds": 0.095
+  "elapsed_seconds": 84.476
 }

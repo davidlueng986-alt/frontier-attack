@@ -133,6 +133,18 @@ specialisation fails, and it fails precisely because the low-degree monomials of
 therefore never a valid reduction — it deletes the terms that make the identity
 possible.
 
+Sizes for `(75,125)` (J5, measured):
+
+| support | unknowns | note |
+|---|---|---|
+| vertices only | 8 | empty by support obstruction |
+| full lattice | **445** | too large for a Groebner basis |
+
+So the only viable method at this corner is the **edge cascade**: decompose the
+Newton polygons into edges, solve the leading-form condition on the top edge,
+then descend one edge at a time. That is the GGHV machinery, and it is the next
+task.
+
 The real target is the full-lattice system: 72 unknowns, 92 equations for
 `(72,108)`. That is too large for a Groebner basis and needs the graded
 structure instead: the top-degree block is determinantal, and the low-degree

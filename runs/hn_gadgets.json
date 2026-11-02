@@ -1,6 +1,6 @@
 {
   "generated_by": "problems/hadwiger_nelson/gadgets.py",
-  "runtime_seconds": 7.559,
+  "runtime_seconds": 19.722,
   "diamond": {
     "label": "diamond",
     "n": 4,
@@ -344,8 +344,16 @@
     "max_vertices": 13,
     "seed": 1,
     "graphs_examined": 22,
-    "graphs_constructed": 100,
+    "graphs_constructed": 128,
+    "graphs_scanned_forcing": 128,
+    "all_constructed_scanned": true,
     "max_constructed_chi": 4,
+    "max_lift_chi": 4,
+    "oversized_lift_count": 0,
+    "constructed_histogram": {
+      "3": 57,
+      "4": 71
+    },
     "histogram": {
       "3": 13,
       "4": 9
@@ -504,6 +512,3192 @@
         "m": 15,
         "chi": 4,
         "geometry_ok": true
+      }
+    ],
+    "postscan": [
+      {
+        "label": "glue[lift[diamond|diamond]@k3+hex_wheel]",
+        "n": 10,
+        "m": 18,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[lift[diamond|diamond]@k3+hex_wheel]",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[lift[diamond|diamond]@k3+hex_wheel]",
+        "n": 10,
+        "m": 18,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[lift[diamond|diamond]@k3+hex_wheel]",
+        "n": 11,
+        "m": 20,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[lift[diamond|hex_wheel]@k3+diamond]",
+        "n": 11,
+        "m": 20,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[lift[diamond|hex_wheel]@k3+diamond]",
+        "n": 11,
+        "m": 20,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[diamond+diamond]|diamond]@k3",
+        "n": 9,
+        "m": 15,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[diamond+diamond]|hex_wheel]@k3",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+diamond]",
+        "n": 7,
+        "m": 11,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+diamond]",
+        "n": 7,
+        "m": 11,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+diamond]",
+        "n": 8,
+        "m": 14,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              4,
+              7
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 9,
+        "m": 16,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 11,
+        "m": 21,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "label": "lift[glue[diamond+diamond]|diamond]@k3",
+        "n": 8,
+        "m": 13,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[diamond+diamond]|hex_wheel]@k3",
+        "n": 11,
+        "m": 20,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+diamond]",
+        "n": 7,
+        "m": 11,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 9,
+        "m": 16,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 10,
+        "m": 19,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 8,
+        "m": 14,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "label": "lift[glue[diamond+diamond]|diamond]@k3",
+        "n": 8,
+        "m": 13,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[diamond+diamond]|hex_wheel]@k3",
+        "n": 11,
+        "m": 20,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+diamond]",
+        "n": 6,
+        "m": 9,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+diamond]",
+        "n": 7,
+        "m": 11,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+diamond]",
+        "n": 6,
+        "m": 9,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 9,
+        "m": 16,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 8,
+        "m": 14,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 7,
+        "m": 12,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 10,
+        "m": 18,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 10,
+        "m": 18,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 10,
+        "m": 18,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 13,
+        "m": 25,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              12
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              12
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              10,
+              12
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 10,
+        "m": 19,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 11,
+        "m": 21,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 9,
+        "m": 16,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 9,
+        "m": 16,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 13,
+        "m": 26,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              1,
+              12
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              12
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              10,
+              12
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 11,
+        "m": 21,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 11,
+        "m": 21,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 11,
+        "m": 20,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 10,
+        "m": 18,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 10,
+        "m": 19,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 12,
+        "m": 23,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              9,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "label": "lift[glue[diamond+hex_wheel]|glue[diamond+hex_wheel]]@k3",
+        "n": 13,
+        "m": 25,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[diamond+hex_wheel]|glue[diamond+hex_wheel]]@k3",
+        "n": 13,
+        "m": 25,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[diamond+hex_wheel]|glue[diamond+hex_wheel]]@k3",
+        "n": 13,
+        "m": 25,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[diamond+hex_wheel]|glue[diamond+hex_wheel]]@k3",
+        "n": 13,
+        "m": 25,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 9,
+        "m": 16,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 8,
+        "m": 14,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 12,
+        "m": 23,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              2,
+              11
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              9,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 10,
+        "m": 19,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+diamond]+diamond]",
+        "n": 10,
+        "m": 18,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+diamond]+diamond]",
+        "n": 10,
+        "m": 19,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "n": 12,
+        "m": 23,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              11
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              9,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "n": 12,
+        "m": 23,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              11
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              9,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "n": 12,
+        "m": 24,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "n": 12,
+        "m": 23,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              11
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "n": 13,
+        "m": 26,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              12
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              11
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              12
+            ],
+            [
+              8,
+              11
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              9,
+              12
+            ],
+            [
+              10,
+              12
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "n": 12,
+        "m": 24,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "n": 12,
+        "m": 23,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "n": 11,
+        "m": 21,
+        "chi": 3,
+        "geometry_ok": true,
+        "forced_equal_levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+diamond]",
+        "n": 10,
+        "m": 17,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+diamond]",
+        "n": 10,
+        "m": 17,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+diamond]",
+        "n": 9,
+        "m": 15,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 11,
+        "m": 20,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+diamond]",
+        "n": 10,
+        "m": 17,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+diamond]",
+        "n": 10,
+        "m": 17,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 13,
+        "m": 24,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 13,
+        "m": 24,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+diamond]",
+        "n": 11,
+        "m": 19,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+diamond]",
+        "n": 11,
+        "m": 19,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 13,
+        "m": 24,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "glue[glue[lift[diamond|diamond]@k3+diamond]+hex_wheel]",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 13,
+        "m": 23,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 13,
+        "m": 23,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "n": 10,
+        "m": 17,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "n": 13,
+        "m": 24,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 13,
+        "m": 23,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 13,
+        "m": 23,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "n": 10,
+        "m": 17,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "n": 13,
+        "m": 24,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 13,
+        "m": 23,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 13,
+        "m": 23,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "n": 10,
+        "m": 17,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "n": 13,
+        "m": 24,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 11,
+        "m": 19,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 11,
+        "m": 19,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "n": 9,
+        "m": 15,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "n": 12,
+        "m": 22,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 13,
+        "m": 23,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 13,
+        "m": 23,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "n": 10,
+        "m": 17,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "n": 13,
+        "m": 24,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 11,
+        "m": 19,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "n": 11,
+        "m": 19,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "n": 9,
+        "m": 15,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "n": 12,
+        "m": 23,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "n": 13,
+        "m": 25,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "n": 13,
+        "m": 25,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "n": 13,
+        "m": 25,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
+      },
+      {
+        "label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "n": 13,
+        "m": 25,
+        "chi": 4,
+        "geometry_ok": true,
+        "forced_equal_levels": {}
       }
     ],
     "best_chi": 4,
@@ -1430,6 +4624,3046 @@
         "result_m": 48,
         "result_chi": 4,
         "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 13,
+        "result_m": 23,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          6
+        ],
+        "pair2": [
+          1,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 13,
+        "result_m": 23,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "diamond",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "result_n": 10,
+        "result_m": 17,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "hex_wheel",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          1,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "result_n": 13,
+        "result_m": 24,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 13,
+        "result_m": 23,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 13,
+        "result_m": 23,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "diamond",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "result_n": 10,
+        "result_m": 17,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "hex_wheel",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          1,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "result_n": 13,
+        "result_m": 24,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          7
+        ],
+        "pair2": [
+          1,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          3
+        ],
+        "pair2": [
+          2,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          6
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          2,
+          3
+        ],
+        "pair2": [
+          2,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          2,
+          3
+        ],
+        "pair2": [
+          2,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 34,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 43,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          8
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 43,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          3
+        ],
+        "pair2": [
+          2,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 13,
+        "result_m": 23,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          6
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 13,
+        "result_m": 23,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "diamond",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "result_n": 10,
+        "result_m": 17,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "hex_wheel",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          1,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "result_n": 13,
+        "result_m": 24,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          8
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 34,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          7
+        ],
+        "pair2": [
+          1,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          3
+        ],
+        "pair2": [
+          2,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 11,
+        "result_m": 19,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          5
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 11,
+        "result_m": 19,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "diamond",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "result_n": 9,
+        "result_m": 15,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "hex_wheel",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          1,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "result_n": 12,
+        "result_m": 22,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          3
+        ],
+        "pair2": [
+          2,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 13,
+        "result_m": 23,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          6
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 13,
+        "result_m": 23,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "diamond",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "result_n": 10,
+        "result_m": 17,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "hex_wheel",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          1,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "result_n": 13,
+        "result_m": 24,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 11,
+        "result_m": 19,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "glue[glue[diamond+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|glue[glue[diamond+diamond]+diamond]]@k3",
+        "result_n": 11,
+        "result_m": 19,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "diamond",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|diamond]@k3",
+        "result_n": 9,
+        "result_m": 15,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "base",
+        "base": "glue[glue[diamond+diamond]+diamond]",
+        "partner": "hex_wheel",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          1,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+diamond]|hex_wheel]@k3",
+        "result_n": 12,
+        "result_m": 23,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 34,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 34,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 17,
+        "result_m": 34,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          5
+        ],
+        "pair2": [
+          1,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          7
+        ],
+        "pair2": [
+          1,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 13,
+        "result_m": 25,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 13,
+        "result_m": 25,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          2,
+          3
+        ],
+        "pair2": [
+          2,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 13,
+        "result_m": 25,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          2,
+          5
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 13,
+        "result_m": 25,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 38,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+diamond]+hex_wheel]",
+        "partner": "glue[glue[diamond+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+diamond]+hex_wheel]|glue[glue[diamond+diamond]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 38,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 38,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 38,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 38,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 38,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 25,
+        "result_m": 51,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 25,
+        "result_m": 51,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 40,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 40,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 44,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          5
+        ],
+        "pair2": [
+          0,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 44,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 44,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 43,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          5
+        ],
+        "pair2": [
+          1,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          7
+        ],
+        "pair2": [
+          1,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          5
+        ],
+        "pair2": [
+          1,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          7
+        ],
+        "pair2": [
+          1,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 25,
+        "result_m": 54,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 25,
+        "result_m": 54,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 43,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 43,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          5
+        ],
+        "pair2": [
+          1,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 43,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 44,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 43,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 44,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          6
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 21,
+        "result_m": 44,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          6
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 21,
+        "result_m": 41,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          6
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          8
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          4
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          6
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          8
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          11
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 34,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 33,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          6
+        ],
+        "pair2": [
+          1,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 34,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          6
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 17,
+        "result_m": 34,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          6
+        ],
+        "pair2": [
+          1,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          3
+        ],
+        "pair2": [
+          2,
+          5
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+diamond]",
+        "partner": "glue[glue[diamond+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          2,
+          5
+        ],
+        "pair2": [
+          2,
+          3
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+diamond]|glue[glue[diamond+hex_wheel]+diamond]]@k3",
+        "result_n": 15,
+        "result_m": 29,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 48,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 48,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          6
+        ],
+        "pair2": [
+          1,
+          4
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 48,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          6
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          6
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 40,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          1,
+          4
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[diamond+hex_wheel]+hex_wheel]|glue[glue[diamond+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+diamond]",
+        "partner": "glue[glue[hex_wheel+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+diamond]|glue[glue[hex_wheel+diamond]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+diamond]",
+        "partner": "glue[glue[hex_wheel+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+diamond]|glue[glue[hex_wheel+diamond]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+diamond]",
+        "partner": "glue[glue[hex_wheel+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          3
+        ],
+        "pair2": [
+          1,
+          5
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+diamond]|glue[glue[hex_wheel+diamond]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+diamond]",
+        "partner": "glue[glue[hex_wheel+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          5
+        ],
+        "pair2": [
+          1,
+          3
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+diamond]|glue[glue[hex_wheel+diamond]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 37,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+diamond]",
+        "partner": "glue[glue[hex_wheel+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+diamond]|glue[glue[hex_wheel+diamond]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+diamond]",
+        "partner": "glue[glue[hex_wheel+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+diamond]|glue[glue[hex_wheel+diamond]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+diamond]",
+        "partner": "glue[glue[hex_wheel+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          3
+        ],
+        "pair2": [
+          1,
+          5
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+diamond]|glue[glue[hex_wheel+diamond]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+diamond]",
+        "partner": "glue[glue[hex_wheel+diamond]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          5
+        ],
+        "pair2": [
+          1,
+          3
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+diamond]|glue[glue[hex_wheel+diamond]+diamond]]@k3",
+        "result_n": 19,
+        "result_m": 39,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+hex_wheel]|glue[glue[hex_wheel+diamond]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          11
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+hex_wheel]|glue[glue[hex_wheel+diamond]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 48,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+hex_wheel]|glue[glue[hex_wheel+diamond]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          11
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+hex_wheel]|glue[glue[hex_wheel+diamond]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+hex_wheel]|glue[glue[hex_wheel+diamond]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          11
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+hex_wheel]|glue[glue[hex_wheel+diamond]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 48,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+hex_wheel]|glue[glue[hex_wheel+diamond]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          11
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+diamond]+hex_wheel]|glue[glue[hex_wheel+diamond]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 48,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 50,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          10
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 49,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 50,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          10
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 50,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          3
+        ],
+        "pair2": [
+          1,
+          5
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          3
+        ],
+        "pair2": [
+          1,
+          10
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 48,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+hex_wheel]|glue[glue[hex_wheel+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 25,
+        "result_m": 55,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          10
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+hex_wheel]|glue[glue[hex_wheel+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 25,
+        "result_m": 54,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+hex_wheel]|glue[glue[hex_wheel+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 25,
+        "result_m": 55,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          10
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+hex_wheel]|glue[glue[hex_wheel+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 25,
+        "result_m": 54,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+hex_wheel]|glue[glue[hex_wheel+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 50,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          10
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+hex_wheel]|glue[glue[hex_wheel+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 50,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+hex_wheel]|glue[glue[hex_wheel+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 50,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          10
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+hex_wheel]|glue[glue[hex_wheel+hex_wheel]+hex_wheel]]@k3",
+        "result_n": 23,
+        "result_m": 49,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          3
+        ],
+        "pair2": [
+          1,
+          5
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 48,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          1,
+          3
+        ],
+        "pair2": [
+          1,
+          8
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 23,
+        "result_m": 47,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          9
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 21,
+        "result_m": 44,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          7
+        ],
+        "pair2": [
+          0,
+          10
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 21,
+        "result_m": 43,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          7
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 21,
+        "result_m": 44,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
+      },
+      {
+        "kind": "self",
+        "base": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "partner": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "k": 3,
+        "pair1": [
+          0,
+          9
+        ],
+        "pair2": [
+          0,
+          10
+        ],
+        "result_label": "lift[glue[glue[hex_wheel+hex_wheel]+diamond]|glue[glue[hex_wheel+hex_wheel]+diamond]]@k3",
+        "result_n": 21,
+        "result_m": 44,
+        "result_chi": 4,
+        "theorem_lower_bound_ok": true
       }
     ],
     "forcing_graphs": [
@@ -1945,6 +8179,2606 @@
             ]
           ]
         }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+diamond]",
+        "n": 7,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+diamond]",
+        "n": 7,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+diamond]",
+        "n": 8,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              4,
+              7
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 9,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 11,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+diamond]",
+        "n": 7,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 9,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 8,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+diamond]",
+        "n": 6,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+diamond]",
+        "n": 7,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+diamond]",
+        "n": 6,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 9,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 8,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 7,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+diamond]+hex_wheel]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 13,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              12
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              12
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              10,
+              12
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 11,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 9,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 9,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 13,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              1,
+              12
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              12
+            ],
+            [
+              9,
+              11
+            ],
+            [
+              10,
+              12
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 11,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              1,
+              9
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 11,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              7
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 11,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 12,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              4,
+              9
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              9,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 9,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+diamond]",
+        "n": 8,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 12,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              2,
+              9
+            ],
+            [
+              2,
+              11
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              9
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              9,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[diamond+hex_wheel]+hex_wheel]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              4
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+diamond]+diamond]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+diamond]+diamond]",
+        "n": 10,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "n": 12,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              11
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              9,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+diamond]+hex_wheel]",
+        "n": 12,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              11
+            ],
+            [
+              8,
+              10
+            ],
+            [
+              9,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "n": 12,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "n": 12,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              11
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "n": 13,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              12
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              2,
+              11
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              6,
+              11
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              7,
+              12
+            ],
+            [
+              8,
+              11
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              9,
+              12
+            ],
+            [
+              10,
+              12
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+hex_wheel]+hex_wheel]",
+        "n": 12,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              8
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "n": 12,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              1,
+              11
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              2,
+              10
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              4,
+              10
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              8,
+              11
+            ]
+          ]
+        }
+      },
+      {
+        "graph": "glue[glue[hex_wheel+hex_wheel]+diamond]",
+        "n": 11,
+        "chi": 3,
+        "levels": {
+          "3": [
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              1,
+              5
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        }
       }
     ],
     "level4_forced_equal_pairs": [],
@@ -1954,6 +10788,6 @@
     "best_composition_chi": 4,
     "level4_forcing_found": false,
     "level5_forcing_found": false,
-    "statement": "The forced-equality constraint is implemented and the diamond lift reproduces the Moser spindle (chi=4). All 100 distinct compositions constructed (at most 13 vertices) have chi <= 4. Of the 22 examined for forced relations, 9 are 4-chromatic, and none has a pair forced equal in every 4-colouring, so the lift cannot be iterated to chi=5 inside this family. This is a clean negative for the search, not a proof that no such gadget exists: chi=5 requires a unit-distance gadget with a forced-equal pair at k=4, and no such gadget was found at these sizes. The 509-vertex 5-chromatic record is far outside this budget."
+    "statement": "The forced-equality constraint is implemented and the diamond lift reproduces the Moser spindle (chi=4). All 128 distinct compositions constructed (at most 13 vertices) have chi <= 4; every one was scanned for forced-equal pairs at k=4 and k=5. Of these, 71 are 4-chromatic, and none has a pair forced equal in every 4-colouring, so the lift cannot be iterated to chi=5 inside this family. This is a clean negative for the search, not a proof that no such gadget exists: chi=5 requires a unit-distance gadget with a forced-equal pair at k=4, and no such gadget was found at these sizes. The 509-vertex 5-chromatic record is far outside this budget."
   }
 }
