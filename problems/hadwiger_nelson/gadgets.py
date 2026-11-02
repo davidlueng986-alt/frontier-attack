@@ -1005,6 +1005,7 @@ def main():
 
     search = composition_search()
     best_chi = int(search["best_chi"])
+    n_four = sum(1 for r in search["records"] if r["chi"] == 4)
 
     payload = {
         "generated_by": "problems/hadwiger_nelson/gadgets.py",
@@ -1038,14 +1039,16 @@ def main():
             "statement": (
                 "The forced-equality constraint is implemented and the "
                 "diamond lift reproduces the Moser spindle (chi=4). "
-                "No composition in the searched diamond/wheel family has a "
-                "pair forced equal in every 4-colouring, so the lift cannot "
-                "be iterated to chi=5 inside this family. This is a clean "
-                "negative, not a proof that no such gadget exists: chi=5 "
-                "requires a 4-chromatic unit-distance gadget with a "
-                "forced-equal pair at k=4 (equivalently, a 4-colourable "
-                "gadget whose equality constraint yields a 5-chromatic "
-                "spindle), and no such gadget was found at these sizes."
+                f"Among the {search['graphs_examined']} exact compositions "
+                f"examined (at most {search['max_vertices']} vertices, "
+                f"{n_four} of them 4-chromatic), no pair of vertices is "
+                "forced equal in every 4-colouring, so the lift cannot be "
+                "iterated to chi=5 inside this family. This is a clean "
+                "negative for the search, not a proof that no such gadget "
+                "exists: chi=5 requires a unit-distance gadget with a "
+                "forced-equal pair at k=4, and no such gadget was found at "
+                "these sizes. The 509-vertex 5-chromatic record is far "
+                "outside this budget."
             ),
         },
     }

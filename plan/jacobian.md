@@ -90,6 +90,30 @@ Consequence: `(72,108)` is no longer the only plan. The next region is the
 transcribing and ranking them. J3 (Groebner on the 8-unknown system) doubles as
 a test of Theorem A: a solution would refute it, `[1]` would agree with it.
 
+**Pivot (J4 result).** The list is **24 pairs**, not 27 (the README heading is
+stale; its own table and `corner_atlas.json` say 24). Only **9** have a Newton
+configuration written down; the other 15 are unknown. Ranked by tractability:
+
+| rank | `max deg` | `(deg P, deg Q)` | reduced degrees | config |
+|---|---|---|---|---|
+| 1 | 125 | (75,125) | (15,25) | known |
+| 2 | 135 | (90,135) | (18,27) | known |
+| 3 | 147 | (98,147) | (14,21) | known |
+
+**New primary target: `(75,125)`.** It is the smallest `max_deg` on the list,
+the only case that moves the 125 frontier, and it has infrastructure:
+
+```
+Delta' = {(0,0),(3,0),(4,1),(0,5)}
+N(P) = 3*Delta' = {(0,0),(9,0),(12,3),(0,15)}
+N(Q) = 5*Delta' = {(0,0),(15,0),(20,5),(0,25)}
+[P,Q] = x^2 ; reduced degrees (15,25)
+```
+
+`(72,108)` stays as a cross-check: if J3 returns `[1]` on the vertices-only
+system, that independently supports Theorem A and raises confidence that
+`(75,125)` is the right place to look.
+
 ## 4. Load-bearing decomposition
 
 1. **Write the coefficient system for config 2.** Unknown coefficients on the
