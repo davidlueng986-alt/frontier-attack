@@ -1,0 +1,43 @@
+{
+  "solver": "cadical153",
+  "graph_509": {
+    "path": "research/scratch/509_parts.vtx",
+    "n": 509,
+    "m": 2442,
+    "worst_abs_d2_minus_1": 1.4967482376516296e-49,
+    "pair_cap": 2000,
+    "time_budget_s": 420.0,
+    "k": {
+      "4": {
+        "k": 4,
+        "pairs_total": 129286,
+        "pair_cap": 2000,
+        "pairs_in_scope": 2000,
+        "time_budget_s": 420.0,
+        "pairs_examined": 0,
+        "equal_pairs": [],
+        "equal_pair_count": 0,
+        "capped": false,
+        "cap_reason": "base-unsat",
+        "base": "unsat",
+        "base_seconds": 154.73110510001425,
+        "seconds": 154.7567356999498
+      },
+      "3": {
+        "k": 3,
+        "pairs_total": 129286,
+        "pair_cap": 2000,
+        "time_budget_s": 420.0,
+        "pairs_examined": 0,
+        "equal_pairs": [],
+        "equal_pair_count": 0,
+        "capped": false,
+        "cap_reason": "base-unsat-inferred",
+        "base": "unsat",
+        "base_seconds": 0.0,
+        "seconds": 0.0,
+        "inferred_from_k": 4
+      }
+    }
+  }
+}

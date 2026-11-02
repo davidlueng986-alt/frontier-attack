@@ -29,6 +29,26 @@ If config 1 is excluded by the no-bisector condition, **one configuration
 remains**. That is the entire planar search space under the published
 constraints.
 
+**Normalisation, corrected by J1.** These are the *reduced* polygons:
+`deg P = 24`, `deg Q = 36`. The `(72,108)` pair is these scaled by
+`(m,n) = (3,2)`. The paper's normal form is `[P,Q] = x²`, so the system to
+solve is
+
+```
+det J(P,Q) = x²
+```
+
+not `det J = 1`. On this support `det J` has **no constant term** (P has no
+linear `y`-term and Q has no linear part), so `det J = 1` is infeasible by
+inspection: the `(0,0)` equation reads `-1 = 0`.
+
+Sizes, measured (`runs/jacobian_config2_size.json`):
+
+| support | unknowns | equations | verdict |
+|---|---|---|---|
+| full lattice (25 + 47 points) | 72 | 92 | overdetermined by 22 |
+| vertices only | 8 | 7 | small enough for a Groebner basis |
+
 ## 2. Terminal check
 
 ```
@@ -75,18 +95,21 @@ Item 1 is the whole job. Items 2–4 are standard.
 
 ## 5. Admissible actions
 
-1. **Build the config-2 coefficient system.** Five vertices in `N(P)`, four in
-   `N(Q)`; the supports are fixed, so this is mechanical. Output: a polynomial
-   system in `< 30` unknowns.
-2. **Check the 2026 repo `wstrinz/plane-jacobian-72-108`**, which claims a
-   conditional structural exclusion of both configurations. If that claim is
-   correct and the argument survives review, this branch is closed and the
-   correct output is `NO_ADMISSIBLE_ACTION` for the whole planar route.
-3. **Only after 1–2:** solve the system, reject triangular solutions, test
-   collisions.
+1. ~~Build the config-2 coefficient system.~~ **Done.** 72 unknowns / 92
+   equations on the full lattice; 8 / 7 on the vertices. Constructed by
+   `problems/jacobian/config2_system.py`, reconstructed and checked exactly.
+2. **Solve the vertices-only system.** 8 quadratic equations, 8 unknowns. A
+   Groebner basis either returns `[1]` (no solution — decisive) or a variety.
+   This is the only part small enough to settle by elimination.
+3. **Decide the full-lattice system without eliminating it.** The top-degree
+   block is determinantal: the leading forms of `P` and `Q` must share a factor,
+   or the top equations are inconsistent. That check is cheap and settles
+   whether the generic support can work at all.
+4. **Check `wstrinz/plane-jacobian-72-108`** (slot J2). If both configurations
+   are excluded and the argument holds, this whole branch closes.
+5. Only after 2–4: collision search and exact verification.
 
-There is no broad sweep. There is no degree-105–110 enumeration. That work was
-done and it returned "two objects".
+There is no broad sweep. There is no degree-105–110 enumeration.
 
 ## 6. Kill criteria
 

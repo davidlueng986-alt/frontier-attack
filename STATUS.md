@@ -70,8 +70,9 @@ returns — the pipeline does not wait for the slowest member.
 
 | slot | problem | task | output | gate |
 |---|---|---|---|---|
-| J1 | Jacobian | write the config-2 coefficient system, size it | `problems/jacobian/config2_system.py` | runs, prints unknowns/equations |
+| J1 ✅ | Jacobian | config-2 system sized | `problems/jacobian/config2_system.py` | 72 unk / 92 eq (full), 8/7 (vertices) |
 | J2 | Jacobian | audit `wstrinz/plane-jacobian-72-108` | `research/jacobian-wstrinz-audit.md` | states exclude yes/no with file:line |
+| J3 | Jacobian | Groebner on the 8-unknown vertices system | `problems/jacobian/solve_vertices.py` | `[1]` or a variety, ≤700 s |
 | H1 | HN | equality-gadget class + composition + search | `problems/hadwiger_nelson/gadgets.py` | reproduces Moser spindle from two diamonds |
 | H2 | HN | SAT relation prober (equal / different / free in k-colourings) | `problems/hadwiger_nelson/relation.py` | agrees with brute force on ≤10-vertex graphs |
 | B1 | BSD | certify the AFE ladder for k ≤ 1 | `problems/bsd/certified_rank.py` | interval bound contains the known value |

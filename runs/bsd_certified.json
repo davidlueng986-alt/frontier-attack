@@ -1,0 +1,517 @@
+{
+  "script": "problems/bsd/certified_rank.py",
+  "generated_utc": "2026-11-02T11:20:13.961761+00:00",
+  "method": "smoothed approximate functional equation with an explicit incomplete-gamma truncation bound, two-precision rounding estimate, and Richardson finite-difference derivatives",
+  "rigour": "numerical with heuristic bound",
+  "rigour_notes": {
+    "tail": "explicit; rigorous given the AFE identity, modularity, and |a_n| <= d(n) sqrt(n).  |R_M(s)| <= (4 sqrt(N)/pi) exp(-a(M+1))/(1-exp(-a)), a = 2 pi/sqrt(N), for 0 <= Re(s) <= 2.",
+    "rounding": "heuristic: two-precision agreement (dps 50 vs 70) plus an a priori condition-number estimate; mpmath does not provide interval arithmetic",
+    "derivative": "heuristic: central differences at h, h/2, h/4 with two Richardson extrapolations; the reported truncation bound is 4*|R2 - R1(h/2)|",
+    "root_number": "numerical: matched to the absolutely convergent Dirichlet series at s=3; not obtained from local root-number theory"
+  },
+  "assumptions": [
+    "the conductor N is supplied, not computed from the model",
+    "bad primes are multiplicative with |a_p| = 1 (true for these three prime-conductor curves; checked via the discriminant)",
+    "the AFE identity is used as a standard theorem (modularity + functional equation); it is not re-proved here"
+  ],
+  "precision": {
+    "dps_low": 50,
+    "dps_high": 70,
+    "dps_ladder": 45,
+    "dps_tail_check": 60
+  },
+  "curves": [
+    {
+      "curve": "11a1",
+      "ainvs": [
+        0,
+        -1,
+        1,
+        -10,
+        -20
+      ],
+      "conductor": 11,
+      "discriminant": "-161051",
+      "discriminant_factorisation": {
+        "11": 5
+      },
+      "lmfdb_label": "11.a1",
+      "lmfdb_analytic_rank": 0,
+      "lmfdb_special_name": "L(1)",
+      "lmfdb_special_value": "0.25384186085591068433775892335",
+      "root_number": 1,
+      "root_number_diagnostics": {
+        "w": 1,
+        "dirichlet_target": "0.7527231365399952942083262",
+        "afe_plus": "0.7527231473890513437891023",
+        "afe_minus": "0.5178868098233329142318994",
+        "err_selected": "1.0849056e-8",
+        "err_other": "0.23483633",
+        "gap": "0.23483634",
+        "margin": "21645785.0",
+        "M_afe": 200,
+        "M_dir": 2000
+      },
+      "nmax_afe": 200,
+      "nmax_built": 2000,
+      "k_est": 0,
+      "k_est_ladder_slope": 0.0032429697167129304,
+      "k_est_ladder_values": [
+        "0.284790180257442433",
+        "0.26311232822936522",
+        "0.256930042382724208",
+        "0.254768087419920003",
+        "0.254150580681230054",
+        "0.253934474434633502"
+      ],
+      "k_first_nonzero_derivative": 0,
+      "special_value_name": "L(1)",
+      "special_value": "0.25384186085591068433775892335090946104389844836612",
+      "interval": {
+        "lo": "0.253841860855910684337758923350909461043898448366",
+        "hi": "0.25384186085591068433775892335090946104389844836624"
+      },
+      "bound": "1.1859313e-49",
+      "certified": true,
+      "certification_basis": "L(1) interval excludes 0, hence ord = 0.",
+      "order_candidates": [
+        0
+      ],
+      "derivatives": {
+        "0": {
+          "value": "0.2538418608559106843377589233509094610439",
+          "bound": "1.1859313e-49",
+          "interval": [
+            "0.2538418608559106843377589233509094610439",
+            "0.2538418608559106843377589233509094610439"
+          ],
+          "contains_zero": false,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "4.1368949e-165",
+            "rounding": "1.1859313e-49",
+            "rounding_empirical": "1.1859313e-49",
+            "rounding_apriori": "6.9772328e-69",
+            "derivative_truncation": "0.0"
+          }
+        },
+        "1": {
+          "value": "0.3087085339631725490587912873888633790537",
+          "bound": "7.682618e-12",
+          "interval": [
+            "0.3087085339554899310189320703921378304438",
+            "0.3087085339708551670986505043855889276635"
+          ],
+          "contains_zero": false,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "3.3095159e-162",
+            "rounding": "1.7836846e-47",
+            "rounding_empirical": "1.7836846e-47",
+            "rounding_apriori": "1.4463778e-65",
+            "derivative_truncation": "7.682618e-12"
+          }
+        },
+        "2": {
+          "value": "0.02265610843584034505782657537600803173214",
+          "bound": "1.9694004e-11",
+          "interval": [
+            "0.02265610841614634118315331967702545620958",
+            "0.02265610845553434893249983107499060725469"
+          ],
+          "contains_zero": false,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "2.6476127e-159",
+            "rounding": "7.0916279e-45",
+            "rounding_empirical": "7.0916279e-45",
+            "rounding_apriori": "1.1571023e-62",
+            "derivative_truncation": "1.9694004e-11"
+          }
+        },
+        "3": {
+          "value": "-0.2202412657226125457248318061489238687971",
+          "bound": "8.9896567e-11",
+          "interval": [
+            "-0.2202412658125091128796148165071263759653",
+            "-0.2202412656327159785700487957907213616288"
+          ],
+          "contains_zero": false,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "1.0590451e-156",
+            "rounding": "2.4140665e-42",
+            "rounding_empirical": "2.4140665e-42",
+            "rounding_apriori": "4.6284091e-60",
+            "derivative_truncation": "8.9896567e-11"
+          }
+        }
+      },
+      "tail_checks": [
+        {
+          "M": 10,
+          "L_M": "0.26930107476660797104",
+          "abs_diff": "1.3928545e-10",
+          "bound": "8.8953558e-9",
+          "bound_over_diff": "63.8642",
+          "meaningful": true
+        },
+        {
+          "M": 20,
+          "L_M": "0.26930107490589342382",
+          "abs_diff": "9.0052775e-19",
+          "bound": "5.2682254e-17",
+          "bound_over_diff": "58.5015",
+          "meaningful": true
+        },
+        {
+          "M": 40,
+          "L_M": "0.26930107490589342472",
+          "abs_diff": "8.3388795e-35",
+          "bound": "1.8478486e-33",
+          "bound_over_diff": "22.1594",
+          "meaningful": true
+        }
+      ],
+      "timings_s": {
+        "point_count": 0.008918899926356971,
+        "build_an": 0.0008892000187188387,
+        "root_number": 0.03484790003858507,
+        "ladder": 0.8450467999791726,
+        "derivatives_dps_lo": 2.3988550000358373,
+        "derivatives_dps_hi": 6.032664999947883
+      }
+    },
+    {
+      "curve": "37a1",
+      "ainvs": [
+        0,
+        0,
+        1,
+        -1,
+        0
+      ],
+      "conductor": 37,
+      "discriminant": "37",
+      "discriminant_factorisation": {
+        "37": 1
+      },
+      "lmfdb_label": "37.a1",
+      "lmfdb_analytic_rank": 1,
+      "lmfdb_special_name": "L'(1)",
+      "lmfdb_special_value": "0.30599977383405230182048368332",
+      "root_number": -1,
+      "root_number_diagnostics": {
+        "w": -1,
+        "dirichlet_target": "0.6834343204771682202477916",
+        "afe_plus": "0.7380927640846748876400498",
+        "afe_minus": "0.6834342901105152956599508",
+        "err_selected": "3.0366653e-8",
+        "err_other": "0.054658444",
+        "gap": "0.054658474",
+        "margin": "1799950.6",
+        "M_afe": 200,
+        "M_dir": 2000
+      },
+      "nmax_afe": 200,
+      "nmax_built": 2000,
+      "k_est": 1,
+      "k_est_ladder_slope": 1.0016181325835298,
+      "k_est_ladder_values": [
+        "0.0323304490215185329",
+        "0.00934420635277197266",
+        "0.00307851588951847927",
+        "0.000919674559617215238",
+        "0.000306186184855982597",
+        "0.0000918167177587308305"
+      ],
+      "k_first_nonzero_derivative": 1,
+      "special_value_name": "L'(1)",
+      "special_value": "0.30599977383405556494817978509675518048952732489875",
+      "interval": {
+        "lo": "0.30599977364808325799975565216529808429302793659063",
+        "hi": "0.30599977402002787189660391802821227668602671320687"
+      },
+      "bound": "1.8597231e-10",
+      "certified": true,
+      "certification_basis": "L(1) = 0 exactly from the functional equation with w = -1; the interval for L^(1)(1) excludes 0, hence ord = 1.",
+      "order_candidates": [
+        1
+      ],
+      "derivatives": {
+        "0": {
+          "value": "0.0",
+          "bound": "2.1611737e-68",
+          "interval": [
+            "-2.161173733421697598079519775262761410379e-68",
+            "2.161173733421697598079519775262761410379e-68"
+          ],
+          "contains_zero": true,
+          "exact_zero": true,
+          "bound_components": {
+            "tail": "8.5577499e-90",
+            "rounding": "2.1611737e-68",
+            "rounding_empirical": "0.0",
+            "rounding_apriori": "2.1611737e-68",
+            "derivative_truncation": "0.0"
+          }
+        },
+        "1": {
+          "value": "0.3059997738340555649481797850967551804895",
+          "bound": "1.8597231e-10",
+          "interval": [
+            "0.305999773648083257999755652165298084293",
+            "0.305999774020027871896603918028212276686"
+          ],
+          "contains_zero": false,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "6.8461999e-87",
+            "rounding": "6.144042e-48",
+            "rounding_empirical": "6.144042e-48",
+            "rounding_apriori": "4.3996962e-65",
+            "derivative_truncation": "1.8597231e-10"
+          }
+        },
+        "2": {
+          "value": "0.3730955945363235678034469885701488071877",
+          "bound": "2.3631429e-10",
+          "interval": [
+            "0.3730955943000092781632637108810983925912",
+            "0.3730955947726378574436302662591992217843"
+          ],
+          "contains_zero": false,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "5.4769599e-84",
+            "rounding": "2.9455334e-45",
+            "rounding_empirical": "2.9455334e-45",
+            "rounding_apriori": "3.519757e-62",
+            "derivative_truncation": "2.3631429e-10"
+          }
+        },
+        "3": {
+          "value": "-0.8207487785831449206798017884234367552877",
+          "bound": "1.1134871e-9",
+          "interval": [
+            "-0.8207487796966319999397154507836328221948",
+            "-0.8207487774696578414198881260632406883806"
+          ],
+          "contains_zero": false,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "2.190784e-81",
+            "rounding": "1.142054e-41",
+            "rounding_empirical": "1.142054e-41",
+            "rounding_apriori": "1.4079028e-59",
+            "derivative_truncation": "1.1134871e-9"
+          }
+        }
+      },
+      "tail_checks": [
+        {
+          "M": 25,
+          "L_M": "0.015749365547550487597",
+          "abs_diff": "2.7187695e-16",
+          "bound": "2.7722445e-11",
+          "bound_over_diff": "101967.0",
+          "meaningful": true
+        },
+        {
+          "M": 50,
+          "L_M": "0.015749365547550759474",
+          "abs_diff": "1.9586162e-28",
+          "bound": "1.6893786e-22",
+          "bound_over_diff": "862537.0",
+          "meaningful": true
+        },
+        {
+          "M": 100,
+          "L_M": "0.015749365547550759474",
+          "abs_diff": "2.4004514e-50",
+          "bound": "6.2736156e-45",
+          "bound_over_diff": "261351.0",
+          "meaningful": true
+        }
+      ],
+      "timings_s": {
+        "point_count": 0.012324800016358495,
+        "build_an": 0.0007657000096514821,
+        "root_number": 0.050680399988777936,
+        "ladder": 1.726047100033611,
+        "derivatives_dps_lo": 4.717250400106423,
+        "derivatives_dps_hi": 10.512995299999602
+      }
+    },
+    {
+      "curve": "5077a1",
+      "ainvs": [
+        0,
+        0,
+        1,
+        -7,
+        6
+      ],
+      "conductor": 5077,
+      "discriminant": "5077",
+      "discriminant_factorisation": {
+        "5077": 1
+      },
+      "lmfdb_label": "5077.a1",
+      "lmfdb_analytic_rank": 3,
+      "lmfdb_special_name": "L'''(1)/3!",
+      "lmfdb_special_value": "1.7318499001193006897919750851",
+      "root_number": -1,
+      "root_number_diagnostics": {
+        "w": -1,
+        "dirichlet_target": "0.663855755398562894211106",
+        "afe_plus": "0.6634761186636999823631753",
+        "afe_minus": "0.6638557604598125793076127",
+        "err_selected": "5.0612497e-9",
+        "err_other": "0.00037963673",
+        "gap": "0.0003796418",
+        "margin": "75009.498",
+        "M_afe": 955,
+        "M_dir": 2000
+      },
+      "nmax_afe": 955,
+      "nmax_built": 5077,
+      "k_est": 3,
+      "k_est_ladder_slope": 2.9950333042736452,
+      "k_est_ladder_values": [
+        "0.00143832907587045364",
+        "0.0000442305769637654025",
+        "1.70007001371434172e-6",
+        "4.65009487670316957e-8",
+        "1.72864679379446699e-9",
+        "4.67339862715756539e-11"
+      ],
+      "k_first_nonzero_derivative": 3,
+      "special_value_name": "L'''(1)/3!",
+      "special_value": "1.7318499000904426939287463736841745261915296799767",
+      "interval": {
+        "lo": "1.7318498290160638304088714906737346474374030311741",
+        "hi": "1.7318499711648215574486212566946144049456563287794"
+      },
+      "bound": "7.1074379e-8",
+      "certified": false,
+      "certification_basis": "NOT certified: ord >= 3 requires L(1) = L'(1) = L''(1) = 0.  Only L(1) = 0 is exact (w = -1).  The AFE intervals for L'(1) and L''(1) contain 0, which is consistent with vanishing but is not a proof of it.  A numerical error bound cannot prove an exact zero: any correct interval around a true zero must contain zero.  Hence only ord <= 3 (from L'''(1) != 0) and odd order (from w = -1) are established, i.e. ord is in {1, 3}.",
+      "order_candidates": [
+        1,
+        3
+      ],
+      "derivatives": {
+        "0": {
+          "value": "0.0",
+          "bound": "2.4486783e-35",
+          "interval": [
+            "-2.448678335058520393071472180294151783444e-35",
+            "2.448678335058520393071472180294151783444e-35"
+          ],
+          "contains_zero": true,
+          "exact_zero": true,
+          "bound_components": {
+            "tail": "2.4486783e-35",
+            "rounding": "2.7092323e-67",
+            "rounding_empirical": "0.0",
+            "rounding_apriori": "2.7092323e-67",
+            "derivative_truncation": "0.0"
+          }
+        },
+        "1": {
+          "value": "-0.000000000001248177956433056373195962186913554146685",
+          "bound": "2.7994372e-8",
+          "interval": [
+            "-0.00000002799562014255955738846113841080601206075",
+            "0.00000002799312378664669127571474648643218495245"
+          ],
+          "contains_zero": true,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "1.9589427e-32",
+            "rounding": "1.4399867e-46",
+            "rounding_empirical": "1.4399867e-46",
+            "rounding_apriori": "5.7283368e-64",
+            "derivative_truncation": "2.7994372e-8"
+          }
+        },
+        "2": {
+          "value": "0.000000000004627414535730658980495081527688384752277",
+          "bound": "1.6526043e-8",
+          "interval": [
+            "-0.00000001652141593641471432848741656441206045035",
+            "0.00000001653067076548617564644840672746743721985"
+          ],
+          "contains_zero": true,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "1.5671541e-29",
+            "rounding": "1.0737724e-44",
+            "rounding_empirical": "1.0737724e-44",
+            "rounding_apriori": "4.5826694e-61",
+            "derivative_truncation": "1.6526043e-8"
+          }
+        },
+        "3": {
+          "value": "10.39109940054265616357247824210504715715",
+          "bound": "4.2644627e-7",
+          "interval": [
+            "10.39109897409638298245322894404240788462",
+            "10.39109982698892934469172754016768642967"
+          ],
+          "contains_zero": false,
+          "exact_zero": false,
+          "bound_components": {
+            "tail": "6.2686165e-27",
+            "rounding": "5.0643367e-41",
+            "rounding_empirical": "5.0643367e-41",
+            "rounding_apriori": "1.8330678e-58",
+            "derivative_truncation": "4.2644627e-7"
+          }
+        }
+      },
+      "tail_checks": [
+        {
+          "M": 119,
+          "L_M": "0.000197187163764997338",
+          "abs_diff": "1.1837639e-7",
+          "bound": "0.002188045",
+          "bound_over_diff": "18483.8",
+          "meaningful": true
+        },
+        {
+          "M": 238,
+          "L_M": "0.00019730554015760453127",
+          "abs_diff": "1.7696545e-12",
+          "bound": "6.0639677e-8",
+          "bound_over_diff": "34266.4",
+          "meaningful": true
+        },
+        {
+          "M": 477,
+          "L_M": "0.00019730553838795005931",
+          "abs_diff": "3.4639925e-22",
+          "bound": "4.2644349e-17",
+          "bound_over_diff": "123108.0",
+          "meaningful": true
+        },
+        {
+          "M": 955,
+          "L_M": "0.00019730553838795005966",
+          "abs_diff": "2.5553285e-41",
+          "bound": "2.1089714e-35",
+          "bound_over_diff": "825323.0",
+          "meaningful": true
+        }
+      ],
+      "timings_s": {
+        "point_count": 0.059802799951285124,
+        "build_an": 0.0027247000252828,
+        "root_number": 0.2047861999599263,
+        "ladder": 9.7199985999614,
+        "derivatives_dps_lo": 21.334878400084563,
+        "derivatives_dps_hi": 29.36375539994333
+      }
+    }
+  ]
+}
