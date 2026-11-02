@@ -134,8 +134,7 @@ a different degree: the dimension-3 case is settled (negatively), the plane case
 Every endomorphism of the Weyl algebra A_n(C) is an automorphism.
 ```
 
-- **Open in every dimension**, including n = 1? No: `A_1` is settled (every endomorphism is
-  an automorphism, by a theorem of Dixmier/Makar-Limanov). For n ≥ 2 it is open.
+- **Open for n ≥ 2**; the first Weyl algebra `A_1` is the classical settled case.
 - **Equivalent to JC(n)** (Tsuchimoto; Belov-Kanel–Kontsevich).
 - **Evidence**: the conjecture holds for the first Weyl algebra and for some classes of
   endomorphisms.
@@ -150,7 +149,8 @@ settled, Dixmier(2) follows; the converse is also true.
 ## 8. The Mathieu–Zhao conjecture
 
 ```
-Every Mathieu–Zhao subspace of C[x_1,...,x_n] is a Mathieu subspace.
+The image of the substitution map f -> f(F) is a Mathieu-Zhao subspace
+for every polynomial map F with F(0) = 0.
 ```
 
 - **Open** for the relevant class of maps.
@@ -160,7 +160,8 @@ Every Mathieu–Zhao subspace of C[x_1,...,x_n] is a Mathieu subspace.
 
 **Why it is hard.** It is a statement about the image of a polynomial map, not about its
 Jacobian; the implication from JC is one-directional. A counterexample to Mathieu–Zhao
-would not refute JC.
+would not refute JC. The precise formulation and the known cases are in
+`doi:10.1007/978-3-030-42136-6_14`.
 
 **Relation to our target.** The widest currently open statement that JC implies. It is a
 candidate for a "weaker theorem that might be provable first", not a route to the terminal

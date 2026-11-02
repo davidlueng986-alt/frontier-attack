@@ -51,8 +51,9 @@ dimension range.
 condition, proved by partitioning the tubes according to the convex sets that contain them.
 The result is a quantitative lower bound on the union volume, then a limiting argument.
 
-**Why it worked.** The 3D case has enough structure for the tube partition to close; the
-polynomial method and the hairbrush argument supply the two ends of the estimate.
+**Why it worked.** The 3D case has enough structure for the tube partition to close: the
+proof reduces to a volume estimate for unions of tubes that avoid a common convex set, then
+iterates that estimate over scales.
 
 **What does not transfer.** There is no colouring content. The technique is a model for
 "prove a lower bound by a quantitative incidence estimate", which is the same shape as the

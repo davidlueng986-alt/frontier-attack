@@ -47,9 +47,9 @@ not in the proof term.
 ## 3. Density and tiling bounds
 
 **What it does.** Colours a large fraction of the plane with k colours, leaving an
-uncoloured region of density δ. Any k-chromatic graph must then have at least `1/δ` edges
-or vertices. This converts a geometric covering into a lower bound on the order of a
-k-chromatic graph.
+uncoloured region of density δ. Any k-chromatic graph must then have at least `1/δ` edges;
+the Erdős relation `e < v^{3/2}` converts that into a lower bound on the order. This turns
+a geometric covering into a statement about how large a k-chromatic graph must be.
 
 **Worked pointers.**
 
@@ -78,9 +78,10 @@ exactly 1. No floating point enters the decision.
 - `arXiv:1805.00157`: the G40/G79 construction is given in `ℚ[√2, √3]`-style coordinates,
   which is why the 8/3 and √(11/3) distances are exact.
 
-**Failure mode.** A near-miss is not a unit distance. The 509 graph's worst error of
-`1.5e-49` is a floating-point artefact of a symbolic computation; a graph with
-`|d² − 1| = 1e-12` is not a unit-distance graph, and no amount of SAT will fix it.
+**Failure mode.** A near-miss is not a unit distance. The 509 graph's worst residual
+`|d² − 1| = 1.5e-49` is evidence at the working precision, not a proof; only an exact or
+interval argument closes the gap. A graph with `|d² − 1| = 1e-12` is not a unit-distance
+graph, and no amount of SAT will fix it.
 
 ## 5. Newton polygon and the edge cascade
 

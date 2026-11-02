@@ -4,3 +4,4 @@ STAGE 3 2026-11-02T20:18:26.2425360+08:00 sample: 15 LMFDB curves, conductor [50
 STAGE 4 2026-11-02T20:18:26.2425360+08:00 certify: 15/15 certified at dps 40; k == LMFDB analytic_rank for all 15; k=0 bounds ~1.18e-8, k=1 bounds 1.1e-5..1.34e-5; intervals all exclude 0; no failures.
 STAGE 5 2026-11-02T20:18:26.2425360+08:00 parity: rank mod 2 == k mod 2 for all 15; w=a_N exact and numerical s=3 w agrees on all 15; 0 parity mismatches.
 STAGE 6 2026-11-02T20:18:26.2425360+08:00 output: runs/bsd_stress.json written; verdict COVERAGE EXTENDED: 15 curves certified, 0 anomalies; total 494.3s; special-value audit 15/15 inside intervals; doubled-nmax stability checks on 500719.a1 and 500921.a1 overlap with center shifts 2.6e-12 and 8.9e-15.
+ACCEPTANCE 2026-11-02T20:26:41.2887787+08:00 python problems/bsd/scan_certified.py exited 0 in 345.1s; certified_count=15 anomaly_count=0 uncertified_count=0; special-value audit 15/15; verdict COVERAGE EXTENDED.

@@ -116,8 +116,8 @@ LOG_PATH = ROOT / "runs" / "cascade75.log"
 TARGET = (2, 0)
 MAX_CASCADE_EDGES = 3
 
-TOP_GB_Q_CAP_S = 90.0       # direct Groebner over Q, killed at this cap
-TOP_GB_MODP_CAP_S = 60.0    # direct Groebner over GF(p), killed at this cap
+TOP_GB_Q_CAP_S = 180.0      # direct Groebner over Q, killed at this cap
+TOP_GB_MODP_CAP_S = 120.0   # direct Groebner over GF(p), killed at this cap
 EDGE_GB_CAP_S = 120.0       # per-descent-edge Groebner cap
 MODULUS = 32003
 
@@ -786,14 +786,20 @@ def analyse_top_edge(slot, next_slot, cap_q, cap_modp):
         "edge_points_Q": pts_q,
         "base_point_P": pts_p[0],
         "base_point_Q": pts_q[0],
-        "t_monomial_P": "x^%d*y^%d" % slot["edge_P"]["direction"],
+        "t_monomial_P": "x^%d*y^%d" % tuple(slot["edge_P"]["direction"]),
+        "t_monomial_Q": "x^%d*y^%d" % tuple(slot["edge_Q"]["direction"]),
         "leading_form": (
             "det J(P_e,Q_e) = y^38 * (25 p'(u) q(u) - 15 p(u) q'(u)), "
             "u = x/y, p = sum a_(i,15-i) u^i, q = sum b_(j,25-j) u^j; "
             "equivalently x^12*y^3*f(y/x) and x^20*y^5*g(y/x)"),
+        "leading_form_edge_parameter": edge_leading_form_string(slot),
         "leading_form_identity": certificate_leading_form(slot),
         "wronskian": certificate_wronskian(),
         "condition": "25 p' q - 15 p q' = 0 identically  (31 equations)",
+        "why_31_and_not_32": (
+            "25 p' q - 15 p q' has degree at most 31, but its top "
+            "coefficient is 25*12 - 15*20 = 0, so the identity has 31 "
+            "coefficients, not 32"),
     }
 
     # strict chart: normalise the two vertex coefficients that the top edge
@@ -863,12 +869,27 @@ def analyse_top_edge(slot, next_slot, cap_q, cap_modp):
         if any(d is not None for d in dims):
             exercised = [d for d in dims if d is not None]
             if any(d != dim_normalized for d in exercised):
-                raise AssertionError(
-                    "computed dimension %s disagrees with the structure "
-                    "theorem %d" % (exercised, dim_normalized))
-            dimension_method = (
-                "Groebner basis (strict chart) confirms the structure "
-                "theorem: %s" % dims)
+                payload["groebner_disagreement"] = {
+                    "groebner_dimensions": exercised,
+                    "structure_theorem": int(dim_normalized),
+                    "note": (
+                        "a Groebner dimension different from the structure "
+                        "theorem is reported, not hidden; the headline "
+                        "top_dim stays at the structure-theorem value and the "
+                        "disagreement needs to be resolved before the "
+                        "cascade is trusted"),
+                }
+                dimension_method = (
+                    "structure theorem (Wronskian) = %d; computed Groebner "
+                    "dimensions %s disagree -- see groebner_disagreement"
+                    % (dim_normalized, exercised))
+            else:
+                dimension_method = (
+                    "Groebner basis (strict chart) confirms the structure "
+                    "theorem: %s; over GF(%d) the Groebner dimension is an "
+                    "upper bound for characteristic 0, and the explicit "
+                    "family gives the matching lower bound"
+                    % (dims, MODULUS))
         else:
             dimension_method = "structure theorem (Groebner dimension search capped)"
     else:
@@ -881,21 +902,51 @@ def analyse_top_edge(slot, next_slot, cap_q, cap_modp):
     payload["dimension_literal_full_system"] = int(
         max(dim_normalized + 2, degenerate["dimension"]))
     payload["dimension_method"] = dimension_method
+    payload["dimension_argument"] = {
+        "statement": (
+            "in the strict chart the top-edge solution set is exactly "
+            "{(h^3, h^5) : h monic of degree 4}, of dimension 4"),
+        "steps": [
+            "LP_w(det J) = det J(P_e,Q_e) = y^38 (25 p' q - 15 p q'), "
+            "so the 31 coefficient equations are equivalent to the identity "
+            "25 p' q - 15 p q' = 0",
+            "the exact identity W(p^5,q^3) = p^4 q^2 (5 p' q - 3 p q') "
+            "turns it into d/du (p^5/q^3) = 0",
+            "hence p^5 = C q^3 as polynomials, and unique factorisation "
+            "gives p = c1 h^3, q = c2 h^5 with deg h <= 4",
+            "a_(12,3) = b_(20,5) = 1 forces c1 = c2 = 1 and h monic of "
+            "degree 4, leaving the 4 coefficients of h",
+        ],
+        "lower_bound": "the 4-parameter family is substituted into all 31 "
+                       "equations exactly (family_certificate)",
+        "upper_bound": "the Wronskian identity + unique factorisation "
+                       "(wronskian certificate)",
+        "literal_variety": (
+            "with no chart and no non-degeneracy the variety also contains "
+            "{p = 0} (21 free q-coefficients), so its dimension is 21; "
+            "that component means the top edge form of P vanishes, i.e. "
+            "N(P) is strictly smaller than 3*Delta', and is excluded by the "
+            "Newton-polygon hypothesis"),
+    }
     payload["power_structure"] = {
         "g": int(g),
         "claim": "det J(P_e,Q_e) = 0  =>  P_e = c1 G^(d_P/g), "
-                 "Q_e = c2 G^(d_Q/g), deg G = g",
+                 "Q_e = c2 G^(d_Q/g) with G a form of weighted degree g",
         "parameter_count": (
-            "deg G = %d gives %d coefficients; the shape P_e = x^p0 y^q0 f(t) "
-            "forces G = x^(p0/(d_P/g)) y^(q0/(d_P/g)) k(t) with k monic of "
-            "degree %d, so %d free parameters for G; plus c1, c2 gives %d, "
-            "and fixing the two vertex coefficients leaves %d"
-            % (g, g + 1, dim_normalized, dim_normalized,
-               dim_normalized + 2, dim_normalized)),
+            "G is a form of weighted degree g = %d.  The fixed shape of the "
+            "edge forms (P_e = x^p0 y^q0 f(t), Q_e = x^r0 y^s0 g(t), "
+            "t = x^u y^v) forces G = x^(p0*g/d_P) y^(q0*g/d_P) k(t) with k a "
+            "monic polynomial of degree %d, i.e. %d free parameters.  The two "
+            "scalars c1, c2 add 2, so the scaled family has dimension %d; "
+            "normalising the two shared vertex coefficients to 1 leaves %d."
+            % (g, dim_normalized, dim_normalized, dim_normalized + 2,
+               dim_normalized)),
         "wronskian_reduction": (
-            "in the edge parameter t: d_Q f g' - d_P f' g = 0, i.e. "
-            "(f^(d_Q/g))' (g^(d_P/g)) - ... = 0, whose solutions are "
-            "f = c k^(d_P/g), g = c' k^(d_Q/g) by the same ODE argument"),
+            "in the edge parameter t the condition is d_Q f g' - d_P f' g = 0 "
+            "up to the monomial factor; dividing by f g gives "
+            "d_Q g'/g - d_P f'/f = 0, i.e. (f^(d_Q) / g^(d_P))' = 0, hence "
+            "f^(d_Q) = C g^(d_P); with g0 = gcd(d_P,d_Q) this is "
+            "f = c k^(d_P/g0), g = c' k^(d_Q/g0)"),
     }
     payload["family_certificate"] = family
     payload["degenerate_component"] = degenerate
@@ -1098,6 +1149,95 @@ def run_descent(decomp, top_payload, cap, fixed_symbols=None):
 # report
 # --------------------------------------------------------------------------
 
+def edge_leading_form_string(slot):
+    """The concrete identity det J(P_e,Q_e) = monomial * W(f,g) on this edge."""
+    p0, q0 = slot["points_P"][0]
+    r0, s0 = slot["points_Q"][0]
+    u, v = slot["edge_P"]["direction"]
+    a = p0 * s0 - q0 * r0
+    b = p0 * v - q0 * u
+    c = u * s0 - v * r0
+    if a == 0:
+        factor = "x^%d*y^%d" % (p0 + r0 - 1 + u, q0 + s0 - 1 + v)
+        coeffs = [(b, "f*g'"), (c, "f'*g")]
+    else:
+        factor = "x^%d*y^%d" % (p0 + r0 - 1, q0 + s0 - 1)
+        coeffs = [(a, "f*g"), (b, "t*f*g'"), (c, "t*f'*g")]
+    parts = []
+    for coef, body in coeffs:
+        if not coef:
+            continue
+        mag = abs(coef)
+        core = body if mag == 1 else "%d*%s" % (mag, body)
+        if not parts:
+            parts.append(core if coef > 0 else "-" + core)
+        else:
+            parts.append(("+ " if coef > 0 else "- ") + core)
+    inner = " ".join(parts) if parts else "0"
+    return ("det J(P_e,Q_e) = %s * [%s], t = x^%d*y^%d, f = sum a_k t^k "
+            "with k = 0 at %s, g = sum b_k t^k"
+            % (factor, inner, u, v, list(slot["points_P"][0])))
+
+
+def _report_checks(stage1, top_payload, descent):
+    """A compact list of the internal consistency checks that were run."""
+    bc_p = stage1["boundary_check_NP"]
+    bc_q = stage1["boundary_check_NQ"]
+    checks = {
+        "four_edges_per_polygon": (
+            stage1["num_edges_NP"] == 4 and stage1["num_edges_NQ"] == 4),
+        "same_normal_fan": (
+            sorted(tuple(s["normal"]) for s in stage1["edge_slots"]) ==
+            sorted(tuple(e["normal"]) for e in stage1["edges_NP"])),
+        "P_boundary_covers_all_boundary_points": (
+            bc_p["distinct_boundary_points"] + bc_p["interior_points"] ==
+            stage1["lattice_points_NP"]),
+        "Q_boundary_covers_all_boundary_points": (
+            bc_q["distinct_boundary_points"] + bc_q["interior_points"] ==
+            stage1["lattice_points_NQ"]),
+        "P_edge_incidences_are_boundary_plus_vertices": (
+            bc_p["edge_point_incidences"] ==
+            bc_p["distinct_boundary_points"] + 4),
+        "Q_edge_incidences_are_boundary_plus_vertices": (
+            bc_q["edge_point_incidences"] ==
+            bc_q["distinct_boundary_points"] + 4),
+        "top_edge_is_the_highest_filtration_degree": (
+            top_payload["filtration_degree"] == max(
+                s["filtration_degree"] for s in stage1["edge_slots"])),
+        "top_edge_normal_is_1_1": top_payload["slot_normal"] == [1, 1],
+        "top_edge_has_34_unknowns_and_31_equations": (
+            top_payload["unknowns"] == 34 and top_payload["equations"] == 31),
+        "top_edge_leading_form_identity_verified":
+            bool(top_payload["leading_form_identity"]["all_pass"]),
+        "top_edge_family_solves_all_equations":
+            bool(top_payload["family_certificate"]["all_equations_vanish"]),
+        "top_edge_degenerate_component_verified":
+            bool(top_payload["degenerate_component"]["equations_vanish"]),
+        "top_dim_equals_structure_theorem_count": (
+            top_payload["dimension"] ==
+            (len(top_payload["edge_points_P"]) - 1)
+            * top_payload["power_structure"]["g"] // top_payload["d_P"]),
+        "no_edge_empty_in_the_cascade": (
+            top_payload["empty"] is False
+            and all(r.get("empty") is False for r in descent)),
+        "no_top_edge_groebner_disagreement":
+            "groebner_disagreement" not in top_payload,
+    }
+    for rec in descent:
+        if rec.get("vacuous"):
+            checks["edge_%d_vacuous_leading_form" % rec["edge_index"]] = bool(
+                rec["leading_form_identically_zero"])
+        else:
+            checks["edge_%d_family_solves_edge_system" % rec["edge_index"]] = bool(
+                rec["family_certificate"]["det_J_identically_zero"])
+            checks["edge_%d_dimension_matches_structure" % rec["edge_index"]] = (
+                rec.get("dimension") == rec.get("dimension_structure_theorem"))
+    return {
+        "all_pass": all(checks.values()),
+        "checks": {k: bool(v) for k, v in checks.items()},
+    }
+
+
 def build_report(cap_top_q=TOP_GB_Q_CAP_S, cap_top_p=TOP_GB_MODP_CAP_S,
                  cap_edge=EDGE_GB_CAP_S):
     t0 = time.perf_counter()
@@ -1159,6 +1299,7 @@ def build_report(cap_top_q=TOP_GB_Q_CAP_S, cap_top_p=TOP_GB_MODP_CAP_S,
         "points_per_edge_NQ": stage1["points_per_edge_NQ"],
         "cascade_order": [e["normal"] for e in stage1["cascade_order"]],
     })
+    t_stage1 = time.perf_counter() - t0
 
     top_payload = analyse_top_edge(top, slots[order[1]], cap_top_q, cap_top_p)
     log_stage("2_top_edge", {
@@ -1170,10 +1311,12 @@ def build_report(cap_top_q=TOP_GB_Q_CAP_S, cap_top_p=TOP_GB_MODP_CAP_S,
         "top_dim": top_payload["dimension"],
         "empty": top_payload["empty"],
     })
+    t_stage2 = time.perf_counter() - t0 - t_stage1
 
     descent, first_empty, processed = run_descent(
         decomp, top_payload, cap_edge,
         set(top_payload["strict_chart"]["normalization"]))
+    t_stage3 = time.perf_counter() - t0 - t_stage1 - t_stage2
 
     if top_payload["empty"]:
         verdict = "TOP_EDGE_EMPTY"
@@ -1198,10 +1341,16 @@ def build_report(cap_top_q=TOP_GB_Q_CAP_S, cap_top_p=TOP_GB_MODP_CAP_S,
             "has no solution compatible with the coefficients fixed by the "
             "previous edges" % processed)
     else:
+        vacuous = [r["edge_index"] for r in descent if r.get("vacuous")]
         verdict_detail = (
-            "no contradiction was found in the first %d edge conditions; "
-            "each edge condition is necessary for det J = x^2, so this is a "
-            "filter, not a solution" % processed)
+            "no contradiction was found in the first %d edge conditions "
+            "(%s); each edge condition is necessary for det J = x^2, so this "
+            "is a filter, not a solution%s"
+            % (processed,
+               ", ".join("edge %d w=%s" % (k + 1, slots[order[k]]["normal"])
+                         for k in range(processed)),
+               ("; edge(s) %s have identically zero leading forms and are "
+                "therefore vacuous" % vacuous) if vacuous else ""))
 
     report = {
         "problem": "jacobian-75-125-cascade",
@@ -1222,10 +1371,21 @@ def build_report(cap_top_q=TOP_GB_Q_CAP_S, cap_top_p=TOP_GB_MODP_CAP_S,
         },
         "top_edge": top_payload,
         "top_dim": top_payload["dimension"],
+        "top_dim_scaled": top_payload["dimension_scaled"],
+        "top_dim_literal_full_system":
+            top_payload["dimension_literal_full_system"],
+        "top_dim_convention": (
+            "top_dim is the dimension in the strict Newton-polygon chart "
+            "(the two shared vertex coefficients a_(12,3), b_(20,5) fixed to "
+            "1).  Without those two scalings the same family is "
+            "top_dim_scaled-dimensional; without the non-degeneracy "
+            "requirement the literal 34-variable variety also contains the "
+            "21-dimensional component {p = 0}."),
         "descent": descent,
         "first_empty_edge": first_empty,
         "verdict": verdict,
         "verdict_detail": verdict_detail,
+        "checks": _report_checks(stage1, top_payload, descent),
         "conventions": {
             "top_edge": "the edge of maximal filtration degree "
                         "d_P + d_Q - w.(1,1); here w = (1,1)",
@@ -1240,7 +1400,11 @@ def build_report(cap_top_q=TOP_GB_Q_CAP_S, cap_top_p=TOP_GB_MODP_CAP_S,
                           "equals decreasing filtration degree",
         },
         "timings": {
-            "stage_seconds": {},
+            "stage_seconds": {
+                "1_edges": round(t_stage1, 3),
+                "2_top_edge": round(t_stage2, 3),
+                "3_descent": round(t_stage3, 3),
+            },
             "total_seconds": None,
         },
         "elapsed_seconds": None,
@@ -1297,6 +1461,10 @@ def print_report(rep):
     print()
     print("first empty edge: %s" % rep["first_empty_edge"])
     print("VERDICT: %s" % rep["verdict"])
+    print("checks: %s" % ("all pass" if rep["checks"]["all_pass"]
+                          else "FAILURES: %s" % [
+                              k for k, v in rep["checks"]["checks"].items()
+                              if not v]))
     print("elapsed: %.3f s" % rep["elapsed_seconds"])
 
 

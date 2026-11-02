@@ -30,7 +30,7 @@ marked verified on the strength of a citation alone.
 
 The repo is public. **Do not commit the PDFs.** Most are not redistributable.
 
-- **Committed** (this directory): `README.md`, `index.json`, the five `.md` notes,
+- **Committed** (this directory): `README.md`, `index.json`, the six `.md` notes,
   `manifest.json`, and links/identifiers. These are metadata and original prose.
 - **Not committed**: `research/scratch/corpus/pdfs/*.pdf` and
   `research/scratch/corpus/txt/*.txt`. `research/scratch/` is already in `.gitignore`
@@ -89,7 +89,7 @@ unique, every `core` item has a fact, and every verified URL is `https://`. It p
 counts per problem and per role.
 
 Current output: 59 items — `hn` 18, `jac` 23, `bsd` 14, `methods` 4;
-`core` 37, `method` 7, `analogue-solved` 9, `analogue-open` 6; 0 unverified.
+`core` 37, `method` 7, `analogue-solved` 10, `analogue-open` 5; 0 unverified.
 
 ## How to use it
 

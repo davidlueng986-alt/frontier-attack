@@ -1,0 +1,234 @@
+{
+  "generated_utc": "2026-11-02T12:33:55.537874+00:00",
+  "started_utc": "2026-11-02T12:33:53.512903+00:00",
+  "python": "3.14.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "repo": "C:\\Users\\daive\\Downloads\\frontier-attack",
+  "stages": {
+    "bsd": {
+      "method": "(a) independent reimplementation of the smoothed AFE at s=1; (b) literal partial Euler product at s=1 with the local factors, a_p from the eta product, stated cutoffs X<=1e6 and a 1/log X Richardson extrapolation.  The sqrt(2) central factor is included and reported.",
+      "result": {
+        "curve": "11a1",
+        "ainvs": [
+          0,
+          -1,
+          1,
+          -10,
+          -20
+        ],
+        "conductor": 11,
+        "nmax_eta": 1000000,
+        "afe": {
+          "L1": "0.25384186085591068433775892335090946104389844836612",
+          "M": 400,
+          "dps": 80,
+          "root_number": {
+            "w": 1,
+            "err_selected": "1.0849056e-8",
+            "err_other": "0.23483633",
+            "gap": "0.23483634"
+          },
+          "formula": "Lambda(s) = sum_n a_n [c_n^-s Gamma(s,c_n) + w c_n^-(2-s) Gamma(2-s,c_n)], c_n = 2 pi n / sqrt(N)",
+          "a_stored": "0.25384186085591068433775892335090946104389844836612",
+          "gap_to_stored": "0.0",
+          "agrees_with_A": true
+        },
+        "euler_product": {
+          "X_max": 1000000,
+          "n_primes": 78498,
+          "partial_product_s1": "0.17554856726446537328",
+          "gap_to_afe_raw": "-0.0782932935914",
+          "sqrt2_corrected": "0.24826316468057247285",
+          "gap_to_afe_sqrt2": "-0.00557869617534",
+          "ladder": [
+            {
+              "X": 100,
+              "P": "0.171245784587093396",
+              "sqrt2_P": "0.242178111062289005",
+              "gap_raw": "-0.082596076",
+              "gap_sqrt2": "-0.01166375"
+            },
+            {
+              "X": 300,
+              "P": "0.184664746203791527",
+              "sqrt2_P": "0.261155388573587495",
+              "gap_raw": "-0.069177115",
+              "gap_sqrt2": "0.0073135277"
+            },
+            {
+              "X": 1000,
+              "P": "0.189754324765467886",
+              "sqrt2_P": "0.268353139602273553",
+              "gap_raw": "-0.064087536",
+              "gap_sqrt2": "0.014511279"
+            },
+            {
+              "X": 3000,
+              "P": "0.16440215325547737",
+              "sqrt2_P": "0.232499754817236177",
+              "gap_raw": "-0.089439708",
+              "gap_sqrt2": "-0.021342106"
+            },
+            {
+              "X": 10000,
+              "P": "0.176699739845766037",
+              "sqrt2_P": "0.249891168557679916",
+              "gap_raw": "-0.077142121",
+              "gap_sqrt2": "-0.0039506923"
+            },
+            {
+              "X": 30000,
+              "P": "0.170761551037662438",
+              "sqrt2_P": "0.241493301409327682",
+              "gap_raw": "-0.08308031",
+              "gap_sqrt2": "-0.012348559"
+            },
+            {
+              "X": 100000,
+              "P": "0.178751827812771584",
+              "sqrt2_P": "0.252793259191801793",
+              "gap_raw": "-0.075090033",
+              "gap_sqrt2": "-0.0010486017"
+            },
+            {
+              "X": 300000,
+              "P": "0.178722113754370749",
+              "sqrt2_P": "0.252751237167418186",
+              "gap_raw": "-0.075119747",
+              "gap_sqrt2": "-0.0010906237"
+            },
+            {
+              "X": 1000000,
+              "P": "0.175548567264465373",
+              "sqrt2_P": "0.248263164680572473",
+              "gap_raw": "-0.078293294",
+              "gap_sqrt2": "-0.0055786962"
+            }
+          ],
+          "best_ladder_point": {
+            "X": 100000,
+            "sqrt2_P": "0.25279325919180178905",
+            "gap": "-0.00104860166411"
+          },
+          "richardson_logx": "0.17841072479289706825",
+          "richardson_gap": "-0.075431136063",
+          "relative_gap_sqrt2": "0.021977054",
+          "agrees_to_1e-12": false,
+          "honest_conclusion": "The literal partial Euler product at s=1 converges to L(1)/sqrt(2), not to L(1): Goldfeld (1982) and Conrad (2005) prove the central Euler product carries a sqrt(2) second-moment factor.  Its error is O(1/log X) plus oscillatory zero terms, so it cannot reach 1e-12 at any feasible cutoff.  Multiplying by sqrt(2) is necessary but not sufficient: the residual is still O(1/log X).  This is a genuine disagreement with the requested 1e-12 cross-check, not a coding bug."
+        },
+        "afe_agrees_with_A": true,
+        "euler_product_agrees_to_1e-12": false,
+        "gap": "-0.00557869617534",
+        "verdict": "DISAGREEMENT with 1e-12: the Euler product at s=1 is L(1)/sqrt(2) in the limit and is only O(1/log X) accurate at finite cutoff",
+        "a_p_selfcheck": [
+          {
+            "p": 2,
+            "a_p_eta": -2,
+            "a_p_pointcount": -2,
+            "ok": true
+          },
+          {
+            "p": 3,
+            "a_p_eta": -1,
+            "a_p_pointcount": -1,
+            "ok": true
+          },
+          {
+            "p": 5,
+            "a_p_eta": 1,
+            "a_p_pointcount": 1,
+            "ok": true
+          },
+          {
+            "p": 7,
+            "a_p_eta": -2,
+            "a_p_pointcount": -2,
+            "ok": true
+          },
+          {
+            "p": 11,
+            "a_p_eta": 1,
+            "a_p_pointcount": 1,
+            "ok": true
+          },
+          {
+            "p": 13,
+            "a_p_eta": 4,
+            "a_p_pointcount": 4,
+            "ok": true
+          },
+          {
+            "p": 17,
+            "a_p_eta": -2,
+            "a_p_pointcount": -2,
+            "ok": true
+          },
+          {
+            "p": 19,
+            "a_p_eta": 0,
+            "a_p_pointcount": 0,
+            "ok": true
+          },
+          {
+            "p": 23,
+            "a_p_eta": -1,
+            "a_p_pointcount": -1,
+            "ok": true
+          },
+          {
+            "p": 29,
+            "a_p_eta": 0,
+            "a_p_pointcount": 0,
+            "ok": true
+          },
+          {
+            "p": 31,
+            "a_p_eta": 7,
+            "a_p_pointcount": 7,
+            "ok": true
+          },
+          {
+            "p": 37,
+            "a_p_eta": 3,
+            "a_p_pointcount": 3,
+            "ok": true
+          },
+          {
+            "p": 41,
+            "a_p_eta": -8,
+            "a_p_pointcount": -8,
+            "ok": true
+          },
+          {
+            "p": 43,
+            "a_p_eta": -6,
+            "a_p_pointcount": -6,
+            "ok": true
+          },
+          {
+            "p": 47,
+            "a_p_eta": 8,
+            "a_p_pointcount": 8,
+            "ok": true
+          }
+        ],
+        "eta_first_12": [
+          1,
+          -2,
+          -1,
+          2,
+          1,
+          2,
+          -2,
+          0,
+          -2,
+          -2,
+          1
+        ]
+      },
+      "agrees_with_A": false,
+      "seconds": 1.642
+    }
+  },
+  "all_agree": false
+}

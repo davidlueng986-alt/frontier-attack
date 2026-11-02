@@ -43,7 +43,7 @@ Euler system bounds the Selmer group; together with Gross–Zagier it gives:
 r_an(E/Q) ≤ 1  ⇒  r_an(E/Q) = r_MW(E/Q),  and Sha(E/Q) is finite.
 ```
 
-**`arXiv:0707.0032` (Jetchev–Lauter–Stein 2007), Theorem 1.1 (p. 3)** is the precise modern
+**`arXiv:0707.0032` (Jetchev–Lauter–Stein 2007), Theorem 1.1** is the precise modern
 citation:
 
 > Let `E/Q` be an elliptic curve with `r_an(E/Q) ≤ 1`. Then
@@ -75,7 +75,7 @@ where the theorem already proves `r = k`.
 
 **`doi:10.1112/s1461157011000180` (Miller 2011).** Proves the BSD formula for **16,714 of
 the 16,725** elliptic curves of conductor **< 5,000** with analytic rank 0 or 1 (abstract).
-This is the largest published pointwise verification in the GZK range. Note the correction:
+This is a large published pointwise verification in the GZK range. Note the correction:
 the repo's `plan/bsd.md` says "verified for `N < 130,000`"; the paper's abstract says
 `N < 5,000` and 16,714/16,725. The 130,000 figure is not supported by this source.
 
@@ -87,9 +87,9 @@ interval arithmetic, not a pointwise numerical tolerance.
 
 **`lmfdb:completeness`.** All curves of conductor **< 500,000** are in the database;
 3,824,372 curves in 2,917,287 isogeny classes, maximum conductor 299,996,953. It also
-contains all 7-smooth conductors and all prime conductors ≤ 300,000,000. Below 500,000 a
-rank mismatch is impossible by construction (the data is curated to be consistent), so the
-only interesting region is above it.
+contains all 7-smooth conductors and all prime conductors ≤ 300,000,000. Below 500,000 the
+database is complete, so a new curve cannot be found there; a mismatch would have to be a
+miscomputed invariant, not a missing curve. The only interesting region is above it.
 
 **`rubinstein:records`.** Calibration curves:
 
@@ -110,9 +110,11 @@ curve is not where a rank-4 object will be found; the search must be targeted, n
 
 **What is actually certifiable.** `r` is exact when a 2-descent returns `r1 = r2`;
 `k` is exact when zero-counting (argument principle + interval arithmetic) certifies the
-order. The AFE pointwise interval method can prove `k = 0` and `k = 1` (non-vanishing) but
-cannot prove an exact zero of higher order; that is a limitation of the method, not of
-mathematics. LMFDB's rigorous ranks are the existence proof that `k ≥ 2` is certifiable.
+order. A pointwise interval can prove non-vanishing; it cannot prove an exact zero. The
+`k = 1` certificate therefore uses the functional-equation sign plus a non-vanishing
+derivative, and `k ≥ 2` needs zero-counting. That is a limitation of the AFE pointwise
+method, not of mathematics. LMFDB's rigorous ranks are the existence proof that `k ≥ 2` is
+certifiable.
 
 ## 4. Analogues
 

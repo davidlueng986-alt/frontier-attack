@@ -1,0 +1,2545 @@
+{
+  "problem": "jacobian-75-125-cascade",
+  "case": "F_2(3,5), j=1",
+  "method": "Newton-polygon edge filtration / leading-form cascade",
+  "corner": {
+    "Delta_prime": [
+      [
+        0,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        0,
+        5
+      ]
+    ],
+    "N_P_corners": [
+      [
+        0,
+        0
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        0,
+        15
+      ]
+    ],
+    "N_Q_corners": [
+      [
+        0,
+        0
+      ],
+      [
+        15,
+        0
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        0,
+        25
+      ]
+    ],
+    "normalisation": "[P,Q] = x^2, reduced degrees (15,25)",
+    "full_lattice_unknowns": 445,
+    "full_lattice_equations": 723
+  },
+  "edges": {
+    "num_edges_NP": 4,
+    "num_edges_NQ": 4,
+    "num_edges_total": 8,
+    "points_per_edge_NP": [
+      10,
+      4,
+      13,
+      16
+    ],
+    "points_per_edge_NQ": [
+      16,
+      6,
+      21,
+      26
+    ],
+    "monomials_per_edge_NP": [
+      10,
+      4,
+      13,
+      16
+    ],
+    "monomials_per_edge_NQ": [
+      16,
+      6,
+      21,
+      26
+    ],
+    "boundary_check_NP": {
+      "edge_point_incidences": 43,
+      "distinct_boundary_points": 39,
+      "vertices_double_counted": 4,
+      "interior_points": 85,
+      "min_incidence": 1,
+      "max_incidence": 2
+    },
+    "boundary_check_NQ": {
+      "edge_point_incidences": 69,
+      "distinct_boundary_points": 65,
+      "vertices_double_counted": 4,
+      "interior_points": 256,
+      "min_incidence": 1,
+      "max_incidence": 2
+    },
+    "lattice_points_NP": 124,
+    "lattice_points_NQ": 321,
+    "edges_NP": [
+      {
+        "index": 0,
+        "start": [
+          0,
+          0
+        ],
+        "end": [
+          9,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "normal": [
+          0,
+          -1
+        ],
+        "value": 0,
+        "weight_grading": "w.(i,j) with w=(0,-1); maximal value 0 on this edge",
+        "n_points": 10,
+        "n_monomials": 10,
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            7,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            9,
+            0
+          ]
+        ],
+        "monomials": [
+          "x^0*y^0",
+          "x^1*y^0",
+          "x^2*y^0",
+          "x^3*y^0",
+          "x^4*y^0",
+          "x^5*y^0",
+          "x^6*y^0",
+          "x^7*y^0",
+          "x^8*y^0",
+          "x^9*y^0"
+        ],
+        "edge_polynomial": "a_0_0*x^0*y^0 + a_1_0*x^1*y^0 + a_2_0*x^2*y^0 + a_3_0*x^3*y^0 + a_4_0*x^4*y^0 + a_5_0*x^5*y^0 + a_6_0*x^6*y^0 + a_7_0*x^7*y^0 + a_8_0*x^8*y^0 + a_9_0*x^9*y^0",
+        "univariate": {
+          "base_point": [
+            0,
+            0
+          ],
+          "base_monomial": "x^0*y^0",
+          "t_monomial": "x^1*y^0",
+          "form": "P_e = x^0*y^0 * f(t),  t = x^1*y^0,  f = sum_k c_k t^k",
+          "coefficient_lattice_points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              9,
+              0
+            ]
+          ]
+        },
+        "is_horizontal": true,
+        "is_vertical": false
+      },
+      {
+        "index": 1,
+        "start": [
+          9,
+          0
+        ],
+        "end": [
+          12,
+          3
+        ],
+        "direction": [
+          1,
+          1
+        ],
+        "normal": [
+          1,
+          -1
+        ],
+        "value": 9,
+        "weight_grading": "w.(i,j) with w=(1,-1); maximal value 9 on this edge",
+        "n_points": 4,
+        "n_monomials": 4,
+        "points": [
+          [
+            9,
+            0
+          ],
+          [
+            10,
+            1
+          ],
+          [
+            11,
+            2
+          ],
+          [
+            12,
+            3
+          ]
+        ],
+        "monomials": [
+          "x^9*y^0",
+          "x^10*y^1",
+          "x^11*y^2",
+          "x^12*y^3"
+        ],
+        "edge_polynomial": "a_9_0*x^9*y^0 + a_10_1*x^10*y^1 + a_11_2*x^11*y^2 + a_12_3*x^12*y^3",
+        "univariate": {
+          "base_point": [
+            9,
+            0
+          ],
+          "base_monomial": "x^9*y^0",
+          "t_monomial": "x^1*y^1",
+          "form": "P_e = x^9*y^0 * f(t),  t = x^1*y^1,  f = sum_k c_k t^k",
+          "coefficient_lattice_points": [
+            [
+              9,
+              0
+            ],
+            [
+              10,
+              1
+            ],
+            [
+              11,
+              2
+            ],
+            [
+              12,
+              3
+            ]
+          ]
+        },
+        "is_horizontal": false,
+        "is_vertical": false
+      },
+      {
+        "index": 2,
+        "start": [
+          12,
+          3
+        ],
+        "end": [
+          0,
+          15
+        ],
+        "direction": [
+          -1,
+          1
+        ],
+        "normal": [
+          1,
+          1
+        ],
+        "value": 15,
+        "weight_grading": "w.(i,j) with w=(1,1); maximal value 15 on this edge",
+        "n_points": 13,
+        "n_monomials": 13,
+        "points": [
+          [
+            12,
+            3
+          ],
+          [
+            11,
+            4
+          ],
+          [
+            10,
+            5
+          ],
+          [
+            9,
+            6
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            4,
+            11
+          ],
+          [
+            3,
+            12
+          ],
+          [
+            2,
+            13
+          ],
+          [
+            1,
+            14
+          ],
+          [
+            0,
+            15
+          ]
+        ],
+        "monomials": [
+          "x^12*y^3",
+          "x^11*y^4",
+          "x^10*y^5",
+          "x^9*y^6",
+          "x^8*y^7",
+          "x^7*y^8",
+          "x^6*y^9",
+          "x^5*y^10",
+          "x^4*y^11",
+          "x^3*y^12",
+          "x^2*y^13",
+          "x^1*y^14",
+          "x^0*y^15"
+        ],
+        "edge_polynomial": "a_12_3*x^12*y^3 + a_11_4*x^11*y^4 + a_10_5*x^10*y^5 + a_9_6*x^9*y^6 + a_8_7*x^8*y^7 + a_7_8*x^7*y^8 + a_6_9*x^6*y^9 + a_5_10*x^5*y^10 + a_4_11*x^4*y^11 + a_3_12*x^3*y^12 + a_2_13*x^2*y^13 + a_1_14*x^1*y^14 + a_0_15*x^0*y^15",
+        "univariate": {
+          "base_point": [
+            12,
+            3
+          ],
+          "base_monomial": "x^12*y^3",
+          "t_monomial": "x^-1*y^1",
+          "form": "P_e = x^12*y^3 * f(t),  t = x^-1*y^1,  f = sum_k c_k t^k",
+          "coefficient_lattice_points": [
+            [
+              12,
+              3
+            ],
+            [
+              11,
+              4
+            ],
+            [
+              10,
+              5
+            ],
+            [
+              9,
+              6
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              3,
+              12
+            ],
+            [
+              2,
+              13
+            ],
+            [
+              1,
+              14
+            ],
+            [
+              0,
+              15
+            ]
+          ]
+        },
+        "is_horizontal": false,
+        "is_vertical": false
+      },
+      {
+        "index": 3,
+        "start": [
+          0,
+          15
+        ],
+        "end": [
+          0,
+          0
+        ],
+        "direction": [
+          0,
+          -1
+        ],
+        "normal": [
+          -1,
+          0
+        ],
+        "value": 0,
+        "weight_grading": "w.(i,j) with w=(-1,0); maximal value 0 on this edge",
+        "n_points": 16,
+        "n_monomials": 16,
+        "points": [
+          [
+            0,
+            15
+          ],
+          [
+            0,
+            14
+          ],
+          [
+            0,
+            13
+          ],
+          [
+            0,
+            12
+          ],
+          [
+            0,
+            11
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            9
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "monomials": [
+          "x^0*y^15",
+          "x^0*y^14",
+          "x^0*y^13",
+          "x^0*y^12",
+          "x^0*y^11",
+          "x^0*y^10",
+          "x^0*y^9",
+          "x^0*y^8",
+          "x^0*y^7",
+          "x^0*y^6",
+          "x^0*y^5",
+          "x^0*y^4",
+          "x^0*y^3",
+          "x^0*y^2",
+          "x^0*y^1",
+          "x^0*y^0"
+        ],
+        "edge_polynomial": "a_0_15*x^0*y^15 + a_0_14*x^0*y^14 + a_0_13*x^0*y^13 + a_0_12*x^0*y^12 + a_0_11*x^0*y^11 + a_0_10*x^0*y^10 + a_0_9*x^0*y^9 + a_0_8*x^0*y^8 + a_0_7*x^0*y^7 + a_0_6*x^0*y^6 + a_0_5*x^0*y^5 + a_0_4*x^0*y^4 + a_0_3*x^0*y^3 + a_0_2*x^0*y^2 + a_0_1*x^0*y^1 + a_0_0*x^0*y^0",
+        "univariate": {
+          "base_point": [
+            0,
+            15
+          ],
+          "base_monomial": "x^0*y^15",
+          "t_monomial": "x^0*y^-1",
+          "form": "P_e = x^0*y^15 * f(t),  t = x^0*y^-1,  f = sum_k c_k t^k",
+          "coefficient_lattice_points": [
+            [
+              0,
+              15
+            ],
+            [
+              0,
+              14
+            ],
+            [
+              0,
+              13
+            ],
+            [
+              0,
+              12
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "is_horizontal": false,
+        "is_vertical": true
+      }
+    ],
+    "edges_NQ": [
+      {
+        "index": 0,
+        "start": [
+          0,
+          0
+        ],
+        "end": [
+          15,
+          0
+        ],
+        "direction": [
+          1,
+          0
+        ],
+        "normal": [
+          0,
+          -1
+        ],
+        "value": 0,
+        "weight_grading": "w.(i,j) with w=(0,-1); maximal value 0 on this edge",
+        "n_points": 16,
+        "n_monomials": 16,
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            7,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            9,
+            0
+          ],
+          [
+            10,
+            0
+          ],
+          [
+            11,
+            0
+          ],
+          [
+            12,
+            0
+          ],
+          [
+            13,
+            0
+          ],
+          [
+            14,
+            0
+          ],
+          [
+            15,
+            0
+          ]
+        ],
+        "monomials": [
+          "x^0*y^0",
+          "x^1*y^0",
+          "x^2*y^0",
+          "x^3*y^0",
+          "x^4*y^0",
+          "x^5*y^0",
+          "x^6*y^0",
+          "x^7*y^0",
+          "x^8*y^0",
+          "x^9*y^0",
+          "x^10*y^0",
+          "x^11*y^0",
+          "x^12*y^0",
+          "x^13*y^0",
+          "x^14*y^0",
+          "x^15*y^0"
+        ],
+        "edge_polynomial": "a_0_0*x^0*y^0 + a_1_0*x^1*y^0 + a_2_0*x^2*y^0 + a_3_0*x^3*y^0 + a_4_0*x^4*y^0 + a_5_0*x^5*y^0 + a_6_0*x^6*y^0 + a_7_0*x^7*y^0 + a_8_0*x^8*y^0 + a_9_0*x^9*y^0 + a_10_0*x^10*y^0 + a_11_0*x^11*y^0 + a_12_0*x^12*y^0 + a_13_0*x^13*y^0 + a_14_0*x^14*y^0 + a_15_0*x^15*y^0",
+        "univariate": {
+          "base_point": [
+            0,
+            0
+          ],
+          "base_monomial": "x^0*y^0",
+          "t_monomial": "x^1*y^0",
+          "form": "P_e = x^0*y^0 * f(t),  t = x^1*y^0,  f = sum_k c_k t^k",
+          "coefficient_lattice_points": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              9,
+              0
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              11,
+              0
+            ],
+            [
+              12,
+              0
+            ],
+            [
+              13,
+              0
+            ],
+            [
+              14,
+              0
+            ],
+            [
+              15,
+              0
+            ]
+          ]
+        },
+        "is_horizontal": true,
+        "is_vertical": false
+      },
+      {
+        "index": 1,
+        "start": [
+          15,
+          0
+        ],
+        "end": [
+          20,
+          5
+        ],
+        "direction": [
+          1,
+          1
+        ],
+        "normal": [
+          1,
+          -1
+        ],
+        "value": 15,
+        "weight_grading": "w.(i,j) with w=(1,-1); maximal value 15 on this edge",
+        "n_points": 6,
+        "n_monomials": 6,
+        "points": [
+          [
+            15,
+            0
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            2
+          ],
+          [
+            18,
+            3
+          ],
+          [
+            19,
+            4
+          ],
+          [
+            20,
+            5
+          ]
+        ],
+        "monomials": [
+          "x^15*y^0",
+          "x^16*y^1",
+          "x^17*y^2",
+          "x^18*y^3",
+          "x^19*y^4",
+          "x^20*y^5"
+        ],
+        "edge_polynomial": "a_15_0*x^15*y^0 + a_16_1*x^16*y^1 + a_17_2*x^17*y^2 + a_18_3*x^18*y^3 + a_19_4*x^19*y^4 + a_20_5*x^20*y^5",
+        "univariate": {
+          "base_point": [
+            15,
+            0
+          ],
+          "base_monomial": "x^15*y^0",
+          "t_monomial": "x^1*y^1",
+          "form": "P_e = x^15*y^0 * f(t),  t = x^1*y^1,  f = sum_k c_k t^k",
+          "coefficient_lattice_points": [
+            [
+              15,
+              0
+            ],
+            [
+              16,
+              1
+            ],
+            [
+              17,
+              2
+            ],
+            [
+              18,
+              3
+            ],
+            [
+              19,
+              4
+            ],
+            [
+              20,
+              5
+            ]
+          ]
+        },
+        "is_horizontal": false,
+        "is_vertical": false
+      },
+      {
+        "index": 2,
+        "start": [
+          20,
+          5
+        ],
+        "end": [
+          0,
+          25
+        ],
+        "direction": [
+          -1,
+          1
+        ],
+        "normal": [
+          1,
+          1
+        ],
+        "value": 25,
+        "weight_grading": "w.(i,j) with w=(1,1); maximal value 25 on this edge",
+        "n_points": 21,
+        "n_monomials": 21,
+        "points": [
+          [
+            20,
+            5
+          ],
+          [
+            19,
+            6
+          ],
+          [
+            18,
+            7
+          ],
+          [
+            17,
+            8
+          ],
+          [
+            16,
+            9
+          ],
+          [
+            15,
+            10
+          ],
+          [
+            14,
+            11
+          ],
+          [
+            13,
+            12
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            11,
+            14
+          ],
+          [
+            10,
+            15
+          ],
+          [
+            9,
+            16
+          ],
+          [
+            8,
+            17
+          ],
+          [
+            7,
+            18
+          ],
+          [
+            6,
+            19
+          ],
+          [
+            5,
+            20
+          ],
+          [
+            4,
+            21
+          ],
+          [
+            3,
+            22
+          ],
+          [
+            2,
+            23
+          ],
+          [
+            1,
+            24
+          ],
+          [
+            0,
+            25
+          ]
+        ],
+        "monomials": [
+          "x^20*y^5",
+          "x^19*y^6",
+          "x^18*y^7",
+          "x^17*y^8",
+          "x^16*y^9",
+          "x^15*y^10",
+          "x^14*y^11",
+          "x^13*y^12",
+          "x^12*y^13",
+          "x^11*y^14",
+          "x^10*y^15",
+          "x^9*y^16",
+          "x^8*y^17",
+          "x^7*y^18",
+          "x^6*y^19",
+          "x^5*y^20",
+          "x^4*y^21",
+          "x^3*y^22",
+          "x^2*y^23",
+          "x^1*y^24",
+          "x^0*y^25"
+        ],
+        "edge_polynomial": "a_20_5*x^20*y^5 + a_19_6*x^19*y^6 + a_18_7*x^18*y^7 + a_17_8*x^17*y^8 + a_16_9*x^16*y^9 + a_15_10*x^15*y^10 + a_14_11*x^14*y^11 + a_13_12*x^13*y^12 + a_12_13*x^12*y^13 + a_11_14*x^11*y^14 + a_10_15*x^10*y^15 + a_9_16*x^9*y^16 + a_8_17*x^8*y^17 + a_7_18*x^7*y^18 + a_6_19*x^6*y^19 + a_5_20*x^5*y^20 + a_4_21*x^4*y^21 + a_3_22*x^3*y^22 + a_2_23*x^2*y^23 + a_1_24*x^1*y^24 + a_0_25*x^0*y^25",
+        "univariate": {
+          "base_point": [
+            20,
+            5
+          ],
+          "base_monomial": "x^20*y^5",
+          "t_monomial": "x^-1*y^1",
+          "form": "P_e = x^20*y^5 * f(t),  t = x^-1*y^1,  f = sum_k c_k t^k",
+          "coefficient_lattice_points": [
+            [
+              20,
+              5
+            ],
+            [
+              19,
+              6
+            ],
+            [
+              18,
+              7
+            ],
+            [
+              17,
+              8
+            ],
+            [
+              16,
+              9
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              14,
+              11
+            ],
+            [
+              13,
+              12
+            ],
+            [
+              12,
+              13
+            ],
+            [
+              11,
+              14
+            ],
+            [
+              10,
+              15
+            ],
+            [
+              9,
+              16
+            ],
+            [
+              8,
+              17
+            ],
+            [
+              7,
+              18
+            ],
+            [
+              6,
+              19
+            ],
+            [
+              5,
+              20
+            ],
+            [
+              4,
+              21
+            ],
+            [
+              3,
+              22
+            ],
+            [
+              2,
+              23
+            ],
+            [
+              1,
+              24
+            ],
+            [
+              0,
+              25
+            ]
+          ]
+        },
+        "is_horizontal": false,
+        "is_vertical": false
+      },
+      {
+        "index": 3,
+        "start": [
+          0,
+          25
+        ],
+        "end": [
+          0,
+          0
+        ],
+        "direction": [
+          0,
+          -1
+        ],
+        "normal": [
+          -1,
+          0
+        ],
+        "value": 0,
+        "weight_grading": "w.(i,j) with w=(-1,0); maximal value 0 on this edge",
+        "n_points": 26,
+        "n_monomials": 26,
+        "points": [
+          [
+            0,
+            25
+          ],
+          [
+            0,
+            24
+          ],
+          [
+            0,
+            23
+          ],
+          [
+            0,
+            22
+          ],
+          [
+            0,
+            21
+          ],
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            19
+          ],
+          [
+            0,
+            18
+          ],
+          [
+            0,
+            17
+          ],
+          [
+            0,
+            16
+          ],
+          [
+            0,
+            15
+          ],
+          [
+            0,
+            14
+          ],
+          [
+            0,
+            13
+          ],
+          [
+            0,
+            12
+          ],
+          [
+            0,
+            11
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            9
+          ],
+          [
+            0,
+            8
+          ],
+          [
+            0,
+            7
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "monomials": [
+          "x^0*y^25",
+          "x^0*y^24",
+          "x^0*y^23",
+          "x^0*y^22",
+          "x^0*y^21",
+          "x^0*y^20",
+          "x^0*y^19",
+          "x^0*y^18",
+          "x^0*y^17",
+          "x^0*y^16",
+          "x^0*y^15",
+          "x^0*y^14",
+          "x^0*y^13",
+          "x^0*y^12",
+          "x^0*y^11",
+          "x^0*y^10",
+          "x^0*y^9",
+          "x^0*y^8",
+          "x^0*y^7",
+          "x^0*y^6",
+          "x^0*y^5",
+          "x^0*y^4",
+          "x^0*y^3",
+          "x^0*y^2",
+          "x^0*y^1",
+          "x^0*y^0"
+        ],
+        "edge_polynomial": "a_0_25*x^0*y^25 + a_0_24*x^0*y^24 + a_0_23*x^0*y^23 + a_0_22*x^0*y^22 + a_0_21*x^0*y^21 + a_0_20*x^0*y^20 + a_0_19*x^0*y^19 + a_0_18*x^0*y^18 + a_0_17*x^0*y^17 + a_0_16*x^0*y^16 + a_0_15*x^0*y^15 + a_0_14*x^0*y^14 + a_0_13*x^0*y^13 + a_0_12*x^0*y^12 + a_0_11*x^0*y^11 + a_0_10*x^0*y^10 + a_0_9*x^0*y^9 + a_0_8*x^0*y^8 + a_0_7*x^0*y^7 + a_0_6*x^0*y^6 + a_0_5*x^0*y^5 + a_0_4*x^0*y^4 + a_0_3*x^0*y^3 + a_0_2*x^0*y^2 + a_0_1*x^0*y^1 + a_0_0*x^0*y^0",
+        "univariate": {
+          "base_point": [
+            0,
+            25
+          ],
+          "base_monomial": "x^0*y^25",
+          "t_monomial": "x^0*y^-1",
+          "form": "P_e = x^0*y^25 * f(t),  t = x^0*y^-1,  f = sum_k c_k t^k",
+          "coefficient_lattice_points": [
+            [
+              0,
+              25
+            ],
+            [
+              0,
+              24
+            ],
+            [
+              0,
+              23
+            ],
+            [
+              0,
+              22
+            ],
+            [
+              0,
+              21
+            ],
+            [
+              0,
+              20
+            ],
+            [
+              0,
+              19
+            ],
+            [
+              0,
+              18
+            ],
+            [
+              0,
+              17
+            ],
+            [
+              0,
+              16
+            ],
+            [
+              0,
+              15
+            ],
+            [
+              0,
+              14
+            ],
+            [
+              0,
+              13
+            ],
+            [
+              0,
+              12
+            ],
+            [
+              0,
+              11
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              9
+            ],
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              7
+            ],
+            [
+              0,
+              6
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "is_horizontal": false,
+        "is_vertical": true
+      }
+    ],
+    "edge_slots": [
+      {
+        "normal": [
+          0,
+          -1
+        ],
+        "d_P": 0,
+        "d_Q": 0,
+        "n_points_P": 10,
+        "n_points_Q": 16,
+        "monomials_P": 10,
+        "monomials_Q": 16,
+        "filtration_degree": 1,
+        "target_weight": 0,
+        "condition_required": true,
+        "leading_form_is_identically_zero": true
+      },
+      {
+        "normal": [
+          1,
+          -1
+        ],
+        "d_P": 9,
+        "d_Q": 15,
+        "n_points_P": 4,
+        "n_points_Q": 6,
+        "monomials_P": 4,
+        "monomials_Q": 6,
+        "filtration_degree": 24,
+        "target_weight": 2,
+        "condition_required": true,
+        "leading_form_is_identically_zero": false
+      },
+      {
+        "normal": [
+          1,
+          1
+        ],
+        "d_P": 15,
+        "d_Q": 25,
+        "n_points_P": 13,
+        "n_points_Q": 21,
+        "monomials_P": 13,
+        "monomials_Q": 21,
+        "filtration_degree": 38,
+        "target_weight": 2,
+        "condition_required": true,
+        "leading_form_is_identically_zero": false
+      },
+      {
+        "normal": [
+          -1,
+          0
+        ],
+        "d_P": 0,
+        "d_Q": 0,
+        "n_points_P": 16,
+        "n_points_Q": 26,
+        "monomials_P": 16,
+        "monomials_Q": 26,
+        "filtration_degree": 1,
+        "target_weight": -2,
+        "condition_required": true,
+        "leading_form_is_identically_zero": true
+      }
+    ],
+    "cascade_order": [
+      {
+        "edge": 1,
+        "hull_index": 2,
+        "normal": [
+          1,
+          1
+        ],
+        "filtration_degree": 38
+      },
+      {
+        "edge": 2,
+        "hull_index": 1,
+        "normal": [
+          1,
+          -1
+        ],
+        "filtration_degree": 24
+      },
+      {
+        "edge": 3,
+        "hull_index": 0,
+        "normal": [
+          0,
+          -1
+        ],
+        "filtration_degree": 1
+      },
+      {
+        "edge": 4,
+        "hull_index": 3,
+        "normal": [
+          -1,
+          0
+        ],
+        "filtration_degree": 1
+      }
+    ],
+    "grading": {
+      "definition": "deg_w(x^i y^j) = w.(i,j) for the outward normal w of the edge; the edge is the maximal face",
+      "leading_form": "LP_w(det J) = det J(P_w,Q_w) for any weight w",
+      "filtration_degree_of_det_J_face": "d_P + d_Q - w.(1,1)",
+      "target": "x^2 has w-weight 2*w_1"
+    }
+  },
+  "points_per_edge": {
+    "N(P)": [
+      10,
+      4,
+      13,
+      16
+    ],
+    "N(Q)": [
+      16,
+      6,
+      21,
+      26
+    ]
+  },
+  "top_edge": {
+    "slot_normal": [
+      1,
+      1
+    ],
+    "d_P": 15,
+    "d_Q": 25,
+    "filtration_degree": 38,
+    "target_weight": 2,
+    "unknowns": 34,
+    "equations": 31,
+    "pair_products": 512,
+    "det_monomials": [
+      [
+        0,
+        38
+      ],
+      [
+        1,
+        37
+      ],
+      [
+        2,
+        36
+      ],
+      [
+        3,
+        35
+      ],
+      [
+        4,
+        34
+      ],
+      [
+        5,
+        33
+      ],
+      [
+        6,
+        32
+      ],
+      [
+        7,
+        31
+      ],
+      [
+        8,
+        30
+      ],
+      [
+        9,
+        29
+      ],
+      [
+        10,
+        28
+      ],
+      [
+        11,
+        27
+      ],
+      [
+        12,
+        26
+      ],
+      [
+        13,
+        25
+      ],
+      [
+        14,
+        24
+      ],
+      [
+        15,
+        23
+      ],
+      [
+        16,
+        22
+      ],
+      [
+        17,
+        21
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        19,
+        19
+      ],
+      [
+        20,
+        18
+      ],
+      [
+        21,
+        17
+      ],
+      [
+        22,
+        16
+      ],
+      [
+        23,
+        15
+      ],
+      [
+        24,
+        14
+      ],
+      [
+        25,
+        13
+      ],
+      [
+        26,
+        12
+      ],
+      [
+        27,
+        11
+      ],
+      [
+        28,
+        10
+      ],
+      [
+        29,
+        9
+      ],
+      [
+        30,
+        8
+      ]
+    ],
+    "max_terms_per_equation": 13,
+    "all_equations_homogeneous_degree_2": true,
+    "edge_points_P": [
+      [
+        12,
+        3
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        9,
+        6
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        2,
+        13
+      ],
+      [
+        1,
+        14
+      ],
+      [
+        0,
+        15
+      ]
+    ],
+    "edge_points_Q": [
+      [
+        20,
+        5
+      ],
+      [
+        19,
+        6
+      ],
+      [
+        18,
+        7
+      ],
+      [
+        17,
+        8
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        15,
+        10
+      ],
+      [
+        14,
+        11
+      ],
+      [
+        13,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        11,
+        14
+      ],
+      [
+        10,
+        15
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        7,
+        18
+      ],
+      [
+        6,
+        19
+      ],
+      [
+        5,
+        20
+      ],
+      [
+        4,
+        21
+      ],
+      [
+        3,
+        22
+      ],
+      [
+        2,
+        23
+      ],
+      [
+        1,
+        24
+      ],
+      [
+        0,
+        25
+      ]
+    ],
+    "base_point_P": [
+      12,
+      3
+    ],
+    "base_point_Q": [
+      20,
+      5
+    ],
+    "t_monomial_P": "x^-1*y^1",
+    "t_monomial_Q": "x^-1*y^1",
+    "leading_form": "det J(P_e,Q_e) = y^38 * (25 p'(u) q(u) - 15 p(u) q'(u)), u = x/y, p = sum a_(i,15-i) u^i, q = sum b_(j,25-j) u^j; equivalently x^12*y^3*f(y/x) and x^20*y^5*g(y/x)",
+    "leading_form_identity": {
+      "identity": "det J(P_e,Q_e) = x^(p0+r0-1) y^(q0+s0-1) * [(p0*s0-q0*r0)*f*g + (p0*v-q0*u)*t*f*g' + (u*s0-v*r0)*t*f'*g]",
+      "trials": 2,
+      "all_pass": true,
+      "per_trial": [
+        true,
+        true
+      ]
+    },
+    "wronskian": {
+      "identity": "W(p^5,q^3) = p^4 q^2 (5 p' q - 3 p q')",
+      "identity_expanded": "W(p^5,q^3) = p^4 q^2 (25 p' q - 15 p q') / 5",
+      "checked_on_random_degrees_12_20": true,
+      "consequence": "25 p' q - 15 p q' = 0 with p q != 0 forces W(p^5,q^3) = 0, hence p^5/q^3 is constant, hence p^5 = C q^3; unique factorisation gives p = c1 h^3, q = c2 h^5."
+    },
+    "condition": "25 p' q - 15 p q' = 0 identically  (31 equations)",
+    "why_31_and_not_32": "25 p' q - 15 p q' has degree at most 31, but its top coefficient is 25*12 - 15*20 = 0, so the identity has 31 coefficients, not 32",
+    "strict_chart": {
+      "normalization": {
+        "a_12_3": 1,
+        "b_20_5": 1
+      },
+      "normalized_vertices": {
+        "P": [
+          [
+            12,
+            3
+          ]
+        ],
+        "Q": [
+          [
+            20,
+            5
+          ]
+        ]
+      },
+      "why": "the coefficients of lattice vertices are nonzero because those points are vertices of N(P), N(Q); the equations are homogeneous of degree 1 in each block, so setting the two shared vertex coefficients to 1 removes exactly the two scalings, and the normalisation is the same one used on the descending edge",
+      "unknowns": 32,
+      "equations": 31
+    },
+    "groebner_over_Q": {
+      "status": "timeout",
+      "cap_seconds": 180.0,
+      "seconds": 180.029,
+      "modulus": null,
+      "method": "buchberger",
+      "basis_size": null,
+      "dimension": null,
+      "empty": null
+    },
+    "groebner_mod_p": {
+      "status": "timeout",
+      "cap_seconds": 120.0,
+      "seconds": 120.023,
+      "modulus": 32003,
+      "method": "f5b",
+      "basis_size": null,
+      "dimension": null,
+      "empty": null
+    },
+    "dimension": 4,
+    "dimension_scaled": 6,
+    "dimension_literal_full_system": 21,
+    "dimension_method": "structure theorem (Wronskian): direct Groebner basis timed out at the stated caps; see groebner_over_Q / groebner_mod_p",
+    "dimension_argument": {
+      "statement": "in the strict chart the top-edge solution set is exactly {(h^3, h^5) : h monic of degree 4}, of dimension 4",
+      "steps": [
+        "LP_w(det J) = det J(P_e,Q_e) = y^38 (25 p' q - 15 p q'), so the 31 coefficient equations are equivalent to the identity 25 p' q - 15 p q' = 0",
+        "the exact identity W(p^5,q^3) = p^4 q^2 (5 p' q - 3 p q') turns it into d/du (p^5/q^3) = 0",
+        "hence p^5 = C q^3 as polynomials, and unique factorisation gives p = c1 h^3, q = c2 h^5 with deg h <= 4",
+        "a_(12,3) = b_(20,5) = 1 forces c1 = c2 = 1 and h monic of degree 4, leaving the 4 coefficients of h"
+      ],
+      "lower_bound": "the 4-parameter family is substituted into all 31 equations exactly (family_certificate)",
+      "upper_bound": "the Wronskian identity + unique factorisation (wronskian certificate)",
+      "literal_variety": "with no chart and no non-degeneracy the variety also contains {p = 0} (21 free q-coefficients), so its dimension is 21; that component means the top edge form of P vanishes, i.e. N(P) is strictly smaller than 3*Delta', and is excluded by the Newton-polygon hypothesis"
+    },
+    "power_structure": {
+      "g": 5,
+      "claim": "det J(P_e,Q_e) = 0  =>  P_e = c1 G^(d_P/g), Q_e = c2 G^(d_Q/g), deg G = g",
+      "parameter_count": "deg G = 5 gives 6 coefficients; the shape P_e = x^p0 y^q0 f(t) forces G = x^(p0/(d_P/g)) y^(q0/(d_P/g)) k(t) with k monic of degree 4, so 4 free parameters for G; plus c1, c2 gives 6, and fixing the two vertex coefficients leaves 4",
+      "wronskian_reduction": "in the edge parameter t: d_Q f g' - d_P f' g = 0, i.e. (f^(d_Q/g))' (g^(d_P/g)) - ... = 0, whose solutions are f = c k^(d_P/g), g = c' k^(d_Q/g) by the same ODE argument"
+    },
+    "family_certificate": {
+      "family": "p = h^3, q = h^5, h = u^4 + c3 u^3 + c2 u^2 + c1 u + c0",
+      "wronskian_symbolically_zero": true,
+      "equations_checked": 31,
+      "all_equations_vanish": true,
+      "trial_point": {
+        "c0": -6,
+        "c1": -6,
+        "c2": -2,
+        "c3": -6
+      },
+      "nonzero_residuals": 0
+    },
+    "degenerate_component": {
+      "component": "{all top-edge P coefficients = 0, Q edge form free}",
+      "equations_vanish": true,
+      "dimension": 21
+    },
+    "empty": false
+  },
+  "top_dim": 4,
+  "top_dim_scaled": 6,
+  "top_dim_literal_full_system": 21,
+  "top_dim_convention": "top_dim is the dimension in the strict Newton-polygon chart (the two shared vertex coefficients a_(12,3), b_(20,5) fixed to 1).  Without those two scalings the same family is top_dim_scaled-dimensional; without the non-degeneracy requirement the literal 34-variable variety also contains the 21-dimensional component {p = 0}.",
+  "descent": [
+    {
+      "edge_index": 2,
+      "normal": [
+        1,
+        -1
+      ],
+      "d_P": 9,
+      "d_Q": 15,
+      "filtration_degree": 24,
+      "target_weight": 2,
+      "unknowns": 10,
+      "equations": 7,
+      "edge_points_P": [
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          12,
+          3
+        ]
+      ],
+      "edge_points_Q": [
+        [
+          15,
+          0
+        ],
+        [
+          16,
+          1
+        ],
+        [
+          17,
+          2
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          19,
+          4
+        ],
+        [
+          20,
+          5
+        ]
+      ],
+      "n_points_P": 4,
+      "n_points_Q": 6,
+      "det_monomials": [
+        [
+          24,
+          0
+        ],
+        [
+          25,
+          1
+        ],
+        [
+          26,
+          2
+        ],
+        [
+          27,
+          3
+        ],
+        [
+          28,
+          4
+        ],
+        [
+          29,
+          5
+        ],
+        [
+          30,
+          6
+        ]
+      ],
+      "shared_points_with_previous": {
+        "P": [
+          [
+            12,
+            3
+          ]
+        ],
+        "Q": [
+          [
+            20,
+            5
+          ]
+        ]
+      },
+      "vertices_P": [
+        [
+          9,
+          0
+        ],
+        [
+          12,
+          3
+        ]
+      ],
+      "vertices_Q": [
+        [
+          15,
+          0
+        ],
+        [
+          20,
+          5
+        ]
+      ],
+      "leading_form_identically_zero": false,
+      "power_structure_g": 3,
+      "dimension_structure_theorem": 1,
+      "substitution": {
+        "fix": {
+          "a_12_3": 1,
+          "b_20_5": 1
+        },
+        "values": "1 (the top-edge family gives a_(12,3) = c1 and b_(20,5) = c2; both were normalised to 1)",
+        "consistent": true,
+        "shared_but_not_fixed": {
+          "P": [],
+          "Q": []
+        }
+      },
+      "groebner": {
+        "status": "ok",
+        "basis_size": 41,
+        "lm_supports": [
+          [
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            4,
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            4,
+            5,
+            7
+          ],
+          [
+            4,
+            5,
+            7
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            4,
+            6,
+            7
+          ],
+          [
+            4,
+            5,
+            6,
+            7
+          ],
+          [
+            5,
+            6,
+            7
+          ],
+          [
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            0,
+            4,
+            6
+          ],
+          [
+            0,
+            5,
+            6
+          ],
+          [
+            0,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6
+          ],
+          [
+            0,
+            4,
+            7
+          ],
+          [
+            0,
+            5,
+            7
+          ],
+          [
+            0,
+            6,
+            7
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            1
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            1,
+            7
+          ],
+          [
+            7
+          ],
+          [
+            2
+          ]
+        ],
+        "gens": [
+          "a_9_0",
+          "a_10_1",
+          "a_11_2",
+          "b_15_0",
+          "b_16_1",
+          "b_17_2",
+          "b_18_3",
+          "b_19_4"
+        ],
+        "seconds": 1.125,
+        "sample": [
+          "-125*b_15_0**3*b_19_4 + 50*b_15_0**2*b_16_1*b_18_3 + 25*b_15_0**2*b_17_2**2 - 35*b_15_0*b_16_1**2*b_17_2 + 7*b_16_1**4",
+          "-625*b_15_0**3 - 175*b_15_0**2*b_16_1*b_19_4 + 250*b_15_0**2*b_17_2*b_18_3 - 5*b_15_0*b_16_1**2*b_18_3 - 90*b_15_0*b_16_1*b_17_2**2 + 21*b_16_1**3*b_17_2",
+          "-1000*b_15_0**2*b_16_1 + 500*b_15_0**2*b_17_2*b_19_4 + 75*b_15_0**2*b_18_3**2 - 240*b_15_0*b_16_1**2*b_19_4 + 110*b_15_0*b_16_1*b_17_2*b_18_3 - 105*b_15_0*b_17_2**3 + 21*b_16_1**2*b_17_2**2",
+          "8000*b_15_0**2*b_17_2 - 1300*b_15_0**2*b_18_3*b_19_4 - 4400*b_15_0*b_16_1**2 + 380*b_15_0*b_16_1*b_17_2*b_19_4 + 700*b_15_0*b_16_1*b_18_3**2 - 455*b_15_0*b_17_2**2*b_18_3 + 21*b_16_1*b_17_2**3",
+          "118125*a_9_0**2*b_15_0*b_19_4 + 13000*a_9_0*b_15_0*b_16_1 - 108250*b_15_0**2*b_18_3 + 8575*b_15_0*b_16_1*b_17_2 + 2375*b_15_0*b_16_1*b_18_3*b_19_4 - 970*b_15_0*b_17_2**2*b_19_4 - 1125*b_16_1**3 + 3*b_17_2**4",
+          "-125*b_15_0**2*b_16_1 - 25*b_15_0**2*b_17_2*b_19_4 + 75*b_15_0**2*b_18_3**2 + 5*b_15_0*b_16_1**2*b_19_4 - 30*b_15_0*b_16_1*b_17_2*b_18_3 + 7*b_16_1**3*b_18_3",
+          "125*b_15_0**2*b_17_2 + 100*b_15_0**2*b_18_3*b_19_4 - 200*b_15_0*b_16_1**2 - 5*b_15_0*b_16_1*b_17_2*b_19_4 + 35*b_15_0*b_16_1*b_18_3**2 - 35*b_15_0*b_17_2**2*b_18_3 + 7*b_16_1**2*b_17_2*b_18_3",
+          "10500*a_9_0**2*b_15_0*b_19_4 + 375*a_9_0*b_15_0*b_16_1 - 9000*b_15_0**2*b_18_3 + 700*b_15_0*b_16_1*b_17_2 + 210*b_15_0*b_16_1*b_18_3*b_19_4 - 95*b_15_0*b_17_2**2*b_19_4 - 75*b_16_1**3 + b_16_1*b_17_2**2*b_18_3"
+        ],
+        "n_vars": 8,
+        "n_equations": 7,
+        "modulus": null,
+        "method": "buchberger",
+        "order": "grevlex",
+        "cap_seconds": 120.0,
+        "dimension": 1,
+        "empty": false,
+        "dimension_detail": {
+          "dimension": 1,
+          "unit_ideal": false,
+          "empty": false,
+          "method": "exhaustive subset scan over 8 variables",
+          "min_supports": 7,
+          "seconds": 0.0
+        }
+      },
+      "dimension": 1,
+      "dimension_method": "Groebner basis (grevlex) + LM ideal",
+      "empty": false,
+      "family_certificate": {
+        "family": "P_e = G^3, Q_e = G^5, G = x^3*y^0*k(t), t = x^1*y^1, deg k = 1",
+        "det_J_identically_zero": true,
+        "free_parameters_in_G": 1
+      }
+    },
+    {
+      "edge_index": 3,
+      "normal": [
+        0,
+        -1
+      ],
+      "d_P": 0,
+      "d_Q": 0,
+      "filtration_degree": 1,
+      "target_weight": 0,
+      "unknowns": 26,
+      "equations": 0,
+      "edge_points_P": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ]
+      ],
+      "edge_points_Q": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          13,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          15,
+          0
+        ]
+      ],
+      "n_points_P": 10,
+      "n_points_Q": 16,
+      "det_monomials": [],
+      "shared_points_with_previous": {
+        "P": [
+          [
+            9,
+            0
+          ]
+        ],
+        "Q": [
+          [
+            15,
+            0
+          ]
+        ]
+      },
+      "vertices_P": [
+        [
+          0,
+          0
+        ],
+        [
+          9,
+          0
+        ]
+      ],
+      "vertices_Q": [
+        [
+          0,
+          0
+        ],
+        [
+          15,
+          0
+        ]
+      ],
+      "leading_form_identically_zero": true,
+      "reason": "both edge forms are univariate in the same variable (horizontal edge), so det J(P_e,Q_e) = 0 identically for every choice of edge coefficients",
+      "vacuous": true,
+      "dimension": 26,
+      "dimension_own_space": 26,
+      "empty": false,
+      "groebner": {
+        "status": "not_run",
+        "reason": "edge system is empty (0 equations)"
+      },
+      "note": "the edge-local condition is automatically satisfied; the first non-vacuous condition at this weight is of lower filtration order and involves interior coefficients, which is outside the 3-edge cascade"
+    }
+  ],
+  "first_empty_edge": null,
+  "verdict": "DESCENDED 3 EDGES",
+  "verdict_detail": "no contradiction was found in the first 3 edge conditions (edge 1 w=[1, 1], edge 2 w=[1, -1], edge 3 w=[0, -1]); each edge condition is necessary for det J = x^2, so this is a filter, not a solution; edge(s) [3] have identically zero leading forms and are therefore vacuous",
+  "checks": {
+    "all_pass": true,
+    "checks": {
+      "four_edges_per_polygon": true,
+      "same_normal_fan": true,
+      "P_boundary_covers_all_boundary_points": true,
+      "Q_boundary_covers_all_boundary_points": true,
+      "P_edge_incidences_are_boundary_plus_vertices": true,
+      "Q_edge_incidences_are_boundary_plus_vertices": true,
+      "top_edge_is_the_highest_filtration_degree": true,
+      "top_edge_normal_is_1_1": true,
+      "top_edge_has_34_unknowns_and_31_equations": true,
+      "top_edge_leading_form_identity_verified": true,
+      "top_edge_family_solves_all_equations": true,
+      "top_edge_degenerate_component_verified": true,
+      "top_dim_equals_structure_theorem_count": true,
+      "no_edge_empty_in_the_cascade": true,
+      "no_top_edge_groebner_disagreement": true,
+      "edge_2_family_solves_edge_system": true,
+      "edge_2_dimension_matches_structure": true,
+      "edge_3_vacuous_leading_form": true
+    }
+  },
+  "conventions": {
+    "top_edge": "the edge of maximal filtration degree d_P + d_Q - w.(1,1); here w = (1,1)",
+    "leading_part": "LP_w(det J) = det J(P_w, Q_w)",
+    "strict_chart": "the vertex coefficients (12,3) and (20,5) are nonzero (they are vertices of N(P), N(Q)) and are normalised to 1; every equation is homogeneous of degree 1 in each block",
+    "dimension": "affine dimension of the solution set in the strict chart",
+    "edge_order": "boundary cycle from the top edge, clockwise; equals decreasing filtration degree"
+  },
+  "timings": {
+    "stage_seconds": {
+      "1_edges": 0.002,
+      "2_top_edge": 306.49,
+      "3_descent": 1.182
+    },
+    "total_seconds": 307.674
+  },
+  "elapsed_seconds": 307.674
+}

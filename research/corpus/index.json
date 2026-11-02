@@ -99,8 +99,8 @@
   "role": "core",
   "why": "A 16-vertex 6-chromatic graph for two distances; the smallest known target for a level-5 virtual edge.",
   "facts": [
-   "16 vertices, symmetry group of order 48, 28 edges of length 1 and 28 of length d (S2)",
-   "the graph contains 5-cliques, so at least five colours are needed (proof of the main theorem)"
+   "16 vertices, symmetry group of order 48, 28 edges of length 1 and 28 of length d = (sqrt(5)+1)/2 (S2)",
+   "the theorem proved is chi(phi) >= 6 (Theorem, after S2)"
   ],
   "license": "arXiv",
   "verified": true
@@ -144,7 +144,7 @@
   "why": "The 426-vertex 6-chromatic two-distance graph, the other known target for replacing a non-unit edge.",
   "facts": [
    "K has 426 vertices, 2009 edges of length 1 and 892 edges of length 2 (S2, after Claim 2.2)",
-   "every 5-colouring of K forces three named vertices to split (S2)"
+   "every 5-colouring of K forces A, B and B' to receive the same colour; AB = AB' = 5 and BB' = 1, so chi(K) >= 6 (S2)"
   ],
   "license": "arXiv",
   "verified": true
@@ -188,7 +188,7 @@
   "why": "States the refined numerical bound used to kill the 509-plus-gadget route: v7 > 6992.",
   "facts": [
    "v7 > 6992 and v6 > 24 (S1)",
-   "v5 >= 509 and e5 >= 2406 are the corresponding upper-record data (S1)"
+   "the finite upper bounds are v5 <= 509 and e5 <= 2406 (S1, footnote 2)"
   ],
   "license": "CC-BY",
   "verified": true
@@ -254,7 +254,7 @@
   "facts": [
    "Main.lean is 137 lines with 0 occurrences of `sorry`",
    "`theorem main : exists C beta : R, 0 < C and 1 <= beta and beta < 4/3 and forall n, u n <= C * n^beta` (lines 129-131)",
-   "this gives a power saving over the trivial O(n^{3/2}) bound but not the conjectured n^{1+o(1)}"
+   "this is a sub-4/3 exponent, a power saving over the trivial O(n^{3/2}) bound, but not the conjectured n^{1+o(1)}"
   ],
   "license": "Apache-2.0",
   "verified": true
@@ -300,7 +300,7 @@
    "chi(G14) = 6 and omega(G14) = 4; the distance triple admits no K5 anywhere in the plane (README)",
    "no 13-point witness exists, so 14 is minimum (README, main result 3)"
   ],
-  "license": "unknown",
+  "license": "MIT",
   "verified": true
  },
  {
@@ -433,7 +433,9 @@
   "id": "doi:10.1515/crll.1983.340.140",
   "title": "On the Jacobian conjecture and the configurations of roots",
   "authors": [
-   "Moh, T. T."
+   "Biggers, R.",
+   "Moh, T. T.",
+   "Fried, M."
   ],
   "year": 1983,
   "url": "https://doi.org/10.1515/crll.1983.340.140",
@@ -597,8 +599,8 @@
   "role": "core",
   "why": "The (72,108) reduction: below degree 125 only this pair survives, with exactly two Newton-polygon configurations.",
   "facts": [
-   "Theorem 2.1: max{deg P, deg Q} >= 125, or (deg P, deg Q) is (72,108) or (108,72) (p. 3)",
-   "Proposition 4.3 lists exactly two configurations: N(P)={(0,0),(1,0),(8,14),(8,16),(0,8)} and N(Q)={(0,0),(2,1),(12,21),(12,24),(0,12)} for (1), and the four-corner versions for (2) (p. 23)",
+   "Theorem 2.1: max{deg P, deg Q} >= 125, or (deg P, deg Q) is (72,108) or (108,72)",
+   "Proposition 4.3 lists exactly two configurations: N(P)={(0,0),(1,0),(8,14),(8,16),(0,8)} and N(Q)={(0,0),(2,1),(12,21),(12,24),(0,12)} for (1), and the four-corner versions for (2)",
    "the proved lower bound rises from 100 to 108, not to 125 (abstract)"
   ],
   "license": "CC-BY",
@@ -608,7 +610,7 @@
   "id": "zenodo:21461572",
   "title": "The Alpoge-Fable counterexample to the Jacobian Conjecture: verification, geometry, dynamics, and an equivariant program for the plane case",
   "authors": [
-   "Zenodo contributors"
+   "Giannini, Liam"
   ],
   "year": 2026,
   "url": "https://zenodo.org/records/21461572",
@@ -619,8 +621,9 @@
   "role": "core",
   "why": "Independent verification and geometric analysis of the July 2026 C^3 counterexample; the reference object for the non-planar case.",
   "facts": [
-   "records an independent verification of the July 2026 polynomial map C^3 -> C^3 with constant non-zero determinant and a three-point collision",
-   "the associated note is jacobian-note-v1.1.pdf (273 kB) with a Python verification repository"
+   "F = (u^3 z + y^2 u(4+3xy), y + 3x u^2 z + 3x y^2(4+3xy), 2x - 3x^2 y - x^3 z) with u = 1+xy has det DF = -2 identically (p. 1)",
+   "F(0,0,-1/4) = F(1,-3/2,13/2) = F(-1,3/2,13/2) = (-1/4,0,0) (p. 1)",
+   "the fibres have geometric degree 3 and full S_3 monodromy (abstract)"
   ],
   "license": "unknown",
   "verified": true
@@ -638,11 +641,11 @@
    "jac"
   ],
   "role": "core",
-  "why": "The clearest derivation of where the C^3 map comes from; documents the degree and determinant data an auditor needs.",
+  "why": "The clearest derivation of where the C^3 map comes from; reconstructs it as a resultant of a linear and a quadratic polynomial.",
   "facts": [
-   "the map has component degrees 7, 6 and 4 and total degree 7",
-   "the Jacobian determinant is the constant -2, so a linear change of one component normalises it to 1",
-   "the generic fibre has three points"
+   "the construction is a homogeneous resultant of a linear polynomial and a quadratic polynomial",
+   "the resulting polynomial has degree seven",
+   "the post records the component degrees 7, 6 and 4"
   ],
   "license": "unknown",
   "verified": true
@@ -660,10 +663,10 @@
    "jac"
   ],
   "role": "core",
-  "why": "The algebraic-geometry reading of the counterexample, including the collision and the monodromy computation.",
+  "why": "The algebraic-geometry reading of the counterexample: elimination to a cubic relation, and a separate 24-variable det = 1 construction in the comments.",
   "facts": [
-   "gives explicit rational collision points for the C^3 map",
-   "records a separate 2026 cubic-homogeneous map in 24 variables with det(DG) = 1 and a rational collision (announced in the comments)"
+   "eliminating any two variables produces a cubic relation in the remaining one",
+   "the comments record a separate 2026 cubic-homogeneous map in 24 variables with det(DG) = 1 and a rational collision"
   ],
   "license": "unknown",
   "verified": true
@@ -672,7 +675,7 @@
   "id": "github:wstrinz/plane-jacobian-72-108",
   "title": "The plane (72,108) Jacobian case - an independent structural proof",
   "authors": [
-   "Strinz, William"
+   "wstrinz"
   ],
   "year": 2026,
   "url": "https://github.com/wstrinz/plane-jacobian-72-108",
@@ -687,7 +690,7 @@
    "Corollary B: conditional on two stated inputs, every plane counterexample has max{deg P, deg Q} >= 125",
    "the README attributes priority for the exclusion to Helali, Zenodo DOI 10.5281/zenodo.21479814"
   ],
-  "license": "unknown",
+  "license": "MIT",
   "verified": true
  },
  {
@@ -833,8 +836,8 @@
   "role": "analogue-open",
   "why": "The Mathieu-Zhao reformulation is the widest currently open statement that JC is known to imply.",
   "facts": [
-   "introduces Mathieu-Zhao subspaces and connects them to the Mathieu conjecture (2020 survey chapter)",
-   "JC implies the Mathieu conjecture for the appropriate class of maps"
+   "survey chapter (2020) connecting Mathieu-Zhao subspaces to the Jacobian conjecture",
+   "records the implication JC => Mathieu conjecture for the appropriate class of maps"
   ],
   "license": "unknown",
   "verified": true
@@ -874,7 +877,7 @@
   "problem": [
    "jac"
   ],
-  "role": "analogue-open",
+  "role": "analogue-solved",
   "why": "Shows the dimension-2 Markus-Yamabe theorem does not lift: the polynomial counterexample appears already in dimension 3.",
   "facts": [
    "exhibits a polynomial counterexample to Markus-Yamabe in dimension 3",
@@ -965,7 +968,7 @@
   "role": "core",
   "why": "The precise citation for the GZK gate and for the rank >= 2 Selmer corank statement that rules out the easy counterexample shapes.",
   "facts": [
-   "Theorem 1.1 (Gross-Zagier, Kolyvagin): if r_an(E/Q) <= 1 then r_an(E/Q) = r_MW(E/Q) (p. 3)",
+   "Theorem 1.1 (Gross-Zagier, Kolyvagin): if r_an(E/Q) <= 1 then r_an(E/Q) = r_MW(E/Q)",
    "Kolyvagin's conjecture implies that analytic rank >= 2 forces Z_p-corank Sel_p >= 2 (abstract)"
   ],
   "license": "arXiv",
@@ -1222,8 +1225,8 @@
   "role": "method",
   "why": "The practical reference for the approximate functional equation and for rigorous zero-counting of L-functions.",
   "facts": [
-   "surveys the approximate functional equation, smoothed sums and zero-counting for L-functions",
-   "the worked examples include large-scale verification of the Riemann hypothesis for Dirichlet L-functions"
+   "surveys summation by parts, Euler-Maclaurin summation, Poisson summation and the FFT for evaluating L-functions (abstract)",
+   "also covers conjectures and experiments connecting number theory and random matrix theory (abstract)"
   ],
   "license": "arXiv",
   "verified": true

@@ -1,6 +1,6 @@
 {
   "script": "problems/bsd/scan_certified.py",
-  "generated_utc": "2026-11-02T12:14:06.351477+00:00",
+  "generated_utc": "2026-11-02T12:34:11.307386+00:00",
   "method": "smoothed approximate functional equation with an explicit incomplete-gamma truncation bound, a priori rounding bound cross-checked at two precisions, and Richardson finite-difference derivatives",
   "rigour": "numerical with heuristic bound",
   "structural_note": "A numerical interval can prove a value is non-zero, never that it is exactly zero.  Only k=0 (L(1) interval excludes 0) and k=1 (a_N=-1 forces L(1)=0 exactly; L'(1) interval excludes 0) are certifiable.  k>=2 is not certifiable by this method.",
@@ -39,7 +39,7 @@
         "hi": "0.253841860855910684337758923358",
         "contains_zero": false
       },
-      "seconds": 1.82,
+      "seconds": 1.43,
       "note": "positive control"
     },
     {
@@ -56,7 +56,7 @@
         "hi": "0.305999774020027871896603920103",
         "contains_zero": false
       },
-      "seconds": 2.34,
+      "seconds": 2.21,
       "note": "positive control"
     },
     {
@@ -73,7 +73,7 @@
         "hi": "1.81757011323453530378841156991e-29",
         "contains_zero": true
       },
-      "seconds": 6.94,
+      "seconds": 6.75,
       "note": "expected refusal: rank 2, but kmax=1 can only certify k=0 or k=1; L(1) is numerically zero and w=+1, so no k=0 certificate is possible"
     }
   ],
@@ -151,13 +151,13 @@
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.014,
-        "root_number": 0.281,
-        "derivatives_hi": 18.914,
-        "derivatives_lo": 37.831,
-        "total": 37.831
+        "a_n": 0.015,
+        "root_number": 0.286,
+        "derivatives_hi": 20.566,
+        "derivatives_lo": 15.844,
+        "total": 15.844
       },
-      "seconds": 57.06
+      "seconds": 36.73
     },
     {
       "label": "501317.a1",
@@ -225,13 +225,13 @@
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.02,
-        "root_number": 0.122,
-        "derivatives_hi": 7.504,
-        "derivatives_lo": 9.675,
-        "total": 9.675
+        "a_n": 0.028,
+        "root_number": 0.153,
+        "derivatives_hi": 7.598,
+        "derivatives_lo": 6.614,
+        "total": 6.614
       },
-      "seconds": 17.35
+      "seconds": 14.42
     },
     {
       "label": "503857.a1",
@@ -299,13 +299,13 @@
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.105,
-        "root_number": 0.707,
-        "derivatives_hi": 13.279,
-        "derivatives_lo": 14.57,
-        "total": 14.57
+        "a_n": 0.013,
+        "root_number": 0.221,
+        "derivatives_hi": 13.037,
+        "derivatives_lo": 10.831,
+        "total": 10.831
       },
-      "seconds": 28.77
+      "seconds": 24.12
     },
     {
       "label": "504299.a1",
@@ -373,13 +373,13 @@
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.028,
-        "root_number": 0.316,
-        "derivatives_hi": 16.668,
-        "derivatives_lo": 15.893,
-        "total": 15.893
+        "a_n": 0.024,
+        "root_number": 0.352,
+        "derivatives_hi": 18.079,
+        "derivatives_lo": 15.359,
+        "total": 15.359
       },
-      "seconds": 32.93
+      "seconds": 33.84
     },
     {
       "label": "505763.a1",
@@ -447,13 +447,13 @@
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.043,
-        "root_number": 0.578,
-        "derivatives_hi": 13.624,
-        "derivatives_lo": 8.308,
-        "total": 8.308
+        "a_n": 0.028,
+        "root_number": 0.171,
+        "derivatives_hi": 11.019,
+        "derivatives_lo": 9.334,
+        "total": 9.334
       },
-      "seconds": 22.61
+      "seconds": 20.57
     },
     {
       "label": "509647.a1",
@@ -521,13 +521,13 @@
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.019,
-        "root_number": 0.295,
-        "derivatives_hi": 21.517,
-        "derivatives_lo": 17.968,
-        "total": 17.968
+        "a_n": 0.028,
+        "root_number": 0.319,
+        "derivatives_hi": 22.043,
+        "derivatives_lo": 16.314,
+        "total": 16.314
       },
-      "seconds": 39.83
+      "seconds": 38.73
     },
     {
       "label": "511171.a1",
@@ -595,13 +595,13 @@
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.043,
-        "root_number": 0.812,
-        "derivatives_hi": 21.625,
-        "derivatives_lo": 17.583,
-        "total": 17.583
+        "a_n": 0.018,
+        "root_number": 0.383,
+        "derivatives_hi": 21.901,
+        "derivatives_lo": 18.963,
+        "total": 18.963
       },
-      "seconds": 40.1
+      "seconds": 41.28
     },
     {
       "label": "517571.a1",
@@ -669,13 +669,13 @@
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.032,
-        "root_number": 0.25,
-        "derivatives_hi": 17.726,
-        "derivatives_lo": 11.587,
-        "total": 11.587
+        "a_n": 0.015,
+        "root_number": 0.181,
+        "derivatives_hi": 10.832,
+        "derivatives_lo": 10.291,
+        "total": 10.291
       },
-      "seconds": 29.62
+      "seconds": 21.34
     },
     {
       "label": "500921.a1",
@@ -743,13 +743,13 @@
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.023,
-        "root_number": 0.295,
-        "derivatives_hi": 14.57,
-        "derivatives_lo": 12.905,
-        "total": 12.906
+        "a_n": 0.015,
+        "root_number": 0.197,
+        "derivatives_hi": 11.394,
+        "derivatives_lo": 9.914,
+        "total": 9.914
       },
-      "seconds": 27.82
+      "seconds": 21.54
     },
     {
       "label": "501341.a1",
@@ -817,13 +817,13 @@
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.029,
-        "root_number": 0.374,
-        "derivatives_hi": 17.428,
-        "derivatives_lo": 13.717,
-        "total": 13.717
+        "a_n": 0.019,
+        "root_number": 0.264,
+        "derivatives_hi": 12.955,
+        "derivatives_lo": 14.299,
+        "total": 14.299
       },
-      "seconds": 31.59
+      "seconds": 27.56
     },
     {
       "label": "502507.a1",
@@ -891,13 +891,13 @@
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.02,
-        "root_number": 0.242,
-        "derivatives_hi": 16.465,
-        "derivatives_lo": 12.724,
-        "total": 12.724
+        "a_n": 0.028,
+        "root_number": 0.237,
+        "derivatives_hi": 14.7,
+        "derivatives_lo": 12.983,
+        "total": 12.983
       },
-      "seconds": 29.47
+      "seconds": 27.97
     },
     {
       "label": "504197.a1",
@@ -966,12 +966,12 @@
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
         "a_n": 0.029,
-        "root_number": 0.165,
-        "derivatives_hi": 11.226,
-        "derivatives_lo": 6.386,
-        "total": 6.386
+        "root_number": 0.168,
+        "derivatives_hi": 8.229,
+        "derivatives_lo": 6.981,
+        "total": 6.981
       },
-      "seconds": 17.83
+      "seconds": 15.44
     },
     {
       "label": "507347.a1",
@@ -1039,13 +1039,13 @@
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.014,
-        "root_number": 0.199,
-        "derivatives_hi": 11.011,
-        "derivatives_lo": 11.557,
-        "total": 11.557
+        "a_n": 0.025,
+        "root_number": 0.194,
+        "derivatives_hi": 10.929,
+        "derivatives_lo": 8.807,
+        "total": 8.807
       },
-      "seconds": 22.8
+      "seconds": 19.98
     },
     {
       "label": "512711.a1",
@@ -1113,13 +1113,13 @@
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.061,
-        "root_number": 0.884,
-        "derivatives_hi": 23.247,
-        "derivatives_lo": 18.618,
-        "total": 18.618
+        "a_n": 0.02,
+        "root_number": 0.296,
+        "derivatives_hi": 17.748,
+        "derivatives_lo": 14.76,
+        "total": 14.76
       },
-      "seconds": 42.87
+      "seconds": 32.85
     },
     {
       "label": "519083.a1",
@@ -1187,13 +1187,13 @@
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.014,
-        "root_number": 0.403,
-        "derivatives_hi": 21.264,
-        "derivatives_lo": 20.864,
-        "total": 20.864
+        "a_n": 0.016,
+        "root_number": 0.371,
+        "derivatives_hi": 14.863,
+        "derivatives_lo": 12.672,
+        "total": 12.673
       },
-      "seconds": 42.56
+      "seconds": 27.95
     }
   ],
   "certified_count": 15,
@@ -1202,5 +1202,5 @@
   "anomalies": [],
   "uncertified": [],
   "verdict": "COVERAGE EXTENDED: 15 curves certified, 0 anomalies",
-  "total_seconds": 494.33
+  "total_seconds": 414.71
 }

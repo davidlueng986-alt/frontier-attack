@@ -237,20 +237,13 @@ def different_colour_sat(edges, n: int, u: int, v: int, k: int) -> bool:
     return R._solve(base + R._different_colour_clauses(u, v, k))
 
 
-def stage1_semantics(verbose: bool = True) -> dict:
-    """Check that relation() has exactly the documented semantics.
-
-    For a fixed set of graphs, compare every pair's relation against direct
-    CNF tests of "u == v" and "u != v", and against brute force on small
-    graphs.  This is the stage-1 acceptance check.
-    """
-    t0 = time.perf_counter()
+def _semantics_cases():
+    """Graphs with known pair relations, shared by stages 1 and 1b."""
     cycle5 = [(i, (i + 1) % 5) for i in range(5)]
     diamond = [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3)]
     k4 = [(i, j) for i in range(4) for j in range(i + 1, 4)]
     k4_minus = [e for e in k4 if e != (2, 3)]
-
-    cases = [
+    return [
         ("edge-k3", 2, [(0, 1)], 3, 0, 1, "different"),
         ("diamond-tips-k3", 4, diamond, 3, 2, 3, "equal"),
         ("diamond-edge-k3", 4, diamond, 3, 0, 1, "different"),
@@ -259,6 +252,17 @@ def stage1_semantics(verbose: bool = True) -> dict:
         ("k4-k3", 4, k4, 3, 0, 1, "unsat"),
         ("k4-minus-tips-k3", 4, k4_minus, 3, 2, 3, "equal"),
     ]
+
+
+def stage1_semantics(verbose: bool = True) -> dict:
+    """Check that relation() has exactly the documented semantics.
+
+    For a fixed set of graphs, compare every pair's relation against direct
+    CNF tests of "u == v" and "u != v", and against brute force on small
+    graphs.  This is the stage-1 acceptance check.
+    """
+    t0 = time.perf_counter()
+    cases = _semantics_cases()
 
     checks = 0
     mismatches = []
@@ -351,14 +355,42 @@ def circle_intersections(p1, p2):
     return [(xm + rx, ym + ry), (xm - rx, ym - ry)]
 
 
-def grow_candidate(n: int, rng: random.Random, step_prob: float = 0.12,
-                   max_guard: int = 400):
-    """Grow an n-point unit-distance graph with u=(0,0), v=(0,sqrt(3)).
+def two_point_seed():
+    """The minimal seed: terminals only, at the target distance sqrt(3)."""
+    return [(mp.mpf(0), mp.mpf(0)), (mp.mpf(0), mp.sqrt(3))]
 
-    New points are unit-circle intersections (85%) or random unit steps
-    (12%).  Returns None if the growth stalls.
+
+def moser_seed():
+    """The 7-vertex Moser spindle with terminals at distance sqrt(3).
+
+    Vertices: u=(0,0), v=(0,sqrt(3)), the two body points of the diamond on
+    u,v, a second diamond sharing u with far tip w, and its two body points.
+    The far tip w satisfies |u-w| = sqrt(3) and |v-w| = 1, so the standard
+    spindle (two diamonds sharing a tip, far tips joined by a unit edge) is
+    exactly the 7-vertex, 11-edge, 4-chromatic graph bounded by these points.
+    Terminals u,v are at distance sqrt(3) and are not adjacent.
     """
-    pts = [(mp.mpf(0), mp.mpf(0)), (mp.mpf(0), mp.sqrt(3))]
+    s3 = mp.sqrt(3)
+    u = (mp.mpf(0), mp.mpf(0))
+    v = (mp.mpf(0), s3)
+    half = mp.mpf(1) / 2
+    body_uv = [(half, s3 / 2), (-half, s3 / 2)]
+    w = (mp.sqrt(33) / 6, 5 * s3 / 6)
+    body_uw = circle_intersections(u, w)
+    return [u, v] + body_uv + [w] + body_uw
+
+
+def grow_candidate(n: int, rng: random.Random, seed_points=None,
+                   step_prob: float = 0.12, max_guard: int = 400):
+    """Grow an n-point unit-distance graph containing u=(0,0), v=(0,sqrt(3)).
+
+    New points are unit-circle intersections (88%) or random unit steps
+    (12%).  Returns None if the growth stalls.  ``seed_points`` defaults to
+    the two terminals; pass ``moser_seed()`` for a 4-chromatic start.
+    """
+    pts = list(seed_points) if seed_points is not None else two_point_seed()
+    if len(pts) > n:
+        return None
     guard = 0
     while len(pts) < n and guard < max_guard:
         guard += 1
@@ -422,9 +454,14 @@ def stage2_search(total_cap: int, time_cap: float, seed: int) -> dict:
     rng = random.Random(seed)
     sizes = list(range(8, 19))
     target = max(1, total_cap // len(sizes))
+    moser_target = (3 * target) // 4
+    simple_target = target - moser_target
+    variants = [("two-point", two_point_seed(), simple_target),
+                ("moser", moser_seed(), moser_target)]
     stats = {
         str(n): {"tested": 0, "m_min": None, "m_max": 0, "m_sum": 0,
-                 "chi": Counter(), "relation": Counter(), "four_colourable": 0}
+                 "chi": Counter(), "relation": Counter(), "four_colourable": 0,
+                 "seeds": Counter()}
         for n in sizes
     }
     relation_counts: Counter = Counter()
@@ -434,59 +471,68 @@ def stage2_search(total_cap: int, time_cap: float, seed: int) -> dict:
     tested = 0
     deadline = t0 + time_cap
     stopped_early = False
+    consecutive_failures = 0
 
     for n in sizes:
-        count_n = 0
-        while count_n < target and tested < total_cap:
-            if time.perf_counter() > deadline:
-                stopped_early = True
+        for variant_name, seed_points, want in variants:
+            count_n = 0
+            while count_n < want and tested < total_cap:
+                if time.perf_counter() > deadline:
+                    stopped_early = True
+                    break
+                pts = grow_candidate(n, rng, seed_points)
+                if pts is None:
+                    consecutive_failures += 1
+                    if consecutive_failures > 200:
+                        break
+                    continue
+                consecutive_failures = 0
+                edges = unit_edges(pts)
+                if len(edges) < n - 1:      # disconnected: should not happen
+                    continue
+
+                tested += 1
+                count_n += 1
+                rec = stats[str(n)]
+                rec["tested"] += 1
+                rec["seeds"][variant_name] += 1
+                rec["m_sum"] += len(edges)
+                rec["m_min"] = len(edges) if rec["m_min"] is None else min(rec["m_min"], len(edges))
+                rec["m_max"] = max(rec["m_max"], len(edges))
+
+                chi = exact_chromatic_small(n, edges, cap=5)
+                rec["chi"][str(chi) if chi is not None else ">5"] += 1
+
+                rel = R.relation(edges, n, 0, 1, 5)
+                relation_counts[rel] += 1
+                rec["relation"][rel] += 1
+
+                four = is_k_colourable(n, edges, 4)
+                if four:
+                    rec["four_colourable"] += 1
+                    if rel == "different":
+                        raise AssertionError(
+                            "level obstruction violated by a 4-colourable graph"
+                        )
+                    colours = equal_terminal_colouring(n, edges, 0, 1, 5)
+                    if colours is None or not check_colouring(n, edges, colours, 5):
+                        witness_failures.append({"n": n, "edges": len(edges)})
+                    else:
+                        witnesses_ok += 1
+                elif rel == "different":
+                    hits.append({
+                        "n": n,
+                        "m": len(edges),
+                        "u": 0,
+                        "v": 1,
+                        "points": pts,
+                        "edges": edges,
+                        "source": f"stage2-{variant_name}",
+                        "chi": chi,
+                    })
+
+            if stopped_early:
                 break
-            pts = grow_candidate(n, rng)
-            if pts is None:
-                continue
-            edges = unit_edges(pts)
-            if len(edges) < n - 1:      # disconnected: should not happen
-                continue
-
-            tested += 1
-            count_n += 1
-            rec = stats[str(n)]
-            rec["tested"] += 1
-            rec["m_sum"] += len(edges)
-            rec["m_min"] = len(edges) if rec["m_min"] is None else min(rec["m_min"], len(edges))
-            rec["m_max"] = max(rec["m_max"], len(edges))
-
-            chi = exact_chromatic_small(n, edges, cap=5)
-            rec["chi"][str(chi) if chi is not None else ">5"] += 1
-
-            rel = R.relation(edges, n, 0, 1, 5)
-            relation_counts[rel] += 1
-            rec["relation"][rel] += 1
-
-            four = is_k_colourable(n, edges, 4)
-            if four:
-                rec["four_colourable"] += 1
-                if rel == "different":
-                    raise AssertionError(
-                        "level obstruction violated by a 4-colourable graph"
-                    )
-                colours = equal_terminal_colouring(n, edges, 0, 1, 5)
-                if colours is None or not check_colouring(n, edges, colours, 5):
-                    witness_failures.append({"n": n, "edges": len(edges)})
-                else:
-                    witnesses_ok += 1
-            elif rel == "different":
-                hits.append({
-                    "n": n,
-                    "m": len(edges),
-                    "u": 0,
-                    "v": 1,
-                    "points": pts,
-                    "edges": edges,
-                    "source": "stage2",
-                    "chi": chi,
-                })
-
         if stopped_early:
             break
 
@@ -502,6 +548,7 @@ def stage2_search(total_cap: int, time_cap: float, seed: int) -> dict:
             "chi_histogram": dict(sorted(rec["chi"].items())),
             "relation_histogram": dict(sorted(rec["relation"].items())),
             "four_colourable": rec["four_colourable"],
+            "seeds": dict(sorted(rec["seeds"].items())),
         }
     return {
         "candidates": tested,
@@ -645,18 +692,25 @@ def binary_colouring_cnf(n: int, edges, k: int):
 
 
 def _binary_same_clauses(k: int, var, u: int, v: int):
-    """Clauses forcing u and v to encode the same colour."""
+    """Clauses forcing u and v to encode the same colour.
+
+    "(u == c) -> (v == c)" is a conjunction over the bits of v, so it needs
+    one clause per bit t:  (u != c) OR (v_t == c_t).  Writing it as a single
+    clause over all of v's equality literals would encode a disjunction and
+    would not force equality.
+    """
     b = _bits_for(k)
     out = []
     for c in range(k):
-        # (u == c) -> (v == c)
-        cl = [-var(u, t) if (c >> t) & 1 else var(u, t) for t in range(b)]
-        cl += [var(v, t) if (c >> t) & 1 else -var(v, t) for t in range(b)]
-        out.append(cl)
-        # (v == c) -> (u == c)
-        cl = [-var(v, t) if (c >> t) & 1 else var(v, t) for t in range(b)]
-        cl += [var(u, t) if (c >> t) & 1 else -var(u, t) for t in range(b)]
-        out.append(cl)
+        u_not_c = [-var(u, t) if (c >> t) & 1 else var(u, t)
+                   for t in range(b)]
+        v_not_c = [-var(v, t) if (c >> t) & 1 else var(v, t)
+                   for t in range(b)]
+        for t in range(b):
+            # (u == c) -> (v_t == c_t)
+            out.append(u_not_c + [var(v, t) if (c >> t) & 1 else -var(v, t)])
+            # (v == c) -> (u_t == c_t)
+            out.append(v_not_c + [var(u, t) if (c >> t) & 1 else -var(u, t)])
     return out
 
 
@@ -693,6 +747,42 @@ def binary_relation(edges, n: int, u: int, v: int, k: int = 5) -> dict:
         rel = "free"
     out.update({"relation": rel, "same_sat": same_sat, "diff_sat": diff_sat})
     return out
+
+
+def stage1b_second_encoding() -> dict:
+    """Validate the independent binary encoding on the known relation cases."""
+    t0 = time.perf_counter()
+    cases = _semantics_cases()
+    mismatches = []
+    for name, n, edges, k, u, v, expected in cases:
+        got = binary_relation(edges, n, u, v, k)
+        if got["relation"] != expected:
+            mismatches.append({"case": name, "got": got["relation"],
+                               "want": expected})
+
+    # Randomised cross-check against the one-hot encoding on 5 vertices.
+    rng = random.Random(13)
+    pairs5 = [(i, j) for i in range(5) for j in range(i + 1, 5)]
+    random_checks = 0
+    for _ in range(15):
+        mask = rng.randrange(1 << len(pairs5))
+        edges = [pairs5[i] for i in range(len(pairs5)) if (mask >> i) & 1]
+        for (u, v) in pairs5:
+            want = R.relation(edges, 5, u, v, 3)
+            got = binary_relation(edges, 5, u, v, 3)["relation"]
+            random_checks += 1
+            if got != want:
+                mismatches.append({"case": "random-n5", "edges": edges,
+                                   "pair": [u, v], "got": got, "want": want})
+
+    return {
+        "cases": len(cases),
+        "random_graphs": 15,
+        "random_pair_checks": random_checks,
+        "mismatches": mismatches[:20],
+        "seconds": time.perf_counter() - t0,
+        "ok": not mismatches,
+    }
 
 
 def geometry_check_50(points, edges, u: int, v: int) -> dict:
@@ -781,7 +871,7 @@ def main(argv=None) -> int:
     mp.mp.dps = DPS_CONSTRUCT
 
     # ---- stage 1 ---------------------------------------------------------
-    st1 = stage1_semantics()
+    st1 = stage1_semantics(verbose=False)
     if not st1["ok"]:
         log_stage("stage 1", f"FAILED: {st1['mismatches'][:3]}")
         return 1
@@ -793,14 +883,27 @@ def main(argv=None) -> int:
         "'different' <=> base SAT and colour(u)==colour(v) UNSAT.",
     )
 
+    st1b = stage1b_second_encoding()
+    if not st1b["ok"]:
+        log_stage("stage 1b", f"FAILED: {st1b['mismatches'][:3]}")
+        return 1
+    log_stage(
+        "stage 1b",
+        f"independent binary/Glucose4 encoding agrees on all "
+        f"{st1b['cases']} known relation cases and "
+        f"{st1b['random_pair_checks']} random pair checks "
+        f"({st1b['seconds']:.2f}s).",
+    )
+
     # ---- stage 2 ---------------------------------------------------------
     st2 = stage2_search(args.candidates, args.time_budget, args.seed)
     hist = st2["relation_histogram"]
     log_stage(
         "stage 2",
         f"{st2['candidates']} candidates n=8..18 generated by unit-circle "
-        f"intersections + random unit steps from u=(0,0), v=(0,sqrt(3)); "
-        f"relation@k=5 histogram {hist}; "
+        f"intersections + random unit steps from two seeds "
+        f"(two-point and 4-chromatic Moser spindle, terminals u=(0,0), "
+        f"v=(0,sqrt(3))); relation@k=5 histogram {hist}; "
         f"obstruction witnesses verified for {st2['witnesses_ok']} "
         f"4-colourable candidates ({st2['seconds']:.1f}s"
         f"{', stopped at time cap' if st2['stopped_early'] else ''}).",
@@ -886,7 +989,7 @@ def main(argv=None) -> int:
         "found": found,
         "n": best["n"] if found else None,
         "m": best["m"] if found else None,
-        "uv_dist2": ("3" if found else "3 (target; no gadget found)"),
+        "uv_dist2": "3",
         "candidates": st2["candidates"],
         "seconds": round(total_seconds, 2),
         "gadget": gadget if found else None,
@@ -908,20 +1011,22 @@ def main(argv=None) -> int:
             "witness_failures": st2["witness_failures"],
         },
         "stage1_relation_semantics": st1,
+        "stage1b_second_encoding": st1b,
         "stage2_search": st2,
         "stage2b_509_probe": st2b,
         "stage4_verification": verification,
         "conclusion": (
             "NEGATIVE for the covered space. Every generated candidate "
-            "(n=8..18) is 4-colourable, so by the level obstruction it has a "
-            "5-colouring with the terminals equal; relation() returned "
-            "'different' for none. The 509-vertex record graph is also not a "
-            "level-5 virtual edge: all non-adjacent pairs admit a 5-colouring "
-            "with equal colours, so in particular no sqrt(3) pair is forced "
-            "different. A level-5 virtual edge therefore requires a "
-            "5-chromatic unit-distance graph with a critical non-adjacent "
-            "pair -- a strictly stronger object than the known 509-vertex "
-            "record, not a small composition."
+            "(n=8..18, both 3-chromatic and 4-chromatic seeds) is "
+            "4-colourable, so by the level obstruction it has a 5-colouring "
+            "with the terminals equal; relation() returned 'different' for "
+            "none. The 509-vertex record graph is also not a level-5 virtual "
+            "edge: all non-adjacent pairs admit a 5-colouring with equal "
+            "colours, so in particular no sqrt(3) pair is forced different. "
+            "A level-5 virtual edge therefore requires a 5-chromatic "
+            "unit-distance graph with a critical non-adjacent pair -- a "
+            "strictly stronger object than the known 509-vertex record, not "
+            "a small composition."
         ),
     }
     payload["stage2_search"].pop("hits", None)   # hits are folded into gadget

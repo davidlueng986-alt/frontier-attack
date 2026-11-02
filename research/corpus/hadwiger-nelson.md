@@ -13,7 +13,7 @@ impossible.
 | Moser spindle | 7 | 11 | 4 | 1 | Polymath16 (`polymath16`) |
 | de Grey G | 1,581 | 7,877 | 5 | 1 | `arXiv:1804.02385`, `polymath16` |
 | de Grey G₀ | 1,585 | 7,909 | 5 | 1 | `polymath16` |
-| Heule 2018 | 553 | 2,722 | 5 | 1 | `arXiv:1805.12181` |
+| Heule 2018 | 553 | 2,720 | 5 | 1 | `arXiv:1805.12181` |
 | Heule 2019 | 529 | 2,670 | 5 | 1 | `arXiv:1907.00929` |
 | Parts 2020 | **509** | **2,442** | 5 | 1 | `arXiv:2010.12665` |
 | Parts G₁₆ | 16 | 56 | 6 | 1, φ | `arXiv:2010.12656` |
@@ -72,12 +72,15 @@ A 6-chromatic unit-distance graph is not known. The known 6-chromatic planar gra
 two distances, and that is exactly what makes them useful: replace every non-unit edge by
 a unit-distance gadget that forces its endpoints to differ in every 5-colouring.
 
-**`arXiv:2010.12656` (Parts).** A 16-vertex graph with distances 1 and d, 28 edges of each
-length, symmetry group of order 48, and 5-cliques. It is the smallest known 6-chromatic
-two-distance graph and the cheapest target for a virtual-edge composition.
+**`arXiv:2010.12656` (Parts).** A 16-vertex subgraph of de Grey's 126-vertex `G₁₂₆`, for
+the two distances `1` and `d = φ = (√5+1)/2`; 28 edges of each length, symmetry group of
+order 48, and 5-cliques. The theorem is `χ(φ) ≥ 6`. The introduction lists the other values
+of `d` for which `χ(d) ≥ 6` was already known (d = 2 by Exoo–Ismailescu; d = √3 and
+(√3+1)/√2 by Pálvölgyi–Ágoston), but `G₁₆` itself is the φ construction.
 
 **`arXiv:1909.13177` (Exoo–Ismailescu).** A 426-vertex graph with 2,009 unit edges and 892
-edges of length 2; every 5-colouring forces three named vertices to split. This is the
+edges of length 2; every 5-colouring forces A, B and B′ to receive the same colour, and
+AB = AB′ = 5, BB′ = 1 give the contradiction. This is the
 large, explicit target.
 
 **`arXiv:1805.00157` (Exoo–Ismailescu).** The human-readable 5-chromatic proof: `G₄₀` has
@@ -158,9 +161,10 @@ can prove 6 without producing a finite graph.
    unit-distance graph. That is Target 0, not χ = 7.
 2. **χ = 7 needs ≥ 6,993 vertices** (`arXiv:2010.12668`, `arXiv:2303.14714`). Any plan
    whose seed is the 509 graph plus a bounded gadget is provably 6-colourable.
-3. **The 2026 proof is not a source of witnesses** (`openai-math:five-lean`). It is a
-   proof of existence by compactness with no size bound. Extraction is dead; search is the
-   only route.
+3. **The 2026 proof is not a source of witnesses** (`openai-math:five-lean`). It is an
+   infinitary proof with no finite vertex set. A finite witness exists only by
+   de Bruijn–Erdős compactness, with no size bound. Extraction is dead; search is the only
+   route.
 4. **Calibrate on 14, not on 509.** `github:HeliCorgi/fourteen-points-six-colors` is the
    smallest explicit 6-chromatic planar distance graph and comes with exact arithmetic and
    SAT certificates. A pipeline that cannot reproduce it will not reproduce a 6-chromatic
