@@ -9,7 +9,9 @@ Permanent, machine-readable source base for the three problems in this repo:
 | `bsd` | Birch–Swinnerton-Dyer | `(E,r,k)` with both ranks proved and `r ≠ k` |
 | `methods` | cross-cutting | techniques that transfer between the three |
 
-**59 items** as of 2026-11-02. Every entry was resolved against a live URL; `verified` means the URL
+**116 items** as of 2026-11-02. The first wave (59 items) is the core literature; the second wave
+(57 items) adds computer-assisted proof methodology, solved analogues, BSD feasibility, transferable
+methods, and negative results. Every entry was resolved against a live URL; `verified` means the URL
 (or the DOI resolver record for that exact DOI) was fetched and the title matched. No entry is
 marked verified on the strength of a citation alone.
 
@@ -24,18 +26,19 @@ marked verified on the strength of a citation alone.
 | `solved-analogues.md` | problems of the same shape that are already settled, and the method that settled them |
 | `open-analogues.md` | sibling problems that remain open, with the current bounds |
 | `methods.md` | transferable techniques, each with a worked pointer into the corpus |
-| `manifest.json` | the 20 downloaded PDFs: url, sha256, bytes, licence, local path |
+| `manifest.json` | the 30 downloaded PDFs: url, sha256, bytes, licence, local path |
+| `gaps.md` | searches that failed, with the query used and why no item was added |
 
 ## What is committed and what is not
 
 The repo is public. **Do not commit the PDFs.** Most are not redistributable.
 
-- **Committed** (this directory): `README.md`, `index.json`, the six `.md` notes,
+- **Committed** (this directory): `README.md`, `index.json`, the seven `.md` notes,
   `manifest.json`, and links/identifiers. These are metadata and original prose.
 - **Not committed**: `research/scratch/corpus/pdfs/*.pdf` and
   `research/scratch/corpus/txt/*.txt`. `research/scratch/` is already in `.gitignore`
-  (line 6). The PDFs are 20 files, 18,155,732 bytes. Re-download with
-  `research/scratch/corpus/download.py`; hashes in `manifest.json` let you check you got
+  (line 6). The PDFs are 30 files, 25,694,912 bytes. Re-download with
+  `research/scratch/corpus/download.py` and `download2.py`; hashes in `manifest.json` let you check you got
   the same bytes.
 - The extracted `.txt` files are working copies for `grep`; they are not part of the corpus.
 
@@ -88,8 +91,8 @@ Exits 0 only if there are at least 40 items, every entry has all 12 fields, ids 
 unique, every `core` item has a fact, and every verified URL is `https://`. It prints
 counts per problem and per role.
 
-Current output: 59 items — `hn` 18, `jac` 23, `bsd` 14, `methods` 4;
-`core` 37, `method` 7, `analogue-solved` 10, `analogue-open` 5; 0 unverified.
+Current output: 116 items — `hn` 38, `jac` 40, `bsd` 23, `methods` 15;
+`core` 40, `method` 37, `analogue-solved` 30, `analogue-open` 9; 0 unverified.
 
 ## How to use it
 

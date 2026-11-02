@@ -155,3 +155,36 @@ tool.
 5. **No positive instance has ever been observed.** The honest output of this branch is
    coverage, not a counterexample. `plan/bsd.md` already says this; the corpus supplies the
    numbers behind it.
+
+
+## 6. Second wave: the feasibility stack
+
+**Conductor and local data.** `doi:10.1007/bfb0097582` (Tate) is the algorithm that computes
+the Kodaira type of each singular fibre, hence the conductor and the Tamagawa factors.
+Without it there is no L-function to evaluate. `cremona:book` is the mwrank book:
+modular symbols, Tate's algorithm, 2-descent and the rank algorithms. `stein:bsd-book` is
+the textbook that connects BSD to computation (rank, Sha, Heegner points, Euler system,
+verification).
+
+**Parity.** `doi:10.4007/annals.2010.172.567` (Dokchitser–Dokchitser) proves the parity
+conjecture for elliptic curves assuming finiteness of Sha[2] and conditions at 2 and 3. The
+parity of the Mordell–Weil rank equals the parity of the analytic rank. This is what makes
+`(0,2)`, `(4,2)`, `(1,3)`, `(5,3)` the only shapes worth listing; it is a second filter on
+top of GZK.
+
+**Average rank.** `doi:10.1007/bfb0062705` (Goldfeld 1979) is the origin of the average-rank
+conjecture. Together with `arXiv:1006.1002` (mean 2-Selmer size 3, limsup average rank
+≤ 1.5), it says a uniformly random curve is not where a rank-4 counterexample will be.
+The search must be targeted at the tail.
+
+**Euler systems and zero-counting.** `doi:10.1515/9781400865208` (Rubin) is the book-length
+treatment of Euler systems. `doi:10.1080/10586458.2006.10128976` (Booker) is the rigorous
+zero-counting reference: Turing's method plus the explicit formula. `platt:thesis` is a
+large-scale implementation (GRH for characters mod q ≤ 100,000, non-vanishing at 1/2 for
+q ≤ 2,000,000). `arXiv:2110.10583` (Johansson) gives `p^{3/2+o(1)}` bit complexity for zeta
+and Dirichlet L-values, improving the previous `p^{2+o(1)}`.
+
+**What this changes.** The analytic side has a rigorous implementation path: Tate for the
+conductor, Cremona/Stein for the curve, Booker/Platt for the zeros, Johansson for speed.
+The algebraic side is still the bottleneck: 2-descent must return `r1 = r2`. Parity and GZK
+cut the shape space before any compute; they do not produce the rank.

@@ -169,3 +169,53 @@ can prove 6 without producing a finite graph.
    smallest explicit 6-chromatic planar distance graph and comes with exact arithmetic and
    SAT certificates. A pipeline that cannot reproduce it will not reproduce a 6-chromatic
    unit-distance graph.
+
+
+## 8. Second wave: the computer-assisted proof stack
+
+The first wave answers "what is known about the chromatic number". The second answers
+"what does a machine-checkable colouring proof actually look like, and what has already
+been done at this scale".
+
+**The four-colour theorem.** `doi:10.1090/s0002-9904-1976-14122-5` is the announcement;
+`doi:10.1090/conm/098` is the book-length proof; `doi:10.1006/jctb.1997.1750` is the
+simplified proof with 633 configurations; `doi:10.1007/978-3-540-87827-8_28` is Gonthier's
+Coq formalization. The transferable structure is: a discharging argument reduces the
+infinite statement to a finite list of configurations, and a computer checks the list.
+The HN terminal check needs exactly this shape, with DRAT in place of the configuration
+check.
+
+**Kepler and Flyspeck.** `doi:10.4007/annals.2005.162.1065` is the computer-assisted
+proof; `doi:10.1017/fmp.2017.1` is the completed formal proof in HOL Light and Isabelle.
+Flyspeck is the precedent for a multi-year formalization of a geometric case analysis, and
+the warning that the formal proof can lag the informal one by a decade.
+
+**SAT at scale.** `doi:10.1007/978-3-319-40970-2_15` (Boolean Pythagorean triples) is the
+closest scale analogue: a finite threshold (7824 versus 7825), a 200 TB DRAT certificate,
+and a proof that a Ramsey-type colouring statement can be settled by cube-and-conquer.
+`doi:10.1007/978-3-319-09284-3_17` (Erdős discrepancy) is the same pattern at a smaller
+certificate: an infinite conjecture refuted by a finite SAT instance with threshold 1161.
+`doi:10.1007/978-3-319-09284-3_31` (DRAT-trim) and `doi:10.1007/978-3-319-63046-5_14`
+(cake_lpr) are the two checkers a DRAT/LRAT claim needs.
+
+**Search infrastructure.** `doi:10.1016/j.dam.2012.07.018` (House of Graphs),
+`mathworld:unit-distance`, `doi:10.1007/978-0-387-74642-5` (Soifer) and
+`polymath16:thread1` are where the vertex counts, coordinates and historical records live.
+`polymath16:thread1` is also the record of the 1577-to-1581 correction.
+
+**Foundations.** `doi:10.1016/s0097-3165(03)00102-x` and `doi:10.1016/j.jcta.2004.01.001`
+(Shelah–Soifer) show that the de Bruijn–Erdős compactness step can fail without choice;
+`doi:10.37236/269` (Payne) constructs unit-distance graphs whose chromatic number depends on
+the axioms. A claim that "a finite witness must exist" has to say which set theory it is
+proved in.
+
+**Nearby problems.** `doi:10.1016/s0012-365x(01)00183-2` (Coulson) gives the 15-colouring of
+R³; `doi:10.1016/s0012-365x(00)00406-4` (Nechushtan) gives χ(R³) ≥ 6;
+`doi:10.1007/s00454-004-1092-8` (Exoo) shows that allowing an epsilon slack makes the
+chromatic number exactly 7 for a range of epsilon. The last item is the sharpest warning:
+the unit-distance problem is a knife-edge, and a small perturbation of the distance
+constraint changes the answer.
+
+**What this changes for the terminal object.** The proof obligation is not "find a graph and
+argue by hand". It is: exact coordinates, a DRAT/LRAT trace, an independent checker, and a
+statement of the set theory used. The four-colour and Pythagorean cases are the templates.

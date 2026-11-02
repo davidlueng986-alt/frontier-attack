@@ -1531,10 +1531,10 @@
    "hn"
   ],
   "role": "method",
-  "why": "The public graph database used to distribute and search for extremal colouring graphs; a place to look for seeds the papers do not print.",
+  "why": "A public graph database for extremal colouring searches; a place to look for seeds and canonical forms the papers do not print.",
   "facts": [
-   "House of Graphs is a searchable database of graphs with invariants and canonical augmentation (abstract)",
-   "it supports uploading and searching graphs by invariant"
+   "House of Graphs is a searchable database of graphs with invariants (title and paper description)",
+   "the 2013 paper describes the database and its search interface"
   ],
   "license": "unknown",
   "verified": true
@@ -1948,9 +1948,9 @@
    "jac"
   ],
   "role": "analogue-solved",
-  "why": "The general 4-sheeted exclusion, completing the geometric-degree wall below 5.",
+  "why": "The general case of the 4-sheeted analysis, extending the geometric-degree wall below 5.",
   "facts": [
-   "completes the exclusion of 4-sheeted Keller maps of C^2 (general case)"
+   "treats the general case of four-sheeted polynomial maps of C^2 (title)"
   ],
   "license": "unknown",
   "verified": true
@@ -2177,9 +2177,10 @@
    "bsd"
   ],
   "role": "analogue-open",
-  "why": "The origin of Goldfeld's average-rank conjecture; it is the reason a random curve is not a plausible counterexample.",
+  "why": "Proposes conjectures on ranks of elliptic curves over quadratic fields; the baseline for how rare high rank should be.",
   "facts": [
-   "proposes conjectures on the average rank of elliptic curves over quadratic fields (title)"
+   "proposes conjectures on elliptic curves over quadratic fields (title)",
+   "the paper is the origin of the 'Goldfeld conjecture' on average ranks"
   ],
   "license": "unknown",
   "verified": true

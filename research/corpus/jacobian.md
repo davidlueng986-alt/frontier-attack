@@ -188,3 +188,44 @@ dimension 2, false in dimension 3, with an explicit polynomial map as the witnes
 4. **The `(72,108)` exclusion is the one claim that could close the branch.** Read
    `github:wstrinz/plane-jacobian-72-108` with `research/jacobian-wstrinz-audit.md` open;
    the executable checkers are the part worth trusting, the prose is not refereed.
+
+
+## 8. Second wave: solved analogues and geometric walls
+
+**Pinchuk 1994, the single best analogue.** `doi:10.1007/bf02571929` gives a polynomial map
+`R² → R²` with `det J > 0` everywhere that is not injective. The strong real Jacobian
+conjecture is false in dimension 2. The complex conjecture is untouched, but the real case
+is a live warning: a Jacobian condition alone does not force injectivity over a non-algebraically-
+closed field. `arXiv:1202.2949` explains the escape: the Pinchuk maps have degree-6 function-field
+extensions, while a real counterexample of the complex type would need odd degree.
+`doi:10.1590/0001-3765201920170627` and `doi:10.4064/ap110-1-1` map the positive classes and
+the reduction theorems.
+
+**The degree-3 reduction.** `doi:10.1090/s0273-0979-1982-15032-7` (Bass–Connell–Wright) and
+`doi:10.1007/bf00973892` (Yagzhev) reduce JC to cubic maps. Every later degree search is a
+search inside this normal form. `debondt:thesis` is the systematic treatment of the
+homogeneous case, including the low-dimensional nilpotent-Jacobian classifications that a
+new search should not repeat. `doi:10.4064/ap87-0-7` proves the symmetric cubic-linear
+subcase is tame, which calibrates how much of the cubic normal form is already excluded.
+
+**The non-commutative and characteristic-p siblings.** `doi:10.17323/1609-4514-2007-7-2-209-218`
+(Belov-Kanel–Kontsevich) proves the stable equivalence of JC and Dixmier. `doi:10.1016/j.jalgebra.2011.09.036`
+(Zhao) defines Mathieu–Zhao spaces; `doi:10.1016/j.jpaa.2024.107797` (Lang) surveys the
+characteristic-p side.
+
+**Geometric-degree walls.** `doi:10.1070/im1987v029n03abeh000984` (Orevkov) excludes
+3-sheeted Keller maps; `doi:10.1007/bf02313031` and `doi:10.1007/bf02675082`
+(Domrina–Orevkov, Domrina) exclude the 4-sheeted cases; `doi:10.1016/j.top.2008.04.001`
+(Żołądek) excludes topological degree ≤ 5. A plane counterexample must therefore have
+topological degree at least 6 and, by `arXiv:1401.1784`, `gcd(deg P, deg Q) ≥ 16` with
+`gcd ≠ 2p`.
+
+**Finite reformulations.** `doi:10.37236/9210` (Borisov) turns a 2D Keller map into a finite
+combinatorial framework; `arXiv:1401.1784` (GGHV 2014) gives the gcd obstruction. These are
+the right shapes for a computer search: a finite framework plus a coefficient system, not a
+raw degree enumeration.
+
+**What this changes.** The search space is constrained by three independent walls: degree
+(≥ 104, and only `(72,108)` below 125), topological degree (≥ 6), and gcd (≥ 16, not `2p`).
+A candidate that violates any of them is not a candidate. Pinchuk is the reminder that a
+positive Jacobian is not enough over R; the complex terminal object must stay complex.

@@ -20,6 +20,11 @@ a finite, independently checkable certificate.
 | 11 | minimum 6-chromatic 3-distance graph | 2026 | exact arithmetic + SAT + catalog filter | finite combinatorial certificate |
 | 12 | χ(ℝ²) ≥ 5 | 2018 | gadget composition + SAT | the HN method that actually worked |
 
+The second wave adds four more solved analogues in §§13–16: Pinchuk's real Jacobian
+counterexample, the four-colour theorem, Kepler/Flyspeck, and the SAT-scale Ramsey
+proofs. They are the cases that most directly constrain how a terminal certificate should
+be built.
+
 ---
 
 ## 1. Falconer distance conjecture (2026)
@@ -297,3 +302,75 @@ The three targets fail at different components:
 
 That is the honest summary of the corpus: the solved analogues are solved because all three
 components are present, and each of our targets is missing exactly one.
+
+
+## 13. Strong real Jacobian conjecture (Pinchuk 1994)
+
+**Solved (negatively).** There is a polynomial map `F : R² → R²` with `det JF > 0` at every
+point that is not injective (`doi:10.1007/bf02571929`). The strong real Jacobian conjecture
+is false in dimension 2.
+
+**Why this is the best analogue in the corpus.** It has the same hypothesis as JC(2) —
+a non-vanishing Jacobian determinant — and the same conclusion (injectivity), but over `R`
+instead of `C`. It is false. The complex case survives because the function-field extension
+of a complex Keller map would be finite étale of degree one, while Pinchuk's maps have
+degree-six extensions (`arXiv:1202.2949`). The gap between "det J > 0" and "det J = 1" is
+not cosmetic: it is the difference between a false statement and an open one.
+
+**What does not transfer.** The complex Jacobian conjecture is not refuted. A real
+counterexample does not produce a complex one, and the degree-six function-field extension
+is the obstruction. The lesson is about hypotheses, not about degree bounds.
+
+## 14. The four-colour theorem (1976, formalized 2005)
+
+**Solved.** Every planar map is 4-colourable (`doi:10.1090/s0002-9904-1976-14122-5`;
+book: `doi:10.1090/conm/098`; simplified proof: `doi:10.1006/jctb.1997.1750`).
+
+**Method.** Discharging: every minimal counterexample contains one of a finite list of
+unavoidable configurations, and each configuration is reducible. The finite list is checked
+by computer. Gonthier formalized the whole argument in Coq
+(`doi:10.1007/978-3-540-87827-8_28`).
+
+**Why it worked.** The infinite statement was reduced to a finite list before any computer
+was used. The computer checks the list, not the theorem. The 1997 proof cut the list to 633
+configurations; the Coq proof checks the same structure.
+
+**What does not transfer.** HN has no discharging argument. The 2018 de Grey construction
+is a gadget composition, and the 2026 lower bound is a covering-dimension argument. The
+transferable part is the proof architecture: reduce to a finite list, certify the list, and
+state the checker. That is exactly the shape the 6,993-vertex HN target needs.
+
+## 15. Kepler and Flyspeck (2005, 2017)
+
+**Solved.** Every packing of congruent balls in `R³` has density at most `π/(3√2)`
+(`doi:10.4007/annals.2005.162.1065`), and the proof was formalized in HOL Light and
+Isabelle (`doi:10.1017/fmp.2017.1`).
+
+**Method.** A huge finite case analysis, then a multi-year formalization. Flyspeck is the
+precedent for a formal proof that lags the informal one by a decade, and for the engineering
+cost of a geometric case split.
+
+**What does not transfer.** The Kepler proof is a local density argument; HN is a colouring
+argument. The transferable lesson is resource planning: a 6,993-vertex DRAT proof and a
+Flyspeck-scale formalization are different projects, and the HN terminal object needs the
+former, not the latter.
+
+## 16. Boolean Pythagorean triples and Erdős discrepancy (2014, 2016)
+
+**Solved.** `{1,...,7825}` cannot be 2-coloured without a monochromatic Pythagorean triple,
+while `{1,...,7824}` can (`doi:10.1007/978-3-319-40970-2_15`). The Erdős discrepancy
+conjecture is false: there is a `±1` sequence of length 1160 with discrepancy 2, but none of
+length 1161 (`doi:10.1007/978-3-319-09284-3_17`).
+
+**Method.** Cube-and-conquer SAT, a DRAT certificate, and an independent checker
+(`doi:10.1007/978-3-319-09284-3_31`; `doi:10.1007/978-3-319-63046-5_14`). The Pythagorean
+certificate is about 200 TB.
+
+**Why it worked.** Both problems have a finite threshold and a monotone obstruction: once
+the finite instance is UNSAT, the infinite statement follows. HN has the same monotonicity
+(a finite unit-distance graph is a witness), but the threshold is unknown and the graph is
+much larger.
+
+**What does not transfer.** The Pythagorean instance is a hypergraph colouring with a
+different structure; the SAT encoding does not carry over. The transferable part is the
+certificate pipeline: encode, solve, emit DRAT, check with two independent tools.

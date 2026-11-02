@@ -20,6 +20,26 @@
   "fetched": "2026-11-02"
  },
  {
+  "id": "arXiv:1202.2949",
+  "title": "Pinchuk maps, function fields, and real Jacobian conjectures",
+  "url": "https://arxiv.org/pdf/1202.2949",
+  "sha256": "d7d8d7ae10b83cc26f14e2e84f772e72bf97319b8728efdef5a101edd1d6e467",
+  "bytes": 485720,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1202.2949.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:1401.1784",
+  "title": "On the shape of possible counterexamples to the Jacobian Conjecture",
+  "url": "https://arxiv.org/pdf/1401.1784",
+  "sha256": "8b4267512c438c7ceda7e30cb63c225a554cf0d2195dc6325e9d1e42ab520c60",
+  "bytes": 681109,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1401.1784.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
   "id": "arXiv:1610.06229",
   "title": "The DRAT format and DRAT-trim checker",
   "url": "https://arxiv.org/pdf/1610.06229",
@@ -130,6 +150,16 @@
   "fetched": "2026-11-02"
  },
  {
+  "id": "arXiv:2110.10583",
+  "title": "Rapid computation of special values of Dirichlet L-functions",
+  "url": "https://arxiv.org/pdf/2110.10583",
+  "sha256": "e588aca0d05023e79b2e4afc6601845e3106e296189a9d0873742c13c505a92b",
+  "bytes": 271340,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_2110.10583.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
   "id": "arXiv:2204.14178",
   "title": "Increasing the degree of a possible counterexample to the Jacobian Conjecture from 100 to 108",
   "url": "https://arxiv.org/pdf/2204.14178",
@@ -180,6 +210,56 @@
   "fetched": "2026-11-02"
  },
  {
+  "id": "debondt:thesis",
+  "title": "Homogeneous Keller maps",
+  "url": "https://repository.ubn.ru.nl/bitstream/handle/2066/75148/75148.pdf",
+  "sha256": "fae4aa65d9d6f480d243146ac474a9a026ddec0891c352c016e2b6b567c53d4e",
+  "bytes": 2178039,
+  "license": "unknown",
+  "path": "research/scratch/corpus/pdfs/debondt_thesis.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "doi:10.1007/978-3-319-09284-3_17",
+  "title": "A SAT Attack on the Erdős Discrepancy Conjecture",
+  "url": "https://arxiv.org/pdf/1402.2184",
+  "sha256": "5e83a7fb1d309ebdac2d134ec8e6792b011da473d4c7480d62ee9184a851476a",
+  "bytes": 99218,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1402.2184.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "doi:10.1007/978-3-319-40970-2_15",
+  "title": "Solving and Verifying the Boolean Pythagorean Triples Problem via Cube-and-Conquer",
+  "url": "https://arxiv.org/pdf/1605.00723",
+  "sha256": "253958c2775c3fa26f584604daa0ef87f2929a1a36f931e8ba69a06d4d7d88d9",
+  "bytes": 1452497,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1605.00723.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "doi:10.1017/fmp.2017.1",
+  "title": "A formal proof of the Kepler conjecture",
+  "url": "https://arxiv.org/pdf/1501.02155",
+  "sha256": "5cde7b6cb206af54c7d0732502bff569f648b43b647cdf7a3c408560adeeaf44",
+  "bytes": 179069,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1501.02155.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "doi:10.1145/3372885.3373824",
+  "title": "The Lean mathematical library",
+  "url": "https://arxiv.org/pdf/1910.09336",
+  "sha256": "f1c79b8dedb5b66a6cde3dab238387b8cd66ada1d7ed808d7d083621902f0d20",
+  "bytes": 913731,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1910.09336.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
   "id": "openai-math:euclidean-five",
   "title": "The Euclidean plane is not five-colorable",
   "url": "https://github.com/openai/math/raw/main/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/paper.pdf",
@@ -197,6 +277,26 @@
   "bytes": 824241,
   "license": "unknown",
   "path": "research/scratch/corpus/pdfs/openai_falconer.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "platt:thesis",
+  "title": "Computing degree 1 L-functions rigorously",
+  "url": "https://people.maths.bris.ac.uk/~madjp/thesis5.pdf",
+  "sha256": "459998faf72c2cb1a34eac15f6bfbeca62d68edfadd9e1a9b687490aef133cbf",
+  "bytes": 813028,
+  "license": "unknown",
+  "path": "research/scratch/corpus/pdfs/platt_thesis.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "stein:bsd-book",
+  "title": "The Birch and Swinnerton-Dyer Conjecture, a Computational Approach",
+  "url": "https://wstein.org/books/bsd/bsd.pdf",
+  "sha256": "83fd3b1b8ad1aed66ef693ddada493a22319f6e02ef23112132dc12e2d43c242",
+  "bytes": 465429,
+  "license": "unknown",
+  "path": "research/scratch/corpus/pdfs/stein_bsd.pdf",
   "fetched": "2026-11-02"
  }
 ]

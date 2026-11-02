@@ -255,3 +255,42 @@ rank.
 The last row is the useful one. Each problem has a technique that works and a single missing
 component; the corpus is arranged so that the missing component is visible before compute
 is spent.
+
+
+## 13. Second wave: the certificate and algebra toolbox
+
+**LLL and PSLQ.** `doi:10.1007/bf01457454` (LLL) is polynomial-time lattice reduction;
+`doi:10.1090/s0025-5718-99-00995-3` (PSLQ) finds integer relations. Together they turn a
+high-precision numerical identity into an exact algebraic one. Worked pointer: recovering
+the coefficients of a candidate L-value or a polynomial identity before asking a CAS to
+prove it.
+
+**Groebner complexity.** `doi:10.1016/0001-8708(82)90048-2` (Mayr–Meyer) is the
+double-exponential lower bound; `doi:10.1007/978-3-319-16721-3` (Cox–Little–O'Shea) and
+`doi:10.1090/cbms/097` (Sturmfels) are the algorithm references. Worked pointer: the
+`(72,108)` full lattice has 72 unknowns, so the bound is a reason to use the edge cascade,
+not a Groebner basis.
+
+**Newton–Puiseux and real algebra.** `doi:10.1007/978-3-662-05355-3` (Basu–Pollack–Roy)
+covers Newton–Puiseux expansions and quantifier elimination. Worked pointer: the
+`(75,125)` edge cascade and the exact unit-distance checks both need this symbolic layer.
+
+**SAT encodings and symmetry breaking.** `doi:10.3233/FAIA336` (Handbook of Satisfiability)
+is the encoding reference; `doi:10.1109/dac.2003.1219135` (Shatter) constructs lex-leader
+symmetry-breaking predicates. Worked pointer: a 6,993-vertex colouring instance is
+symmetry-heavy, and the graph automorphism group is the first thing to break.
+
+**Lean and mathlib.** `doi:10.1145/3372885.3373824` describes the library the OpenAI
+colouring formalization builds on. Worked pointer: `openai-math:five-lean` imports
+`OAI.Geometry.PlaneColoring.*`, which is mathlib-style finite combinatorics plus topology.
+
+**Computer-assisted proof stack.** `doi:10.1090/s0002-9904-1976-14122-5` and
+`doi:10.1007/978-3-540-87827-8_28` (four-colour), `doi:10.4007/annals.2005.162.1065` and
+`doi:10.1017/fmp.2017.1` (Kepler/Flyspeck), `doi:10.1007/978-3-319-40970-2_15` (Pythagorean)
+and `doi:10.1007/978-3-319-09284-3_17` (Erdős discrepancy). Worked pointer: the proof
+obligation is a finite certificate plus an independent checker, not a hand argument.
+
+**Negative results.** `doi:10.1038/nature16059` (spectral gap undecidable) and
+`doi:10.1080/00029890.1973.11993265` (Hilbert's tenth unsolvable) bound what a general
+algorithm can decide. Worked pointer: do not schedule a search for a decision procedure
+where the problem is undecidable; schedule a certificate for the specific instance.

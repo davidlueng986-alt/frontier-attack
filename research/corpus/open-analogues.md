@@ -246,3 +246,27 @@ The open analogues fall into three groups:
 
 The corpus is organised so that a new claim can be placed in one of these groups before any
 compute is spent. That placement is the main practical value of the collection.
+
+
+## 12. Foundations: choice and perturbation
+
+Two results change what "the chromatic number" means before any graph is drawn.
+
+**Choice.** `doi:10.1016/s0097-3165(03)00102-x` (Shelah–Soifer) shows that in ZF the
+chromatic number of the plane need not equal the supremum of the chromatic numbers of its
+finite subgraphs. `doi:10.1016/j.jcta.2004.01.001` gives examples on the plane, and
+`doi:10.37236/269` (Payne) constructs unit-distance graphs on `R^n` whose chromatic number
+depends on the axioms. The de Bruijn–Erdős compactness step, which turns "no 5-colouring"
+into "a finite 6-chromatic graph exists", is not choice-free. The 2026 proof works in ZFC;
+the finite witness is a ZFC object, but the extraction argument has to say so.
+
+**Perturbation.** `doi:10.1007/s00454-004-1092-8` (Exoo) shows that if the forbidden
+distance is allowed an epsilon slack, the chromatic number is exactly 7 for a range of
+epsilon, and at least 5 for smaller epsilon. The exact unit-distance problem is a
+knife-edge: a small change in the distance constraint changes the answer from open to 7.
+This is the strongest argument that the 6-versus-7 gap is not an artifact of the model.
+
+**What this means for the target.** A 7-chromatic unit-distance graph settles the ZFC
+question. A 6-colouring of the plane settles it in the other direction. Neither statement
+is affected by the choice examples, which are about graphs on all of `R^n` and about the
+compactness inference, not about a specific finite graph.
