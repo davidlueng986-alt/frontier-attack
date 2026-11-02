@@ -1,5 +1,14 @@
 {
   "solver": "cadical153",
+  "selftest": {
+    "graphs": 1024,
+    "n": 5,
+    "k": 3,
+    "pair_queries": 10240,
+    "mismatches": 0,
+    "mismatch_details": [],
+    "seconds": 7.032471799990162
+  },
   "graph_509": {
     "path": "research/scratch/509_parts.vtx",
     "n": 509,
@@ -20,13 +29,14 @@
         "capped": false,
         "cap_reason": "base-unsat",
         "base": "unsat",
-        "base_seconds": 154.73110510001425,
-        "seconds": 154.7567356999498
+        "base_seconds": 160.24591840000357,
+        "seconds": 160.27456299995538
       },
       "3": {
         "k": 3,
         "pairs_total": 129286,
         "pair_cap": 2000,
+        "pairs_in_scope": 0,
         "time_budget_s": 420.0,
         "pairs_examined": 0,
         "equal_pairs": [],

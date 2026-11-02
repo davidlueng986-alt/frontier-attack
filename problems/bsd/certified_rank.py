@@ -513,6 +513,10 @@ def verify_tail(a: list[int], N: int, w: int, M_list: list[int],
         return rows
 
 
+def derivative_label(k: int) -> str:
+    return {0: "L(1)", 1: "L'(1)", 2: "L''(1)", 3: "L'''(1)"}[k]
+
+
 # --------------------------------------------------------------------------
 # one curve
 # --------------------------------------------------------------------------
@@ -631,13 +635,16 @@ def run_curve(curve: Curve) -> dict:
             else:
                 basis = (
                     f"L(1) = 0 exactly from the functional equation with "
-                    f"w = {w:+d}; the interval for L^({target_k})(1) "
-                    f"excludes 0, hence ord = {target_k}.")
+                    f"w = {w:+d} (w determined numerically at s=3, margin "
+                    f"{wdiag['margin']}); the interval for "
+                    f"{derivative_label(target_k)} excludes 0, hence "
+                    f"ord = {target_k}.")
         else:
             if target_k == 3:
                 basis = (
                     "NOT certified: ord >= 3 requires L(1) = L'(1) = "
-                    "L''(1) = 0.  Only L(1) = 0 is exact (w = -1).  The "
+                    "L''(1) = 0.  Only L(1) = 0 is exact (w = -1, determined "
+                    f"numerically with margin {wdiag['margin']}).  The "
                     "AFE intervals for L'(1) and L''(1) contain 0, which is "
                     "consistent with vanishing but is not a proof of it.  "
                     "A numerical error bound cannot prove an exact zero: any "
@@ -651,10 +658,10 @@ def run_curve(curve: Curve) -> dict:
                     f"to vanish exactly) or the target interval contains 0.")
 
         # --- special-value interval ---------------------------------------
+        special_scale = 6 if target_k == 3 else 1
         if target_k == 3:
-            scale = 6
-            special_value = deriv[3]["value"] / scale
-            special_bound = deriv[3]["bound"] / scale
+            special_value = deriv[3]["value"] / special_scale
+            special_bound = deriv[3]["bound"] / special_scale
             special_lo = special_value - special_bound
             special_hi = special_value + special_bound
         else:
@@ -662,6 +669,21 @@ def run_curve(curve: Curve) -> dict:
             special_bound = deriv[target_k]["bound"]
             special_lo = deriv[target_k]["lo"]
             special_hi = deriv[target_k]["hi"]
+
+        # Bound components for the *special value* (divide by 6 for
+        # L'''(1)/3!), for reporting only.
+        comp = deriv[target_k]["components"]
+        special_components = {
+            key: val / special_scale for key, val in comp.items()
+        }
+
+        # Does the quoted LMFDB value agree, allowing for the fact that the
+        # quote is a truncation at its last printed digit?
+        lmfdb_val = mp.mpf(curve.special_value)
+        lmfdb_decimals = len(curve.special_value.split(".")[1])
+        lmfdb_ulp = mp.mpf(10) ** (-lmfdb_decimals)
+        lmfdb_inside = bool(special_lo - lmfdb_ulp <= lmfdb_val
+                            <= special_hi + lmfdb_ulp)
 
         # order bracket, when it adds information
         if certified:
@@ -706,11 +728,18 @@ def run_curve(curve: Curve) -> dict:
             "k_first_nonzero_derivative": k_first_nonzero,
             "special_value_name": curve.special_name,
             "special_value": mp.nstr(special_value, 50),
+            "special_value_scale": special_scale,
             "interval": {
                 "lo": mp.nstr(special_lo, 50),
                 "hi": mp.nstr(special_hi, 50),
             },
             "bound": mp.nstr(special_bound, 8),
+            "bound_components": {
+                key: mp.nstr(val, 8)
+                for key, val in special_components.items()
+            },
+            "lmfdb_value_in_interval": lmfdb_inside,
+            "lmfdb_quote_ulp": mp.nstr(lmfdb_ulp, 3),
             "certified": certified,
             "certification_basis": basis,
             "order_candidates": order_candidates,
@@ -733,6 +762,12 @@ def run_curve(curve: Curve) -> dict:
         "lo": mp.nstr(special_lo, 50),
         "hi": mp.nstr(special_hi, 50),
         "bound": mp.nstr(special_bound, 8),
+        "components": {
+            key: mp.nstr(val, 8)
+            for key, val in special_components.items()
+        },
+        "lmfdb_value_in_interval": lmfdb_inside,
+        "lmfdb_quote_ulp": mp.nstr(lmfdb_ulp, 3),
         "deriv": {
             k: {
                 "value": mp.nstr(deriv[k]["value"], 30),
@@ -783,8 +818,13 @@ def print_curve(res: dict) -> None:
     print()
     print(f"  interval for {p['special_name']}:")
     print(f"    [{p['lo']}, {p['hi']}]")
-    print(f"  bound = {p['bound']}   "
-          f"(tail + rounding + derivative truncation; see JSON)")
+    c = p["components"]
+    print(f"  bound = {p['bound']}  =  tail {c['tail']} + "
+          f"rounding {c['rounding']} + deriv.trunc "
+          f"{c['derivative_truncation']}")
+    print(f"  LMFDB value {res['lmfdb_special_value']} consistent with the "
+          f"interval (quote ulp {p['lmfdb_quote_ulp']}): "
+          f"{'yes' if p['lmfdb_value_in_interval'] else 'no'}")
     print(f"  certified = {str(res['certified']).lower()}")
     print(f"  basis: {res['certification_basis']}")
     if res["order_candidates"] is not None and not res["certified"]:

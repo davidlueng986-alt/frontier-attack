@@ -77,6 +77,19 @@ therefore decided by a theorem, not by compute.
 reduction is wrong, the real space is larger and this plan is void. Treat the
 reduction as a strong prior and re-check it before spending a week.
 
+**Second caveat, added after the J2 audit.** `wstrinz/plane-jacobian-72-108`
+claims a proof (Theorem A) that *both* configurations are empty, hence
+`max(deg P, deg Q) ≥ 125`. The audit's verdict: unrefereed, internally
+inconsistent (the repo's own `CURRENT_STATUS.md` still says `OPEN`, two cited
+close-out documents are missing, the stated proof hash is absent from the public
+history), but the argument is substantive and its checkers pass. If Theorem A
+holds, **this exact target is dead**.
+
+Consequence: `(72,108)` is no longer the only plan. The next region is the
+24–27 degree pairs with `max_deg ≥ 125` still listed as open. Slot J4 is
+transcribing and ranking them. J3 (Groebner on the 8-unknown system) doubles as
+a test of Theorem A: a solution would refute it, `[1]` would agree with it.
+
 ## 4. Load-bearing decomposition
 
 1. **Write the coefficient system for config 2.** Unknown coefficients on the

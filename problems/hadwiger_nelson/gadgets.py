@@ -66,9 +66,13 @@ DIFFERENT = "different"
 FREE = "free"
 VACUOUS = "vacuous"          # no k-colouring exists at all
 
-_NUM_DPS = 50
-_UNIT_TOL = sp.Float("1e-30")
-_ZERO_TOL = 1e-40
+_NUM_DPS = 70
+# A pair is only a candidate edge if its numerically evaluated squared
+# distance is this close to 1.  Genuine unit distances in these constructions
+# evaluate to 1 to far better than this; algebraic near-misses are excluded
+# numerically and never reach the expensive symbolic zero test.
+_UNIT_TOL = sp.Float("1e-50")
+_ZERO_TOL = 1e-45
 
 
 # --------------------------------------------------------------------------
@@ -139,7 +143,7 @@ class Gadget:
     non-edges as well.
     """
 
-    def __init__(self, points, edges, distinguished, label=""):
+    def __init__(self, points, edges, distinguished, label="", _trusted=False):
         self.points = tuple(
             tuple(sp.sympify(c) for c in p) for p in points
         )
@@ -157,7 +161,7 @@ class Gadget:
         for i, j in self.edges:
             if not (0 <= i < j < n):
                 raise ValueError(f"bad edge ({i},{j}) for n={n}")
-            if not is_unit(self.points[i], self.points[j]):
+            if not _trusted and not is_unit(self.points[i], self.points[j]):
                 raise ValueError(f"{label}: edge ({i},{j}) is not unit")
         for v in self.distinguished:
             if not (0 <= v < n):
