@@ -33,7 +33,7 @@ precision, and `bsd.check_claim` returns `COUNTEREXAMPLE_CANDIDATE` (not
 
 | fact | value | consequence |
 |---|---|---|
-| analytic rank ≥ 4 | **not proved for any elliptic curve** | any counterexample at rank ≥ 4 is currently uncertifiable |
+| analytic rank ≥ 4 | not proved for any particular curve, **per the Sage documentation** cited in the research | any counterexample at rank ≥ 4 is currently uncertifiable — treat as a strong prior, not a theorem we verified |
 | `ellrank` output | `[r1, r2, s, L]`, exact only when `r1 == r2` | a gap is not a rank |
 | numerical noise | `ellL1` on 389a1 returns −5.4e−29 at default precision | tolerance is a trap |
 | LMFDB coverage | complete for `N < 500,000` | below that, BSD is already checked |
