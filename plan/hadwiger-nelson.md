@@ -86,15 +86,27 @@ calibrated to the wrong k.
 
 | level | primitive | forces | status |
 |---|---|---|---|
-| k=3 | diamond | apices equal | known → Moser spindle, χ=4 |
-| k=4 | H, and L = 52 copies of H | a monochromatic √3-triangle in some copy | known → χ=5 |
+| k=3 | diamond (equality); H (pattern) | apices equal; both alternating rim triples mono | known → Moser spindle, χ=4 |
+| k=4 | **L = 52 copies of H** | a monochromatic √3-triangle in some copy | known → χ=5 |
 | k=5 | **virtual edge** | endpoints differ in **every** 5-colouring | **missing** |
 
-H is a *4-colouring* gadget: it has four 4-colourings, two with a monochromatic
-triple, and 52 copies (L) force the triple. At 5 colours H has a colouring with
-no monochromatic √3-triangle. The earlier statement that a "7v/12e wheel forces
-a monochromatic triangle at 5 colours" was a level error — three files in this
-repo gave three different levels for the same object.
+H alone is **not** a 4-colouring gadget, and our earlier table said it was. The
+red team enumerated H exactly (distance spectrum `d² ∈ {1,3,4}`, the two √3
+triples are the alternating rim triples `(1,3,5)` and `(2,4,6)`):
+
+| k | essential colourings | with a mono √3 triple | without |
+|---|---|---|---|
+| 3 | 1 | 1 | 0 |
+| 4 | 11 | 7 | **4** |
+| 5 | 31 | 9 | **22** |
+
+Up to the dihedral symmetry `D6`, the 11 essential 4-colourings fall into 4
+orbits: 2 with a mono triple, 2 without. That reproduces de Grey's "four
+essentially distinct 4-colourings, two with a monochromatic triple" — so H does
+not force the triple at k=4. The k=4 forcing gadget is `L`, 52 copies of H.
+
+This is the second level error in the same table. The first moved H from k=5 to
+k=4; the red team moved it from k=4 to k=3.
 
 The 509 graph is 5-chromatic, i.e. a k=4 obstruction. Measuring its relations at
 k=5 was therefore the wrong level, which is why the result was null.

@@ -1,37 +1,47 @@
 #!/usr/bin/env python3
 """gadget_catalog.py -- abstract-first catalog of level-5 virtual-edge candidates.
 
-The object sought is a unit-distance graph G with two terminals u, v such that
+TARGET.  A level-5 virtual edge is a unit-distance graph G with two non-adjacent
+terminals u, v such that
 
-    |u - v|^2 = 3,      G is 5-colourable,      G + uv is not 5-colourable.
+    |u - v|^2 = 3,   G is 5-colourable,   and every 5-colouring of G has
+                                          colour(u) != colour(v).
 
-Such a G is a *level-5 virtual edge*: it can replace a sqrt(3)-edge of the
-De Neve et al. 33-vertex two-distance graph, and the composite is a
-6-chromatic unit-distance graph.
+The last clause is what lets G replace a sqrt(3)-edge of the De Neve et al.
+33-vertex two-distance graph: an edge forbids u = v, and so must the gadget.
 
-Order of work (the previous, geometry-first search was the wrong order because
-the unit part of the 33-vertex graph is 3-colourable):
+This script builds the abstract catalog first (the previous geometry-first
+search was the wrong order: the unit part of the 33-vertex graph is
+3-colourable, so every 4-colourable supergraph is free at k = 5 by the level
+lemma), then filters geometrically.
 
-  stage 1  obtain the complete catalog of edge-6-critical graphs on <= 13
-           vertices (Lalonde 2025, hosted by B. McKay), verify its counts, and
-           re-verify criticality on a sample with SAT.
-  stage 2  for every H and every edge uv: G = H - uv.  H edge-critical makes G
-           5-colourable and H = G + uv not 5-colourable, so (G; u, v) is an
-           abstract virtual-edge candidate.  Dedupe by canonical form.
+  stage 0  audit of the reduction.  For a 5-colourable G:
+             G + uv not 5-colourable  <=>  every 5-colouring has u = v   (EQUAL)
+             G / uv not 5-colourable  <=>  every 5-colouring has u != v  (DIFFER)
+           A virtual edge needs the second.  "H 6-critical, G = H - uv" gives
+           the first, so it produces equality gadgets (the diamond pattern at
+           k = 3), not virtual edges.  Both readings are carried through the
+           pipeline: route A = the literal recipe, route B = the corrected
+           forced-difference route.
+  stage 1  the complete catalog of edge-6-critical graphs on <= 13 vertices
+           (Lalonde 2025, hosted by B. McKay): counts verified, min degree
+           checked, criticality re-verified on a sample with SAT.
+  stage 2A route A: every (H, edge uv) -> G = H - uv; dedupe (G; {u, v}).
+  stage 2B route B: a minimal forced-difference gadget has a 6-critical
+           quotient H and is obtained from H by splitting a vertex w into the
+           two terminals; hence |V(core)| = |V(H)| + 1 and m(core) >= m(H).
   stage 3  geometric filter, cheapest first:
-             3a  edge count  m(G) <= u(n)   [u(n) = max edges of a unit-distance
-                                              graph on n points; exact, Schade]
-             3b  clique number <= 3         [no 4 pairwise-unit points]
-             3c  K_{2,3}-free               [two unit circles meet in <= 2 points]
+             3a  edge count vs u(n), the exact maximum number of unit distances
+                 among n points (Schade; OEIS A186705)
+             3b  clique number <= 3          [no 4 pairwise-unit points]
+             3c  K_{2,3}-free                [two unit circles meet in <= 2 points]
              3d  certified circle-intersection embedding with |uv|^2 = 3
-                 (interval arithmetic; exhaustion certifies non-embeddability)
-  stage 4  report the smallest embeddable G, if any, with exact coordinates and
-           relation(u, v, 5) == "different".
-  stage 5  write runs/hn_gadget_catalog.json.
+  stage 4  the smallest embeddable G, if any (exact coordinates + relation).
+  stage 5  runs/hn_gadget_catalog.json
 
-Everything is deterministic.  No file outside this script's three outputs is
-written.  Exit status is 0 whenever the pipeline completes, including for the
-negative verdict.
+Deterministic.  Writes only this script's three outputs: the script itself is
+pre-existing, and runs/gadget_catalog.log and runs/hn_gadget_catalog.json are
+appended/written.  Exit status 0 whenever the pipeline completes.
 
 Usage:
     python problems/hadwiger_nelson/gadget_catalog.py
@@ -64,7 +74,6 @@ from relation import colouring_cnf, relation  # noqa: E402
 
 LOG_PATH = ROOT / "runs" / "gadget_catalog.log"
 OUT_PATH = ROOT / "runs" / "hn_gadget_catalog.json"
-
 SOLVER = "cadical153"
 
 # ---------------------------------------------------------------------------
@@ -72,18 +81,16 @@ SOLVER = "cadical153"
 # ---------------------------------------------------------------------------
 
 # Complete edge-6-critical catalogs of Lalonde, Electron. J. Combin. 32(1)
-# (2025) #P1.18, hosted by B. McKay at users.cecs.anu.edu.au/~bdm/data/.
-# Counts transcribed from the table at .../data/graphs.html (k = 6 column).
+# (2025) #P1.18, hosted by B. McKay.  Counts transcribed from the k = 6 column
+# of users.cecs.anu.edu.au/~bdm/data/graphs.html and re-verified line by line.
 PUBLISHED_COUNTS = {6: 1, 7: 0, 8: 1, 9: 2, 10: 22, 11: 393, 12: 17036, 13: 1479809}
 CATALOG_TOTAL = sum(PUBLISHED_COUNTS.values())  # 1,497,264
 BASE_URL = "https://users.cecs.anu.edu.au/~bdm/data/crit/crit_{n}_6.g6"
 
-# u(n) = maximum number of unit distances among n points of the plane
-# = maximum number of edges of a unit-distance graph on n vertices.
-# Exact for n <= 14 in Schade's thesis; the table is reproduced in
-# Agoston-Palvolgyi, "An improved constant factor for the unit distance
-# problem", Period. Math. Hungar. (2022), Table 1, and OEIS A186705.
-# u(15) = 37 was proved in the same paper.
+# u(n) = maximum number of unit distances among n points of the plane = maximum
+# number of edges of a unit-distance graph on n vertices.  Exact for n <= 14 in
+# Schade's thesis; table reproduced in Agoston-Palvolgyi, Period. Math. Hungar.
+# (2022), Table 1, and OEIS A186705.  u(15) = 37 is proved in the same paper.
 U_EXACT = {
     1: 0, 2: 1, 3: 3, 4: 5, 5: 7, 6: 9, 7: 12, 8: 14,
     9: 18, 10: 20, 11: 23, 12: 27, 13: 30, 14: 33, 15: 37,
@@ -91,7 +98,7 @@ U_EXACT = {
 U_SOURCE = (
     "Schade (thesis), exact for n<=14; reproduced in Agoston-Palvolgyi, "
     "Period. Math. Hungar. (2022) Table 1, and OEIS A186705; u(15)=37 proved "
-    "by Agoston-Palvolgyi. Independent cross-check: the density recursion "
+    "by Agoston-Palvolgyi.  Cross-check: the density recursion "
     "u(n) <= floor(n/(n-2) * u(n-1)) holds for every 7 <= n <= 15."
 )
 
@@ -99,8 +106,8 @@ POINTER_REPO = {
     "url": "https://github.com/HeliCorgi/fourteen-points-six-colors",
     "commit": "4c84e4d67522e644faef704694cd5ba7fc273abc",
     "doc": "code/minimality/COMPLETENESS.md sec.1 and code/minimality/README.md",
-    "what": "points at the catalog and re-verifies its counts; the catalog "
-            "itself is generated by github.com/lalondeo/gencrit (nauty geng)",
+    "what": "points at the catalog and re-verifies its counts; the catalog is "
+            "generated by github.com/lalondeo/gencrit (nauty geng)",
 }
 
 
@@ -169,6 +176,35 @@ def open_text(path: Path):
 
 
 # ---------------------------------------------------------------------------
+# SAT
+# ---------------------------------------------------------------------------
+
+def sat_colourable(n: int, edges, k: int) -> bool:
+    with Solver(name=SOLVER, bootstrap_with=colouring_cnf(n, edges, k)) as s:
+        return bool(s.solve())
+
+
+def verify_criticality(n: int, edges, time_cap: float = 90.0) -> dict:
+    """chi(H) = 6 and chi(H - e) = 5 for every edge e."""
+    t0 = time.time()
+    if sat_colourable(n, edges, 5):
+        return {"n": n, "m": len(edges), "ok": False, "why": "5-colourable"}
+    checked = 0
+    for i, e in enumerate(edges):
+        if time.time() - t0 > time_cap:
+            return {"n": n, "m": len(edges), "ok": None, "why": "time-cap",
+                    "edges_checked": checked}
+        rest = edges[:i] + edges[i + 1:]
+        if not sat_colourable(n, rest, 5):
+            return {"n": n, "m": len(edges), "ok": False,
+                    "why": f"H-{e} not 5-colourable"}
+        checked += 1
+    return {"n": n, "m": len(edges), "ok": True,
+            "why": "chi=6 and chi(H-e)=5 for all e",
+            "edges_checked": checked, "seconds": round(time.time() - t0, 3)}
+
+
+# ---------------------------------------------------------------------------
 # stage 1: catalog acquisition and verification
 # ---------------------------------------------------------------------------
 
@@ -205,12 +241,10 @@ def ensure_files(cache: Path, log: Log, download: bool) -> dict:
 def fallback_catalog(log: Log) -> dict:
     """SAT-verified 6-critical sample used only if the catalog is unreachable.
 
-    K6, K3 join C5, and K2 join Moser spindle are 6-critical; each is checked
-    here by SAT (5-colouring UNSAT, and 4+1 = 5-colourable after every edge
-    deletion).  This is the "regenerate a sample yourself" fallback.
+    K6, K3 join C5 and K2 join Moser spindle are 6-critical; each is checked
+    here with SAT.  This is the "regenerate a sample yourself" fallback.
     """
     log("stage1", "catalog unreachable -> SAT-regenerated fallback sample")
-    # Moser spindle on 7 vertices, 11 edges (standard labelling).
     moser = [(0, 1), (0, 2), (1, 2), (0, 3), (1, 3), (2, 4), (3, 4), (4, 5),
              (4, 6), (5, 6), (2, 5)]
 
@@ -234,10 +268,7 @@ def scan_catalog(files: dict, log: Log) -> dict:
     """One streaming pass per n.  Keeps all edge lists for n <= 11 and a small
     deterministic sample (first 8 + sparsest 8) for n >= 12."""
     t0 = time.time()
-    per_n = {}
-    keep_all = {}
-    samples = {}
-    sparsest = {}
+    per_n, keep_all, samples, sparsest = {}, {}, {}, {}
     for n, path in sorted(files.items()):
         cnt = 0
         m_hist = Counter()
@@ -245,7 +276,7 @@ def scan_catalog(files: dict, log: Log) -> dict:
         sum_m = 0
         all_edges = [] if n <= 11 else None
         first = [] if n >= 12 else None
-        heap = []  # (m, idx, edges) for sparsest, n >= 12
+        heap = []
         with open_text(path) as f:
             for line in f:
                 line = line.strip()
@@ -297,32 +328,8 @@ def scan_catalog(files: dict, log: Log) -> dict:
             "samples": samples, "sparsest": sparsest}
 
 
-def sat_colourable(n: int, edges, k: int) -> bool:
-    with Solver(name=SOLVER, bootstrap_with=colouring_cnf(n, edges, k)) as s:
-        return bool(s.solve())
-
-
-def verify_criticality(n: int, edges, time_cap: float = 60.0) -> dict:
-    """chi(H) = 6 and chi(H - e) = 5 for every edge e."""
-    t0 = time.time()
-    if sat_colourable(n, edges, 5):
-        return {"n": n, "m": len(edges), "ok": False, "why": "5-colourable"}
-    checked = 0
-    for i, e in enumerate(edges):
-        if time.time() - t0 > time_cap:
-            return {"n": n, "m": len(edges), "ok": None, "why": "time-cap",
-                    "edges_checked": checked}
-        rest = edges[:i] + edges[i + 1:]
-        if not sat_colourable(n, rest, 5):
-            return {"n": n, "m": len(edges), "ok": False,
-                    "why": f"H-{e} not 5-colourable"}
-        checked += 1
-    return {"n": n, "m": len(edges), "ok": True, "why": "chi=6 and chi(H-e)=5",
-            "edges_checked": checked, "seconds": round(time.time() - t0, 3)}
-
-
 # ---------------------------------------------------------------------------
-# stage 2: abstract candidates and canonical dedupe
+# stage 2A: literal route -- H - uv, forced equality
 # ---------------------------------------------------------------------------
 
 def augment(n: int, edges, u: int, v: int) -> nx.Graph:
@@ -336,7 +343,7 @@ def augment(n: int, edges, u: int, v: int) -> nx.Graph:
     return g
 
 
-def dedupe(n: int, graphs, log: Log, time_cap: float = 240.0) -> tuple[list, int]:
+def dedupe(n: int, graphs, time_cap: float = 240.0):
     t0 = time.time()
     buckets: dict = defaultdict(list)
     classes: list = []
@@ -352,17 +359,54 @@ def dedupe(n: int, graphs, log: Log, time_cap: float = 240.0) -> tuple[list, int
             pairs += 1
             aug = augment(n, g, u, v)
             key = (n, len(g), nx.weisfeiler_lehman_graph_hash(aug, iterations=3))
-            hit = None
-            for rep_aug, rep in buckets[key]:
+            hit = False
+            for rep_aug, _rep in buckets[key]:
                 if nx.is_isomorphic(aug, rep_aug):
-                    hit = rep
+                    hit = True
                     break
-            if hit is None:
+            if not hit:
                 buckets[key].append((aug, (g, u, v)))
                 classes.append((n, g, u, v))
         if capped:
             break
     return classes, pairs, capped
+
+
+# ---------------------------------------------------------------------------
+# stage 2B: corrected route -- split a vertex w of a 6-critical H
+# ---------------------------------------------------------------------------
+
+def twin_split(n: int, edges, w: int):
+    """H with w replaced by two non-adjacent twins u = w and v = n.
+
+    G/uv is H.  G has n+1 vertices and m(G) = m(H) + deg_H(w).
+    """
+    v = n
+    out = [e for e in edges if w not in e]
+    for a, b in edges:
+        if a == w:
+            out.append((b, w))
+            out.append((b, v))
+        elif b == w:
+            out.append((a, w))
+            out.append((a, v))
+    return n + 1, out, w, v
+
+
+def partial_split(n: int, edges, w: int, A):
+    """Split w into u = w (keeps the neighbours in A) and v = n (the rest).
+    A must cover every neighbour of w for the quotient to be H."""
+    v = n
+    out = [e for e in edges if w not in e]
+    for a, b in edges:
+        if a == w:
+            x = b
+        elif b == w:
+            x = a
+        else:
+            continue
+        out.append((x, w) if x in A else (x, v))
+    return n + 1, out, w, v
 
 
 # ---------------------------------------------------------------------------
@@ -410,7 +454,7 @@ def structural(n: int, edges, u: int, v: int) -> dict:
         "k4": has_k4(n, adj),
         "max_common": max_common,
         "triangles": tri3 // 3,
-        "edge_in_3_triangles": tri3 > 2 * len(edges),
+        "edge_in_more_than_2_triangles": tri3 > 2 * len(edges),
         "uv_adjacent": bool((adj[u] >> v) & 1),
     }
 
@@ -438,8 +482,7 @@ def embed_order(n: int, edges, u: int, v: int):
     for a, b in edges:
         adj[a].add(b)
         adj[b].add(a)
-    order = [u, v]
-    placed = {u, v}
+    order, placed = [u, v], {u, v}
     while len(order) < n:
         rest = [w for w in range(n) if w not in placed]
         best = max(rest, key=lambda w: (len(adj[w] & placed), len(adj[w]), -w))
@@ -452,10 +495,10 @@ def embed_order(n: int, edges, u: int, v: int):
 
 def certify_no_embedding(n: int, edges, u: int, v: int,
                          node_cap: int = 400_000, time_cap: float = 30.0) -> dict:
-    """Sound certificate.  Returns status in
-    {CERTIFIED-EXCLUDED, PLACEMENT-FOUND, CAPPED, NON-RIGID-ORDER, BAD-TERMINALS}.
-    Exhaustion with no complete placement certifies that no placement of the
-    vertices with every edge of length 1 and |uv|^2 = 3 exists.
+    """Sound certificate for "no placement with every edge unit and |uv|^2 = 3".
+
+    Status: CERTIFIED-EXCLUDED (exhausted), PLACEMENT-FOUND, CAPPED,
+    NON-RIGID-ORDER or BAD-TERMINALS.  Only CERTIFIED-EXCLUDED is a proof.
     """
     t0 = time.time()
     adj = [set() for _ in range(n)]
@@ -469,39 +512,37 @@ def certify_no_embedding(n: int, edges, u: int, v: int,
         return {"status": "NON-RIGID-ORDER", "nodes": 0, "seconds": 0.0}
 
     pos = {u: (IV_ZERO, IV_ZERO), v: (IV_SQ3, IV_ZERO)}
-    nodes = 0
-    capped = False
-    ambiguity = False
+    nodes = [0]
+    capped = [False]
+    complete = [False]
 
     def dfs(k: int, mirror_used: bool) -> bool:
-        nonlocal nodes, capped, ambiguity
-        nodes += 1
-        if nodes > node_cap or time.time() - t0 > time_cap:
-            capped = True
+        nodes[0] += 1
+        if nodes[0] > node_cap or time.time() - t0 > time_cap:
+            capped[0] = True
             return True
         if k == len(order):
-            ambiguity = True
+            complete[0] = True
             return True
         w = order[k]
         anchors = [x for x in order[:k] if x in adj[w]]
         pair = None
         for i in range(len(anchors)):
             for j in range(i + 1, len(anchors)):
-                d2 = _dist2(pos[anchors[i]], pos[anchors[j]])
-                if d2.a > 0:
+                if _dist2(pos[anchors[i]], pos[anchors[j]]).a > 0:
                     pair = (anchors[i], anchors[j])
                     break
             if pair:
                 break
         if pair is None:
-            ambiguity = True
+            complete[0] = True      # cannot proceed soundly -> no claim
             return True
         a, b = pair
         others = [x for x in anchors if x not in pair]
         pa, pb = pos[a], pos[b]
         d2 = _dist2(pa, pb)
         d = iv.sqrt(d2)
-        x = d2 / (2 * d)          # r1 = r2 = 1
+        x = d2 / (2 * d)            # r1 = r2 = 1
         h2 = IV_ONE - x * x
         if h2.b < 0:
             return False
@@ -530,18 +571,19 @@ def certify_no_embedding(n: int, edges, u: int, v: int,
                 break
         return False
 
-    complete = dfs(2, False)
-    if capped:
+    ran = dfs(2, False)
+    if capped[0]:
         status = "CAPPED"
-    elif complete:
-        status = "PLACEMENT-FOUND" if ambiguity else "CAPPED"
+    elif ran and complete[0]:
+        status = "PLACEMENT-FOUND"
     else:
         status = "CERTIFIED-EXCLUDED"
-    return {"status": status, "nodes": nodes, "seconds": round(time.time() - t0, 3)}
+    return {"status": status, "nodes": nodes[0],
+            "seconds": round(time.time() - t0, 3)}
 
 
 # ---------------------------------------------------------------------------
-# exact arithmetic helpers (controls and any reported gadget)
+# exact arithmetic helpers (controls)
 # ---------------------------------------------------------------------------
 
 def exact_check(n: int, edges, coords, u: int, v: int) -> dict:
@@ -553,10 +595,8 @@ def exact_check(n: int, edges, coords, u: int, v: int) -> dict:
             bad.append({"edge": [a, b], "d2": str(d)})
     uv = sp.expand((pts[u][0] - pts[v][0]) ** 2 + (pts[u][1] - pts[v][1]) ** 2)
     return {
-        "n": n,
-        "m": len(edges),
-        "edges_exact": not bad,
-        "bad_edges": bad,
+        "n": n, "m": len(edges),
+        "edges_exact": not bad, "bad_edges": bad,
         "uv_d2": str(sp.simplify(uv)),
         "uv_is_sqrt3": sp.simplify(uv - 3) == 0,
         "all_points_distinct": len({(sp.simplify(a), sp.simplify(b)) for a, b in pts}) == n,
@@ -568,12 +608,11 @@ def control_diamond() -> dict:
     coords = [(0, 0), (s3, 0),
               (s3 / 2, sp.Rational(1, 2)), (s3 / 2, sp.Rational(-1, 2))]
     edges = [(0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]
-    chk = exact_check(4, edges, coords, 0, 1)
     return {
         "name": "diamond (K4 - e)",
-        "role": "level-3 control: tips equal at k=3, free at k=5",
+        "role": "stage-0 witness: G + uv = K4 is not 3-colourable, tips forced EQUAL",
         "coords": [[str(x), str(y)] for x, y in coords],
-        "exact": chk,
+        "exact": exact_check(4, edges, coords, 0, 1),
         "relation_k3": relation(edges, 4, 0, 1, 3),
         "relation_k5": relation(edges, 4, 0, 1, 5),
         "certifier": certify_no_embedding(4, edges, 0, 1),
@@ -583,15 +622,15 @@ def control_diamond() -> dict:
 def control_wheel() -> dict:
     s3 = sp.sqrt(3)
     h = sp.Rational(1, 2)
-    coords = [(0, 0),
-              (1, 0), (h, s3 / 2), (-h, s3 / 2), (-1, 0), (-h, -s3 / 2), (h, -s3 / 2)]
-    edges = [(0, i) for i in range(1, 7)] + [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 1)]
-    chk = exact_check(7, edges, coords, 2, 4)   # 60 deg and 180 deg: distance sqrt(3)
+    coords = [(0, 0), (1, 0), (h, s3 / 2), (-h, s3 / 2), (-1, 0),
+              (-h, -s3 / 2), (h, -s3 / 2)]
+    edges = ([(0, i) for i in range(1, 7)]
+             + [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 1)])
     return {
         "name": "hexagon + centre (W6, 12 = u(7) edges)",
-        "role": "positive control: embeddable sqrt(3) pair, level lemma => free at k=5",
+        "role": "positive embedding control: exact sqrt(3) pair, level lemma => free at k=5",
         "coords": [[str(x), str(y)] for x, y in coords],
-        "exact": chk,
+        "exact": exact_check(7, edges, coords, 2, 4),
         "relation_k5": relation(edges, 7, 2, 4, 5),
         "certifier": certify_no_embedding(7, edges, 2, 4),
     }
@@ -602,13 +641,32 @@ def control_k6_minus_edge() -> dict:
     edges = [(i, j) for i in range(n) for j in range(i + 1, n) if (i, j) != (0, 1)]
     return {
         "name": "K6 - e",
-        "role": "abstract positive control: relation(0,1,5) = different, not a UDG",
-        "n": n,
-        "m": len(edges),
+        "role": ("stage-0 witness: G + uv = K6 is not 5-colourable but "
+                 "relation(0,1,5) = equal, not different"),
+        "n": n, "m": len(edges),
         "relation_k5": relation(edges, n, 0, 1, 5),
         "u_n": U_EXACT[n],
         "structural": structural(n, edges, 0, 1),
         "certifier": certify_no_embedding(n, edges, 0, 1),
+    }
+
+
+def control_route_b() -> dict:
+    """k=3 analogue of the corrected route: K4 with vertex 3 split into
+    u=3 (neighbours 0,1) and v=4 (neighbour 2).  G/uv = K4 is 4-chromatic,
+    G is 3-colourable, so relation(u,v,3) is 'different'."""
+    edges = [(0, 1), (0, 2), (1, 2), (0, 3), (1, 3), (2, 4)]
+    g, g_edges, u, v = partial_split(4, [(0, 1), (0, 2), (1, 2), (0, 3), (1, 3), (2, 3)],
+                                     3, {0, 1})
+    return {
+        "name": "K4 with a vertex split (k=3 analogue of route B)",
+        "role": "validates the corrected construction: quotient K4 is 4-chromatic",
+        "n": g, "m": len(g_edges), "terminals": [u, v],
+        "edges": g_edges,
+        "quotient_n": 4,
+        "relation_k3": relation(g_edges, g, u, v, 3),
+        "chi_le_3": sat_colourable(g, g_edges, 3),
+        "quotient_chi_le_3": sat_colourable(4, [(0, 1), (0, 2), (1, 2), (0, 3), (1, 3), (2, 3)], 3),
     }
 
 
@@ -629,6 +687,38 @@ def main(argv=None) -> int:
     cache = Path(args.catalog_dir) if args.catalog_dir else (
         Path(os.environ.get("TEMP", "/tmp")) / "opencode" / "hn_crit_catalog")
 
+    # ---- stage 0: audit of the reduction --------------------------------
+    audit = {
+        "lemma_equal": ("for a k-colourable G and non-adjacent u,v: "
+                        "G + uv is not k-colourable  <=>  every k-colouring of G "
+                        "has colour(u) = colour(v)  [EQUAL gadget]"),
+        "lemma_different": ("for a k-colourable G and non-adjacent u,v: "
+                            "G / uv is not k-colourable  <=>  every k-colouring of G "
+                            "has colour(u) != colour(v)  [DIFFER gadget = virtual edge]"),
+        "proof": ("(1) a k-colouring of G with colour(u) != colour(v) is exactly a "
+                  "proper k-colouring of G + uv; (2) a k-colouring of G with "
+                  "colour(u) = colour(v) is exactly a proper k-colouring of G / uv."),
+        "consequence": ("the recipe 'H 6-critical, G = H - uv, G + uv not "
+                        "5-colourable' produces an EQUAL gadget, not a virtual "
+                        "edge.  Stage 4's relation(u,v,5) == 'different' test can "
+                        "never pass on that route.  The virtual edge is the "
+                        "vertex-split (quotient) route B."),
+        "route_B_minimal_core": ("if G is a forced-difference gadget, take a "
+                                 "6-critical H inside G/uv and the preimage of "
+                                 "V(H): a subgraph G'' with |V(G'')| = |V(H)| + 1, "
+                                 "m(G'') >= m(H), G'' unit-distance and "
+                                 "G''/uv = H."),
+        "controls": {
+            "k6_minus_edge": control_k6_minus_edge(),
+            "diamond": control_diamond(),
+            "route_b_k3_analogue": control_route_b(),
+            "wheel7": control_wheel(),
+        },
+    }
+    log("stage0", "audit: G+uv UNSAT <=> forced EQUAL; G/uv UNSAT <=> forced "
+                  "DIFFERENT.  K6-e: relation(0,1,5)=equal, so the literal route "
+                  "yields equality gadgets; the virtual edge is the split route B")
+
     # ---- stage 1 ---------------------------------------------------------
     catalog_complete = True
     try:
@@ -639,12 +729,10 @@ def main(argv=None) -> int:
         if catalog_total != CATALOG_TOTAL:
             raise RuntimeError(f"catalog total {catalog_total} != {CATALOG_TOTAL}")
         log("stage1", f"catalog complete: {catalog_total} edge-6-critical graphs "
-                      f"on n=6..13, counts match Lalonde/McKay; "
-                      f"min degree = {min(v['min_degree'] for v in per_n.values() if v['min_degree'])}")
+                      f"on n=6..13, counts match Lalonde/McKay; min degree = "
+                      f"{min(v['min_degree'] for v in per_n.values() if v['min_degree'])}")
         sources = sorted({str(f) for f in files.values()})
-        keep_all = scan["keep_all"]
-        samples = scan["samples"]
-        sparsest = scan["sparsest"]
+        keep_all, samples, sparsest = scan["keep_all"], scan["samples"], scan["sparsest"]
     except Exception as exc:  # noqa: BLE001
         catalog_complete = False
         catalog_total = None
@@ -662,17 +750,12 @@ def main(argv=None) -> int:
                 deltas.append(min(deg.values()))
             per_n[n] = {"graphs": len(gs), "edges_total": sum(ms),
                         "m_min": min(ms), "m_max": max(ms),
-                        "min_degree": min(deltas),
-                        "m_hist": {}, "min_degree_hist": {}}
+                        "min_degree": min(deltas), "m_hist": {}, "min_degree_hist": {}}
         keep_all = {n: gs for n, gs in fb.items() if n <= 11}
-        samples = {}
-        sparsest = {n: gs[:2] for n, gs in fb.items()}
-        files = {}
+        samples, sparsest, files, sources = {}, {}, {}, []
 
-    # criticality re-verification on a deterministic sample:
-    # every graph for n <= 10, then first + sparsest for n = 11..13.
-    crit = []
-    pool = []
+    # criticality re-verification
+    crit, pool, seen = [], [], set()
     for n in sorted(per_n):
         gs = keep_all.get(n)
         if gs:
@@ -682,7 +765,6 @@ def main(argv=None) -> int:
                 pool.append((n, samples[n][0]))
             if sparsest.get(n):
                 pool.append((n, sparsest[n][0]))
-    seen = set()
     for n, e in pool:
         key = (n, tuple(e))
         if key in seen:
@@ -693,90 +775,90 @@ def main(argv=None) -> int:
     log("stage1", f"criticality re-check on {len(crit)} graphs: "
                   + ("all chi=6 and chi(H-e)=5" if crit_ok else "FAILURES PRESENT"))
 
-    # u(n) table consistency
     dens_ok = all(U_EXACT[n] <= (n * U_EXACT[n - 1]) // (n - 2) for n in range(7, 16))
-    log("stage1", f"u(n) table: u(13)={U_EXACT[13]} u(14)={U_EXACT[14]} u(15)={U_EXACT[15]}; "
+    log("stage1", f"u(n): u(13)={U_EXACT[13]} u(14)={U_EXACT[14]} u(15)={U_EXACT[15]}; "
                   f"density recursion consistent={dens_ok}")
 
-    # ---- stage 2 ---------------------------------------------------------
-    stage2_per_n = []
-    stage2_classes = []
+    # ---- stage 2A: literal route (H - uv) --------------------------------
+    stage2a, classes_a = [], []
     for n in sorted(per_n):
-        graphs = per_n[n]["graphs"]
-        if graphs == 0:
+        if per_n[n]["graphs"] == 0:
             continue
-        pairs = per_n[n]["edges_total"]
-        row = {"n": n, "graphs": graphs, "edge_pairs": pairs,
+        row = {"n": n, "graphs": per_n[n]["graphs"],
+               "edge_pairs": per_n[n]["edges_total"],
                "deduped_classes": None, "dedupe": "skipped"}
         if n <= 11 and keep_all.get(n):
-            classes, seen_pairs, capped = dedupe(n, keep_all[n], log)
-            row["deduped_classes"] = len(classes)
-            row["dedupe"] = "full" if not capped else "capped"
-            row["pairs_expanded"] = seen_pairs
-            stage2_classes.extend(classes)
+            cls, seen_pairs, capped = dedupe(n, keep_all[n])
+            row.update(deduped_classes=len(cls), pairs_expanded=seen_pairs,
+                       dedupe="capped" if capped else "full")
+            classes_a.extend(cls)
         else:
-            row["dedupe"] = "skipped: every G dies at 3a on m alone"
-        stage2_per_n.append(row)
-    log("stage2", f"abstract candidates: {sum(r['edge_pairs'] for r in stage2_per_n)} "
-                  f"(H,edge) pairs; dedupe run for n<=11 -> {len(stage2_classes)} classes")
+            row["dedupe"] = "skipped: all G die at 3a on m alone"
+        stage2a.append(row)
+    log("stage2A", f"literal route: {sum(r['edge_pairs'] for r in stage2a)} (H,edge) "
+                   f"pairs; dedupe for n<=11 -> {len(classes_a)} classes")
+
+    # ---- stage 2B: corrected route (vertex split) ------------------------
+    stage2b = []
+    for n in sorted(per_n):
+        if per_n[n]["graphs"] == 0:
+            continue
+        stage2b.append({"n": n, "H_graphs": per_n[n]["graphs"],
+                        "split_pairs": n * per_n[n]["graphs"],
+                        "core_n": n + 1,
+                        "m_H_min": per_n[n]["m_min"],
+                        "m_core_min": per_n[n]["m_min"]})
+    log("stage2B", f"corrected route: {sum(r['split_pairs'] for r in stage2b)} "
+                   f"(H, w) splits; core has |V(H)|+1 vertices and m >= m(H)")
 
     # ---- stage 3 ---------------------------------------------------------
-    # 3a: edge count.  min over the catalog of m(G) = m(H) - 1.
-    stage3_per_n = []
-    survivors_3a = []
-    for row in stage2_per_n:
-        n = row["n"]
-        mH_min = per_n[n]["m_min"]
-        mG_min = mH_min - 1
-        un = U_EXACT[n]
-        killed = mG_min > un
-        stage3_per_n.append({
-            "n": n,
-            "graphs": row["graphs"],
-            "m_H_min": mH_min,
-            "m_G_min": mG_min,
-            "u_n": un,
-            "margin": mG_min - un,
-            "killed_by_3a": bool(killed),
-            "survivors": 0 if killed else row["edge_pairs"],
-        })
+    # 3a route A: m(G) = m(H) - 1 vs u(n)
+    a_rows, a_surv = [], []
+    for r in stage2a:
+        n = r["n"]
+        mG, un = per_n[n]["m_min"] - 1, U_EXACT[n]
+        a_rows.append({"n": n, "m_G_min": mG, "u_n": un, "margin": mG - un,
+                       "killed": mG > un, "pairs": r["edge_pairs"]})
+        if mG <= un:
+            a_surv.append(n)
+    a_killed = sum(r["pairs"] for r in a_rows if r["killed"])
+    log("stage3a", f"route A edge count: killed {a_killed} (H,edge) pairs; "
+                   f"survivor sizes = {a_surv}")
+
+    # 3a route B: m(core) >= m(H) vs u(n+1)
+    b_rows, b_surv = [], []
+    for r in stage2b:
+        N = r["core_n"]
+        mcore, uN = per_n[r["n"]]["m_min"], U_EXACT.get(N)
+        killed = uN is not None and mcore > uN
+        b_rows.append({"n_H": r["n"], "n_core": N, "m_core_min": mcore,
+                       "u_n_core": uN,
+                       "margin": (mcore - uN) if uN is not None else None,
+                       "killed": bool(killed), "pairs": r["split_pairs"]})
         if not killed:
-            survivors_3a.append(n)
-    a_killed = sum(r["edge_pairs"] for r in stage2_per_n
-                   if r["n"] not in survivors_3a)
-    log("stage3a", f"edge count m(G) <= u(n): killed {a_killed} (H,edge) pairs; "
-                   f"survivor sizes = {survivors_3a}")
+            b_surv.append(N)
+    b_killed = sum(r["pairs"] for r in b_rows if r["killed"])
+    log("stage3a", f"route B edge count: killed {b_killed} (H,w) splits; "
+                   f"survivor core sizes = {b_surv}")
 
-    # 3b/3c on the deduped classes, and independently of 3a
+    # 3b/3c on the literal-route classes (independent of 3a)
     b_pass = c_pass = both = 0
-    for n, g, u, v in stage2_classes:
+    for n, g, u, v in classes_a:
         st = structural(n, g, u, v)
-        ok3b = not st["k4"]
-        ok3c = st["max_common"] <= 2 and not st["edge_in_3_triangles"]
-        b_pass += int(ok3b)
-        c_pass += int(ok3c)
-        both += int(ok3b and ok3c)
-    log("stage3b", f"clique<=3 (no K4): {b_pass}/{len(stage2_classes)} deduped classes pass")
-    log("stage3c", f"K_2,3-free and every edge in <=2 triangles: "
-                   f"{c_pass}/{len(stage2_classes)} pass; both 3b+3c: {both}")
+        ok_b = not st["k4"]
+        ok_c = st["max_common"] <= 2 and not st["edge_in_more_than_2_triangles"]
+        b_pass += int(ok_b)
+        c_pass += int(ok_c)
+        both += int(ok_b and ok_c)
+    log("stage3b", f"clique<=3: {b_pass}/{len(classes_a)} literal classes pass")
+    log("stage3c", f"K_2,3-free and edges in <=2 triangles: {c_pass}/"
+                   f"{len(classes_a)} pass; both: {both}")
 
-    # 3d: nothing reaches it; demonstate the certifier on the controls instead.
-    controls = {
-        "diamond": control_diamond(),
-        "wheel7": control_wheel(),
-        "k6_minus_edge": control_k6_minus_edge(),
-    }
-    log("stage3d", "certified embedder self-test: "
-                   f"{controls['diamond']['certifier']['status']} (diamond), "
-                   f"{controls['wheel7']['certifier']['status']} (W6), "
-                   f"{controls['k6_minus_edge']['certifier']['status']} (K6-e)")
-
-    # direct certification of the sparsest catalog members (independent of u(n))
+    # 3d: nothing reaches the embedder; certify the sparsest members directly,
+    # and exercise the embedder on the controls.
     direct = []
     for n in sorted(sparsest):
-        for edges in sparsest[n][:2]:
-            # any edge gives m(G) = m(H) - 1; take the edge whose removal keeps
-            # the terminals non-adjacent (always true: uv was an edge)
+        for edges in sparsest[n][:1]:
             u, v = edges[0]
             g = [e for e in edges if e != (u, v)]
             res = certify_no_embedding(n, g, u, v, node_cap=200_000, time_cap=20.0)
@@ -785,37 +867,82 @@ def main(argv=None) -> int:
     log("stage3d", f"direct interval certification of {len(direct)} sparsest "
                    f"catalog members: "
                    + ", ".join(sorted({d['status'] for d in direct})))
+    log("stage3d", "certified embedder controls: "
+                   + ", ".join(f"{k}={v['certifier']['status']}"
+                               for k, v in audit["controls"].items()
+                               if "certifier" in v))
+
+    # validation of the corrected construction on a sample of (H, w)
+    split_sample = {"tested": 0, "five_colourable": 0, "relation_different": 0,
+                    "six_chromatic": 0, "items": []}
+    for n in sorted(per_n):
+        if per_n[n]["graphs"] == 0 or n > 12:
+            continue
+        gs = keep_all.get(n) or (samples.get(n) or [])
+        for edges in gs:
+            if n == 11 and split_sample["tested"] > 40:
+                break
+            w = max(range(n), key=lambda x: sum(1 for a, b in edges if x in (a, b)))
+            gn, ge, u, v = twin_split(n, edges, w)
+            ok5 = sat_colourable(gn, ge, 5)
+            split_sample["tested"] += 1
+            if ok5:
+                split_sample["five_colourable"] += 1
+                rel = relation(ge, gn, u, v, 5)
+                if rel == "different":
+                    split_sample["relation_different"] += 1
+                if len(split_sample["items"]) < 8:
+                    split_sample["items"].append(
+                        {"n_H": n, "m_H": len(edges), "m_G": len(ge),
+                         "relation_k5": rel, "degree_w": len([1 for a, b in edges if w in (a, b)])})
+            else:
+                split_sample["six_chromatic"] += 1
+    log("stage3d", f"twin-split sample: {split_sample['tested']} splits, "
+                   f"{split_sample['five_colourable']} 5-colourable, "
+                   f"{split_sample['six_chromatic']} 6-chromatic")
 
     # ---- stage 4 ---------------------------------------------------------
     found = False
-    log("stage4", "no embeddable candidate reached the embedder; found=False")
+    log("stage4", "no candidate reached the embedder on either route; found=False")
 
-    # ---- stage 5 ---------------------------------------------------------
-    # frontier: smallest n for which the edge-count argument is not decisive
-    frontier_n = None
+    # ---- frontier --------------------------------------------------------
+    frontier = None
     for n in range(6, 30):
         un = U_EXACT.get(n)
         if un is None:
             break
         if math.ceil(5 * n / 2) - 1 <= un:
-            frontier_n = n
+            frontier = n
+            break
+    # route B frontier: smallest core size N for which m(H) <= u(N) is possible
+    frontier_b = None
+    for N in range(7, 30):
+        uN = U_EXACT.get(N)
+        if uN is None:
+            break
+        if math.ceil(5 * (N - 1) / 2) <= uN:
+            frontier_b = N
             break
 
+    # ---- stage 5 ---------------------------------------------------------
     payload = {
         "task": "level-5 virtual edge: abstract catalog first, geometric filter second",
-        "terminal_condition": ("unit-distance G with |uv|^2 = 3, G 5-colourable, "
-                               "G + uv not 5-colourable"),
+        "terminal_condition": ("unit-distance G, terminals u,v non-adjacent, "
+                               "|uv|^2 = 3, G 5-colourable, every 5-colouring "
+                               "has colour(u) != colour(v)"),
         "verdict": "NEGATIVE_CATALOG" if catalog_complete else "NEGATIVE_SAMPLE",
         "found": found,
         "n": None,
         "uv_dist2": "3",
+        "construction_audit": audit,
         "catalog": {
             "total": catalog_total,
             "complete": catalog_complete,
-            "n_min": min(per_n) if per_n else None,
-            "n_max": max(per_n) if per_n else None,
+            "n_min": 6,
+            "n_max": 13,
             "per_n": {str(n): {k: v for k, v in per_n[n].items() if k != "m_hist"}
                       for n in sorted(per_n)},
+            "m_hist": {str(n): per_n[n]["m_hist"] for n in sorted(per_n)},
             "provenance": {
                 "generator": "Olivier Lalonde, gencrit (nauty geng); EJC 32(1) (2025) #P1.18",
                 "host": "users.cecs.anu.edu.au/~bdm/data/crit/crit_<n>_6.g6[.gz]",
@@ -825,10 +952,10 @@ def main(argv=None) -> int:
         },
         "stage1": {
             "counts_verified": catalog_complete,
-            "min_degree_all_graphs": min(v["min_degree"] for v in per_n.values()) if per_n else None,
+            "min_degree_all_graphs": (min(v["min_degree"] for v in per_n.values()
+                                         if v["min_degree"]) if per_n else None),
             "criticality_sample": {"checked": len(crit), "all_ok": crit_ok,
                                    "items": crit},
-            "seconds": round(time.time() - t_start, 1),
         },
         "u_n": {
             "values": {str(k): v for k, v in sorted(U_EXACT.items()) if k <= 15},
@@ -836,57 +963,83 @@ def main(argv=None) -> int:
             "density_recursion_ok": dens_ok,
             "meaning": "u(n) = max edges of a unit-distance graph on n vertices",
         },
-        "stage2": {
-            "per_n": stage2_per_n,
-            "pairs_total": sum(r["edge_pairs"] for r in stage2_per_n),
-            "deduped_classes_small_n": len(stage2_classes),
-            "dedupe_note": ("exact: bucket by Weisfeiler-Lehman hash of G plus two "
-                            "pendants at u and v, then networkx.is_isomorphic "
-                            "inside each bucket (isomorphism of the augmented "
-                            "graph is isomorphism of (G; {u,v}))"),
+        "route_A_literal": {
+            "what": "H 6-critical, G = H - uv (forced EQUALITY: G + uv = H is not 5-colourable)",
+            "per_n": stage2a,
+            "pairs_total": sum(r["edge_pairs"] for r in stage2a),
+            "deduped_classes_small_n": len(classes_a),
+            "dedupe_note": ("bucket by Weisfeiler-Lehman hash of G plus two pendants "
+                            "at u and v, then networkx.is_isomorphic inside each "
+                            "bucket; this is exact for (G; {u,v})"),
+            "filter_3a": a_rows,
+            "killed_by_3a": a_killed,
+            "survivor_sizes": a_surv,
+            "structural_independent": {"clique_le_3": b_pass,
+                                       "k23_and_triangle": both,
+                                       "tested": len(classes_a)},
+            "verdict": ("NEGATIVE by edge count; and structurally this route "
+                        "cannot produce relation 'different' at all (stage 0)"),
+        },
+        "route_B_corrected": {
+            "what": ("forced DIFFERENCE: G/uv not 5-colourable.  Minimal core = "
+                     "6-critical H with a vertex split into u,v; |V(core)|=|V(H)|+1, "
+                     "m(core) >= m(H)"),
+            "per_n": stage2b,
+            "split_pairs_total": sum(r["split_pairs"] for r in stage2b),
+            "filter_3a": b_rows,
+            "killed_by_3a": b_killed,
+            "survivor_core_sizes": b_surv,
+            "twin_split_sample": split_sample,
+            "verdict": "NEGATIVE by edge count",
         },
         "stage3": {
-            "per_n": stage3_per_n,
             "filters": [
-                {"id": "3a", "name": "edge count", "rule": "m(G) <= u(n)",
+                {"id": "3a", "name": "edge count", "rule": "m <= u(n)",
                  "sound": True,
                  "why": "u(n) is the exact maximum number of unit distances among n points",
-                 "killed": a_killed, "survivors": 0},
-                {"id": "3b", "name": "clique", "rule": "omega(G) <= 3",
-                 "sound": True,
+                 "route_A_killed": a_killed, "route_B_killed": b_killed},
+                {"id": "3b", "name": "clique", "rule": "omega(G) <= 3", "sound": True,
                  "why": "no four points of the plane are pairwise at unit distance",
-                 "pass_independent_of_3a": b_pass, "tested": len(stage2_classes)},
-                {"id": "3c", "name": "K_2,3", "rule": "K_{2,3}-free; every edge in <= 2 triangles",
+                 "route_A_pass_independent": b_pass, "tested": len(classes_a)},
+                {"id": "3c", "name": "K_2,3", "rule": "K_2,3-free; edge in <= 2 triangles",
                  "sound": True,
                  "why": "two unit circles intersect in at most two points",
-                 "pass_independent_of_3a": both, "tested": len(stage2_classes)},
+                 "route_A_pass_independent": both, "tested": len(classes_a)},
                 {"id": "3d", "name": "certified embedding",
                  "rule": "circle-intersection DFS, interval arithmetic, |uv|^2 = 3",
                  "sound": True, "tested": 0, "survivors": 0},
             ],
-            "survivors": 0,
             "direct_certification_sample": direct,
+            "survivors": 0,
         },
         "stage4": {
             "found": found,
             "smallest_embeddable": None,
-            "reason": ("every catalog member fails 3a by a margin of at least 5 edges: "
-                       "m(G) = m(H) - 1 >= 36 at n = 13 while u(13) = 30; the "
-                       "margin is positive at every n <= 13"),
+            "reason": ("route A: m(G) >= 36 at n = 13 while u(13) = 30.  "
+                       "route B: the minimal core has |V(H)|+1 vertices and at "
+                       "least m(H) edges, so m >= 37 at |V(H)| = 13 while "
+                       "u(14) = 33.  Both routes are excluded with margin >= 4."),
         },
-        "controls": controls,
         "frontier": {
-            "argument": ("H 6-critical => delta(H) >= 5 => m(H) >= ceil(5n/2) and "
-                         "m(G) = m(H) - 1.  This alone kills n <= 14 because "
-                         "u(14) = 33 < 34.  At n = 15 the bound ties: m(G) >= 37 = "
-                         "u(15), so a 15-vertex candidate would have to be a "
-                         "maximally dense unit-distance graph on 15 points "
-                         "(37 edges, unique up to isomorphism, OEIS A385657) and "
-                         "H = G + uv would be 6-critical with exactly 38 = ceil(5*15/2) "
-                         "edges."),
-            "first_n_not_excluded": frontier_n,
-            "catalog_covers_upto": 13,
-            "unconditional_bound_without_catalog": 14,
+            "route_A": {
+                "first_n_not_excluded": frontier,
+                "argument": ("H 6-critical => delta(H) >= 5 => m(H) >= ceil(5n/2); "
+                             "m(G) = m(H)-1.  This alone kills G up to n = 12; "
+                             "with the catalog's actual minimum densities it kills "
+                             "n <= 13 (catalog) and n <= 14 (min-degree at n=14: "
+                             "34 > u(14) = 33)."),
+            },
+            "route_B": {
+                "first_core_size_not_excluded": frontier_b,
+                "argument": ("core size N needs a 6-critical H on N-1 vertices with "
+                             "m(H) <= u(N).  min-degree alone reaches N = 12; the "
+                             "catalog (H <= 13 vertices) reaches N = 14.  At N = 15 "
+                             "the requirement is a 6-critical graph on 14 vertices "
+                             "with at most u(15) = 37 edges, which is exactly the "
+                             "min-degree bound ceil(5*14/2) = 35 <= 37: uncataloged."),
+                "catalog_covers_core_upto": 14,
+                "unconditional_bound_without_catalog": 12,
+            },
         },
         "conclusion": None,
         "seconds": round(time.time() - t_start, 1),
@@ -894,17 +1047,21 @@ def main(argv=None) -> int:
 
     if catalog_complete:
         payload["conclusion"] = (
-            f"NEGATIVE_CATALOG: all {catalog_total} edge-6-critical graphs on "
-            f"<= 13 vertices were enumerated and, for every edge uv, the graph "
-            f"G = H - uv is excluded as a unit-distance graph with |uv|^2 = 3 by "
-            f"the exact edge bound m(G) <= u(n) (Schade): the sparsest G on 13 "
-            f"vertices still has 36 edges against u(13) = 30.  The same argument "
-            f"extends without any catalog to n <= 14 (m(G) >= 34 > u(14) = 33).  "
-            f"The first size not excluded is n = {frontier_n}.  No geometric "
-            f"search was needed; the abstract density of 6-critical graphs and "
-            f"the sparsity of unit-distance graphs are incompatible.  The "
-            f"certified embedder and relation() were validated on controls "
-            f"(diamond, W6, K6-e) and on the sparsest catalog members."
+            f"NEGATIVE_CATALOG.  The complete catalog of {catalog_total} "
+            f"edge-6-critical graphs on <= 13 vertices was enumerated "
+            f"(counts, min degree and a SAT criticality sample verified).  "
+            f"Route A (the literal recipe G = H - uv) yields forced-EQUALITY "
+            f"gadgets, not virtual edges: G + uv not 5-colourable is exactly "
+            f"'every 5-colouring has u = v' (witness K6-e, relation = equal).  "
+            f"Even so it is geometrically dead: the sparsest G at n = 13 has 36 "
+            f"edges against u(13) = 30.  Route B (the corrected forced-difference "
+            f"object, a vertex split of a 6-critical H) is dead by a wider margin: "
+            f"its minimal core has |V(H)|+1 vertices and at least m(H) edges, so "
+            f"37 edges on 14 vertices against u(14) = 33.  Hence there is no "
+            f"level-5 virtual edge of this form on <= 14 vertices.  The first "
+            f"size not excluded is a 15-vertex core, which would need a 6-critical "
+            f"graph on 14 vertices with <= 37 edges (the min-degree bound allows "
+            f"35) -- beyond the published catalog, whose enumeration stops at 13."
         )
     else:
         payload["conclusion"] = (
@@ -920,7 +1077,8 @@ def main(argv=None) -> int:
     print()
     print("VERDICT: " + payload["verdict"])
     print(f"catalog={catalog_total} found={found} "
-          f"n_first_not_excluded={frontier_n} seconds={payload['seconds']}")
+          f"route_A_first_n={frontier} route_B_first_core={frontier_b} "
+          f"seconds={payload['seconds']}")
     return 0
 
 

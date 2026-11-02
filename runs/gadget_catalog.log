@@ -1,0 +1,2 @@
+[2026-11-02T13:32:42Z] run: gadget_catalog.py start (abstract catalog -> geometric filter)
+[2026-11-02T13:32:42Z] stage0: audit: G+uv UNSAT <=> forced EQUAL; G/uv UNSAT <=> forced DIFFERENT.  K6-e: relation(0,1,5)=equal, so the literal route yields equality gadgets; the virtual edge is the split route B
