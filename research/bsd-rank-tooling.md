@@ -35,7 +35,7 @@ PARI/GP 2.19.0 is the native-Windows option: its installer provides `ellrank` (u
 
 ## What I could not find
 
-- No published laptop benchmark gives a sharp 2-descent cutoff; the 10^6 / 10^8–10^9 bands extrapolate from Djabri–Smart and record computations, not measurements here.
-- No official Windows binaries for eclib/mwrank or lcalc, and no native-Windows Sage build; only source builds under WSL/MSYS2/Cygwin or conda-forge packages without win-64.
-- No peer-reviewed case where a proved algebraic rank and a proved analytic rank disagree. Apparent conflicts are 2-descent intervals (r1 < r2, as in the Sha = (Z/4)² example) or numerical-tolerance artifacts (as with `ellL1` on 389a1).
+- No published laptop benchmark gives a sharp 2-descent cutoff; the bands above extrapolate from Djabri–Smart and record computations, not measurements here.
+- No official Windows binaries for eclib/mwrank, lcalc, or native Sage; only WSL/MSYS2/Cygwin source builds or conda-forge packages without win-64.
+- No peer-reviewed proved-rank disagreement; apparent conflicts are 2-descent intervals (r1 < r2, e.g. Sha = (Z/4)²) or numerical-tolerance artifacts (`ellL1` on 389a1).
 - Rank-7 records differ: OEIS gives 382,623,908,456, the census 536,670,340,706; ranks 4–6 agree.
