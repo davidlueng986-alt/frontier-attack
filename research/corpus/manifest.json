@@ -1,0 +1,202 @@
+[
+ {
+  "id": "abhyankar:tifr57",
+  "title": "Lectures on Expansion Techniques in Algebraic Geometry",
+  "url": "https://mathweb.tifr.res.in/Documents/Publications/Lectures/tifr57.pdf",
+  "sha256": "a05e3055e7236b93dc3caed4b8b2ba1b656793d7134b576db819ab100607ca1c",
+  "bytes": 886313,
+  "license": "unknown",
+  "path": "research/scratch/corpus/pdfs/abhyankar_tifr.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:0707.0032",
+  "title": "Explicit Heegner Points: Kolyvagin's Conjecture and Non-trivial Elements in the Shafarevich-Tate Group",
+  "url": "https://arxiv.org/pdf/0707.0032",
+  "sha256": "1b61d9e99665d7a2387a5fd3dcd1a6d4f80b0a1dd2eb8e87ce0b6c0ea6716151",
+  "bytes": 291013,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_0707.0032.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:1610.06229",
+  "title": "The DRAT format and DRAT-trim checker",
+  "url": "https://arxiv.org/pdf/1610.06229",
+  "sha256": "18f7f11ee57c5a21711785b12adafa1473ab3380c68f8e7b26cab819b1f37bca",
+  "bytes": 75220,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1610.06229.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:1708.07936",
+  "title": "Some algorithms related to the Jacobian Conjecture",
+  "url": "https://arxiv.org/pdf/1708.07936",
+  "sha256": "e04e3bfd88c62346c467ec7c32f5bb236cdcb2ee4796525408c0c8d68632fcdb",
+  "bytes": 404296,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1708.07936.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:1804.02385",
+  "title": "The chromatic number of the plane is at least 5",
+  "url": "https://arxiv.org/pdf/1804.02385",
+  "sha256": "77ba36d41834849d38a21ab7f453582e7d498ab2f65dfbf9e11382b4021c9d92",
+  "bytes": 1106611,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1804.02385.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:1805.00157",
+  "title": "The chromatic number of the plane is at least 5 - a new proof",
+  "url": "https://arxiv.org/pdf/1805.00157",
+  "sha256": "dc3a0eba536537e2638f99ffd648554f36e64b6a78fadd475b8f8cccc2867335",
+  "bytes": 197988,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1805.00157.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:1805.12181",
+  "title": "Computing Small Unit-Distance Graphs with Chromatic Number 5",
+  "url": "https://arxiv.org/pdf/1805.12181",
+  "sha256": "3d9f33c6235f52ecd449dd0e2c94a1bf9d619c4ca0fd760e5d3057a8dd3688f8",
+  "bytes": 1342297,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1805.12181.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:1902.05923",
+  "title": "Some classes satisfying the 2-dimensional Jacobian conjecture and a proof of the complex conjecture until degree 104",
+  "url": "https://arxiv.org/pdf/1902.05923",
+  "sha256": "eaeafdda011bb25bf2dd11dcd3ed2bdf678689dea0e3d26f57f796b8c79dd70a",
+  "bytes": 216489,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1902.05923.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:1907.00929",
+  "title": "Trimming Graphs Using Clausal Proof Optimization",
+  "url": "https://arxiv.org/pdf/1907.00929",
+  "sha256": "3cdb42fcb4d33eaac28aca608df4c921d9f2f5a9171b8919c816ac70ed7b674b",
+  "bytes": 1550308,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1907.00929.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:1909.13177",
+  "title": "A 6-chromatic two-distance graph in the plane",
+  "url": "https://arxiv.org/pdf/1909.13177",
+  "sha256": "6911c2042dc7255e67abb95998057509490f6d81605a764dd7cf0b4923da9bf7",
+  "bytes": 175820,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_1909.13177.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:2010.12656",
+  "title": "A small 6-chromatic two-distance graph in the plane",
+  "url": "https://arxiv.org/pdf/2010.12656",
+  "sha256": "d68b049a97c6c70dab307181de767b95b4f60ea692dc165869031d5647510de6",
+  "bytes": 546293,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_2010.12656.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:2010.12665",
+  "title": "Graph minimization, focusing on the example of 5-chromatic unit-distance graphs in the plane",
+  "url": "https://arxiv.org/pdf/2010.12665",
+  "sha256": "0311fdbd44dc0bd94f2c376af23eeae4f7bf71774cbf559e87275cbd5694fcc2",
+  "bytes": 2071271,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_2010.12665.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:2010.12668",
+  "title": "What percent of the plane can be properly 5- and 6-colored?",
+  "url": "https://arxiv.org/pdf/2010.12668",
+  "sha256": "895832eb4f65f32de87fadcd4adbceb3668921363cf2b72716ba364576597c7d",
+  "bytes": 725019,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_2010.12668.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:2204.14178",
+  "title": "Increasing the degree of a possible counterexample to the Jacobian Conjecture from 100 to 108",
+  "url": "https://arxiv.org/pdf/2204.14178",
+  "sha256": "ac18e80cc2391f204f73b908a6a6557eb1141d9fbb5ebdb9f6e0a22121db80bd",
+  "bytes": 297336,
+  "license": "CC-BY",
+  "path": "research/scratch/corpus/pdfs/arXiv_2204.14178.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:2303.14714",
+  "title": "On lower bounds of the order of k-chromatic unit distance graphs",
+  "url": "https://arxiv.org/pdf/2303.14714",
+  "sha256": "62a475505fe37f02f5c2540e107e2ce48615fbb7d3b624ddaf60ccbf1b93fbd5",
+  "bytes": 92947,
+  "license": "CC-BY",
+  "path": "research/scratch/corpus/pdfs/arXiv_2303.14714.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:2502.17655",
+  "title": "Volume estimates for unions of convex sets, and the Kakeya set conjecture in three dimensions",
+  "url": "https://arxiv.org/pdf/2502.17655",
+  "sha256": "631e8b2118e3d03ded2d5fe79f9acdf74353877d143e9887a3c31278cd13ed01",
+  "bytes": 4020917,
+  "license": "CC-BY",
+  "path": "research/scratch/corpus/pdfs/arXiv_2502.17655.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:math/0207280",
+  "title": "Computing special values of motivic L-functions",
+  "url": "https://arxiv.org/pdf/math/0207280",
+  "sha256": "c73f56622fd3c4fe3d32f8ec2df1e85b0d246fa9434da09b3c9cfd6adf7e8ec0",
+  "bytes": 223170,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_math_0207280.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "arXiv:math/0412181",
+  "title": "Computational methods and experiments in analytic number theory",
+  "url": "https://arxiv.org/pdf/math/0412181",
+  "sha256": "e5b7dc39e32e478718364bd923ad93e6b11e4862dd28eadf6a819e158bfa44fa",
+  "bytes": 2657303,
+  "license": "arXiv",
+  "path": "research/scratch/corpus/pdfs/arXiv_math_0412181.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "openai-math:euclidean-five",
+  "title": "The Euclidean plane is not five-colorable",
+  "url": "https://github.com/openai/math/raw/main/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/paper.pdf",
+  "sha256": "607c2601b5ae655c7c116272840e260f71f637aacf611453186e0a1c65111d36",
+  "bytes": 450880,
+  "license": "unknown",
+  "path": "research/scratch/corpus/pdfs/openai_plane_not_five.pdf",
+  "fetched": "2026-11-02"
+ },
+ {
+  "id": "openai-math:falconer",
+  "title": "The Falconer distance conjecture in all dimensions",
+  "url": "https://github.com/openai/math/raw/main/preprints/The-Falconer-distance-conjecture-in-all-dimensions-September-23-2026/paper.pdf",
+  "sha256": "98a7e721547308b9cec673140ed1d86ecef44d73c56995b68a2c46fd8d4beb23",
+  "bytes": 824241,
+  "license": "unknown",
+  "path": "research/scratch/corpus/pdfs/openai_falconer.pdf",
+  "fetched": "2026-11-02"
+ }
+]

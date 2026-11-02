@@ -223,6 +223,10 @@ def _certify_k_full(ainvs, conductor: int, kmax: int = 1,
     if not is_prime(N):
         raise ValueError(f"conductor {N} is not prime; this certifier is "
                          f"restricted to prime-conductor curves")
+    if N < 5:
+        raise ValueError(
+            "prime conductor must be >= 5 for the exact w = a_N relation "
+            "used here (the local root number at p=2,3 has extra cases)")
     disc = base.discriminant(ainvs)
     if disc == 0:
         raise ValueError("singular Weierstrass model (discriminant 0)")

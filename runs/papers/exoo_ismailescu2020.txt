@@ -1,0 +1,286 @@
+===== PAGE 1 =====
+A 6-chromatic two-distance graph in the plane
+Geoffrey Exoo
+Department of Mathematics and Computer Science
+Indiana State University
+Terre Haute, IN 47809, ge@cs.indstate.edu
+Dan Ismailescu
+Mathematics Department
+Hofstra University
+Hempstead, NY 11549, dan.p.ismailescu@hofstra.edu
+Abstract
+We prove that if one colors each point of the Euclidean plane with one
+of ﬁve colors, then there exist two points of the same color that are either
+distance 1 or distance 2 apart.
+1
+Introduction
+The classical Hadwiger-Nelson problem asks for the minimum number of colors
+needed to color the points of the Euclidean plane in such a way that no two
+points distance 1 apart are identically colored.
+This quantity is denoted by χ({1}) or simply χ, and it is known as the
+chromatic number of the plane. According to Soifer [13], the problem of deter-
+mining χ was posed in the 1950’s by Edward Nelson. It is easy to prove that
+4 ≤χ ≤7. The lower bound follows from an example due to the Moser broth-
+ers who constructed a unit-distance graph with chromatic number 4. An upper
+bound of 7 can be proved by considering a 7-coloring of the regular hexagon
+tiling of the plane with hexagons with diameter slightly less than 1.
+Rather surprisingly, no progress has been achieved until 2018 when de Grey
+[6] constructed a unit-distance graph with chromatic number 5. A different con-
+struction was obtained independently and at about the same time by the authors
+of this note [4].
+De Grey’s initial graph has 1581 vertices. This was soon after improved by
+Heule who managed to reduce the order to 553 vertices [7] and subsequently to
+arXiv:1909.13177v1  [math.CO]  29 Sep 2019
+
+===== PAGE 2 =====
+529 vertices [8] . As of the time of this writing, the record is held by Parts [12]
+who found a 5-chromatic unit-distance graph with 510 vertices and 2508 edges.
+In this paper we consider the two forbidden distances variation of the Hadwiger-
+Nelson question.
+Problem 1.1. For a given number d > 1, what is the minimal number of colors
+needed to color the plane such that no two identically colored points are either
+distance 1 or distance d apart?
+We denote this number by χ({1,d}).
+The problem has been considered before; the earliest reference we could
+ﬁnd is due to Owings, Tetiva and Huddleston [9]. In this paper it is proved that
+χ({1,d}) ≥5 for d ∈{
+√
+2,
+√
+3,(
+√
+6+
+√
+2)/2,(
+√
+5+1)/2}.
+A few years later, Katz, Krebs and Shaheen [10], unaware of the results of
+[9], gave a different proof of χ({1,
+√
+2}) ≥5. The list of values d for which
+χ({1,d}) ≥5 was further extended by the present authors [5].
+Of course, since χ({1,d}) ≥χ({1}) for all values of d, all the above results
+are immediate consequences of de Grey’s bound.
+As far as we know, the only instance in which one can prove a better lower
+bound than 5 is when d = (
+√
+5+1)/2. In this case Huddleston showed that
+Theorem 1.2. [9]
+χ
+ (
+1,
+√
+5+1
+2
+)!
+≥6.
+The following concept extends the notion of unit-distance graph to the case
+of two distances.
+Deﬁnition 1.3. A {1,d} −graph is a graph whose vertices are points in the
+plane, with two vertices being adjacent if the Euclidean distance between them
+is either 1 or d.
+Huddleston’s proof relies on the fact that a regular pentagon with side length
+1 has diagonals of length (
+√
+5 + 1)/2, that is, the complete graph K5 can be
+represented as a {1,(
+√
+5+1)/2}-graph. It follows from results of Einhorn and
+Schoenberg [1] that this is the only case in which K5 is a {1,d}-graph.
+In this note we prove a similar result to that in Theorem 1.2 in the case d = 2.
+Theorem 1.4.
+χ ({1,2}) ≥6.
+
+===== PAGE 3 =====
+2
+Proof of Theorem 1.4
+Our approach to proving this result is constructive - we will present a ﬁnite
+{1,2}-graph which cannot be 5-colored. We build this graph in several stages.
+As in the proofs of χ({1}) ≥5 in [4, 6], we will use vertices with coordinates
+of the form (a
+√
+3/12 + b
+√
+11/12,c/12 + d
+√
+33/12) where a,b,c, and d are
+integers.
+In order to improve readability, we will use the following notation
+[a,b,c,d] :=
+ 
+a
+√
+3
+12 + b
+√
+11
+12 , c
+12 + d
+√
+33
+12
+!
+.
+(1)
+Step 1. Consider the following set of 23 points in the plane:
+S := {[0,0,0,0],[0,0,0,−4],[0,0,−6,−2],[0,0,−6,2],[−6,0,0,−2],
+[−4,0,0,0],[−4,0,−6,−2],[−4,0,−6,2],[−2,0,0,−2],[−2,0,−6,−4],
+[−2,0,−6,4],[0,−6,−6,0],[−5,−3,3,3],[−5,3,−3,3],[−2,−6,0,0],
+[−2,−6,0,−4],[−2,6,0,0],[−2,6,0,−4],[−6,−6,0,0],[−6,6,0,0],
+[−4,0,0,−4],[0,0,−12,0],[−8,0,0,0]}.
+Next, consider all the points in S together with their reﬂections across the
+x-axis and across the y-axis, respectively. One obtains a new set T which has
+57 points. For k = 0..5, let Uk be the image of T under a rotation of angle kπ/3
+about the origin, and deﬁne V := U0 ∪U1 ∪U2 ∪U3 ∪U4 ∪U5.
+It is easy to check that the image of [a,b,c,d] under a rotation of π/3 about
+[0,0,0,0] is [(a−c)/2,(b−3d)/2,(3a+c)/2,(b+d)/2]. Let G be the {1,2}-
+graph whose vertex set are the points in V.
+Claim 2.1. The graph G has 205 vertices, 966 edges of length 1, 423 edges of
+length 2, and exactly 18 5-colorings.
+Step 2. We construct a slightly larger graph H, by including the following
+nine additional vertices to the vertex set of G:
+A :=[−2,0,0,−6],B := [8,0,0,4],[−4,−6,−6,−4],[−4,6,6,−4],
+[−3,−3,−3,−5],[−4,0,−12,4],[−4,0,12,4],[7,−3,3,3],[7,3,−3,3].
+Claim 2.2. The graph H deﬁned above has 214 vertices, 1004 edges of length
+1, 446 edges of length 2, and exactly 35 5-colorings. Moreover, in each of these
+colorings, vertices A and B are of the same color.
+
+===== PAGE 4 =====
+Figure 1: The {1,2}-graph H. Vertices A and B appear in black, the other seven
+new vertices in red.
+We describe the techniques used to substantiate these claims in section 3.
+Note that the distance between A and B is exactly 5. Rotating the vertices
+of H about vertex A by an angle arccos(49/50) = arcsin(3
+√
+11/50), creates a
+copy of H, which we denote H′. The image of vertex B under this rotation is a
+point B′ ∈V(H′), and the distance between B and B′ is exactly 1.
+Let K be the {1,2}-graph whose vertex set is V(H) ∪V(H′). It can be
+checked that K has 426 vertices, 2009 edges of length 1, and 892 edges of
+length 2. More importantly, every 5-coloring of K forces vertices A, B, and B′
+to receive the same color. Since AB = AB′ = 5 and BB′ = 1, it follows that
+χ(K) ≥6. This concludes the proof of Theorem 1.4.
+
+===== PAGE 5 =====
+It is interesting to note that the ﬁnal argument in the proof of Theorem 1.2
+involves an isosceles triangle of side lengths 5,5,1, exactly the same triangle as
+in our construction.
+All vertices of the graph K have coordinates in Q[
+√
+3,
+√
+11]. This is because
+the smallest angle of an isosceles triangle with sides 5,5,1 is arccos(49/50) =
+arcsin(3
+√
+11/50).
+3
+Computations
+In this section we describe the methods used to establish the coloring counts
+claimed above. The assertions pertaining to edge counts for both of the graphs
+can be easily obtained by direct computation using the data available at [2, 3].
+The assertions that there are exactly 18 5-colorings for graph G, and 35 5-
+colorings for graph H require more difﬁcult computations.
+To ﬁnd all 5-colorings for these graphs we used a simple recursive exhaus-
+tive search procedure that allowed us to divide the work across multiple proces-
+sors. The outline of the search procedure is given below. Before the procedure
+is used, the vertices are ordered as follows.
+• The vertices are partitioned into orbits based on the dihedral group gen-
+erated by the transformations used in the construction (reﬂections in the
+axes and the π/3 rotation).
+• Vertices within an orbit are sorted by polar angle: 0 ≤θ < 2π, and at all
+stages appear consecutively in the vertex ordering.
+• Vertex orbits are sorted in descending order by degree.
+• In case of ties, vertex orbits adjacent to the largest number of vertices that
+appear earlier in the ordering are listed ﬁrst.
+Then each vertex is assigned the NC (uncolored) value, and the following
+search procedure is called with vertex 0 and the list of colors as parameters.
+The computations were performed using 48 threads on an AMD EPYC 7551
+32-Core (64 Virtual Core) Processor, and were completed in 3780 seconds of
+elapsed time and 81000 seconds of total processing time for G, and 5120 sec-
+onds of elapsed time and 95000 seconds of total processing time for H. In each
+case, all but three of the threads were ﬁnished halfway through the computation,
+which was not surprising, given that our method for splitting the work was fairly
+crude.
+
+===== PAGE 6 =====
+Algorithm 1 Coloring Search
+procedure SEARCH(vertex,colors)
+▷The graph is global
+Declare static variable calls = 0
+if vertex = n then
+▷Vertices numbered 0···n−1
+Output colors
+Return
+end if
+▷Next we split the work among NCPU processors. Each processor has an
+id (cpu). The splitting is done at level keydepth (where 15 ≤keydepth ≤20
+here).
+if vertex = keydepth then
+▷Level where splitting is done
+calls ←calls+1
+if calls̸ ≡cpu (mod NCPU) then
+Return
+end if
+end if
+▷If the color of a vertex has already been forced, we skip ahead to the
+next level.
+if color[vertex]̸ = NC then
+▷Vertex already colored
+Search(vertex+1,colors)
+Return
+end if
+▷The Assign function colors a vertex and recursively considers all im-
+plications. This may force colors on other vertices, or conﬂicts may be dis-
+covered, in which case it returns False. The UnAssign function restores the
+previous state of the coloring.
+for each color c do
+if Assign(vertex,colors,c) then
+Search(vertex+1,colors)
+UnAssign(vertex,colors,c)
+end if
+end for
+end procedure
+
+===== PAGE 7 =====
+References
+[1] S. J. Einhorn and I. J. Schoenberg. On euclidean sets having only two
+distances between points. II. Nederl. Akad. Wetensch. Proc. Ser. A 69 =
+Indag. Math. 28 (1966), 489–504.
+[2] G.
+Exoo
+and
+D.
+Ismailescu,
+"http://cs.indstate.edu/ge/
+ExooIsmailescuData/vertices.1.2.graph.txt".
+[3] G.
+Exoo
+and
+D.
+Ismailescu,
+"http://cs.indstate.edu/ge/
+ExooIsmailescuData/matrix.1.2.graph.txt".
+[4] G. Exoo and D. Ismailescu, The chromatic number of the plane is at least
+5 - a new proof, Discrete Comput Geom (2019).
+https://doi.org/10.1007/s00454-019-00058-1
+[5] G. Exoo and D. Ismailescu, The Hadwiger-Nelson problem with two for-
+bidden distances. Geombinatorics 28 (2018), no. 1, 51–68.
+[6] A. D. N. J. de Grey, The chromatic number of the plane is at least 5.
+Geombinatorics 28 (2018), no. 1, 18–31.
+[7] M. J. H. Heule, Computing small unit-distance graphs with chromatic
+number 5. Geombinatorics 28 (2018), no. 1, 32–50.
+[8] M. J. H. Heule, Trimming graphs using clausal proof optimization,
+arXiv:1907.00929, July 15, 2019.
+[9] J. Owings, M. Tetiva, and M. Huddleston, Coloring the plane, Amer. Math.
+Monthly 115 (2008), no. 2, 170–172.
+[10] R. Katz, M. Krebs, and A. Shaheen. Zero sums on unit square vertex sets
+and plane colorings. Amer. Math. Monthly 121 (2014), no. 7, 610–618.
+[11] L. Moser and W. Moser, Solution to Problem 10. Canad. Math. Bull. 4
+(1961), 187–189.
+[12] J. Parts, Comments in http://michaelnielsen.org/polymath1/
+index.php?title=Hadwiger-Nelson_problem.
+[13] A. Soifer, The mathematical coloring book. Mathematics of coloring and
+the colorful life of its creators. With forewords by Branko Gr¨unbaum,
+Peter D. Johnson, Jr. and Cecil Rousseau. Springer, New York, 2009.
+xxx+607 pp.

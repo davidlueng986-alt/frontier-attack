@@ -1,0 +1,198 @@
+{
+  "found": false,
+  "n": null,
+  "m": null,
+  "uv_dist2": "3 (target; no gadget found)",
+  "candidates": 220,
+  "seconds": 1.08,
+  "gadget": null,
+  "level_obstruction": {
+    "statement": "If G is (k-1)-colourable and u,v are non-adjacent, then colouring G-{u,v} with k-1 colours and giving u and v a fresh k-th colour is a proper k-colouring with u=v. Hence a level-k virtual edge has chromatic number at least k; at k=5 it is a 5-chromatic unit-distance graph.",
+    "level5_consequence": "Any level-5 virtual edge must be 5-chromatic. The smallest known 5-chromatic unit-distance graph has 509 vertices, and the 509-vertex Parts graph has no critical non-adjacent pair (stage 2b).",
+    "witnesses_verified": 220,
+    "witness_failures": []
+  },
+  "stage1_relation_semantics": {
+    "cases": 7,
+    "direct_checks": 14,
+    "brute_force_graphs": 40,
+    "brute_force_pair_checks": 400,
+    "mismatches": [],
+    "seconds": 0.2706467000534758,
+    "ok": true
+  },
+  "stage2_search": {
+    "candidates": 220,
+    "cap": 220,
+    "time_cap_s": 850.0,
+    "stopped_early": false,
+    "seed": 20261102,
+    "sizes": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "per_n": {
+      "8": {
+        "tested": 20,
+        "edges_min": 10,
+        "edges_max": 14,
+        "edges_mean": 11.85,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "9": {
+        "tested": 20,
+        "edges_min": 11,
+        "edges_max": 15,
+        "edges_mean": 13.3,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "10": {
+        "tested": 20,
+        "edges_min": 13,
+        "edges_max": 17,
+        "edges_mean": 15.2,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "11": {
+        "tested": 20,
+        "edges_min": 14,
+        "edges_max": 19,
+        "edges_mean": 16.7,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "12": {
+        "tested": 20,
+        "edges_min": 17,
+        "edges_max": 23,
+        "edges_mean": 19.4,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "13": {
+        "tested": 20,
+        "edges_min": 17,
+        "edges_max": 25,
+        "edges_mean": 20.9,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "14": {
+        "tested": 20,
+        "edges_min": 20,
+        "edges_max": 28,
+        "edges_mean": 23.4,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "15": {
+        "tested": 20,
+        "edges_min": 21,
+        "edges_max": 30,
+        "edges_mean": 25.2,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "16": {
+        "tested": 20,
+        "edges_min": 23,
+        "edges_max": 31,
+        "edges_mean": 26.65,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "17": {
+        "tested": 20,
+        "edges_min": 25,
+        "edges_max": 34,
+        "edges_mean": 28.55,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      },
+      "18": {
+        "tested": 20,
+        "edges_min": 24,
+        "edges_max": 36,
+        "edges_mean": 31.3,
+        "chi_histogram": {
+          "3": 20
+        },
+        "relation_histogram": {
+          "free": 20
+        },
+        "four_colourable": 20
+      }
+    },
+    "relation_histogram": {
+      "free": 220
+    },
+    "witnesses_ok": 220,
+    "witness_failures": [],
+    "seconds": 0.8032984999008477
+  },
+  "stage2b_509_probe": null,
+  "stage4_verification": null,
+  "conclusion": "NEGATIVE for the covered space. Every generated candidate (n=8..18) is 4-colourable, so by the level obstruction it has a 5-colouring with the terminals equal; relation() returned 'different' for none. The 509-vertex record graph is also not a level-5 virtual edge: all non-adjacent pairs admit a 5-colouring with equal colours, so in particular no sqrt(3) pair is forced different. A level-5 virtual edge therefore requires a 5-chromatic unit-distance graph with a critical non-adjacent pair -- a strictly stronger object than the known 509-vertex record, not a small composition."
+}

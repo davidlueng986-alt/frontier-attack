@@ -1,0 +1,70 @@
+=== 2026-11-02 Stage 1: sources ===
+Target 1: De Neve, Vanden Kerchove, Colle, Tavernier, Pickavet, "On the chromatic
+number of the plane with two forbidden distances", Amer. Math. Monthly 132(10)
+(2025) 1007-1022, DOI 10.1080/00029890.2025.2559554.
+- Open-access accepted manuscript from UGent biblio (handle 1854/LU-01K94Y89D25FFMV0FYQ44CTS2P),
+  15 pp., downloaded to runs/papers/deNeve2025_acc.pdf, text in runs/papers/deNeve2025.txt.
+- Appendix "Vertex coordinates of smallest graphs", pp. 14-15; Table 1 (p. 15) gives all
+  33 coordinates for d = sqrt(3) in the notation [a0 a1 a2 a3], meaning
+  (x,y) = ((a0+a1*sqrt5)/8, (a2*sqrt3+a3*sqrt15)/8). Edges are NOT tabulated.
+- Figure 11 (p. 12) draws the same graph; caption says "33 vertices and 113 edges".
+- Definition 1 (p. 1): an edge exists iff the distance is in D. Hence the edge list is
+  recoverable from the coordinates with D = {1, sqrt(3)}.
+  Definitional note: "2-distance graph" here means two possible EDGE lengths, not a
+  two-distance point set.
+- Table 2 (p. 15) separately gives the 117-vertex graph for d = (sqrt2+sqrt6)/2; not used.
+
+Target 2 (checked, not used): Parts, "A small 6-chromatic two-distance graph in the plane",
+arXiv:2010.12656v2, Geombinatorics 29/3 (2020) 111-115.
+- No coordinates published.
+- Explicit edge lists for G16 on p. 3: 28 edges of length 1 and 28 of length d.
+- G16 is 5-chromatic (contains 5-cliques) and every 5-colouring forces vertices 1 and 16
+  to share a colour (proof p. 4). The 6-chromatic graph is G31: two copies of G16 rotated
+  about the common vertex 1 by arccos((95+sqrt5)/100), making the two copies of 16 unit.
+- G16 is a subgraph of G126 = fivefold Minkowski sum of the regular pentagon with side 1,
+  but no labelling of vertices 1..16 by coordinates is given, so it is not reproducible
+  without solving for an embedding. Superseded by target 1.
+
+Target 3 (checked, not used): Exoo-Ismailescu, arXiv:1909.13177, 426 vertices,
+2009 unit + 892 length-2 edges. The paper gives the construction; coordinate and
+adjacency data are not in the paper, only by reference to
+http://cs.indstate.edu/ge/ExooIsmailescuData/{vertices,matrix}.1.2.graph.txt (refs [2],[3]).
+
+=== Stage 2: transcription ===
+Table 1 (33 rows of four integers) transcribed verbatim into
+problems/hadwiger_nelson/two_distance.py as TABLE_1.
+Edge set rebuilt exactly as Definition 1 prescribes: every pair at distance 1 or sqrt(3).
+
+=== Stage 3: exact verification ===
+- 33 distinct points, no coincident vertices.
+- 113 edges = 81 at distance 1 + 32 at distance sqrt(3). No third edge length.
+  This reproduces the published "33 vertices and 113 edges" exactly.
+- Exact arithmetic in Q(sqrt3, sqrt5, sqrt15) using 4-tuples of integers over the common
+  denominator 8; independently cross-checked over all 528 pairs with sympy.
+- Every pair at distance 1 or sqrt(3) is an edge; no pair at any other distance is an edge.
+- Diagnostic: the 33-point SET is not a strict two-distance set: it realises 39 distinct
+  pairwise distances, and 415 of the 528 pairs are at neither 1 nor sqrt(3). This is
+  expected under the source's Definition 1 (edge iff d in D). A strict two-distance set
+  in R^2 has at most 5 points (Einhorn-Schoenberg 1966, which is ref. [1] of
+  Exoo-Ismailescu), so no 6-chromatic strict two-distance set exists in the plane.
+  The invariant consumed by a virtual-edge substitution is the EDGE length set, which is
+  exactly {1, sqrt(3)}.
+
+=== Stage 4: SAT ===
+- 5-colouring UNSAT: Cadical195 (0.36 s) and Glucose4 (0.64 s).
+- 6-colouring SAT: Cadical195, colouring validated against all 113 edges.
+- Independent repeat from runs/two_distance.json: 5-colouring UNSAT (Cadical195).
+- chi = 6.
+
+=== Stage 5: output ===
+- runs/two_distance.json written: n=33, m=113, d2_values=["sqrt(3)"],
+  non_unit_edges = the 32 length-sqrt(3) edges, chi=6, exact point strings,
+  the raw Table 1 integer encoding, full edge list, unit edge list, 6-colouring.
+- Independent audit (runs/two_distance_audit.py): all checks pass; max float
+  edge-length error 9.7e-13; graph connected; degrees 5..11.
+- Script runtime 6.9 s wall (first run 2.7 s), exit 0.
+
+=== 2026-11-02 Result ===
+OBTAINED: De Neve et al. 33-vertex 6-chromatic two-distance graph, distances 1 and sqrt(3),
+81 unit edges + 32 non-unit edges. Coordinates: Appendix Table 1. chi=6 verified by SAT.
+

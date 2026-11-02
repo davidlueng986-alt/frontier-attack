@@ -115,6 +115,22 @@ two endpoints to differ in every 5-colouring. Compose it with a 6-chromatic
 graph (distances 1 and √3), or Exoo–Ismailescu's 426-vertex graph — replacing the
 non-unit edge by the gadget. That yields a 6-chromatic unit-distance graph.
 
+**The 33-vertex target is now in hand and checked.** `problems/hadwiger_nelson/two_distance.py`
+reproduces De Neve et al. (2025), Amer. Math. Monthly 132(10), Appendix Table 1:
+
+| quantity | value |
+|---|---|
+| vertices / edges | 33 / 113 |
+| unit edges | 81 |
+| √3 edges | **32** (the 32 plug points) |
+| edge lengths | exactly `{1, √3}`, no third length |
+| χ | **6** — 5-colouring UNSAT in cadical195 and glucose4 independently |
+
+So the composition target is concrete: every one of the 32 √3 edges gets replaced
+by a virtual-edge gadget, and the result is a unit-distance graph with the same
+chromatic number. One missing piece remains, and it is now a single well-posed
+object rather than a vague "gadget".
+
 **χ=7 is out of reach by composition.** Any 7-chromatic unit-distance graph has
 at least **6,993 vertices** (Parts 2020, Table 2, cited). A 509-plus-gadget
 composition is ~516 vertices and is provably 6-colourable. The old step 5 was
