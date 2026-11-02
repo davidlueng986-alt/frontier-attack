@@ -361,7 +361,7 @@ def _exact_graph(points, required=(), label=""):
     """Build the complete unit-distance edge set, with exact verification.
 
     A pair is a candidate only if its numerically evaluated squared distance
-    is within 1e-30 of 1; the decision is then made by hn.is_unit, which uses
+    is within 1e-50 of 1; the decision is then made by hn.is_unit, which uses
     symbolic simplification.  Every required edge must be recovered, so a
     simplification failure raises instead of silently dropping an edge (which
     would inflate the chromatic number).
@@ -405,7 +405,8 @@ def _exact_graph(points, required=(), label=""):
 
 def _make_gadget(points, required, distinguished, label):
     pts, _adj, edges = _exact_graph(points, required, label)
-    return Gadget(pts, edges, distinguished, label)
+    # _exact_graph has already proved every edge symbolically.
+    return Gadget(pts, edges, distinguished, label, _trusted=True)
 
 
 def _points_equal(p, q):
@@ -738,9 +739,7 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
     * cross lift: the same operation using a diamond or wheel whose tips are
       forced equal at the same k;
     * rigid edge gluing: identify a unit edge of a base gadget with a unit
-      edge of the current graph (the old glue2 move, now exact);
-    * vertex spindle: share one vertex with a base and rotate until a chosen
-      cross-pair is unit (a generic one-vertex composition).
+      edge of the current graph (the old glue2 move, now exact).
 
     Every graph is scored with hn.py's exact DSATUR.  For every level k at
     which the graph is k-colourable, the full forced relation on all vertex
@@ -776,11 +775,17 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
     while queue and len(records) < max_graphs:
         g = queue.pop(0)
         chi = g.chromatic_number()
+        geometry_ok, geometry_errors = g.verify()
+        if not geometry_ok:
+            raise AssertionError(
+                f"record {g.label} failed exact geometry: {geometry_errors[:3]}"
+            )
         rec = {
             "label": g.label,
             "n": g.n,
             "m": g.m,
             "chi": chi,
+            "geometry_ok": True,
         }
         records.append(rec)
         key = (chi, -g.n, -g.m)
@@ -883,24 +888,6 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
                         continue
                     if g.n < cand.n <= max_vertices:
                         push(cand)
-
-        # ---- generic vertex spindle with each base ----------------------
-        for _bname, base in bases:
-            for _trial in range(2):
-                sg = rng.randrange(g.n)
-                tg = rng.choice([v for v in range(g.n) if v != sg])
-                sh = rng.randrange(base.n)
-                th = rng.choice([v for v in range(base.n) if v != sh])
-                try:
-                    cand = spindle(
-                        g, base,
-                        share1=sg, tip1=tg, share2=sh, tip2=th,
-                        label=f"vspindle[{g.label}+{base.label}]",
-                    )
-                except (InfeasibleSpindle, ArithmeticError):
-                    continue
-                if g.n < cand.n <= max_vertices:
-                    push(cand)
 
     if best is None:
         best = diamond_g

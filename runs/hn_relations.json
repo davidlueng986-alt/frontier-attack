@@ -7,7 +7,7 @@
     "pair_queries": 10240,
     "mismatches": 0,
     "mismatch_details": [],
-    "seconds": 7.032471799990162
+    "seconds": 6.217225400032476
   },
   "graph_509": {
     "path": "research/scratch/509_parts.vtx",
@@ -29,8 +29,8 @@
         "capped": false,
         "cap_reason": "base-unsat",
         "base": "unsat",
-        "base_seconds": 160.24591840000357,
-        "seconds": 160.27456299995538
+        "base_seconds": 155.3786708000116,
+        "seconds": 155.40924079995602
       },
       "3": {
         "k": 3,

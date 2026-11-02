@@ -84,7 +84,8 @@ What is certified
 -----------------
 * 11a1, k = 0: the interval for L(1) excludes 0.  Since L(1) != 0, the order
   of vanishing is 0.  No lower-order information is needed.
-* 37a1, k = 1: w = -1, so Lambda(1) = -Lambda(1) = 0 and L(1) = 0 exactly.
+* 37a1, k = 1: w = -1, so Lambda(1) = -Lambda(1) = 0 and L(1) = 0 exactly
+  (given w = -1; w is determined numerically, see the honesty statement).
   The interval for L'(1) excludes 0, so the order is exactly 1.
 * 5077a1, k = 3: NOT certified.  L'''(1) != 0 gives order <= 3 and w = -1
   gives odd order, so the order is in {1, 3}; but L'(1) = L''(1) = 0 cannot
@@ -412,7 +413,6 @@ def derivative_table(a: list[int], N: int, w: int, M: int, h_str: str,
                         + 3 * F(-p1)[0] - F(-p3)[0]) / hl ** 3
             raise ValueError(k)
 
-        pref_max = None  # computed after the stencils populate the cache
         tail_lam = tail_bound_lambda(N, M)
         coefsum = {1: mp.mpf(1), 2: mp.mpf(4), 3: mp.mpf(8)}
         h_finest = h / 4
@@ -634,8 +634,8 @@ def run_curve(curve: Curve) -> dict:
                 basis = "L(1) interval excludes 0, hence ord = 0."
             else:
                 basis = (
-                    f"L(1) = 0 exactly from the functional equation with "
-                    f"w = {w:+d} (w determined numerically at s=3, margin "
+                    f"L(1) = 0 by the functional equation with w = {w:+d} "
+                    f"(w determined numerically at s=3, margin "
                     f"{wdiag['margin']}); the interval for "
                     f"{derivative_label(target_k)} excludes 0, hence "
                     f"ord = {target_k}.")
@@ -643,8 +643,9 @@ def run_curve(curve: Curve) -> dict:
             if target_k == 3:
                 basis = (
                     "NOT certified: ord >= 3 requires L(1) = L'(1) = "
-                    "L''(1) = 0.  Only L(1) = 0 is exact (w = -1, determined "
-                    f"numerically with margin {wdiag['margin']}).  The "
+                    "L''(1) = 0.  Only L(1) = 0 follows from the functional "
+                    "equation (w = -1, determined numerically with margin "
+                    f"{wdiag['margin']}).  The "
                     "AFE intervals for L'(1) and L''(1) contain 0, which is "
                     "consistent with vanishing but is not a proof of it.  "
                     "A numerical error bound cannot prove an exact zero: any "
@@ -822,6 +823,9 @@ def print_curve(res: dict) -> None:
     print(f"  bound = {p['bound']}  =  tail {c['tail']} + "
           f"rounding {c['rounding']} + deriv.trunc "
           f"{c['derivative_truncation']}")
+    if res["special_value_scale"] != 1:
+        print(f"    (all three components are scaled by 1/"
+              f"{res['special_value_scale']} for {p['special_name']})")
     print(f"  LMFDB value {res['lmfdb_special_value']} consistent with the "
           f"interval (quote ulp {p['lmfdb_quote_ulp']}): "
           f"{'yes' if p['lmfdb_value_in_interval'] else 'no'}")
@@ -872,13 +876,14 @@ def main() -> int:
     print("SUMMARY")
     print("=" * 82)
     print(f"{'curve':<9} {'k_est':>5}  {'special value':<14} "
-          f"{'interval':<52} {'bound':<10} certified")
-    print("-" * 110)
+          f"{'interval (center +/- bound)':<47} {'bound':<10} certified")
+    print("-" * 112)
     for res in results:
         p = res["_print"]
-        iv = f"[{mp.nstr(mp.mpf(p['lo']), 18)}, {mp.nstr(mp.mpf(p['hi']), 18)}]"
+        center = mp.nstr(mp.mpf(p["special_value"]), 22)
+        iv = f"{center} +/- {p['bound']}"
         print(f"{res['curve']:<9} {str(res['k_est']):>5}  "
-              f"{p['special_name']:<14} {iv:<52} "
+              f"{p['special_name']:<14} {iv:<47} "
               f"{p['bound']:<10} {str(res['certified']).lower()}")
 
     print()

@@ -1,6 +1,6 @@
 {
   "script": "problems/bsd/certified_rank.py",
-  "generated_utc": "2026-11-02T11:20:13.961761+00:00",
+  "generated_utc": "2026-11-02T11:26:00.122874+00:00",
   "method": "smoothed approximate functional equation with an explicit incomplete-gamma truncation bound, two-precision rounding estimate, and Richardson finite-difference derivatives",
   "rigour": "numerical with heuristic bound",
   "rigour_notes": {
@@ -67,11 +67,21 @@
       "k_first_nonzero_derivative": 0,
       "special_value_name": "L(1)",
       "special_value": "0.25384186085591068433775892335090946104389844836612",
+      "special_value_scale": 1,
       "interval": {
         "lo": "0.253841860855910684337758923350909461043898448366",
         "hi": "0.25384186085591068433775892335090946104389844836624"
       },
       "bound": "1.1859313e-49",
+      "bound_components": {
+        "tail": "4.1368949e-165",
+        "rounding": "1.1859313e-49",
+        "rounding_empirical": "1.1859313e-49",
+        "rounding_apriori": "6.9772328e-69",
+        "derivative_truncation": "0.0"
+      },
+      "lmfdb_value_in_interval": true,
+      "lmfdb_quote_ulp": "1.0e-29",
       "certified": true,
       "certification_basis": "L(1) interval excludes 0, hence ord = 0.",
       "order_candidates": [
@@ -174,12 +184,12 @@
         }
       ],
       "timings_s": {
-        "point_count": 0.008918899926356971,
-        "build_an": 0.0008892000187188387,
-        "root_number": 0.03484790003858507,
-        "ladder": 0.8450467999791726,
-        "derivatives_dps_lo": 2.3988550000358373,
-        "derivatives_dps_hi": 6.032664999947883
+        "point_count": 0.01123800000641495,
+        "build_an": 0.0006681999657303095,
+        "root_number": 0.038855900056660175,
+        "ladder": 0.9292522000614554,
+        "derivatives_dps_lo": 2.5798429999267682,
+        "derivatives_dps_hi": 4.925658000051044
       }
     },
     {
@@ -228,13 +238,23 @@
       "k_first_nonzero_derivative": 1,
       "special_value_name": "L'(1)",
       "special_value": "0.30599977383405556494817978509675518048952732489875",
+      "special_value_scale": 1,
       "interval": {
         "lo": "0.30599977364808325799975565216529808429302793659063",
         "hi": "0.30599977402002787189660391802821227668602671320687"
       },
       "bound": "1.8597231e-10",
+      "bound_components": {
+        "tail": "6.8461999e-87",
+        "rounding": "6.144042e-48",
+        "rounding_empirical": "6.144042e-48",
+        "rounding_apriori": "4.3996962e-65",
+        "derivative_truncation": "1.8597231e-10"
+      },
+      "lmfdb_value_in_interval": true,
+      "lmfdb_quote_ulp": "1.0e-29",
       "certified": true,
-      "certification_basis": "L(1) = 0 exactly from the functional equation with w = -1; the interval for L^(1)(1) excludes 0, hence ord = 1.",
+      "certification_basis": "L(1) = 0 by the functional equation with w = -1 (w determined numerically at s=3, margin 1799950.6); the interval for L'(1) excludes 0, hence ord = 1.",
       "order_candidates": [
         1
       ],
@@ -335,12 +355,12 @@
         }
       ],
       "timings_s": {
-        "point_count": 0.012324800016358495,
-        "build_an": 0.0007657000096514821,
-        "root_number": 0.050680399988777936,
-        "ladder": 1.726047100033611,
-        "derivatives_dps_lo": 4.717250400106423,
-        "derivatives_dps_hi": 10.512995299999602
+        "point_count": 0.009437300032004714,
+        "build_an": 0.0010152999311685562,
+        "root_number": 0.03830680006649345,
+        "ladder": 1.5058847999898717,
+        "derivatives_dps_lo": 3.8589468999998644,
+        "derivatives_dps_hi": 8.301991799962707
       }
     },
     {
@@ -389,13 +409,23 @@
       "k_first_nonzero_derivative": 3,
       "special_value_name": "L'''(1)/3!",
       "special_value": "1.7318499000904426939287463736841745261915296799767",
+      "special_value_scale": 6,
       "interval": {
         "lo": "1.7318498290160638304088714906737346474374030311741",
         "hi": "1.7318499711648215574486212566946144049456563287794"
       },
       "bound": "7.1074379e-8",
+      "bound_components": {
+        "tail": "1.0447694e-27",
+        "rounding": "8.4405612e-42",
+        "rounding_empirical": "8.4405612e-42",
+        "rounding_apriori": "3.055113e-59",
+        "derivative_truncation": "7.1074379e-8"
+      },
+      "lmfdb_value_in_interval": true,
+      "lmfdb_quote_ulp": "1.0e-28",
       "certified": false,
-      "certification_basis": "NOT certified: ord >= 3 requires L(1) = L'(1) = L''(1) = 0.  Only L(1) = 0 is exact (w = -1).  The AFE intervals for L'(1) and L''(1) contain 0, which is consistent with vanishing but is not a proof of it.  A numerical error bound cannot prove an exact zero: any correct interval around a true zero must contain zero.  Hence only ord <= 3 (from L'''(1) != 0) and odd order (from w = -1) are established, i.e. ord is in {1, 3}.",
+      "certification_basis": "NOT certified: ord >= 3 requires L(1) = L'(1) = L''(1) = 0.  Only L(1) = 0 follows from the functional equation (w = -1, determined numerically with margin 75009.498).  The AFE intervals for L'(1) and L''(1) contain 0, which is consistent with vanishing but is not a proof of it.  A numerical error bound cannot prove an exact zero: any correct interval around a true zero must contain zero.  Hence only ord <= 3 (from L'''(1) != 0) and odd order (from w = -1) are established, i.e. ord is in {1, 3}.",
       "order_candidates": [
         1,
         3
@@ -505,12 +535,12 @@
         }
       ],
       "timings_s": {
-        "point_count": 0.059802799951285124,
-        "build_an": 0.0027247000252828,
-        "root_number": 0.2047861999599263,
-        "ladder": 9.7199985999614,
-        "derivatives_dps_lo": 21.334878400084563,
-        "derivatives_dps_hi": 29.36375539994333
+        "point_count": 0.03467119997367263,
+        "build_an": 0.0018100000452250242,
+        "root_number": 0.2020823999773711,
+        "ladder": 8.841356200049631,
+        "derivatives_dps_lo": 26.00530250009615,
+        "derivatives_dps_hi": 32.55398699990474
       }
     }
   ]
