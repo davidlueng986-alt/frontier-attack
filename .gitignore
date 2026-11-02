@@ -3,3 +3,4 @@ __pycache__/
 runs/_smoke_*.json
 .env
 
+research/scratch/

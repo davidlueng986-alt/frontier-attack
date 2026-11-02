@@ -19,7 +19,7 @@ PARI/GP 2.19.0 is the native-Windows option: its installer provides `ellrank` (u
 | analytic rank ≥ 4 | open problem to prove it for any particular elliptic curve | [Sage docs](https://doc.sagemath.org/html/en/reference/arithmetic_curves/sage/schemes/elliptic_curves/ell_rational_field.html) |
 | Sage on Windows | WSL/Ubuntu (or Docker/VM); no native Windows build | [Sage installation](https://doc.sagemath.org/html/en/installation/index.html) |
 | mwrank on Windows | only inside eclib source (in Sage); no Windows binary; conda-forge eclib has no win-64; source build needs NTL + PARI | [mwrank page](https://johncremona.github.io/mwrank/index.html), [conda-forge eclib](https://api.anaconda.org/package/conda-forge/eclib) |
-| lcalc | zeros and values of L-functions; analytic rank if built `--with-pari`; latest 2.2.2; conda-forge has no win-64 | [README](https://gitlab.com/sagemath/lcalc/-/raw/master/README.md), [tags](https://gitlab.com/sagemath/lcalc/-/tags), [conda-forge lcalc](https://api.anaconda.org/package/conda-forge/lcalc) |
+| lcalc | zeros/values of L-functions; analytic rank with `--with-pari`; latest 2.2.2; source/Debian/Sage; no win-64 conda | [README](https://gitlab.com/sagemath/lcalc/-/raw/master/README.md), [tags](https://gitlab.com/sagemath/lcalc/-/tags), [conda-forge lcalc](https://api.anaconda.org/package/conda-forge/lcalc) |
 | LMFDB coverage | all N < 500,000; prime N ≤ 3×10^8; 7-smooth N; max N 299,996,953; 2,086 rank 4, 19 rank 5 | [completeness](https://www.lmfdb.org/EllipticCurve/Q/Completeness), [stats](https://www.lmfdb.org/EllipticCurve/Q/stats) |
 | rank 4 calibration | N = 234,446; [1,−1,0,−79,289] | [rank 4 records](https://www.math.uwaterloo.ca/~mrubinst/elliptic_curves/records/rank_4.html) |
 | rank 5 calibration | N = 19,047,851; [0,0,1,−79,342] | [rank 5 records](https://www.math.uwaterloo.ca/~mrubinst/elliptic_curves/records/rank_5.html) |
@@ -31,7 +31,7 @@ PARI/GP 2.19.0 is the native-Windows option: its installer provides `ellrank` (u
 | analytic-rank cost | N^(1/2+ε) terms to estimate L′(E,1) | [Elkies math/0208056](https://ar5iv.labs.arxiv.org/html/math/0208056) |
 | analytic-rank tested range | zero-sum bound correct for 99.75% of curves with N ≤ 10^9 | [Sage docs](https://doc.sagemath.org/html/en/reference/arithmetic_curves/sage/schemes/elliptic_curves/ell_rational_field.html) |
 | rank conjecture verified | all E/Q of conductor N < 130,000 (analytic rank ≤ 3) | [Miller, LMS JCM 2011](https://doi.org/10.1112/s1461157011000180) |
-| algebraic vs analytic disagreement | none found in peer-reviewed sources; LMFDB, the rank census and Miller’s checks agree | [rank census](https://www.math.uwaterloo.ca/~mrubinst/elliptic_curves/index.html), [Miller](https://doi.org/10.1112/s1461157011000180) |
+| algebraic vs analytic disagreement | none found in peer-reviewed sources; the rank census and Miller’s checks agree | [rank census](https://www.math.uwaterloo.ca/~mrubinst/elliptic_curves/index.html), [Miller](https://doi.org/10.1112/s1461157011000180) |
 
 ## What I could not find
 
