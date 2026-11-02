@@ -54,7 +54,7 @@ _ROOT = _HERE.parents[1]
 if str(_HERE) not in sys.path:
     sys.path.insert(0, str(_HERE))
 
-from hn import UnitDistanceGraph, dist2, is_unit  # noqa: E402
+from hn import UnitDistanceGraph, dist2, is_unit, moser_spindle  # noqa: E402
 
 
 # --------------------------------------------------------------------------
@@ -754,6 +754,7 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
     queue = []
     seen = set()
     records = []
+    constructed = []      # (chi, gadget) for every distinct graph built
     lifts = []
     forcing = []          # graphs with at least one forced-equal pair at some k
     level_pairs = {3: [], 4: [], 5: []}
@@ -763,6 +764,7 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
         if key in seen:
             return False
         seen.add(key)
+        constructed.append((g.chromatic_number(), g))
         queue.append(g)
         return True
 
@@ -893,6 +895,14 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
         best = diamond_g
         best_key = (best.chromatic_number(), -best.n, -best.m)
 
+    # The chi claim is over *every* distinct composition constructed, not
+    # only the ones popped before the record budget ran out.
+    top_chi, top_g = max(
+        constructed + [(best.chromatic_number(), best)],
+        key=lambda t: (t[0], -t[1].n, -t[1].m),
+    )
+    best = top_g
+
     histogram = {}
     for rec in records:
         histogram[rec["chi"]] = histogram.get(rec["chi"], 0) + 1
@@ -905,6 +915,8 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
         "max_vertices": max_vertices,
         "seed": seed,
         "graphs_examined": len(records),
+        "graphs_constructed": len(constructed),
+        "max_constructed_chi": top_chi,
         "histogram": {str(k): v for k, v in sorted(histogram.items())},
         "records": records,
         "best_chi": best.chromatic_number(),
@@ -953,6 +965,21 @@ class TestGadgets(unittest.TestCase):
         rel = m.forced_relation(4)
         a, b = m.distinguished[1], m.distinguished[2]
         self.assertTrue(rel.forced_different(a, b))
+
+    def test_spindle_is_hn_moser_spindle(self):
+        ours = spindle(diamond(), diamond())
+        ref = moser_spindle()
+        self.assertEqual((ours.n, ours.m), (ref.n, ref.m))
+        ref_edges = {tuple(sorted(e)) for e in ref.edges}
+        for perm in itertools.permutations(range(ours.n)):
+            if all(
+                tuple(sorted((perm[i], perm[j]))) in ref_edges
+                for i, j in ours.edges
+            ):
+                return
+        self.fail(
+            "spindle(diamond, diamond) is not isomorphic to hn.moser_spindle()"
+        )
 
     def test_hex_wheel_forced_triple(self):
         w = hex_wheel()
@@ -1039,9 +1066,11 @@ def main():
             "statement": (
                 "The forced-equality constraint is implemented and the "
                 "diamond lift reproduces the Moser spindle (chi=4). "
-                f"Among the {search['graphs_examined']} exact compositions "
-                f"examined (at most {search['max_vertices']} vertices, "
-                f"{n_four} of them 4-chromatic), no pair of vertices is "
+                f"All {search['graphs_constructed']} distinct compositions "
+                f"constructed (at most {search['max_vertices']} vertices) "
+                f"have chi <= {search['max_constructed_chi']}. Of the "
+                f"{search['graphs_examined']} examined for forced "
+                f"relations, {n_four} are 4-chromatic, and none has a pair "
                 "forced equal in every 4-colouring, so the lift cannot be "
                 "iterated to chi=5 inside this family. This is a clean "
                 "negative for the search, not a proof that no such gadget "

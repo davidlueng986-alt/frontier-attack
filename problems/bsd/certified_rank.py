@@ -631,14 +631,16 @@ def run_curve(curve: Curve) -> dict:
 
         if certified:
             if target_k == 0:
-                basis = "L(1) interval excludes 0, hence ord = 0."
+                basis = ("L(1) interval excludes 0, hence ord = 0 "
+                         "(numerical with heuristic bound).")
             else:
                 basis = (
                     f"L(1) = 0 by the functional equation with w = {w:+d} "
                     f"(w determined numerically at s=3, margin "
                     f"{wdiag['margin']}); the interval for "
                     f"{derivative_label(target_k)} excludes 0, hence "
-                    f"ord = {target_k}.")
+                    f"ord = {target_k}.  This is numerical with a heuristic "
+                    f"bound and is conditional on w = {w:+d}.")
         else:
             if target_k == 3:
                 basis = (
@@ -711,6 +713,7 @@ def run_curve(curve: Curve) -> dict:
 
         result = {
             "curve": curve.label,
+            "rigour": "numerical with heuristic bound",
             "ainvs": list(curve.ainvs),
             "conductor": curve.conductor,
             "discriminant": str(disc),

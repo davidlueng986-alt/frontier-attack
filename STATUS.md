@@ -82,9 +82,23 @@ not a copy of the finished one.
 
 ## Definition of done
 
-A problem is done when the terminal checker accepts the object **and** the
-cross-verifier, implemented by a different method, agrees. Everything else is
-`NO_ADMISSIBLE_ACTION` or a negative result, both of which get written down.
+The contract is `docs/DEFINITION_OF_SOLVED.md`, enforced by
+`python tools/accept.py --problem <p> --claim <file>`.
+
+A claim is accepted only if `accept.py` exits 0 **and** a second verifier,
+written by a different method, exits 0. `accept.py` is deliberately stricter
+than the individual checkers: the real 2026 C³ counterexample passes
+`jac.verify_map` and is **rejected** here, because its degree is 7 and the planar
+bound is 125. That is the gate working — it separates *true* from *the thing*.
+
+Everything else is `NO_ADMISSIBLE_ACTION` or a negative finding, both of which
+get written down.
+
+## Workstreams, not single tasks
+
+Each slot owns a **queue of 3 tasks**, executed one at a time. The agent reports
+after each and continues without waiting for a new assignment. A slot is only
+idle when its queue is empty; that is when it is refilled.
 
 ## What we will not do
 

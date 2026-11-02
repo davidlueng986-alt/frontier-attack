@@ -1,6 +1,6 @@
 {
   "generated_by": "problems/hadwiger_nelson/gadgets.py",
-  "runtime_seconds": 7.403,
+  "runtime_seconds": 7.559,
   "diamond": {
     "label": "diamond",
     "n": 4,
@@ -344,6 +344,8 @@
     "max_vertices": 13,
     "seed": 1,
     "graphs_examined": 22,
+    "graphs_constructed": 100,
+    "max_constructed_chi": 4,
     "histogram": {
       "3": 13,
       "4": 9
@@ -1952,6 +1954,6 @@
     "best_composition_chi": 4,
     "level4_forcing_found": false,
     "level5_forcing_found": false,
-    "statement": "The forced-equality constraint is implemented and the diamond lift reproduces the Moser spindle (chi=4). No composition in the searched diamond/wheel family has a pair forced equal in every 4-colouring, so the lift cannot be iterated to chi=5 inside this family. This is a clean negative, not a proof that no such gadget exists: chi=5 requires a 4-chromatic unit-distance gadget with a forced-equal pair at k=4 (equivalently, a 4-colourable gadget whose equality constraint yields a 5-chromatic spindle), and no such gadget was found at these sizes."
+    "statement": "The forced-equality constraint is implemented and the diamond lift reproduces the Moser spindle (chi=4). All 100 distinct compositions constructed (at most 13 vertices) have chi <= 4. Of the 22 examined for forced relations, 9 are 4-chromatic, and none has a pair forced equal in every 4-colouring, so the lift cannot be iterated to chi=5 inside this family. This is a clean negative for the search, not a proof that no such gadget exists: chi=5 requires a unit-distance gadget with a forced-equal pair at k=4, and no such gadget was found at these sizes. The 509-vertex 5-chromatic record is far outside this budget."
   }
 }
