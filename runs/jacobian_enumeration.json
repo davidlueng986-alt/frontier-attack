@@ -8,7 +8,7 @@
     "grid_size": 15625,
     "constant_jacobian_survivors": 13,
     "counterexamples_found": 0,
-    "seconds": 0.09,
+    "seconds": 0.02,
     "samples": [
       {
         "coeffs": [

@@ -45,36 +45,38 @@ analytic rank `k ≤ 3`. Inside that region BSD is expected to hold, and no
 counterexample has ever been observed anywhere. **There is no known positive
 instance to calibrate against, so `p` is unknown and probably 0.**
 
-### What can actually be certified (B1 result)
+### What can actually be certified (B1 result, corrected 2026-11-02)
 
 `problems/bsd/certified_rank.py` certifies `k = 0` (11a1) and `k = 1` (37a1),
-and **refuses** `k = 3` (5077a1). The reason is structural, not a bug:
+and **refuses** `k = 3` (5077a1). The reason is a limitation of the AFE
+interval method, not a mathematical fact:
 
-> a numerical interval can prove a value is **non-zero**; it can never prove an
-> exact **zero**. Any correct interval around a true zero must contain zero.
+> a numerical interval around a single value can prove it is **non-zero**; it
+> cannot prove an exact **zero**.
 
-So:
+Rigorous analytic ranks above 1 do exist. LMFDB states that its displayed
+analytic ranks are rigorously verified in all cases, including values greater
+than one, by zero-counting rather than by a pointwise interval. So `k ≥ 2` is
+certifiable in principle; it needs a different method (argument principle plus
+interval arithmetic), which this repo does not yet have.
 
-- `k = 0` is certifiable: show `L(1) ≠ 0` with an interval.
-- `k = 1` is certifiable: `w = −1` forces `L(1) = 0` exactly, then show
-  `L'(1) ≠ 0`.
-- `k ≥ 2` is **not** certifiable: it requires proving `L(1) = 0` and
-  `L'(1) = 0` exactly. Only `ord ≤ 3` and `ord ∈ {1,3}` can be established for
-  5077a1 — which is exactly what the run reports.
+### The GZK constraint, which we missed
 
-Add the parity constraint `w = (−1)^k = (−1)^r`, i.e. `k ≡ r (mod 2)`. A
-mismatch therefore has `|r − k| ≥ 2`, hence `max(r,k) ≥ 2`, hence `k ≥ 2` if
-`r < k`. Combining with the above:
+Gross–Zagier (1986) plus Kolyvagin (1990): if the analytic rank is `≤ 1`, then
+the Mordell–Weil rank equals it. So
 
-**A certifiable counterexample must have `k ∈ {0,1}` and `r ≥ 2` with
-`r ≡ k (mod 2)`.** The natural targets are
+> **a counterexample must have `k ≥ 2`.**
+
+Combined with the parity `r ≡ k (mod 2)`, the smallest admissible shapes are
 
 ```
-(r, k) = (2, 0), (4, 0), (6, 0), ...      rank even, L(1) ≠ 0
-(r, k) = (3, 1), (5, 1), (7, 1), ...      rank odd, L(1) = 0, L'(1) ≠ 0
+(r, k) = (0, 2), (4, 2), (6, 2), ...      k = 2, rank even, rank != 2
+(r, k) = (1, 3), (5, 3), (7, 3), ...      k = 3, rank odd,  rank != 3
 ```
 
-This is much narrower than "`k ≤ 3`", and it is the correct region.
+The earlier list `(2,0), (3,1)` was wrong: those are exactly the cases GZK proves
+cannot happen. `tools/accept.py` now rejects `k ≤ 1` for this reason, and
+requires actual certificate blocks rather than method labels.
 
 That is why "find a counterexample" is `NO_ADMISSIBLE_ACTION`: not because the
 checker is missing, but because the object has never existed and the only

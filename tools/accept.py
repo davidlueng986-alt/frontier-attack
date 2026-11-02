@@ -155,14 +155,33 @@ def accept_bsd(path: Path):
         return fail([f"check_claim: {r['verdict']}", *r["reasons"]])
 
     k = claim.get("analytic_rank")
-    if not isinstance(k, int) or k > 3:
-        return fail(["analytic rank > 3 is not proved for any curve; k <= 3 required"])
-    if claim.get("rank_method") not in {"2-descent", "mwrank", "magma", "sage", "published"}:
-        return fail(["algebraic rank has no recognised backend"])
-    if claim.get("analytic_rank_method") not in {"lcalc", "numerical", "published"}:
-        return fail(["analytic rank has no recognised backend"])
+    rank = claim.get("rank")
+    if not isinstance(k, int) or not isinstance(rank, int):
+        return fail(["rank and analytic_rank must be integers"])
 
-    return ok({"rank": claim["rank"], "analytic_rank": k})
+    # Gross-Zagier + Kolyvagin: analytic rank <= 1 forces r = k.
+    # So any counterexample must have k >= 2. Added after the 2026-11-02 review.
+    if k <= 1:
+        return fail([
+            "GZK (Gross-Zagier 1986 + Kolyvagin 1990): analytic rank <= 1 forces "
+            "rank = analytic rank, so this shape cannot be a counterexample"
+        ])
+
+    # Parity of the functional equation forces r = k (mod 2).
+    if (rank - k) % 2 != 0:
+        return fail([f"parity: root number is (-1)^r and (-1)^k, so r-k must be even (got {rank - k})"])
+
+    # A method label is not a certificate.
+    certs = claim.get("certificates", {})
+    for name in ("algebraic", "analytic"):
+        c = certs.get(name)
+        if not isinstance(c, dict) or not c.get("check"):
+            return fail([
+                f"missing {name} certificate: a '{name}_method' label is not a proof",
+                "supply certificates.<name>.check naming the exact computation and its output",
+            ])
+
+    return ok({"rank": rank, "analytic_rank": k})
 
 
 if __name__ == "__main__":

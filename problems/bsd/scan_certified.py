@@ -86,11 +86,17 @@ CONDUCTOR_LO = 500_000
 CONDUCTOR_HI = 520_000
 
 # Calibration curves.  The first two are the original certifier's positive
-# controls; the third is a rank-4 curve that must be REFUSED at kmax=1.
+# controls; the third is a rank-2 prime-conductor curve that must be REFUSED
+# at kmax=1 (L(1) is numerically zero but w=+1, so no k=0 certificate is
+# possible, and k=2 needs an exact-zero argument).
+#
+# 234446.a1 (the rank-4 curve from plan/bsd.md) is NOT usable here: its
+# conductor is 234446 = 2 * 117223, composite, and this certifier is
+# restricted to prime conductor.  That is recorded in the tooling block.
 CALIBRATION = (
     ("11a1", (0, -1, 1, -10, -20), 11, 0),
     ("37a1", (0, 0, 1, -1, 0), 37, 1),
-    ("234446.a1", (1, -1, 0, -79, 289), 234_446, None),
+    ("389a1", (0, 1, 1, -2, 0), 389, None),
 )
 
 
@@ -422,7 +428,7 @@ def run_calibration() -> list[dict]:
             },
             "seconds": round(time.perf_counter() - t, 2),
             "note": (
-                "expected refusal: rank 4, but kmax=1 can only certify "
+                "expected refusal: rank 2, but kmax=1 can only certify "
                 "k=0 or k=1; L(1) is numerically zero and w=+1, so no "
                 "k=0 certificate is possible"
                 if expected is None else
@@ -466,7 +472,8 @@ def main(argv=None) -> int:
         for row in calibration:
             print(f"  {row['label']:<12} expected k={row['expected_k']!s:<5} "
                   f"got k={row['k']!s:<5} ok={row['ok']} "
-                  f"({row['seconds']}s)")
+                  f"({row['seconds']}s)"
+                  + (f"  error={row['error']}" if row['error'] else ""))
         print()
 
     results = []

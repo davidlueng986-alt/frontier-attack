@@ -79,9 +79,36 @@ tried (`best_chi = 4`).
 
 Consequence: equality gadgets are a **3-colouring tool**. Composing diamonds
 therefore cannot produce anything above 4 colours, which is exactly what
-`glue2.py` observed. At 5 colours the primitive is a forced *pattern*
-(a monochromatic √3-triangle), not an equality. Any plan built on
-`forced_relation == "equal"` is calibrated to the wrong k.
+`glue2.py` observed. Any plan built on `forced_relation == "equal"` is
+calibrated to the wrong k.
+
+### The levels are indexed, and we were measuring at the wrong one
+
+| level | primitive | forces | status |
+|---|---|---|---|
+| k=3 | diamond | apices equal | known → Moser spindle, χ=4 |
+| k=4 | H, and L = 52 copies of H | a monochromatic √3-triangle in some copy | known → χ=5 |
+| k=5 | **virtual edge** | endpoints differ in **every** 5-colouring | **missing** |
+
+H is a *4-colouring* gadget: it has four 4-colourings, two with a monochromatic
+triple, and 52 copies (L) force the triple. At 5 colours H has a colouring with
+no monochromatic √3-triangle. The earlier statement that a "7v/12e wheel forces
+a monochromatic triangle at 5 colours" was a level error — three files in this
+repo gave three different levels for the same object.
+
+The 509 graph is 5-chromatic, i.e. a k=4 obstruction. Measuring its relations at
+k=5 was therefore the wrong level, which is why the result was null.
+
+**The route to 6 is a level-5 virtual edge**: a unit-distance gadget forcing its
+two endpoints to differ in every 5-colouring. Compose it with a 6-chromatic
+*two-distance* graph — Parts' 16-vertex graph (distances 1 and φ), the 33-vertex
+graph (distances 1 and √3), or Exoo–Ismailescu's 426-vertex graph — replacing the
+non-unit edge by the gadget. That yields a 6-chromatic unit-distance graph.
+
+**χ=7 is out of reach by composition.** Any 7-chromatic unit-distance graph has
+at least **6,993 vertices** (Parts 2020, Table 2, cited). A 509-plus-gadget
+composition is ~516 vertices and is provably 6-colourable. The old step 5 was
+dead on size, not on compute.
 
 **Extraction from the Lean proof is ruled out.** `research/hn-lean-witness.md`
 checked the public source: `lean/OAI/Geometry/PlaneColoring/Five.lean` is 131

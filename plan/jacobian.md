@@ -175,6 +175,38 @@ That is a conditional negative for config 2 at the vertices-only level,
 consistent with the wstrinz exclusion. It is not a proof: the full lattice (72
 unknowns) is untouched.
 
+### The reconstruction gap — the actual wall
+
+Raised by the 2026-11-02 review, and it is decisive. The GGHV object lives in
+
+```
+L^(1) = K[x, x^-1, y]
+```
+
+and the reduction from a polynomial counterexample uses automorphisms of
+`L^(1)` that are **not** automorphisms of `K[x,y]`. The implication is
+one-directional:
+
+```
+counterexample  ⇒  normalized pair with [P,Q] = x²
+```
+
+It does not reverse. So a solution of the config-2 system is **not** a polynomial
+map with `det J = 1`, and `jac.py` rejects it — correctly, because its
+determinant is `x²`, not a constant.
+
+Until an inverse normalisation is written and checked, **none** of the config-2
+work can reach the terminal object. That makes reconstruction the top task,
+ahead of any further elimination. If the inverse cannot be defined from the
+published data, the whole Jacobian workstream is off-core and the plan must be
+rewritten.
+
+The review also corrected the "interior points are load-bearing" inference: the
+vertices-only failure is a truncation artefact, not a theorem that minimal
+supports are always invalid. The support of `det J` is the Minkowski difference
+of the supports, and any truncation must be justified by the Newton-polygon
+edge structure. That is what the cascade is for.
+
 ## 4. Load-bearing decomposition
 
 1. **Write the coefficient system for config 2.** Unknown coefficients on the
