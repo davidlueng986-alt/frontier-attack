@@ -1,6 +1,8 @@
 # frontier-attack
 
-三個 2026 年仍然開放的具體問題，加上一套**反漂移**的 agent 編排協定。
+公開 repo：**https://github.com/davidlueng986-alt/frontier-attack**
+
+三個 2026 年仍然開放的具體問題，加上一套**反替換**的 agent 工作流。
 
 這不是「用 10,000 個 agent 硬解千禧年難題」的專案。這是一個**檢查器優先**的
 工作台：先把「什麼算解決」寫成程式，再讓 agent 去產生能被程式接受的物件。
@@ -50,13 +52,29 @@ python problems/bsd/bsd.py                 # 守門員自我測試
 ## 目錄
 
 ```
-docs/ORCHESTRATION.md   反漂移協定、角色、預算、tangent tax
+docs/WORKFLOW.md        think → research → build → verify → scale（先想，再查，再做）
+docs/ORCHESTRATION.md   替換現象、角色、admissibility 閘門、tangent tax
 docs/SCORECARD.md       賠率、kill criteria、什麼算成功
+plan/*.md               Phase 0 產物：terminal object / 拆解 / 合格動作
+research/*.md           Phase 1 產物：物件與數字，附來源
 problems/*/             三個問題的檢查器與搜尋器
-agents/*.md             可直接貼給 subagent 的 prompt 模板
+agents/*.md             THINKER / RESEARCHER / GENERATOR / BREAKER / CARTOGRAPHER
+findings/*.md           每個 pilot 的結果與「為什麼這個空間不行」
 runs/                   每次執行的 JSON 產物
 tools/verify.py         一鍵跑完所有檢查
 ```
+
+## 工作流（強制順序）
+
+1. **THINK** — 一頁：terminal object、terminal check、牆、3–5 個 load-bearing
+   子問題、合格動作清單。清單為空就寫 `NO_ADMISSIBLE_ACTION` 並停。
+2. **RESEARCH** — 背景並行，每人一個問題，回傳物件與數字，不寫程式。
+3. **BUILD** — 每個 agent 一個產物，成功 = 終端 checker 回 0。
+4. **VERIFY** — 只用兩個：A 跑 checker，B 用**不同方法**重寫一次。不一致就停。
+   不要第三個。
+5. **SCALE** — 只有在量到 `p > 0` 之後，才放大到 `N ≈ 1/p`。
+
+三個 pilot 的 `p` 都是 0。所以那三條分支不該放大，該換表示法。
 
 ## 這個專案的核心主張
 
