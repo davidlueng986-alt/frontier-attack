@@ -68,17 +68,37 @@ exists in `hn.py`.
 
 ## 5. Admissible actions
 
+**Extraction from the Lean proof is ruled out.** `research/hn-lean-witness.md`
+checked the public source: `lean/OAI/Geometry/PlaneColoring/Five.lean` is 131
+lines, no `sorry`, and proves the infinitary statement
+
+```lean
+theorem no_proper_five_coloring : ¬ ∃ c : ℂ → Fin 5, ProperColoring 5 c
+```
+
+It never defines a finite vertex set (`Fin N`), an edge list, or coordinates.
+The paper says so itself: *"The graph and the positive constant here are
+existential."* So the witness has to be **searched for**, not extracted.
+
+The one remaining extraction lead is `PlanarCovers.compact_open_cover_impossible`
+(`PlanarCovers.lean:374`). If that lemma is finitary — a finite open cover that
+cannot exist — then the obstruction it encodes may be instantiable as an
+explicit finite point set. That is a research question, not an assumption.
+
 Ordered by cost, not by appeal:
 
-1. **Load `509_parts.vtx` and verify it with `hn.py`.** Confirms our exact
+1. **Read `PlanarCovers.lean` and decide whether the obstruction is finitary.**
+   If yes, the witness is a finite instantiation of an existing proof, which is
+   far cheaper than SAT search. If no, this branch dies here.
+2. **Load `509_parts.vtx` and verify it with `hn.py`.** Confirms our exact
    arithmetic on the current record and gives us a seed. Cheap, and it tests the
    gate on a real object rather than a 7-vertex toy.
-2. **Re-run gluing with forced-equality bookkeeping.** The previous run had the
+3. **Re-run gluing with forced-equality bookkeeping.** The previous run had the
    right geometry and the wrong constraint. This is the smallest change that
    could move χ from 4 to 5.
-3. **SAT-trim around the 509 seed** (Heule's pipeline) to look for a 6. This is
+4. **SAT-trim around the 509 seed** (Heule's pipeline) to look for a 6. This is
    calibration, not the target.
-4. **Only if 1–3 produce a 6: push for a 7** by adding a pattern-forcing gadget
+5. **Only if 1–4 produce a 6: push for a 7** by adding a pattern-forcing gadget
    for a monochromatic √3-triangle, which is the primitive de Grey actually used.
 
 ## 6. Kill criteria
