@@ -1,6 +1,6 @@
 {
   "script": "problems/bsd/scan_certified.py",
-  "generated_utc": "2026-11-02T12:03:35.821107+00:00",
+  "generated_utc": "2026-11-02T12:14:06.351477+00:00",
   "method": "smoothed approximate functional equation with an explicit incomplete-gamma truncation bound, a priori rounding bound cross-checked at two precisions, and Richardson finite-difference derivatives",
   "rigour": "numerical with heuristic bound",
   "structural_note": "A numerical interval can prove a value is non-zero, never that it is exactly zero.  Only k=0 (L(1) interval excludes 0) and k=1 (a_N=-1 forces L(1)=0 exactly; L'(1) interval excludes 0) are certifiable.  k>=2 is not certifiable by this method.",
@@ -8,11 +8,13 @@
     "gp": "absent (the PowerShell 'gp' command is an alias for Get-ItemProperty; no PARI/GP binary found)",
     "sage": "absent",
     "cypari2": "absent (ModuleNotFoundError)",
-    "consequence": "no algebraic-rank backend; LMFDB 'rank' and 'analytic_rank' are DECLARED inputs, not proofs"
+    "consequence": "no algebraic-rank backend; LMFDB 'rank' and 'analytic_rank' are DECLARED inputs, not proofs",
+    "rank4_probe": "234446.a1 has conductor 234446 = 2 * 117223, composite; it is outside this prime-conductor certifier's scope.  No algebraic-rank backend was available to verify its rank 4."
   },
   "inputs": {
     "sample": "C:\\Users\\daive\\Downloads\\frontier-attack\\research\\scratch\\bsd_stress.json",
     "sample_source": "LMFDB ec_curvedata / EllipticCurve search, conductor [500000, 520000], prime conductor, analytic_rank in {0,1}",
+    "special_value_source": "LMFDB ec_mwbsd special_value, independent of the AFE computation; used only as an audit",
     "lmfdb_complete_range": "N <= 500000 (Cremona); above that the rows are Stein-Watkins / BGR prime-conductor data",
     "declared_not_proved": true
   },
@@ -37,7 +39,7 @@
         "hi": "0.253841860855910684337758923358",
         "contains_zero": false
       },
-      "seconds": 1.89,
+      "seconds": 1.82,
       "note": "positive control"
     },
     {
@@ -54,7 +56,7 @@
         "hi": "0.305999774020027871896603920103",
         "contains_zero": false
       },
-      "seconds": 2.6,
+      "seconds": 2.34,
       "note": "positive control"
     },
     {
@@ -71,11 +73,17 @@
         "hi": "1.81757011323453530378841156991e-29",
         "contains_zero": true
       },
-      "seconds": 9.59,
+      "seconds": 6.94,
       "note": "expected refusal: rank 2, but kmax=1 can only certify k=0 or k=1; L(1) is numerically zero and w=+1, so no k=0 certificate is possible"
     }
   ],
   "calibration_ok": true,
+  "special_value_audit": {
+    "checked": 15,
+    "inside_interval": 15,
+    "all_inside": true,
+    "note": "LMFDB ec_mwbsd special_value (L(1) for rank 0, L'(1) for rank 1) is an independent computation; it must lie inside the AFE interval.  This audits the special value, not the order of vanishing."
+  },
   "curves": [
     {
       "label": "500719.a1",
@@ -135,16 +143,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "1.1889243730812439732152307545284137328",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "2.55301e-12",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.015,
-        "root_number": 0.303,
-        "derivatives_hi": 18.285,
-        "derivatives_lo": 14.057,
-        "total": 14.057
+        "a_n": 0.014,
+        "root_number": 0.281,
+        "derivatives_hi": 18.914,
+        "derivatives_lo": 37.831,
+        "total": 37.831
       },
-      "seconds": 32.68
+      "seconds": 57.06
     },
     {
       "label": "501317.a1",
@@ -204,16 +217,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "1.7993866244924673779890234626217096786",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "3.13031e-12",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.056,
-        "root_number": 0.407,
-        "derivatives_hi": 11.105,
-        "derivatives_lo": 6.394,
-        "total": 6.394
+        "a_n": 0.02,
+        "root_number": 0.122,
+        "derivatives_hi": 7.504,
+        "derivatives_lo": 9.675,
+        "total": 9.675
       },
-      "seconds": 18.04
+      "seconds": 17.35
     },
     {
       "label": "503857.a1",
@@ -273,16 +291,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "5.5941334742753015666537705643830976058",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "2.73472e-13",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.025,
-        "root_number": 0.286,
-        "derivatives_hi": 14.884,
-        "derivatives_lo": 13.017,
-        "total": 13.017
+        "a_n": 0.105,
+        "root_number": 0.707,
+        "derivatives_hi": 13.279,
+        "derivatives_lo": 14.57,
+        "total": 14.57
       },
-      "seconds": 28.24
+      "seconds": 28.77
     },
     {
       "label": "504299.a1",
@@ -342,16 +365,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "1.2912885625958721542900304331920344059",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "3.12757e-13",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.025,
-        "root_number": 0.416,
-        "derivatives_hi": 22.673,
-        "derivatives_lo": 19.266,
-        "total": 19.266
+        "a_n": 0.028,
+        "root_number": 0.316,
+        "derivatives_hi": 16.668,
+        "derivatives_lo": 15.893,
+        "total": 15.893
       },
-      "seconds": 42.41
+      "seconds": 32.93
     },
     {
       "label": "505763.a1",
@@ -411,16 +439,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "0.37926322032136267225407899648375341321",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "3.76297e-12",
+      "lmfdb_special_value_quote_ulp": "1.0e-38",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.03,
-        "root_number": 0.239,
-        "derivatives_hi": 14.151,
-        "derivatives_lo": 12.604,
-        "total": 12.604
+        "a_n": 0.043,
+        "root_number": 0.578,
+        "derivatives_hi": 13.624,
+        "derivatives_lo": 8.308,
+        "total": 8.308
       },
-      "seconds": 27.05
+      "seconds": 22.61
     },
     {
       "label": "509647.a1",
@@ -480,16 +513,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "1.4671476059703693235048462094317771808",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "2.05008e-14",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.028,
-        "root_number": 0.475,
-        "derivatives_hi": 28.182,
-        "derivatives_lo": 23.341,
-        "total": 23.341
+        "a_n": 0.019,
+        "root_number": 0.295,
+        "derivatives_hi": 21.517,
+        "derivatives_lo": 17.968,
+        "total": 17.968
       },
-      "seconds": 52.05
+      "seconds": 39.83
     },
     {
       "label": "511171.a1",
@@ -549,16 +587,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "1.7627265594721746696231283202467443914",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "1.76837e-12",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.03,
-        "root_number": 0.469,
-        "derivatives_hi": 34.056,
-        "derivatives_lo": 32.014,
-        "total": 32.014
+        "a_n": 0.043,
+        "root_number": 0.812,
+        "derivatives_hi": 21.625,
+        "derivatives_lo": 17.583,
+        "total": 17.583
       },
-      "seconds": 66.61
+      "seconds": 40.1
     },
     {
       "label": "517571.a1",
@@ -618,16 +661,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "1.2933244098694301274010555097601950506",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "1.76912e-12",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
         "a_n": 0.032,
-        "root_number": 0.36,
-        "derivatives_hi": 19.613,
-        "derivatives_lo": 18.017,
-        "total": 18.017
+        "root_number": 0.25,
+        "derivatives_hi": 17.726,
+        "derivatives_lo": 11.587,
+        "total": 11.587
       },
-      "seconds": 38.05
+      "seconds": 29.62
     },
     {
       "label": "500921.a1",
@@ -687,16 +735,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "11.195152297940102374446977878066284318",
+      "lmfdb_special_value_name": "L'(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "4.59445e-10",
+      "lmfdb_special_value_quote_ulp": "1.0e-36",
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.033,
-        "root_number": 0.427,
-        "derivatives_hi": 22.795,
-        "derivatives_lo": 20.254,
-        "total": 20.254
+        "a_n": 0.023,
+        "root_number": 0.295,
+        "derivatives_hi": 14.57,
+        "derivatives_lo": 12.905,
+        "total": 12.906
       },
-      "seconds": 43.54
+      "seconds": 27.82
     },
     {
       "label": "501341.a1",
@@ -756,16 +809,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "5.6292683438875762711746903079603726996",
+      "lmfdb_special_value_name": "L'(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "3.01568e-10",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.039,
-        "root_number": 0.455,
-        "derivatives_hi": 26.144,
-        "derivatives_lo": 24.378,
-        "total": 24.378
+        "a_n": 0.029,
+        "root_number": 0.374,
+        "derivatives_hi": 17.428,
+        "derivatives_lo": 13.717,
+        "total": 13.717
       },
-      "seconds": 51.06
+      "seconds": 31.59
     },
     {
       "label": "502507.a1",
@@ -825,16 +883,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "8.1320170703964817097270030391610396898",
+      "lmfdb_special_value_name": "L'(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "2.92528e-10",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.032,
-        "root_number": 0.436,
-        "derivatives_hi": 25.438,
-        "derivatives_lo": 36.778,
-        "total": 36.778
+        "a_n": 0.02,
+        "root_number": 0.242,
+        "derivatives_hi": 16.465,
+        "derivatives_lo": 12.724,
+        "total": 12.724
       },
-      "seconds": 62.72
+      "seconds": 29.47
     },
     {
       "label": "504197.a1",
@@ -894,16 +957,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "4.6473936957329368041515054736046219267",
+      "lmfdb_special_value_name": "L'(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "3.28173e-10",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.096,
-        "root_number": 0.742,
-        "derivatives_hi": 24.086,
-        "derivatives_lo": 16.7,
-        "total": 16.7
+        "a_n": 0.029,
+        "root_number": 0.165,
+        "derivatives_hi": 11.226,
+        "derivatives_lo": 6.386,
+        "total": 6.386
       },
-      "seconds": 41.79
+      "seconds": 17.83
     },
     {
       "label": "507347.a1",
@@ -963,16 +1031,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "11.207575343088087122300140131263209781",
+      "lmfdb_special_value_name": "L'(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "3.88908e-10",
+      "lmfdb_special_value_quote_ulp": "1.0e-36",
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.049,
-        "root_number": 0.376,
-        "derivatives_hi": 29.175,
-        "derivatives_lo": 20.386,
-        "total": 20.386
+        "a_n": 0.014,
+        "root_number": 0.199,
+        "derivatives_hi": 11.011,
+        "derivatives_lo": 11.557,
+        "total": 11.557
       },
-      "seconds": 50.06
+      "seconds": 22.8
     },
     {
       "label": "512711.a1",
@@ -1032,16 +1105,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "4.0578006508241156914636864450049280353",
+      "lmfdb_special_value_name": "L'(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "2.12295e-10",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.045,
-        "root_number": 0.731,
-        "derivatives_hi": 52.851,
-        "derivatives_lo": 36.26,
-        "total": 36.26
+        "a_n": 0.061,
+        "root_number": 0.884,
+        "derivatives_hi": 23.247,
+        "derivatives_lo": 18.618,
+        "total": 18.618
       },
-      "seconds": 89.94
+      "seconds": 42.87
     },
     {
       "label": "519083.a1",
@@ -1101,16 +1179,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "8.7312178783321407637268152728440075603",
+      "lmfdb_special_value_name": "L'(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "4.82827e-10",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.047,
-        "root_number": 0.721,
-        "derivatives_hi": 22.695,
-        "derivatives_lo": 16.555,
-        "total": 16.556
+        "a_n": 0.014,
+        "root_number": 0.403,
+        "derivatives_hi": 21.264,
+        "derivatives_lo": 20.864,
+        "total": 20.864
       },
-      "seconds": 40.09
+      "seconds": 42.56
     }
   ],
   "certified_count": 15,
@@ -1119,5 +1202,5 @@
   "anomalies": [],
   "uncertified": [],
   "verdict": "COVERAGE EXTENDED: 15 curves certified, 0 anomalies",
-  "total_seconds": 698.41
+  "total_seconds": 494.33
 }

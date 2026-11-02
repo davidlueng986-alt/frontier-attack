@@ -41,3 +41,14 @@ stage2 patterns forced_mono brute-force validation: 1096 graphs, 10504 (graph,tr
 [2026-11-02T20:07:59] stage4 composition control attachments=257 unsat=0 all_sat=True seconds=11.0
 [2026-11-02T20:07:59] stage5 wrote hn_six.json n=509 m=2442 chi_lower=5 gadget_found=False verdict=NEGATIVE runtime=121.1s
 [2026-11-02T20:10:01] stage1 verify_509 n=509 m=2442 k=5 SAT worst|d2-1|=1.49675e-49 exit=1 ok=True
+[2026-11-02T20:10:10] stage2 patterns graphs=1096 checks=10504 mismatches=0 W7 k3=True k4=False k5=False ok=True
+[2026-11-02T20:10:13] geometry n=509 m=2442 sq3_pairs=1175 sq3_triples=257 edges_match=True
+[2026-11-02T20:11:32] stage3 gadget_search candidates=20000 (local=10094, random=40000, lattice=48120) with_sq3=8525 max_edges=12 max_triples=5 found=False capped_by=candidate_cap seconds=78.7
+[2026-11-02T20:11:46] stage4 composition control attachments=257 unsat=0 all_sat=True seconds=14.5
+[2026-11-02T20:11:46] stage5 wrote hn_six.json n=509 m=2442 chi_lower=5 gadget_found=False verdict=NEGATIVE runtime=107.1s
+[2026-11-02T20:12:27] stage1 verify_509 n=509 m=2442 k=5 SAT worst|d2-1|=1.49675e-49 exit=1 ok=True
+[2026-11-02T20:12:33] stage2 patterns graphs=1096 checks=10504 mismatches=0 W7 k3=True k4=False k5=False ok=True
+[2026-11-02T20:12:35] geometry n=509 m=2442 sq3_pairs=1175 sq3_triples=257 edges_match=True
+[2026-11-02T20:14:06] stage3 gadget_search candidates=20000 (local=10094, random=40000, lattice=48120) with_sq3=8525 max_edges=12 max_triples=5 found=False capped_by=candidate_cap seconds=91.2
+[2026-11-02T20:14:22] stage4 composition control attachments=257 unsat=0 all_sat=True seconds=15.6
+[2026-11-02T20:14:22] stage5 wrote hn_six.json n=509 m=2442 chi_lower=5 gadget_found=False verdict=NEGATIVE runtime=116.5s

@@ -55,7 +55,7 @@ T5 (phi): x -> x^-1, y -> x^4 y. Not a map K[x,y]->K[x,y]. It is an
   automorphism of L^(1) by itself. It introduces x^-1. The paper explicitly
   says it is "not an automorphism" of K[x,y] (line 1229). det J(phi) = -x^2,
   so [phi(P),phi(Q)] = -[P,Q] x^2.
-Composite A = T1 o T2 o T3 o T4 o T5:
+Composite A = T5 o T4 o T3 o T2 o T1 (T1 applied first):
   A(x,y) = (x^4 y + s(x^-1), x^-1), with s(x)=sum c_k x^-k, k in {2,3,4}.
   A is a morphism K[x,y] -> L^(1), not an automorphism of either ring.
   Its rational inverse is
@@ -69,3 +69,98 @@ Which step introduces the denominator:
   fatal step: it turns that x^-1 into y^-1, which is not in L^(1) and is not
   a polynomial. So the composite is not invertible on polynomial pairs; the
   inverse exists only as a rational map, defined on the image.
+=== Stage 3 - implementation (problems/jacobian/reconstruct.py) ===
+Created problems/jacobian/reconstruct.py (new file; no existing file modified).
+The inverse chain is implemented exactly as A^-1(u,v)=(v^-1, v^4 (u-s(v))),
+with s(v)=c2 v^-2 + c3 v^-3 + c4 v^-4, in three stages:
+  step 1  undo phi:      (x,y) -> (x^-1, x^4 y)
+  step 2  undo shears:   y -> y - (c2/x^2 + c3/x^3 + c4/x^4)
+  step 3  undo swap:     (x,y) -> (y,x)
+The script clears denominators using the minimal negative powers actually
+present, computes det J exactly with sympy, and prints the stage at which the
+result leaves L^(1)=K[x,x^-1,y].  A self-test runs the published forward
+chain on P0=x, Q0=y: it gives det J = x^2 (the chain rule factor in Prop.
+4.3) and the inverse chain recovers (x,y).  A positive control, the forward
+image of the non-trivial polynomial pair (x+y^2, y), reconstructs exactly to
+(x+y^2, y) with det J = 1.  So the procedure does reconstruct pairs that are
+genuinely in the image; J3's failure below is not a bias of the code.
+
+=== Stage 4 - J3 test ===
+J3 family: P = a0 + a1*x, Q = b0 + b1*x^2*y, a1*b1 = 1, [P,Q]=x^2.
+
+Inverse stages:
+  step 1: P = a0 + a1/x,                 Q = b0 + b1*x^2*y
+          (Laurent in x, still in L^(1)).
+  step 2: P = a0 + a1/x,
+          Q = b0 - b1*c2 - b1*c3/x - b1*c4/x^2 + b1*x^2*y
+          (still in L^(1)).
+  step 3: P = a0 + a1/y,
+          Q = b0 - b1*c2 - b1*c3/y - b1*c4/y^2 + b1*x*y^2
+          (NOT in L^(1): y^-1 and y^-2 appear).
+
+Negative powers after step 3:
+  P: {-1: a1}
+  Q: {-1: -b1*c3, -2: -b1*c4}
+
+Before clearing: det J(P0,Q0) = a1*b1 = 1 exactly (the x^2 from the
+normalized pair cancels det J(phi) = -x^2).
+
+Cleared pair (multiply P by y, Q by y^2):
+  P' = a0*y + a1
+  Q' = b0*y^2 - b1*c2*y^2 - b1*c3*y - b1*c4 + b1*x*y^4
+  det J(P',Q') = -a0*b1*y^4.
+Under b1 = 1/a1 this is -a0*y^4/a1: zero if a0=0, a nonzero multiple of y^4
+otherwise.  It is never a nonzero constant.
+
+NOT RECONSTRUCTIBLE: step 3, the inverse swap turns the x^-1 introduced by
+step 1 into y^-1.  P0 = a0 + a1/y is not a polynomial for any choice of
+c2,c3,c4, because a1 != 0.  The shears act on the second coordinate and
+cannot cancel a pole in the first coordinate.
+
+No other polynomial clearing helps.  A polynomial representative has the
+form (f*P0, g*Q0) with y | f and y^2 | g.  Since (P0)_x = 0 and a1*b1 = 1,
+  det(f*P0, g*Q0) = g*(f - b1*y^2*f'*P0).
+Writing f = y*h gives
+  f - b1*y^2*f'*P0 = y*(h - b1*(a0*y+a1)*(h+y*h')),
+so the determinant is divisible by y unless it is zero.  Hence no polynomial
+clearing of the J3 pair can give a nonzero constant determinant.
+
+=== Stage 5 - verdict ===
+VERDICT: PARTIAL
+
+Reason.
+The inverse composite exists as a rational map and restores det J = 1 before
+clearing, but it is not a map L^(1) -> K[x,y].  The paper's forward chain is
+a morphism K[x,y] -> L^(1), not an automorphism of either ring: the swap T1
+is an automorphism of K[x,y] but not of L^(1), and the monomial step T5
+introduces x^-1.  In the inverse, the swap (step 3) turns that x^-1 into
+y^-1, which is outside L^(1) and is not polynomial.  J3 fails at step 3 with
+the exact cleared determinant -a0*b1*y^4.
+
+The paper gives no explicit inverse of the composite and no characterization
+of the image A(K[x,y]) inside L^(1).  The shear constants c2,c3,c4 are chosen
+from the original polynomial P's leading forms and are not determined by the
+normalized pair.  A config-2 solution therefore needs, in addition, the
+vanishing of every negative power of y in P0 and Q0.  Unlike J3, the config-2
+lattice contains (1,1) and (1,2), so the leading y^-1 coefficient can in
+principle be cancelled by the x^-4 shear; the deeper negative powers (down to
+y^-8 from the (8,14),(8,16) vertices) give further conditions.  Prop. 4.3
+states none of them.
+
+Additional data needed for a PARTIAL -> RECONSTRUCTION_EXISTS upgrade:
+  (i) the exact shear constants, or the exact branch of the Prop. 4.3 proof
+      that produced the normalized pair;
+  (ii) the full polynomiality/image conditions - the vanishing of all
+      negative powers of y in P0 and Q0 - imposed on the normalized
+      coefficients;
+  (iii) a check that the resulting pair lies in A(K[x,y]), i.e. that the
+      config-2 solution is in the image of a polynomial pair.
+
+Branch implication.
+The config-2 coefficient system is necessary, not sufficient.  A solution of
+det J = x^2 on the config-2 support is not a polynomial counterexample until
+(i)-(iii) are supplied.  Do not run the (72,108) elimination expecting a
+terminal object from the published normal form alone.  If the image
+conditions are added and a solution survives, the reconstruction above gives
+the candidate; if they force the system empty, that is a negative result
+about the (72,108) case, not a counterexample.

@@ -99,6 +99,16 @@ repo gave three different levels for the same object.
 The 509 graph is 5-chromatic, i.e. a k=4 obstruction. Measuring its relations at
 k=5 was therefore the wrong level, which is why the result was null.
 
+**A size bound kills the 7-vertex approach outright.** A gadget that forces a
+monochromatic triple in a 5-colouring needs at least **11 vertices**: every
+7-vertex unit-distance graph is 4-colourable, and any 4-colouring of 7 vertices
+refines to a 5-colouring with all colour classes of size ≤ 2 (5 classes of size
+2 cover 10 vertices). A class of size ≤ 2 is not a monochromatic triple.
+
+So the 7-vertex H cannot be a k=5 gadget at all, for a counting reason, and any
+pattern-forcing search at k=5 must start at n ≥ 11. `six.py` found this and
+proved it, rather than merely failing to find a gadget.
+
 **The route to 6 is a level-5 virtual edge**: a unit-distance gadget forcing its
 two endpoints to differ in every 5-colouring. Compose it with a 6-chromatic
 *two-distance* graph — Parts' 16-vertex graph (distances 1 and φ), the 33-vertex
