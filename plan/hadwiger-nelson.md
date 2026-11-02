@@ -68,6 +68,17 @@ exists in `hn.py`.
 
 ## 5. Admissible actions
 
+**H3 result (measured, 18,889 pairs).** In the 509 graph at k = 5 there are
+**zero forced-equal pairs**. The 721 diamonds in it force their apices equal at
+k = 3 — as the gadget theory says — but those apices are **free at k = 4 and at
+k = 5**.
+
+Consequence: equality gadgets are a **3-colouring tool**. Composing diamonds
+therefore cannot produce anything above 4 colours, which is exactly what
+`glue2.py` observed. At 5 colours the primitive is a forced *pattern*
+(a monochromatic √3-triangle), not an equality. Any plan built on
+`forced_relation == "equal"` is calibrated to the wrong k.
+
 **Extraction from the Lean proof is ruled out.** `research/hn-lean-witness.md`
 checked the public source: `lean/OAI/Geometry/PlaneColoring/Five.lean` is 131
 lines, no `sorry`, and proves the infinitary statement
