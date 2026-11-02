@@ -1,0 +1,1136 @@
+===== PAGE 1 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 1
+On the Chromatic Number of the Plane with
+Two Forbidden Distances
+Jan De Neve, Ferre Vanden Kerchove, Didier Colle,
+Wouter Tavernier, and Mario Pickavet
+Abstract. The Chromatic Number of the Plane (CNP) problem can be generalized to the CNP
+with two forbidden distances. This problem seeks the smallest number of colors sufficient
+for coloring the Euclidean plane such that no two points at distance 1 or at distance d have
+the same color. A lower bound of six has previously been established for d = 1+
+√
+5
+2
+and
+d = 2 by constructing a 6-chromatic 2-distance graph with edge lengths 1 and d. Here, we
+construct a 6-chromatic 2-distance graph for two new values, d =
+√
+2+
+√
+6
+2
+and d =
+√
+3. This
+way, the lower bound for the CNP with two forbidden distances 1 and d is raised to six, for
+the two new values of d. We then minimize the number of vertices in our 6-chromatic 2-
+distance graphs. For d =
+√
+2+
+√
+6
+2
+and d =
+√
+3, the smallest results are a 117-vertex graph and
+a 33-vertex graph respectively. The latter graph has only two vertices more than the smallest
+known 6-chromatic 2-distance graph. Both the verification of the 6-chromaticity and the graph
+minimization process were assisted by the use of a SAT solver.
+1. INTRODUCTION. The Chromatic Number of the Plane (CNP), also denoted as
+χ(E2) or χ, is the smallest number of colors sufficient to color the Euclidean plane,
+such that no two points at unit distance have the same color. Though this formulation
+of the problem statement does not mention graphs, most of the proofs regarding the
+CNP make use of graphs. For a second definition of the CNP, using graph terminology,
+we introduce the concept of distance graphs.
+Definition 1. A graph G = (V, E), with vertex set V and edge set E, is a distance
+graph in n-dimensional Euclidean space with a distance set D if and only if conditions
+(1) and (2) are met.
+(1) G has an injection I : V −→En from its vertex set to the n-dimensional Eu-
+clidean space.
+(2) G has a distance set D ⊂R+ such that an edge between a vertex pair {u, v}
+exists if and only if the distance between these vertices is in the distance set:
+∀u, v ∈V : {u, v} ∈E ⇐⇒d(I(u), I(v)) ∈D, with d(x, y) being the Eu-
+clidean distance between two points x and y.
+If D = {1}, G is called a unit-distance graph.
+In this research, it is always assumed that a graph is embedded in the Euclidean
+plane E2. Since we only work with distance graphs and the injection implies that no
+two vertices can have the same position, a vertex is uniquely defined by its position.
+We leave the injection I behind and directly use v = (vx, vy) to refer to a vertex v and
+its position alike.
+Using graph terminology, the CNP is the chromatic number of the distance graph
+with all points of the Euclidean plane as its vertex set and edges between all vertex
+pairs at distance 1. The exact value of χ remains unknown to this day, but bounds have
+been set by previous authors.
+Theorem 2 (Aubrey de Grey [1], John Isbell [2]). 5 ≤χ ≤7
+June–July 2024]
+CNP WITH 2 DISTANCES
+1
+
+===== PAGE 2 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 2
+Edward Nelson is credited for first presenting the problem statement in 1950,
+though not in publication, together with a proof for a lower bound of four (see Alexan-
+der Soifer [2]). Generally, a lower bound k is proved by constructing a finite unit-
+distance graph with chromatic number k. Since the unit-distance graph with all points
+of the plane as its vertex set is a supergraph of every finite unit-distance graph, it is
+guaranteed that χ ≥k. The Moser spindle is a 4-chromatic unit-distance graph with
+7 vertices. Figure 1 shows a 4-coloring of the Moser spindle, with labels A/B/C/D
+representing the vertex colors. This graph serves as a proof for a lower bound of four
+for the CNP. For a long time, this was the best known lower bound. In 2018, de Grey
+[1] constructed a 5-chromatic unit-distance graph with 1581 vertices, raising the lower
+bound for the CNP to five. The long-standing upper bound is due to a 7-coloring of
+the plane with hexagonal tiles by Isbell (see Soifer [2]).
+De Grey developed a custom program to verify the final step of his proof. In this
+work, we also use computer verification for our results. This is not done with a custom
+program, but with a satisfiability (SAT) solver. The use of SAT solvers, or use of com-
+puters for heavy calculations in general, has become increasingly popular and widely
+accepted in the context of mathematical proofs. The Four Color Theorem, a graph
+coloring problem that is much older than the CNP, is the first major theory that was
+proved with computer assistance in 1976 [3, 4]. Next to the CNP, Marijn Heule also
+used a SAT solver for other mathematical challenges, like his proof for the Boolean
+Pythagorean Triples Problem [5].
+A
+B
+C
+A
+A
+B
+C
+D
+Figure 1. Moser spindle, the smallest 4-chromatic unit-distance graph.
+The interest in the CNP was never gone and de Grey’s revolutionary result increased
+the activity regarding this subject even further. Consequently, new proofs for χ ≥5
+emerged. Jaan Parts [6] made a human-verifiable proof for χ ≥5. His proof is ar-
+guably a solution to, but certainly a big step towards a human proof, as opposed to the
+existing, computer-aided proofs. A polymath project [7] was launched to talk about
+ideas and new results regarding the CNP. This project entails a summary of important
+results on the CNP and some forum threads where enthusiasts can discuss their ideas.
+The main page is no longer online but the individual threads are still available.
+Some aspects of the CNP can be generalized, resulting in related problems. One
+particular related problem is to generalize the forbidden distance 1 to a set D of for-
+bidden distances. For the CNP with a distance set D, the notation χD is used. When
+this set contains two distances, D = {1, d}, the problem is called the CNP with two
+2
+© THE MATHEMATICAL ASSOCIATION OF AMERICA
+[Monthly 131
+
+===== PAGE 3 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 3
+forbidden distances. No generality is lost by fixing the smallest of the two distances to
+1, as the problem remains equivalent under scaling of the plane.
+Again, a lower bound of k can be proved by constructing a k-chromatic graph.
+This time such a graph has edge lengths 1 and d, so it is called a 2-distance graph. A
+lower bound of five for any value of d is automatically implied by the existence of a
+5-chromatic unit-distance graph. The question arises whether a lower bound of six can
+be proved by the construction of a 6-chromatic 2-distance graph for some values of d.
+2. RELATED WORK AND KEY CONTRIBUTIONS. Matthew Huddleston [8]
+was the first to prove a lower bound of six for d = 1+
+√
+5
+2
+= the golden ratio, though
+he never mentioned the CNP. In this proof, points of a pentagon are colored (without
+explicitly using the term graph), and with some combinatorial calculations, the non-
+5-colorability is proved. Parts [9] later revisited Huddleston’s proof by creating the
+graph that was implicitly described by Huddleston in [8]. Parts succeeded in reducing
+the size of this graph from 251 vertices initially to 31 vertices finally. To this day this
+remains the smallest known 6-chromatic 2-distance graph. Geoffrey Exoo and Dan
+Ismailescu [10] constructed a 6-chromatic 2-distance graph with d = 2. This graph
+has 426 vertices and is less structured than Parts’ graph.
+An alternative way has been suggested for proving a lower bound on the CNP,
+also applicable to the CNP with two forbidden distances. Instead of constructing a
+k-chromatic distance graph to prove χ ≥k, one can prove that there is a positive
+probability that a random graph exhibits the desired property of k-chromaticity. A so-
+called probabilistic proof then states that there must exist a graph with this property,
+even though it is not explicitly constructed. Paul Erd˝os [11] already used probabilistic
+methods in 1959, but the application to the CNP and its related problems only dates
+back to recent years.
+P´alv¨olgyi D¨om¨ot¨or and P´eter ´Agoston presented a probabilistic proof for χ{1,d} ≥
+6 for d =
+√
+3 and d =
+√
+2+
+√
+6
+2
+. They give a high-level outline of this proof in the
+fourteenth Polymath thread [12]. Parts went further and probabilistically proved that
+χ{1,d} ≥7 for d =
+√
+2+
+√
+6
+2
+. He presents this in a few short steps in the fifteenth Poly-
+math thread [13].
+Despite proving an important result, none of these proofs have ever been published
+and neither have the propositions upon which the proofs are built. Although many de-
+tails are omitted from the brief presentation of these probabilistic proofs, the core steps
+are presented convincingly and the peers of the authors give positive feedback in the
+subsequent comments. This speaks in favor of the validity of these results. However,
+even with full credit given to these proofs, they still only provide a lower bound on
+the CNP with two distances. With these proofs, the existence of a finite 6-chromatic
+two-distance graph for the distances d =
+√
+3 and d =
+√
+2+
+√
+6
+2
+might still depend on
+the axiom of choice, as mentioned by D¨om¨ot¨or [14]. Our research is the first to prove
+the existence of such graphs and construct instances of such graphs.
+We construct a 6-chromatic 2-distance graph for the two values d =
+√
+2+
+√
+6
+2
+and
+d =
+√
+3. These values appeared in the probabilistic proofs mentioned above, but they
+are new for the construction of 6-chromatic 2-distance graphs. These two values of d
+are good candidates for a 6-chromatic graph because they allow for the complete graph
+K4 to be embedded in the plane. When a graph contains two K4 subgraphs of which
+three vertices are overlapping, the fourth vertices of both K4 subgraphs form a pair
+that have the same color in any 4-coloring. This observation is the key to the similarity
+of these graphs to the Moser spindle, and therefore the possibility to obtain a proof
+similar to that of de Grey. For values other than d =
+√
+2+
+√
+6
+2
+, d =
+√
+3, or d = 1+
+√
+5
+2
+, it
+June–July 2024]
+CNP WITH 2 DISTANCES
+3
+
+===== PAGE 4 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 4
+is not possible to embed the complete graph K4 in the plane in this way. One exception
+is d =
+√
+2. With this value, K4 can be embedded, but not two K4 subgraphs with three
+common vertices. With some increased symmetry, the graphs in Figure 2 and Figure
+8 can be obtained for d =
+√
+2+
+√
+6
+2
+and d =
+√
+3, respectively. We will later call these
+graphs the S-graph (S for square) and the H-graph (H for hexagon). The similarity
+of these graphs to the Moser spindle (Figure 1) has not been described before. We
+are the first to investigate this similarity and exploit it in a construction that is based
+on de Grey’s proof for χ ≥5. This process results in 6-chromatic 2-distance graphs,
+providing a constructive proof for Theorem 3 and Theorem 4.
+Theorem 3. χ{1,
+√
+2+
+√
+6
+2
+} ≥6.
+Theorem 4. χ{1,
+√
+3} ≥6.
+After constructing the first 6-chromatic 2-distance graphs for the new values of
+d, the secondary goal is to minimize the number of vertices in these graphs while
+maintaining the key property of 6-chromaticity, simply called graph minimization.
+Minimizing graphs is a whole research topic by itself within the field of the CNP.
+De Grey [1] already saw value in bringing his first 5-chromatic unit-distance graph
+down from 20425 vertices to 1581 vertices, even if the result was already revolutionary
+without the minimization. Heule [15] and Parts [16] specifically searched for ways
+to minimize 5-chromatic unit-distance graphs. Heule used a SAT solver to construct
+smaller graphs, while Parts worked directly on his graphs by repeatedly adding and
+deleting vertices. Their efforts led to the smallest known 5-chromatic unit-distance
+graph, standing at 509 vertices [16]. These two techniques will be combined in Section
+4 when the minimization of our graphs is finalized.
+The primary goal of this paper is to give constructive proofs of Theorem 3 and
+Theorem 4 by construction of a 6-chromatic 2-distance graph. First, Theorem 3 is
+proved in Section 3. The obtained 6-chromatic 2-distance graph is then minimized
+in Section 4. Finally, the whole procedure, including the minimization, is applied to
+2-distance graphs with d =
+√
+3 in Section 5, leading to a proof for Theorem 4.
+3. PROOF OF THEOREM 3.
+S-spindle. For the construction of a 6-chromatic 2-distance graph, we use a method
+very similar to de Grey’s method of constructing the first 5-chromatic unit-distance
+graph. We replace the Moser spindle, which plays a key role in de Grey’s proof, with a
+similar graph, the S-spindle (described below). The subsequent steps follow the same
+reasoning as de Grey’s proof and are only different in three places, resulting from the
+difference in geometry between the Moser spindle and the S-spindle.
+We first consider the 5-chromatic 2-distance graph with d =
+√
+2+
+√
+6
+2
+in Figure 3.
+We call this graph the square-spindle or S-spindle, indicating that it is an extension of
+the Moser spindle to 2-distance graphs. The S-spindle consists of two rotated copies
+of the S-graph (Figure 2), each containing a small square and a rotated bigger square.
+In Figure 3, the left S-graph is indicated with thicker edges and black vertices, while
+the right S-graph is indicated with thinner edges and white vertices. The S-graphs
+are rotated around their lower vertex with an angle α = arccos( 3
+4), such that their
+upper vertices are at distance d and are thus connected by an edge (uppermost edge in
+Figure 3). Another observation is that the edges of length 1 in each S-graph make only
+angles that are a multiple of π
+6 , since the S-graph consists only of regular squares and
+triangles. Edges of length 1 are solid and red, while edges of length d are dashed and
+blue. These styles and colors for the edges will be used in all figures in this work.
+4
+© THE MATHEMATICAL ASSOCIATION OF AMERICA
+[Monthly 131
+
+===== PAGE 5 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 5
+C
+D
+D
+C
+B
+B
+A
+A
+Figure 2. 4-coloring of the S-graph.
+Figure 3. S-spindle, a small 5-chromatic 2-distance
+graph.
+Proposition 5. The S-spindle has chromatic number five.
+Proof. We try to find a 4-coloring of the S-spindle and conclude that at least five colors
+are needed by reaching a contradiction. The S-graph (Figure 2) contains eight vertices.
+Each vertex is connected with an edge to all other vertices except one, which is its
+mirrored image around the central symmetry point of the graph. Each unconnected
+vertex pair can thus be assigned one color, resulting in the only valid 4-coloring of this
+graph (Figure 2). The most important observation is that the upper and lower vertex
+always have the same color in a 4-coloring of the S-graph. This argument goes for
+both instances of the S-graph, meaning that the lower and both upper vertices of the
+S-spindle all share the same color in any 4-coloring. However, the angle between the
+S-graphs is chosen such that the upper vertices share an edge and cannot share the
+same color. This leads to a contradiction, proving that at least five colors are needed to
+color the S-spindle.
+By the same construction as before, except that one of the upper vertices is colored
+with a fifth color, a valid 5-coloring is obtained. This proves the chromatic number of
+the S-spindle to be exactly five.
+The S-spindle has the interesting property that it has a high chromatic number while
+having relatively few vertices. When constructing a 6-chromatic 2-distance graph, it
+is therefore a good idea to make this graph contain multiple copies of the S-spindle.
+If a graph contains more S-spindles that are interlocked by clever use of rotations and
+translations, the probability increases that no 5-coloring exists for this graph.
+Graph V as a building block. Whereas the S-spindle serves as inspiration for our
+6-chromatic graph, we now construct a graph V that can be directly used as a building
+block. The graph V uses two important elements from the S-spindle: the angle π
+6 be-
+tween the edges of length 1 within the S-graph and the angle α = arccos( 3
+4) between
+the two S-graphs. The graph V is now defined as the union of a vertex at the origin
+and 60 vertices on the unit circle at angles θ(i,j) = i π
+6 + j α
+2 , (i, j) ∈[0..11] × [−2..2]
+(Figure 4). The integer interval [a..b] contains all integers between a and b, endpoints
+included: [a..b] = {x ∈Z | a ≤x ≤b}.
+Constructing a 6-chromatic 2-distance graph W. In this section we construct a
+non-5-colorable 2-distance graph W, using V as a building block. To this end, the
+Minkowski sum is introduced.
+June–July 2024]
+CNP WITH 2 DISTANCES
+5
+
+===== PAGE 6 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 6
+Figure 4. The 61-vertex graph V , the building block for 6-chromatic 2-distance graphs.
+Definition 6. The Minkowski sum of two graphs G1 = (V1, E1) and G2 = (V2, E2)
+is a graph G3 = (V3, E3) whose vertex set V3 contains all component-wise additions
+of a vertex from V1 and a vertex from V2: V3 = {w = (wx, wy) = (ux + vx, uy +
+vy) | ∀u ∈V1, v ∈V2}. The edge set E3 is determined by the same distance set D as
+with graphs G1 and G2. The Minkowski sum is denoted as G3 = G1 ⊕G2.
+In terms of the Minkowski sum, W is the addition of three instances of V : W =
+V ⊕V ⊕V . A triple addition is needed because it takes three steps of unit length to
+go from the bottom vertex to the upper vertices in the S-spindle. With this construction,
+the resulting graph W contains many S-spindles, one of which is indicated in Figure
+5.
+Figure 5. 6-chromatic 2-distance graph W with 34381 vertices and 310278 edges, with one S-
+spindle subgraph highlighted (edges are only shown for the S-spindle).
+6
+© THE MATHEMATICAL ASSOCIATION OF AMERICA
+[Monthly 131
+
+===== PAGE 7 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 7
+The graph W has 34381 vertices and 310278 edges. Its vertices are shown in Figure
+5, though the high density makes it mostly visually impenetrable. To prove that no 5-
+coloring exists for this graph, we convert the graph coloring problem to a SAT problem.
+The details of this conversion are described in Section 4. We then use the SAT solver
+CP-SAT to prove the unsatisfiability of the SAT problem, meaning that no 5-coloring
+can be found for this graph. This is later also verified by other SAT solvers. As it is
+verified that the graph W has no valid 5-coloring, it serves as a constructive proof for
+Theorem 3.
+Whether the chromatic number of W is six or higher is not determined, as the used
+graph coloring software does not terminate within a reasonable time when trying to
+color this graph with six colors. In the next section, when W is minimized, the smaller
+versions are always 6-chromatic.
+4. MINIMIZING W. Like previous authors, we aim for a graph that has as few
+vertices as possible. This section considers a sequence of steps that reduce the number
+of vertices in W, while maintaining the property of non-5-colorability. The steps are
+divided into a manual part and an automatic part. The manual minimization decreases
+the size of W by systematically removing vertices from the constituent graph V . The
+automatic minimization removes vertices directly from W in a random fashion.
+Manual minimization. As stated in Section 3, the 6-chromatic graph W is the triple
+Minkowski sum of V . This means that eliminating vertices from V results in many
+more vertices being eliminated from the final W. To create a graph V with fewer
+vertices, the angles of the vertices it has on the unit circle are reconsidered: θ(i,j) =
+i π
+6 + j α
+2 . The full 61-vertex version of V uses this formula with a value set of [0..11]
+for i and a value set of [−2..2] for j. In the following, the value sets of both i and j
+are reduced in three steps. With a careful analysis of de Grey’s construction and our
+construction of W, two important reduction steps are identified. These first two steps
+both aim to remove redundancies that were introduced by closely following de Grey’s
+construction. Finally, the third step is on the border between the manual and automatic
+minimization, as it still operates on the constituent graph V but it makes use of an
+automated search for the optimal value sets.
+Split V into even and odd rotations over π
+6 . As a first manual step, V is split into two
+versions Veven and Vodd, representing the even and odd rotations over π
+6 in the formula
+for θi,j: θeven,(i,j) = i π
+3 + j α
+2 , (i, j) ∈[0..5] × [−2..2] and θodd,(i,j) = π
+6 + i π
+3 +
+j α
+2 , (i, j) ∈[0..5] × [−2..2]. This distinction is not made in de Grey’s construction,
+since the Moser spindle only contains the angle π
+3 from the beginning. The shape
+of the S-spindle forced us to include angles that are a multiple of π
+6 , but no further
+distinction was initially made to keep as close as possible to de Grey’s construction.
+The motivation to make this distinction now in the minimization lies in the nature
+of the three unit-distance edges that lead from the lower to the upper vertex in the
+S-spindle. The graph Veven contains two of these three edges and Vodd contains the
+other. This way, W = Veven ⊕Veven ⊕Vodd still results in a graph containing many
+copies of the S-spindle. Note that W ∗= Veven ⊕Vodd ⊕Vodd would have resulted in
+the same final graph rotated over π
+6 and therefore would have been an equally good
+choice. The resulting graph W now has 13981 vertices and 93822 edges. This graph
+is 6-chromatic as it is still non-5-colorable and the size now allows for the coloring
+software to find a 6-coloring. All graphs resulting from the next minimization steps
+will also be 6-chromatic.
+June–July 2024]
+CNP WITH 2 DISTANCES
+7
+
+===== PAGE 8 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 8
+Keep only one spindle angle. In this step, the value set of j is reduced to a minimum.
+Initially, four spindle angles, or rather four rational multiples of the spindle angle α
+were used: ±α and ± α
+2 . This was because de Grey needed all these angles in his
+proof and we followed this in our construction. However, for our final graph W to
+contain many S-spindles, fewer spindle angles are sufficient. Keeping just one spindle
+angle suffices for the 6-chromaticity of the final graph W, corresponding to a value
+set for j of {−2, 0} or {−1, 0} after rescaling of the formula. This is a minimum
+that needs to be kept because a value set with one single value for j would make this
+variable obsolete and the important spindle angle α would not be found in the final
+graph anymore. Rewriting the formula for Veven and Vodd, new values for the angles
+on the unit circle are obtained: θeven,(i,j) = i π
+3 + jα, (i, j) ∈[0..5] × {−1, 0} and
+θodd,(i,j) = π
+6 + i π
+3 + jα, (i, j) ∈[0..5] × {−1, 0}. The resulting graph W has 949
+vertices and 6912 edges.
+Optimize value set of i. Now that we are working with graphs with fewer than 1000
+vertices, a brute force optimization comes into reach for this final manual minimiza-
+tion step. To fully explore all optimization possibilities, a distinction is made between
+three versions of V : V1, V2, and V3. The former two are subgraphs of Veven, the lat-
+ter is a subgraph of Vodd. The value set of j is fixed at {−1, 0} and the three dif-
+ferent value sets of i are a subset of [0..5]. Out of all (26)3 possible combinations
+of subsets, though this contains many isomorph cases, the three subsets are chosen
+which result in a final graph W with as few vertices as possible while still being 6-
+chromatic. A brute force calculation provides the optimal value sets of i: {0, 1, 2, 3},
+{3, 4, 5}, and {0, 5}. This corresponds to graphs V with vertices on the unit circle
+at angles θ1,(i,j) = i π
+3 + jα, (i, j) ∈[0..3] × {−1, 0}, θ2,(i,j) = i π
+3 + jα, (i, j) ∈
+[3..5] × {−1, 0}, and θ3,(i,j) = π
+6 + i π
+3 + jα, (i, j) ∈{0, 5} × {−1, 0}. Figure 6
+shows the three versions of V corresponding to the optimal value sets. The resulting
+graph W = V1 ⊕V2 ⊕V3 has 220 vertices and 1212 edges.
+V1
+V2
+V3
+Figure 6. Graphs V1, V2, and V3 which together form the smallest W.
+Automatic minimization. The 6-chromatic graph that results from the manual min-
+imization still has vertices that are non-critical, meaning that the graph is still 6-
+chromatic if this vertex is removed. The goal is to eliminate as many vertices as pos-
+sible from W until only critical vertices remain.
+We construct a short algorithm that combines methods from Heule and Parts. The
+algorithm alternates between a SAT solver and the direct deletion of vertices.
+To make use of a SAT solver, the problem of coloring a graph G = (V, E) with C
+colors must first be translated to a SAT problem. A SAT problem consists of variables,
+8
+© THE MATHEMATICAL ASSOCIATION OF AMERICA
+[Monthly 131
+
+===== PAGE 9 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 9
+each with a set of possible values, and constraints on these variables. A SAT solver
+either assigns a value to each variable such that no constraint is violated (the prob-
+lem is satisfiable) or it proves that such an assignment does not exist (the problem is
+unsatisfiable).
+Each vertex v corresponds to C different boolean variables xv,c, which represent
+the truth value of the statement “vertex v has color c”. The vertex v also creates a
+constraint imposing that a vertex should at least have one color. Note that vertices are
+allowed to have multiple colors as this does not affect the satisfiability of the problem.
+Finally, an edge {u, v} imposes C extra constraints ¬(xu,c ∧xv,c). The meaning of
+these constraints is that for each color c, vertices u and v cannot both have this color
+if they share an edge. Equation (1) shows all constraints for the satisfiability problem
+that models a graph coloring problem. The vertex set of the graph is denoted as V , the
+edge set as E, and the number of colors used for coloring the graph as C.
+^
+v∈V
+C−1
+_
+c=0
+xv,c ∧
+^
+(u,v)∈E
+C−1
+^
+c=0
+¬(xu,c ∧xv,c)
+(1)
+A SAT solver returns whether a valid assignment exists for all variables, where
+none of the constraints is violated. In our case, this corresponds to a valid 5-coloring
+of the graph. Moreover, the SAT solver can also extract an unsatisfiable core from the
+given constraints in the case of unsatisfiability. Such an unsatisfiable core is a subset
+of the initial constraints which is sufficient to prove unsatisfiability, leaving out some
+constraints that are not needed for the unsatisfiability. If all constraints corresponding
+to a vertex and its edges are left out of the core, this vertex can be eliminated from the
+graph without losing the non-5-colorability.
+Eliminating vertices with a SAT solver has the advantage that multiple vertices can
+be removed at once. The SAT solver is not perfect, so it can get stuck on a certain
+subgraph that still has non-critical vertices. At this point, Heule decides to change
+his method and he starts directly eliminating non-critical vertices until only critical
+vertices remain. We alter Heule’s method in such a way that a better balance is acquired
+between the SAT solver and vertex elimination. We noticed that the SAT solver could
+still provide smaller unsatisfiable cores after manually deleting one vertex from a graph
+on which the SAT solver was previously stuck. This way, we extend the possibilities
+of the SAT solver beyond the graphs on which it initially gets stuck.
+It is important to keep a balance when alternating between the two methods. The
+SAT solver is mostly successful at the start of the algorithm when the graph is still big.
+When the graph nears its minimal form, only the direct vertex elimination can bring
+improvements. This balance is dynamically maintained until we reach a graph with
+only critical vertices. Due to the random nature of both the SAT solver and the vertex
+selection, multiple iterations are executed, each time resulting in a slightly different
+graph. This procedure eventually results in a graph with 117 vertices and 565 edges
+(Figure 7). This 6-chromatic 2-distance graph has considerably fewer vertices than the
+graph of Exoo and Ismailescu, but still a lot more than the graph of Parts.
+5. PROOF OF THEOREM 4 AND MINIMIZATION. We only needed minor
+changes for de Grey’s method to be successfully applicable to 6-chromatic 2-distance
+graphs with d =
+√
+2+
+√
+6
+2
+. It turns out that the method is even more powerful for the
+case with d =
+√
+3. Almost all steps are identical to those for d =
+√
+2+
+√
+6
+2
+, both for the
+construction and the minimization, so we only focus on the three points where there is
+June–July 2024]
+CNP WITH 2 DISTANCES
+9
+
+===== PAGE 10 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 10
+Figure 7. The smallest 6-chromatic 2-distance graph for d =
+√
+2+
+√
+6
+2
+, having 117 vertices and 565
+edges.
+a difference.
+First, the hexagon spindle or H-spindle (Figure 9) serves as an alternative to the
+S-spindle. The construction of the H-spindle is completely similar to that of the S-
+spindle, except that now two copies of the H-graph are used instead of two copies of
+the S-graph and the spindle angle α = arccos( 7
+8) is different. In Figure 8, the H-graph
+is drawn with solid, red edges of length 1 and dashed, blue edges of length d.
+A second difference also follows from the difference between the S-graph and the
+H-graph. In the first step of manual minimization, V was previously split into even
+and odd rotations over π
+6 because some unit-length edges in the S-graph make an
+angle that is an odd multiple of π
+6 . Since all edges in the H-graph make angles that
+are a multiple of π
+3 , this split between two versions of V is no longer necessary. In
+other words, only one formula for the angles of the vertices of V on the unit circle is
+needed: θ(i,j) = i π
+3 + j α
+2 , (i, j) ∈[0..5] × [−2..2]. It is now only in the final manual
+minimization step that different versions of V are used.
+In this final manual minimization step, the optimal value sets for i in the formula of
+three different versions of V are searched by brute force. The third difference lies in
+these value sets: {0, 1, 2, 3, 4}, {3}, and {1} now result in the smallest graph W =
+V1 ⊕V2 ⊕V3 with 58 vertices and 263 edges. The graphs V1, V2, and V3 are shown in
+Figure 10, where it can be seen that only three of the initial 61 vertices are left in the
+graphs V2 and V3.
+From here on, the automatic minimization starts again. The randomness of the min-
+imization algorithm is now less important due to the smaller number of nodes. The
+10
+© THE MATHEMATICAL ASSOCIATION OF AMERICA
+[Monthly 131
+
+===== PAGE 11 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 11
+A
+B
+D
+C
+B
+D
+C
+Figure 8. 4-coloring of the H-graph.
+Figure 9. H-spindle, a small 5-chromatic 2-distance
+graph.
+V1
+V2
+V3
+Figure 10. Graphs V1, V2, and V3 which together form the smallest W for d =
+√
+3.
+resulting minimal graphs mostly had 36 vertices. We escape this local minimum by
+making the initial graph bigger.
+Mirroring the graph W obtained by the manual minimization around the horizon-
+tal line y =
+√
+15
+4 , adds 18 new vertices to W. If we use this new 76-vertex W as
+input for the automatic minimization, smaller graphs are found. The best result is a
+graph with 33 vertices and 113 edges (Figure 11). This is the smallest 6-chromatic
+2-distance graph in this research, having only 2 vertices more than the smallest known
+6-chromatic 2-distance graph by Parts [9].
+6. CONCLUSIONS AND FUTURE WORK. In this work, we presented a con-
+structive proof for a lower bound of six for the CNP with two forbidden distances,
+1 and d. Such a proof is given by construction of a 6-chromatic 2-distance graph. Pre-
+vious authors had obtained a 6-chromatic 2-distance graph for d = 1+
+√
+5
+2
+and d = 2.
+We provided a proof for two new values, d =
+√
+2+
+√
+6
+2
+and d =
+√
+3. The method of
+constructing these new graphs was inspired by de Grey’s construction of the first
+5-chromatic unit-distance graph. This work shows that the application of de Grey’s
+method can be successful for values of d that allow the construction of small graphs
+showing high similarity with the Moser spindle (Figure 1), which plays a key role in
+June–July 2024]
+CNP WITH 2 DISTANCES
+11
+
+===== PAGE 12 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 12
+Figure 11. The smallest 6-chromatic 2-distance graph for d =
+√
+3, having 33 vertices and 113
+edges.
+de Grey’s proof. The described methods would be harder to apply to other values of
+d because it is not possible to obtain these similar graphs. The question whether these
+methods can still be applied for other values of d remains interesting, for example for
+those distances that allow 5-chromatic 2-distance graphs with relatively few vertices
+to be embedded, even if these graphs are less similar to the Moser spindle. The ques-
+tion also arises whether de Grey’s method can be used for more problems related to
+the CNP. For example, can this method be used to increase the lower bound of six for
+the Chromatic Number of Space, a related problem where points in Euclidean space
+(E3) are considered rather than the Euclidean plane (E2)? The Moser spindle can be
+extended to a three-dimensional Moser spindle, so with some tweaking a similar ex-
+tension might be found for the other steps in the construction.
+This work is the first to prove a new lower bound and immediately perform a thor-
+ough minimization on the obtained graphs. For the graphs in previous work, the min-
+imization was done by a different author (for d = 1+
+√
+5
+2
+) or not at all (for d = 2).
+During the automatic minimization, we introduced a new procedure to remove ver-
+tices from a graph. This procedure alternated between using a SAT solver and directly
+removing vertices, dynamically balancing the strengths of both methods. Our mini-
+mization process resulted in graphs with 117 vertices and 33 vertices for d =
+√
+2+
+√
+6
+2
+and d =
+√
+3 respectively. The latter graph is only two vertices short of equalizing
+the record for the smallest known 6-chromatic 2-distance graph. The valuable graphs
+that resulted from the minimization procedure show how the use of SAT solvers and
+12
+© THE MATHEMATICAL ASSOCIATION OF AMERICA
+[Monthly 131
+
+===== PAGE 13 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 13
+computers in general can greatly assist advances in mathematics, certainly in topics
+involving large graphs or other computation-intensive topics. Much of the recent re-
+search regarding the CNP has had a strong computational component and could there-
+fore not have been conducted without computer assistance, and this is not likely to
+decline in future research.
+ACKNOWLEDGMENT. The authors are grateful to the anonymous reviewers and the editors for their help-
+ful comments, which led to a more clear exposition of the work. This work was supported by Ghent University
+under Grants BOF23-DOC-146 and BOF21-GOA-014; Flemish Research Foundation under Grant 11O0923N.
+REFERENCES
+[1]
+de Grey ADNJ. The chromatic number of the plane is at least 5. Geombinatorics. 2018;XXVIII(1):18-
+31.
+[2]
+Soifer A. The New Mathematical Coloring Book: Mathematics of Coloring and the Colorful Life of its
+Creators. New York, NY: Springer New York; 2024.
+[3]
+Appel K, Haken W. Every planar map is four colorable. Part I: Discharging. Illinois Journal of Mathe-
+matics. 1977;21(3):429 490. Available from: https://doi.org/10.1215/ijm/1256049011.
+[4]
+Wilson R. Four Colors Suffice: How the Map Problem Was Solved - Revised Color Edition. vol. 128.
+Princeton University Press; 2014.
+[5]
+Heule MJH, Kullmann O, Marek VW. Solving and Verifying the Boolean Pythagorean Triples Problem
+via Cube-and-Conquer. In: Creignou N, Le Berre D, editors. Theory and Applications of Satisfiability
+Testing – SAT 2016. Cham: Springer International Publishing; 2016. p. 228-45.
+[6]
+Parts J. The chromatic number of the plane is at least 5 – a human-verifiable proof. Geombinatorics.
+2020;XXX(2):77-102.
+[7]
+Polymath16 project: Hadwiger-Nelson problem;. Available from: https://asone.ai/polymath/index.php?
+title=Hadwiger-Nelson problem.
+[8]
+Owings J, Tetiva M, Huddleston M. Coloring the Plane: 11236. The American Mathematical Monthly.
+2008;115(2):170-2.
+[9]
+Parts J. A small 6-chromatic two-distance graph in the plane. Geombinatorics. 2020;XXIX(3):111-5.
+[10]
+Exoo G, Ismailescu D. A 6-chromatic two-distance graph in the plane. arXiv; 2019. ArXiv:1909.13177
+[math].
+[11]
+Erd˝os P. Graph Theory and Probability. Canadian Journal of Mathematics. 1959;11:34-8.
+[12]
+´Agoston
+P,
+D¨om¨ot¨or
+P.
+Polymath
+thread
+14,
+comment
+24487;.
+Available
+from:
+https:
+//dustingmixon.wordpress.com/2019/08/05/polymath16-fourteenth-thread-automated-graph-
+minimization/#comment-24487.
+[13]
+Parts J. Polymath thread 15, comment 24686;. Available from: https://dustingmixon.wordpress.
+com/2019/12/12/polymath16-fifteenth-thread-writing-the-paper-and-chasing-down-loose-
+ends/#comment-24686.
+[14]
+D¨om¨ot¨or
+P.
+Polymath
+thread
+15,
+comment
+24707;.
+Available
+from:
+https://dustingmixon.
+wordpress.com/2019/12/12/polymath16-fifteenth-thread-writing-the-paper-and-chasing-down-
+loose-ends/#comment-24707.
+[15]
+Heule MJH. Computing Small Unit-Distance Graphs with Chromatic Number 5. Geombinatorics.
+2018;XXVIII(1):32-50.
+[16]
+Parts J. Graph minimization, focusing on the example of 5-chromatic unit-distance graphs in the plane.
+Geombinatorics. 2020;XXIX(3):137-66.
+June–July 2024]
+CNP WITH 2 DISTANCES
+13
+
+===== PAGE 14 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 14
+JAN DE NEVE obtained his M.Sc. degree in Computer Science Engineering from Ghent University in 2023.
+He is currently a Ph.D. researcher and teaching assistant for discrete mathematics and network modeling
+courses at Ghent University - imec. His main interests are graph theory, combinatorics, and optimization, both
+in theory and their applications.
+Department of Information Technology, Ghent University - imec, 9000 Ghent, Belgium
+janf.deneve@ugent.be
+FERRE VANDEN KERCHOVE received the M.Sc. degree in mathematics from Ghent University, Ghent,
+Belgium, in 2021. He is currently working toward the Ph.D. degree in computer science with IDLab, Ghent
+University - imec, Leuven, Belgium. His research interests include algorithms, graph theory, logic, and com-
+putability.
+Department of Information Technology, Ghent University - imec, 9000 Ghent, Belgium
+DIDIER COLLE is a senior full professor at Ghent University. He received a Ph.D. degree in 2002 and a
+M.Sc. degree in electrotechnical engineering in 1997 from the same university. He is co-responsible for the
+research cluster on network modelling, design and evaluation (NetMoDeL) inside the IMEC IDLab research
+group. This research cluster deals with fixed Internet architectures and optical networks, Green-ICT, design of
+network algorithms, and techno-economic studies.
+Department of Information Technology, Ghent University - imec, 9000 Ghent, Belgium
+WOUTER TAVERNIER is Professor at Ghent University where he teaches courses on computer networks.
+He obtained his Ph.D. from Ghent University in 2012, focusing on reliable routing and switching. His research
+interests include resource optimization of deterministic and high-performance computing networks. He con-
+tributed to tens of national and European research projects which has led to more than 120 scientific articles.
+Department of Information Technology, Ghent University - imec, 9000 Ghent, Belgium
+MARIO PICKAVET is senior full professor at Ghent University, where he is teaching courses on discrete
+mathematics and network modeling. He is co-leading the research cluster on Network Modeling, Design and
+Evaluation (NetMoDeL). His main research interests are Fixed internet architectures and optical networks,
+green ICT and design of network algorithms. He has published about 500 international publications, both in
+journals (IEEE JSAC, IEEE Comm. Mag., Journal of Lightwave Technology, Proceedings of the IEEE, ...) and
+in proceedings of conferences. He is holder of a bronze medal at the International Mathematical Olympiad
+(Sweden, 1991).
+Department of Information Technology, Ghent University - imec, 9000 Ghent, Belgium
+Appendix: Vertex coordinates of smallest graphs. The smallest versions of the
+graph W, for both d =
+√
+2+
+√
+6
+2
+and d =
+√
+3, result from random steps in the auto-
+matic minimization. Until now, the final graphs were only presented graphically in
+Figure 7 and Figure 11. This appendix provides tables with the exact coordinates of
+each vertex, guaranteeing the reproducibility of our results.
+Due to the specific way of constructing our graphs, all coordinates lie in an
+extension field of the rational numbers. For d =
+√
+2+
+√
+6
+2
+, this extension field is
+Q(
+√
+3,
+√
+7) = {a0 + a1
+√
+3 + a2
+√
+7 + a3
+√
+21 | ai ∈Q}. More specifically, all
+vertex coordinates can be written as (vx, vy) = (a0+a1
+√
+3+a2
+√
+7+a3
+√
+21
+8
+,
+a4+a5
+√
+3+a6
+√
+7+a7
+√
+21
+8
+) with ai ∈Z. Table 2 shows coordinates of all 117 vertices
+in the minimal graph W, using the condensed notation [a0 a1 a2 a3 a4 a5 a6 a7].
+For d =
+√
+3, the extension field is Q(
+√
+3,
+√
+5) and all coordinates can be written
+as (vx, vy) = (a0+a1
+√
+5
+8
+, a2
+√
+3+a3
+√
+15
+8
+) with ai ∈Z. This allows for an even denser
+notation [a0 a1 a2 a3], shown in Table 1 for all 33 vertices of the minimal graph W.
+The edges are not specified for these graphs as they can be calculated using the
+vertex coordinates and the distance set D = {1, d}.
+14
+© THE MATHEMATICAL ASSOCIATION OF AMERICA
+[Monthly 131
+
+===== PAGE 15 =====
+Mathematical Assoc. of America
+American Mathematical Monthly 131:1
+November 6, 2024
+1:52 p.m.
+cnp-paper.tex
+page 15
+Table 1. Vertex coordinates of the smallest graph W for d =
+√
+3.
+[0 0 0 0]
+[0 0 0 4]
+[1 3 -1 1]
+[1 3 1 3]
+[-1 3 1 1]
+[-1 3 -1 3]
+[1 -3 1 1]
+[1 -3 -1 3]
+[2 0 0 2]
+[0 0 2 2]
+[0 0 -2 2]
+[-1 -3 1 3]
+[-2 0 0 2]
+[-2 0 2 4]
+[-1 3 3 3]
+[-3 3 -1 1]
+[-3 3 1 3]
+[3 3 -1 3]
+[1 3 3 1]
+[3 -3 1 3]
+[3 -3 -1 1]
+[4 0 0 4]
+[4 0 0 0]
+[-3 -3 -1 3]
+[-3 -3 1 1]
+[-2 0 -2 4]
+[-2 0 2 0]
+[-4 0 0 4]
+[-4 0 0 0]
+[1 -3 3 3]
+[1 -3 -3 1]
+[-1 -3 -3 3]
+[-1 -3 3 1]
+Table 2. Vertex coordinates of the smallest graph W for d =
+√
+2+
+√
+6
+2
+.
+[0 0 0 0 0 0 0 0]
+[0 3 1 0 3 0 0 -1]
+[0 4 0 0 4 0 0 0]
+[0 3 -1 0 -3 0 0 -1]
+[0 4 0 0 -4 0 0 0]
+[-6 0 0 0 0 0 2 0]
+[-6 3 1 0 3 0 2 -1]
+[-6 4 0 0 4 0 2 0]
+[-6 3 -1 0 -3 0 2 -1]
+[-6 4 0 0 -4 0 2 0]
+[-8 0 0 0 0 0 0 0]
+[-8 3 1 0 3 0 0 -1]
+[-8 4 0 0 4 0 0 0]
+[-8 3 -1 0 -3 0 0 -1]
+[-8 4 0 0 -4 0 0 0]
+[-3 0 0 -1 0 -3 1 0]
+[-3 3 1 -1 3 -3 1 -1]
+[-3 4 0 -1 4 -3 1 0]
+[-3 3 -1 -1 -3 -3 1 -1]
+[-3 4 0 -1 -4 -3 1 0]
+[-4 0 0 0 0 -4 0 0]
+[-4 4 0 0 4 -4 0 0]
+[-4 3 -1 0 -3 -4 0 -1]
+[-4 4 0 0 -4 -4 0 0]
+[3 0 0 -1 0 -3 -1 0]
+[3 3 1 -1 3 -3 -1 -1]
+[3 3 -1 -1 -3 -3 -1 -1]
+[3 4 0 -1 -4 -3 -1 0]
+[4 4 0 0 4 -4 0 0]
+[4 4 0 0 -4 -4 0 0]
+[6 3 -1 0 -3 0 -2 -1]
+[-2 3 1 0 3 0 -2 -1]
+[-2 3 -1 0 -3 0 -2 -1]
+[8 4 0 0 4 0 0 0]
+[2 4 0 0 4 0 2 0]
+[2 4 0 0 -4 0 2 0]
+[5 4 0 -1 4 -3 1 0]
+[3 3 -1 1 -3 3 -1 -1]
+[-3 0 0 1 0 3 1 0]
+[-3 3 1 1 3 3 1 -1]
+[-3 4 0 1 4 3 1 0]
+[-3 3 -1 1 -3 3 1 -1]
+[-5 3 1 1 3 3 -1 -1]
+[-5 3 -1 1 -3 3 -1 -1]
+[-1 0 0 1 0 -1 -1 0]
+[-1 3 1 1 3 -1 -1 -1]
+[-1 4 0 1 4 -1 -1 0]
+[-1 3 -1 1 -3 -1 -1 -1]
+[-1 4 0 1 -4 -1 -1 0]
+[4 0 0 0 0 4 0 0]
+[4 3 1 0 3 4 0 -1]
+[4 4 0 0 4 4 0 0]
+[4 4 0 0 -4 4 0 0]
+[-2 0 0 0 0 4 2 0]
+[-2 4 0 0 4 4 2 0]
+[-2 4 0 0 -4 4 2 0]
+[-4 0 0 0 0 4 0 0]
+[-4 3 1 0 3 4 0 -1]
+[-4 4 0 0 4 4 0 0]
+[-4 4 0 0 -4 4 0 0]
+[1 0 0 -1 0 1 1 0]
+[1 4 0 -1 4 1 1 0]
+[7 3 1 -1 3 1 -1 -1]
+[7 4 0 -1 4 1 -1 0]
+[7 3 -1 -1 -3 1 -1 -1]
+[7 4 0 -1 -4 1 -1 0]
+[-9 0 0 1 0 3 3 0]
+[-9 3 1 1 3 3 3 -1]
+[-11 0 0 1 0 3 1 0]
+[-11 3 1 1 3 3 1 -1]
+[-11 4 0 1 4 3 1 0]
+[-11 3 -1 1 -3 3 1 -1]
+[-7 0 0 1 0 -1 1 0]
+[-7 3 1 1 3 -1 1 -1]
+[-7 4 0 1 4 -1 1 0]
+[-7 3 -1 1 -3 -1 1 -1]
+[-7 4 0 1 -4 -1 1 0]
+[1 0 0 1 0 -1 1 0]
+[1 3 1 1 3 -1 1 -1]
+[1 4 0 1 4 -1 1 0]
+[1 3 -1 1 -3 -1 1 -1]
+[1 4 0 1 -4 -1 1 0]
+[-10 0 0 0 0 4 2 0]
+[-10 3 1 0 3 4 2 -1]
+[-10 4 0 0 4 4 2 0]
+[-12 0 0 0 0 4 0 0]
+[-12 4 0 0 4 4 0 0]
+[-7 0 0 -1 0 1 1 0]
+[-7 3 1 -1 3 1 1 -1]
+[-7 4 0 -1 4 1 1 0]
+[-7 3 -1 -1 -3 1 1 -1]
+[-7 4 0 -1 -4 1 1 0]
+[-1 0 0 -1 0 1 -1 0]
+[-1 3 1 -1 3 1 -1 -1]
+[-1 4 0 -1 4 1 -1 0]
+[-1 3 -1 -1 -3 1 -1 -1]
+[-1 4 0 -1 -4 1 -1 0]
+[-14 0 0 0 0 0 2 0]
+[-14 3 1 0 3 0 2 -1]
+[-9 0 0 -1 0 -3 3 0]
+[-9 3 -1 -1 -3 -3 3 -1]
+[-10 0 0 0 0 -4 2 0]
+[-10 3 1 0 3 -4 2 -1]
+[-10 4 0 0 4 -4 2 0]
+[-10 3 -1 0 -3 -4 2 -1]
+[-10 4 0 0 -4 -4 2 0]
+[-2 4 0 0 4 -4 2 0]
+[-2 4 0 0 -4 -4 2 0]
+[-11 0 0 -1 0 -3 1 0]
+[-11 3 1 -1 3 -3 1 -1]
+[-11 3 -1 -1 -3 -3 1 -1]
+[-11 4 0 -1 -4 -3 1 0]
+[-12 0 0 0 0 -4 0 0]
+[-12 4 0 0 -4 -4 0 0]
+[-5 0 0 -1 0 -3 -1 0]
+[-5 3 1 -1 3 -3 -1 -1]
+[-5 3 -1 -1 -3 -3 -1 -1]
+June–July 2024]
+CNP WITH 2 DISTANCES
+15

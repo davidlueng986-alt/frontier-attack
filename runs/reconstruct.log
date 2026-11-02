@@ -43,13 +43,20 @@ Proposition 2.5, Proposition 8.2) to choose the constants lambda_1, lambda,
 alpha_1, alpha. These constants are read off from the original polynomial P,
 not from the final normalized pair.
 
+No Puiseux completion or further change of variables acts on (P,Q) in Prop.
+4.3.  The only transformations of the pair are T1-T5; the remaining steps are
+leading-form factorizations used to choose the constants.  The edge
+{(28,8),(1,0)} is put in the form y(x^4y-alpha)^7 at line 1132, which is what
+fixes alpha for T4.
+
 === Stage 2 - invertibility of each step ===
 T1 (swap): invertible on K[x,y]; it is its own inverse and det = -1.
   It is NOT an automorphism of L^(1): it sends the unit x to y, which is not
   a unit in K[x,x^-1,y]. This is the step that breaks the localization.
 T2-T4 (shears y -> y + c x^-k, k=2,3,4): not maps K[x,y]->K[x,y] because of
   the negative exponent, but each is an automorphism of L^(1), with inverse
-  y -> y - c x^-k. The constants c are not determined by the normalized pair.
+  y -> y - c x^-k. The paper does not express these constants in terms of
+  the normalized pair.
 T5 (phi): x -> x^-1, y -> x^4 y. Not a map K[x,y]->K[x,y]. It is an
   involution (phi^2=id), hence invertible as a rational map, and it is an
   automorphism of L^(1) by itself. It introduces x^-1. The paper explicitly
@@ -87,6 +94,11 @@ genuinely in the image; J3's failure below is not a bias of the code.
 
 === Stage 4 - J3 test ===
 J3 family: P = a0 + a1*x, Q = b0 + b1*x^2*y, a1*b1 = 1, [P,Q]=x^2.
+J3 is the vertices-only solution: N(P)={(0,0),(1,0)}, N(Q)={(0,0),(2,1)},
+not either config-2 polygon.  It is the only explicit solution in
+runs/jacobian_config2_vertices.json, hence the required stress test.  Its
+failure does not by itself rule out a reconstructible pair with the full
+config-2 polygon; that is why the verdict is PARTIAL, not IMPOSSIBLE.
 
 Inverse stages:
   step 1: P = a0 + a1/x,                 Q = b0 + b1*x^2*y
@@ -101,6 +113,11 @@ Inverse stages:
 Negative powers after step 3:
   P: {-1: a1}
   Q: {-1: -b1*c3, -2: -b1*c4}
+
+Rational round-trip check: applying the forward chain to the inverse pair
+recovers P and Q exactly (forward(inverse(J3)) = J3).  So the inverse really
+is a right inverse of the normalisation on L^(1); the failure is solely that
+it does not land in K[x,y].
 
 Before clearing: det J(P0,Q0) = a1*b1 = 1 exactly (the x^2 from the
 normalized pair cancels det J(phi) = -x^2).
@@ -128,6 +145,12 @@ clearing of the J3 pair can give a nonzero constant determinant.
 === Stage 5 - verdict ===
 VERDICT: PARTIAL
 
+Why PARTIAL rather than IMPOSSIBLE: the inverse formula itself is explicit
+and exact, and every individual step is invertible on L^(1).  What is missing
+is not the map but (a) the constants that select the branch, and (b) the
+landing condition in K[x,y].  With those supplied, the reconstruction above
+is a complete procedure.
+
 Reason.
 The inverse composite exists as a rational map and restores det J = 1 before
 clearing, but it is not a map L^(1) -> K[x,y].  The paper's forward chain is
@@ -139,13 +162,16 @@ the exact cleared determinant -a0*b1*y^4.
 
 The paper gives no explicit inverse of the composite and no characterization
 of the image A(K[x,y]) inside L^(1).  The shear constants c2,c3,c4 are chosen
-from the original polynomial P's leading forms and are not determined by the
-normalized pair.  A config-2 solution therefore needs, in addition, the
-vanishing of every negative power of y in P0 and Q0.  Unlike J3, the config-2
-lattice contains (1,1) and (1,2), so the leading y^-1 coefficient can in
-principle be cancelled by the x^-4 shear; the deeper negative powers (down to
-y^-8 from the (8,14),(8,16) vertices) give further conditions.  Prop. 4.3
-states none of them.
+from the original polynomial P's leading forms, and the paper does not
+express them in terms of the normalized pair.  A config-2 solution therefore
+needs, in addition, the vanishing of every negative power of y in P0 and Q0.
+Unlike J3, the config-2
+lattice contains lower points such as (1,1), (1,2) and (5,b).  For a general
+config-2 P the y^-1 coefficient is a nontrivial polynomial in c2,c3,c4 and
+the lower coefficients; it can in principle be cancelled, but cancellation
+is not automatic.  The deeper negative powers (down to y^-8 from the
+(8,14),(8,16) vertices) give further conditions.  Prop. 4.3 states none of
+them.
 
 Additional data needed for a PARTIAL -> RECONSTRUCTION_EXISTS upgrade:
   (i) the exact shear constants, or the exact branch of the Prop. 4.3 proof
@@ -164,3 +190,17 @@ terminal object from the published normal form alone.  If the image
 conditions are added and a solution survives, the reconstruction above gives
 the candidate; if they force the system empty, that is a negative result
 about the (72,108) case, not a counterexample.
+
+=== Acceptance check ===
+Command: python problems/jacobian/reconstruct.py
+Exit code: 0.
+Key lines:
+  self-test: forward det = x^2; inverse(forward(x,y)) = (x,y);
+             positive control (x+y^2, y) reconstructs with det = 1  [ok]
+  NOT RECONSTRUCTIBLE: step 3, the inverse swap turns the x^-1 from
+    step 1 into y^-1.  P0 = a0 + a1/y is not a polynomial for any choice
+    of c2,c3,c4, because a1 != 0.  Clearing denominators gives
+    det J' = -a0*b1*y^4, which is never a nonzero constant.
+  VERDICT: PARTIAL
+No source file outside problems/jacobian/reconstruct.py and this log was
+touched; no commit was made by this task.

@@ -46,10 +46,14 @@ after it. They are all much lower, and that is the correct direction.
   **unrefereed**).
 - ✅ That leaves **2 Newton configurations**, 1 under the literal no-bisector
   reading.
-- ❌ The coefficient system has not been written.
-- ❌ An unrefereed 2026 repo (`wstrinz/plane-jacobian-72-108`) claims both are
-  excluded — must be checked before any solve.
-- **Next:** write the config-2 system and size it.
+- ✅ The config-2 and `(75,125)` vertices-only systems are both empty; for
+  `(75,125)` by a support obstruction (min x-degree 8).
+- ❌ **Reconstruction is `PARTIAL`.** The GGHV inverse exists only as a rational
+  map; clearing denominators kills `det J = 1`. So a normalized solution is
+  necessary, not sufficient, and cannot become a counterexample.
+- **Status: BLOCKED at the published interface.** Missing: shear constants,
+  vanishing conditions for negative powers of `y`, and a proof that a solution
+  lies in `A(K[x,y])`.
 
 ### 3. BSD
 

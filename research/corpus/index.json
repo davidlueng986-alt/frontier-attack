@@ -1,0 +1,1273 @@
+[
+ {
+  "id": "arXiv:1804.02385",
+  "title": "The chromatic number of the plane is at least 5",
+  "authors": [
+   "de Grey, Aubrey D. N. J."
+  ],
+  "year": 2018,
+  "url": "https://arxiv.org/abs/1804.02385",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "First finite non-4-colourable unit-distance graph; every later 5-chromatic record is a reduction of this construction.",
+  "facts": [
+   "smallest exhibited graph has 1581 vertices (abstract; Fig. 9)",
+   "the wheel H has 7 vertices and 12 edges, and L contains 52 copies of H (S1 and S3)",
+   "M contains a copy of H with no 4-colouring in which that H has a monochromatic triple (S1)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1805.12181",
+  "title": "Computing Small Unit-Distance Graphs with Chromatic Number 5",
+  "authors": [
+   "Heule, Marijn J. H."
+  ],
+  "year": 2018,
+  "url": "https://arxiv.org/abs/1805.12181",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "Turns the 1581-vertex existence proof into SAT-trimmed 553-vertex graphs with mechanically checkable proofs.",
+  "facts": [
+   "produces several 553-vertex 5-chromatic unit-distance graphs (abstract)",
+   "the reduction is clausal-proof minimization applied to a 1581-vertex seed (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1907.00929",
+  "title": "Trimming Graphs Using Clausal Proof Optimization",
+  "authors": [
+   "Heule, Marijn J. H."
+  ],
+  "year": 2019,
+  "url": "https://arxiv.org/abs/1907.00929",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "The proof-optimization method that produced the 529-vertex record; the direct predecessor of Parts' 509.",
+  "facts": [
+   "reduces 553 vertices / 2720 edges to 529 vertices / 2670 edges (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:2010.12665",
+  "title": "Graph minimization, focusing on the example of 5-chromatic unit-distance graphs in the plane",
+  "authors": [
+   "Parts, Jaan"
+  ],
+  "year": 2020,
+  "url": "https://arxiv.org/abs/2010.12665",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "Holds the current 509-vertex record and documents the minimization pipeline that found it.",
+  "facts": [
+   "509 vertices and 2442 edges (abstract; Table 1)",
+   "the graph splits into 374 vertices / 1860 edges plus 136 vertices / 564 edges (S6)",
+   "the previous 510-vertex graph has 2502 edges (Table 1)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:2010.12656",
+  "title": "A small 6-chromatic two-distance graph in the plane",
+  "authors": [
+   "Parts, Jaan"
+  ],
+  "year": 2020,
+  "url": "https://arxiv.org/abs/2010.12656",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "A 16-vertex 6-chromatic graph for two distances; the smallest known target for a level-5 virtual edge.",
+  "facts": [
+   "16 vertices, symmetry group of order 48, 28 edges of length 1 and 28 of length d (S2)",
+   "the graph contains 5-cliques, so at least five colours are needed (proof of the main theorem)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1805.00157",
+  "title": "The chromatic number of the plane is at least 5 - a new proof",
+  "authors": [
+   "Exoo, Geoffrey",
+   "Ismailescu, Dan"
+  ],
+  "year": 2018,
+  "url": "https://arxiv.org/abs/1805.00157",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "Human-scale alternative to de Grey's computer construction, via a forced equal pair in G40.",
+  "facts": [
+   "G40 has 40 points, 82 unit edges and 59 pairs at distance 8/3 (S2)",
+   "G79 has 79 points and 165 unit edges (S2, after Claim 2.1)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1909.13177",
+  "title": "A 6-chromatic two-distance graph in the plane",
+  "authors": [
+   "Exoo, Geoffrey",
+   "Ismailescu, Dan"
+  ],
+  "year": 2019,
+  "url": "https://arxiv.org/abs/1909.13177",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "The 426-vertex 6-chromatic two-distance graph, the other known target for replacing a non-unit edge.",
+  "facts": [
+   "K has 426 vertices, 2009 edges of length 1 and 892 edges of length 2 (S2, after Claim 2.2)",
+   "every 5-colouring of K forces three named vertices to split (S2)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:2010.12668",
+  "title": "What percent of the plane can be properly 5- and 6-colored?",
+  "authors": [
+   "Parts, Jaan"
+  ],
+  "year": 2020,
+  "url": "https://arxiv.org/abs/2010.12668",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "The tiling/density source of the 6993-vertex lower bound for 7-chromatic graphs.",
+  "facts": [
+   "any unit-distance graph of order at most 6992 is 6-colourable (abstract)",
+   "any unit-distance graph of order at most 24 is 5-colourable (abstract)",
+   "the 6-colouring covers more than 99.985698% of the plane (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:2303.14714",
+  "title": "On lower bounds of the order of k-chromatic unit distance graphs",
+  "authors": [
+   "de Grey, Aubrey D. N. J.",
+   "Parts, Jaan"
+  ],
+  "year": 2023,
+  "url": "https://arxiv.org/abs/2303.14714",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "States the refined numerical bound used to kill the 509-plus-gadget route: v7 > 6992.",
+  "facts": [
+   "v7 > 6992 and v6 > 24 (S1)",
+   "v5 >= 509 and e5 >= 2406 are the corresponding upper-record data (S1)"
+  ],
+  "license": "CC-BY",
+  "verified": true
+ },
+ {
+  "id": "openai-math:euclidean-five",
+  "title": "The Euclidean plane is not five-colorable",
+  "authors": [
+   "OpenAI"
+  ],
+  "year": 2026,
+  "url": "https://github.com/openai/math/blob/main/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/paper.pdf",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "Raises the plane lower bound to 6, leaving exactly the 6-versus-7 question; the proof is infinitary and gives no finite witness.",
+  "facts": [
+   "Theorem 1.1: there is no proper 5-colouring of R^2, even with arbitrary colour classes; hence 6 <= chi(R^2) <= 7 (p. 2)",
+   "the proof works in ZFC and transfers arbitrary colourings to weak measurable ones (Theorems 1.3 and 1.4)",
+   "no finite vertex set or edge list is produced (the paper says the graph and constant are existential)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "openai-math:five-lean",
+  "title": "The Euclidean plane is not five-colorable - Lean 4 formalization",
+  "authors": [
+   "OpenAI"
+  ],
+  "year": 2026,
+  "url": "https://github.com/openai/math/blob/main/lean/OAI/Geometry/PlaneColoring/Five.lean",
+  "kind": "repo",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "Machine-checked version of the infinitary theorem; also the evidence that no finite witness can be extracted from it.",
+  "facts": [
+   "Five.lean is 131 lines with 0 occurrences of `sorry`",
+   "`theorem no_proper_five_coloring : not exists c : C -> Fin 5, ProperColoring 5 c` is at line 124",
+   "the file proves the statement for the continuum C, not for a finite `Fin N` vertex set"
+  ],
+  "license": "Apache-2.0",
+  "verified": true
+ },
+ {
+  "id": "openai-math:unit-distances",
+  "title": "Planar unit distances - Lean 4 formalization of a sub-4/3 exponent",
+  "authors": [
+   "OpenAI"
+  ],
+  "year": 2026,
+  "url": "https://github.com/openai/math/blob/main/lean/OAI/Geometry/UnitDistances/Main.lean",
+  "kind": "repo",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-open",
+  "why": "The unit-distance counting problem is the quantitative sibling of Hadwiger-Nelson; this is the first sub-3/2 exponent with a formal proof, not a full resolution.",
+  "facts": [
+   "Main.lean is 137 lines with 0 occurrences of `sorry`",
+   "`theorem main : exists C beta : R, 0 < C and 1 <= beta and beta < 4/3 and forall n, u n <= C * n^beta` (lines 129-131)",
+   "this gives a power saving over the trivial O(n^{3/2}) bound but not the conjectured n^{1+o(1)}"
+  ],
+  "license": "Apache-2.0",
+  "verified": true
+ },
+ {
+  "id": "polymath16",
+  "title": "Polymath16 wiki: Hadwiger-Nelson problem",
+  "authors": [
+   "Polymath16 contributors"
+  ],
+  "year": 2018,
+  "url": "https://web.archive.org/web/2018id_/http://michaelnielsen.org/polymath1/index.php?title=Hadwiger-Nelson_problem",
+  "kind": "note",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "The community ledger of vertex/edge counts and gadget definitions that the papers omit.",
+  "facts": [
+   "table: G has 1581 vertices / 7877 edges and G0 has 1585 / 7909",
+   "L has 121 vertices / 301 edges and M has 1345 / 8268",
+   "the diamond is 4 vertices / 5 edges and the Moser spindle is 7 / 11"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "github:HeliCorgi/fourteen-points-six-colors",
+  "title": "A 14-vertex 6-chromatic distance graph in the Euclidean plane (prescribed distances 1, 1/sqrt3, 2)",
+  "authors": [
+   "HeliCorgi"
+  ],
+  "year": 2026,
+  "url": "https://github.com/HeliCorgi/fourteen-points-six-colors",
+  "kind": "repo",
+  "problem": [
+   "hn"
+  ],
+  "role": "core",
+  "why": "The smallest known 6-chromatic graph for three prescribed distances; a concrete calibration object below 509 vertices.",
+  "facts": [
+   "G14 has 14 vertices and 50 edges: 18 of length 1, 27 of length 1/sqrt3, 5 of length 2 (README table)",
+   "chi(G14) = 6 and omega(G14) = 4; the distance triple admits no K5 anywhere in the plane (README)",
+   "no 13-point witness exists, so 14 is minimum (README, main result 3)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "openai-math:falconer",
+  "title": "The Falconer distance conjecture in all dimensions",
+  "authors": [
+   "OpenAI"
+  ],
+  "year": 2026,
+  "url": "https://github.com/openai/math/blob/main/preprints/The-Falconer-distance-conjecture-in-all-dimensions-September-23-2026/paper.pdf",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "A distance-set problem in the same circle as Hadwiger-Nelson, resolved in full and with a quantitative threshold.",
+  "facts": [
+   "Theorem 1.1: for every integer d >= 2 and compact E in R^d, dim_H E > d/2 implies the distance set of E has positive Lebesgue measure",
+   "the threshold d/2 is sharp and no regularity beyond Hausdorff dimension is assumed"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:2502.17655",
+  "title": "Volume estimates for unions of convex sets, and the Kakeya set conjecture in three dimensions",
+  "authors": [
+   "Wang, Hong",
+   "Zahl, Joshua"
+  ],
+  "year": 2025,
+  "url": "https://arxiv.org/abs/2502.17655",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-solved",
+  "why": "A 2025 resolution of a major incidence/geometry conjecture; the technique (tube volume estimates) is the closest transferable machinery to distance-set bounds.",
+  "facts": [
+   "every Kakeya set in R^3 has Minkowski and Hausdorff dimension 3 (abstract)"
+  ],
+  "license": "CC-BY",
+  "verified": true
+ },
+ {
+  "id": "mathworld:deGreyGraphs",
+  "title": "de Grey Graphs",
+  "authors": [
+   "Weisstein, Eric W."
+  ],
+  "year": 2026,
+  "url": "https://mathworld.wolfram.com/deGreyGraphs.html",
+  "kind": "note",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-open",
+  "why": "Records the dimension-3 state of the art, where 6-chromatic graphs are explicit but 5-chromatic triangle-free examples appear only in 2026.",
+  "facts": [
+   "59- and 60-vertex unit-distance graphs in R^3 have chromatic number 6",
+   "a 61-vertex triangle-free unit-distance graph in R^3 has chromatic number 5",
+   "the plane record listed is still the 2131-vertex spindle-free graph"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-0-387-74642-5_9",
+  "title": "Measurable Chromatic Number of the Plane",
+  "authors": [
+   "Soifer, Alexander"
+  ],
+  "year": 2008,
+  "url": "https://doi.org/10.1007/978-0-387-74642-5_9",
+  "kind": "paper",
+  "problem": [
+   "hn"
+  ],
+  "role": "analogue-open",
+  "why": "The measurable variant is the standard test of whether an unrestricted colouring argument can be made geometric; Falconer's bound is its founding result.",
+  "facts": [
+   "surveys the measurable chromatic number chi_m(R^2), with Falconer's 1981 lower bound chi_m(R^2) >= 5",
+   "the unrestricted and measurable numbers are not known to coincide; both lie between 5 and 7"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/BF01695502",
+  "title": "Ganze Cremona-Transformationen",
+  "authors": [
+   "Keller, Ott-Heinrich"
+  ],
+  "year": 1939,
+  "url": "https://doi.org/10.1007/BF01695502",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "The origin of the problem: polynomial self-maps with constant non-zero Jacobian determinant.",
+  "facts": [
+   "poses the question for polynomial maps F : C^n -> C^n with det JF in C*; such maps are now called Keller maps",
+   "the planar case JC(2) is still open"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1016/0021-8693(80)90233-1",
+  "title": "A Jacobian criterion for separability",
+  "authors": [
+   "Wang, Stuart Sui-Sheng"
+  ],
+  "year": 1980,
+  "url": "https://doi.org/10.1016/0021-8693(80)90233-1",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "The first degree bound: degree 2 is settled in every dimension, so all counterexample searches start at degree 3.",
+  "facts": [
+   "every Keller map of total degree <= 2 is invertible, in every dimension (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1515/crll.1983.340.140",
+  "title": "On the Jacobian conjecture and the configurations of roots",
+  "authors": [
+   "Moh, T. T."
+  ],
+  "year": 1983,
+  "url": "https://doi.org/10.1515/crll.1983.340.140",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "The degree-100 wall, the first bound obtained by Newton-polygon/root-configuration analysis.",
+  "facts": [
+   "a planar Keller counterexample must have total degree > 100 (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/BF01459126",
+  "title": "An effective approach to Keller's Jacobian Conjecture",
+  "authors": [
+   "Druzkowski, Ludwik M."
+  ],
+  "year": 1983,
+  "url": "https://doi.org/10.1007/BF01459126",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "Reduces the whole conjecture to cubic-linear maps, the standard finite-dimensional reduction used by later searches.",
+  "facts": [
+   "reduces JC(n) to maps of the form F = x + (Ax)^{*3} with A nilpotent (cubic-linear reduction)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "abhyankar:tifr57",
+  "title": "Lectures on Expansion Techniques in Algebraic Geometry",
+  "authors": [
+   "Abhyankar, Shreeram S."
+  ],
+  "year": 1977,
+  "url": "https://mathweb.tifr.res.in/Documents/Publications/Lectures/tifr57.pdf",
+  "kind": "note",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "The valuation/Newton-polygon dictionary for Keller pairs; the source of the two-points-at-infinity constraint.",
+  "facts": [
+   "Theorem (19.4): JC is equivalent to each of k[f,g]=A, f having one point at infinity, N(f) being a triangle, and deg f | deg g or deg g | deg f",
+   "every component of a Keller pair has at most two points at infinity (Theorem 18.13, used in 19.4)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.13140/2.1.3906.3844",
+  "title": "Polynomial derivations and their rings of constants",
+  "authors": [
+   "Nowicki, Andrzej"
+  ],
+  "year": 1994,
+  "url": "https://doi.org/10.13140/2.1.3906.3844",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "method",
+  "why": "The derivation-side formulation: rings of constants and the local nilpotence criteria that make JC equivalent to a statement about derivations.",
+  "facts": [
+   "monograph (1994) on derivations of k[x_1,...,x_n] and their rings of constants",
+   "the Nowicki conjecture on Weitzenboeck derivations is posed in this setting"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-3-030-60535-3",
+  "title": "Polynomial Automorphisms and the Jacobian Conjecture",
+  "authors": [
+   "van den Essen, Arno",
+   "Kuroda, Shigeru",
+   "Crachiola, Anthony J."
+  ],
+  "year": 2021,
+  "url": "https://doi.org/10.1007/978-3-030-60535-3",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "method",
+  "why": "The standard monograph: normal forms, reductions, and the equivalence list that every Jacobian search uses.",
+  "facts": [
+   "second edition, Frontiers in Mathematics (Birkhaeuser, 2021); first edition 2000",
+   "the monograph treats Keller maps, the degree reduction, and the derivation/Dixmier reformulations"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1090/s0002-9939-05-07570-2",
+  "title": "A reduction of the Jacobian Conjecture to the symmetric case",
+  "authors": [
+   "de Bondt, Michiel",
+   "van den Essen, Arno"
+  ],
+  "year": 2005,
+  "url": "https://doi.org/10.1090/s0002-9939-05-07570-2",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "method",
+  "why": "Shows the conjecture can be tested on symmetric Jacobian matrices, shrinking the coefficient space of any search.",
+  "facts": [
+   "reduces JC to the case in which the Jacobian matrix is symmetric (main theorem)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1708.07936",
+  "title": "Some algorithms related to the Jacobian Conjecture",
+  "authors": [
+   "Guccione, Jorge A.",
+   "Guccione, Juan J.",
+   "Horruitiner, Rodrigo",
+   "Valqui, Christian"
+  ],
+  "year": 2017,
+  "url": "https://arxiv.org/abs/1708.07936",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "The only published Newton-polygon corner enumerator; it defines the admissible search space below degree 150.",
+  "facts": [
+   "enumerates all possible corners for gcd(deg P, deg Q) <= 35 (abstract)",
+   "enumerates all degree pairs with max(deg P, deg Q) <= 150 (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:2204.14178",
+  "title": "Increasing the degree of a possible counterexample to the Jacobian Conjecture from 100 to 108",
+  "authors": [
+   "Guccione, Jorge Alberto",
+   "Guccione, Juan Jose",
+   "Horruitiner, Rodrigo",
+   "Valqui, Christian"
+  ],
+  "year": 2022,
+  "url": "https://arxiv.org/abs/2204.14178",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "The (72,108) reduction: below degree 125 only this pair survives, with exactly two Newton-polygon configurations.",
+  "facts": [
+   "Theorem 2.1: max{deg P, deg Q} >= 125, or (deg P, deg Q) is (72,108) or (108,72) (p. 3)",
+   "Proposition 4.3 lists exactly two configurations: N(P)={(0,0),(1,0),(8,14),(8,16),(0,8)} and N(Q)={(0,0),(2,1),(12,21),(12,24),(0,12)} for (1), and the four-corner versions for (2) (p. 23)",
+   "the proved lower bound rises from 100 to 108, not to 125 (abstract)"
+  ],
+  "license": "CC-BY",
+  "verified": true
+ },
+ {
+  "id": "zenodo:21461572",
+  "title": "The Alpoge-Fable counterexample to the Jacobian Conjecture: verification, geometry, dynamics, and an equivariant program for the plane case",
+  "authors": [
+   "Zenodo contributors"
+  ],
+  "year": 2026,
+  "url": "https://zenodo.org/records/21461572",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "Independent verification and geometric analysis of the July 2026 C^3 counterexample; the reference object for the non-planar case.",
+  "facts": [
+   "records an independent verification of the July 2026 polynomial map C^3 -> C^3 with constant non-zero determinant and a three-point collision",
+   "the associated note is jacobian-note-v1.1.pdf (273 kB) with a Python verification repository"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "tao:jacobian-2026",
+  "title": "A digestion of the Jacobian conjecture counterexample",
+  "authors": [
+   "Tao, Terence"
+  ],
+  "year": 2026,
+  "url": "https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/",
+  "kind": "note",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "The clearest derivation of where the C^3 map comes from; documents the degree and determinant data an auditor needs.",
+  "facts": [
+   "the map has component degrees 7, 6 and 4 and total degree 7",
+   "the Jacobian determinant is the constant -2, so a linear change of one component normalises it to 1",
+   "the generic fibre has three points"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "speyer:jacobian-2026",
+  "title": "The new counterexample to the Jacobian conjecture",
+  "authors": [
+   "Speyer, David"
+  ],
+  "year": 2026,
+  "url": "https://sbseminar.wordpress.com/2026/07/20/the-new-counterexample-to-the-jacobian-conjecture/",
+  "kind": "note",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "The algebraic-geometry reading of the counterexample, including the collision and the monodromy computation.",
+  "facts": [
+   "gives explicit rational collision points for the C^3 map",
+   "records a separate 2026 cubic-homogeneous map in 24 variables with det(DG) = 1 and a rational collision (announced in the comments)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "github:wstrinz/plane-jacobian-72-108",
+  "title": "The plane (72,108) Jacobian case - an independent structural proof",
+  "authors": [
+   "Strinz, William"
+  ],
+  "year": 2026,
+  "url": "https://github.com/wstrinz/plane-jacobian-72-108",
+  "kind": "repo",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "Claims to close both (72,108) configurations, which would raise the plane degree bound to 125; unrefereed but with executable checkers.",
+  "facts": [
+   "Theorem A: no (P,Q) in K[x,x^-1,y]^2 with [P,Q]=x^2 and either configuration (1) or configuration (2) of GGHV 2022, Proposition 4.3",
+   "Corollary B: conditional on two stated inputs, every plane counterexample has max{deg P, deg Q} >= 125",
+   "the README attributes priority for the exclusion to Helali, Zenodo DOI 10.5281/zenodo.21479814"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.15393/j3.art.2016.3510",
+  "title": "Jacobian conjecture, two-dimensional case",
+  "authors": [
+   "Starkov, V. V."
+  ],
+  "year": 2016,
+  "url": "https://doi.org/10.15393/j3.art.2016.3510",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "A complete classification of planar Keller pairs of total degree at most 3, which makes the low-degree box provably empty.",
+  "facts": [
+   "classifies all Keller pairs of total degree <= 3 up to linear conjugacy (main theorem)",
+   "the normal form is (x + a2 s^2 + a3 s^3, y - a2 s^2 - a3 s^3) with s = x+y and determinant 1"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.15393/j3.art.2017.3870",
+  "title": "Structure of Keller mappings, two-dimensional case",
+  "authors": [
+   "Starkov, V. V."
+  ],
+  "year": 2017,
+  "url": "https://doi.org/10.15393/j3.art.2017.3870",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "Extends the classification to degree 4 and exhibits the first non-triangular tame families, calibrating what a counterexample must not look like.",
+  "facts": [
+   "classifies Keller pairs of total degree <= 4 (main theorem)",
+   "exhibits F_{c,s} = (x + c y^2, y - s x^2 - 2cs x y^2 - c^2 s y^4) with c,s non-zero and determinant 1"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1902.05923",
+  "title": "Some classes satisfying the 2-dimensional Jacobian conjecture and a proof of the complex conjecture until degree 104",
+  "authors": [
+   "Nguyen, Thuy"
+  ],
+  "year": 2019,
+  "url": "https://arxiv.org/abs/1902.05923",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "core",
+  "why": "The current unconditional degree wall for JC(2): 104, four above Moh's 100.",
+  "facts": [
+   "proves the complex two-dimensional Jacobian conjecture for total degree <= 104 (abstract)",
+   "improves Moh's 1983 bound of 100 (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "doi:10.24033/bsmf.1667",
+  "title": "Sur les algebres de Weyl",
+  "authors": [
+   "Dixmier, Jacques"
+  ],
+  "year": 1968,
+  "url": "https://doi.org/10.24033/bsmf.1667",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-open",
+  "why": "The non-commutative sibling: endomorphisms of the Weyl algebra, equivalent to JC in the stable range and open in every dimension.",
+  "facts": [
+   "poses the endomorphism problem for the Weyl algebra A_n(C)",
+   "Dixmier(n) is equivalent to JC(n) for the same n (Tsuchimoto; Belov-Kanel-Kontsevich)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:2608.02634",
+  "title": "A Dimension-Two Counterexample to the Separable Jacobian Conjecture in Characteristic Two",
+  "authors": [
+   "Mondello, Romy"
+  ],
+  "year": 2026,
+  "url": "https://arxiv.org/abs/2608.02634",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "A clean solved analogue: the separable Jacobian conjecture is false in characteristic 2, in dimension 2, with an explicit degree-3 collision.",
+  "facts": [
+   "over the algebraic closure of F_2, F = (x + x^2 y + x^4 + x^6 y^2, y + x^5 + x^6 y + x^7 y^2 + x^8 y^3) has det JF = 1",
+   "the three distinct points (0,1), (1,0), (1,1) have the same image",
+   "the function-field extension has degree 3 and is separable"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1090/s0894-0347-03-00440-5",
+  "title": "The tame and the wild automorphisms of polynomial rings in three variables",
+  "authors": [
+   "Shestakov, Ivan P.",
+   "Umirbaev, Ualbai"
+  ],
+  "year": 2003,
+  "url": "https://doi.org/10.1090/s0894-0347-03-00440-5",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "A solved structural analogue: the tame generators problem, open for decades, was settled negatively in dimension 3.",
+  "facts": [
+   "proves that Aut(k[x,y,z]) contains wild automorphisms (main theorem)",
+   "the tame generators problem has a negative answer in dimension 3"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-3-030-42136-6_14",
+  "title": "Mathieu-Zhao Spaces and the Jacobian Conjecture",
+  "authors": [
+   "van den Essen, Arno"
+  ],
+  "year": 2020,
+  "url": "https://doi.org/10.1007/978-3-030-42136-6_14",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-open",
+  "why": "The Mathieu-Zhao reformulation is the widest currently open statement that JC is known to imply.",
+  "facts": [
+   "introduces Mathieu-Zhao subspaces and connects them to the Mathieu conjecture (2020 survey chapter)",
+   "JC implies the Mathieu conjecture for the appropriate class of maps"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.4064/ap-62-1-45-74",
+  "title": "A proof of the two-dimensional Markus-Yamabe Stability Conjecture and a generalization",
+  "authors": [
+   "Fessler, Robert"
+  ],
+  "year": 1995,
+  "url": "https://doi.org/10.4064/ap-62-1-45-74",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-solved",
+  "why": "The dynamical analogue of JC(2) that *is* true: a global-stability statement for planar polynomial vector fields.",
+  "facts": [
+   "proves the Markus-Yamabe conjecture in dimension 2: a local diffeomorphism of R^2 whose Jacobian has negative trace everywhere has 0 as a global attractor (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1006/aima.1997.1673",
+  "title": "A Polynomial Counterexample to the Markus-Yamabe Conjecture",
+  "authors": [
+   "Cima, Anna",
+   "van den Essen, Arno",
+   "Gasull, Armengol",
+   "Hubbers, Engelbert"
+  ],
+  "year": 1997,
+  "url": "https://doi.org/10.1006/aima.1997.1673",
+  "kind": "paper",
+  "problem": [
+   "jac"
+  ],
+  "role": "analogue-open",
+  "why": "Shows the dimension-2 Markus-Yamabe theorem does not lift: the polynomial counterexample appears already in dimension 3.",
+  "facts": [
+   "exhibits a polynomial counterexample to Markus-Yamabe in dimension 3",
+   "the planar theorem therefore does not generalise to n >= 3"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1515/crll.1965.218.79",
+  "title": "Notes on elliptic curves. II.",
+  "authors": [
+   "Birch, B. J.",
+   "Swinnerton-Dyer, H. P. F."
+  ],
+  "year": 1965,
+  "url": "https://doi.org/10.1515/crll.1965.218.79",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "The conjecture itself, in the form the terminal object must refute: analytic order of vanishing equals Mordell-Weil rank.",
+  "facts": [
+   "conjecture: ord_{s=1} L(E,s) = rank E(Q)",
+   "the leading coefficient is predicted as a product of the real period, regulator, |Sha|, Tamagawa numbers and torsion"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/BF01388809",
+  "title": "Heegner points and derivatives of L-series",
+  "authors": [
+   "Gross, Benedict H.",
+   "Zagier, Don B."
+  ],
+  "year": 1986,
+  "url": "https://doi.org/10.1007/BF01388809",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "The rank-1 half of BSD: the first derivative is an explicit multiple of the height of a Heegner point.",
+  "facts": [
+   "proves L'(E,1) equals an explicit non-zero constant times the canonical height of a Heegner point (rank 1)",
+   "together with the rank-0 case this gives BSD for analytic rank <= 1 once Sha is controlled"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1007/978-0-8176-4575-5_11",
+  "title": "Euler Systems",
+  "authors": [
+   "Kolyvagin, V. A."
+  ],
+  "year": 1990,
+  "url": "https://doi.org/10.1007/978-0-8176-4575-5_11",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "The other half of Gross-Zagier-Kolyvagin: an Euler system bounds the Selmer group, so analytic rank <= 1 forces the algebraic rank.",
+  "facts": [
+   "introduces Euler systems and applies them to Heegner points on modular elliptic curves",
+   "for analytic rank <= 1, the Mordell-Weil rank equals the analytic rank and Sha is finite"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:0707.0032",
+  "title": "Explicit Heegner Points: Kolyvagin's Conjecture and Non-trivial Elements in the Shafarevich-Tate Group",
+  "authors": [
+   "Jetchev, Dimitar",
+   "Lauter, Kristin",
+   "Stein, William"
+  ],
+  "year": 2007,
+  "url": "https://arxiv.org/abs/0707.0032",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "The precise citation for the GZK gate and for the rank >= 2 Selmer corank statement that rules out the easy counterexample shapes.",
+  "facts": [
+   "Theorem 1.1 (Gross-Zagier, Kolyvagin): if r_an(E/Q) <= 1 then r_an(E/Q) = r_MW(E/Q) (p. 3)",
+   "Kolyvagin's conjecture implies that analytic rank >= 2 forces Z_p-corank Sel_p >= 2 (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "doi:10.1112/s1461157011000180",
+  "title": "Proving the Birch and Swinnerton-Dyer conjecture for specific elliptic curves of analytic rank zero and one",
+  "authors": [
+   "Miller, Robert L."
+  ],
+  "year": 2011,
+  "url": "https://doi.org/10.1112/s1461157011000180",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "The largest published pointwise verification in the GZK range; calibrates how far 'checked' actually extends.",
+  "facts": [
+   "proves BSD for 16,714 of the 16,725 curves of conductor < 5000 with analytic rank 0 or 1 (abstract)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "lmfdb:reliability",
+  "title": "LMFDB - Reliability of L-function data",
+  "authors": [
+   "LMFDB Collaboration"
+  ],
+  "year": 2026,
+  "url": "https://www.lmfdb.org/L/2/2366/1.1/c1/0/17/Reliability",
+  "kind": "note",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "Establishes that analytic ranks above 1 are rigorously certified in the database, which invalidates 'k >= 2 is not certifiable'.",
+  "facts": [
+   "for classical modular form L-functions the displayed analytic rank has been rigorously verified in all cases, including rank > 1 (page text)",
+   "for any displayed analytic rank r <= 1 the value must be correct (page text)"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "lmfdb:completeness",
+  "title": "LMFDB - Completeness of elliptic curve data over Q",
+  "authors": [
+   "LMFDB Collaboration"
+  ],
+  "year": 2026,
+  "url": "https://www.lmfdb.org/EllipticCurve/Q/Completeness",
+  "kind": "note",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "Defines the region where a rank mismatch is impossible by construction, and hence the only region worth sweeping.",
+  "facts": [
+   "the database contains all curves of conductor < 500,000 (page text)",
+   "it contains 3,824,372 curves in 2,917,287 isogeny classes, with maximum conductor 299,996,953 (page text)",
+   "it also contains all 7-smooth conductors and all prime conductors <= 300,000,000"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "rubinstein:records",
+  "title": "Elliptic curves by rank",
+  "authors": [
+   "Rubinstein, Michael O."
+  ],
+  "year": 2026,
+  "url": "https://www.math.uwaterloo.ca/~mrubinst/elliptic_curves/index.html",
+  "kind": "dataset",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "The rank-record tables that supply calibration curves for any certified-rank pipeline.",
+  "facts": [
+   "rank 4 record: conductor 234,446, curve [1,-1,0,-79,289]",
+   "rank 5 record: conductor 19,047,851, curve [0,0,1,-79,342]",
+   "rank 6 record: conductor 5,187,563,742, curve [1,1,0,-2582,48720]"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:math/0208056",
+  "title": "Curves D y^2 = x^3 - x of odd analytic rank",
+  "authors": [
+   "Elkies, Noam D."
+  ],
+  "year": 2002,
+  "url": "https://arxiv.org/abs/math/0208056",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "A large explicit family where odd analytic rank is proved and BSD then predicts positive rank; the standard congruent-number computation.",
+  "facts": [
+   "proves positive rank for every |D| < 10^6 with |D| congruent to 5, 6 or 7 mod 8 (abstract)",
+   "the proof uses Heegner points from CM points on modular curves and a numerical height check"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1006.1002",
+  "title": "Binary quartic forms having bounded invariants, and the boundedness of the average rank of elliptic curves",
+  "authors": [
+   "Bhargava, Manjul",
+   "Shankar, Arul"
+  ],
+  "year": 2015,
+  "url": "https://arxiv.org/abs/1006.1002",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "core",
+  "why": "The strongest unconditional average-rank bound; it is why a random curve is not where a counterexample will be found.",
+  "facts": [
+   "the mean size of the 2-Selmer group, ordered by height, is 3 (abstract)",
+   "consequently limsup of the average rank is at most 1.5 (abstract)"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "goldfeld:numdam-1976",
+  "title": "The class number of quadratic fields and the conjectures of Birch and Swinnerton-Dyer",
+  "authors": [
+   "Goldfeld, Dorian M."
+  ],
+  "year": 1976,
+  "url": "https://www.numdam.org/item/ASNSP_1976_4_3_4_623_0/",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "analogue-solved",
+  "why": "The bridge that made the class-number problem a corollary of an analytic-rank statement, later closed by Gross-Zagier.",
+  "facts": [
+   "reduces the effective class-number problem for imaginary quadratic fields to the existence of an elliptic curve with a zero of order >= 3 at s = 1",
+   "Annali della Scuola Normale Superiore di Pisa, series 4, volume 3 (1976), pages 623-663"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1210.8231",
+  "title": "Congruent Numbers and Heegner Points",
+  "authors": [
+   "Tian, Ye"
+  ],
+  "year": 2014,
+  "url": "https://arxiv.org/abs/1210.8231",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "analogue-solved",
+  "why": "The congruent-number problem is the cleanest conditional corollary of BSD; Tian's Heegner-point construction gives unconditional families.",
+  "facts": [
+   "constructs Heegner points on m y^2 = x^3 - x for integers m with many prime divisors (abstract)",
+   "extends Heegner's prime-conductor construction to composite m"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "doi:10.2977/prims/31",
+  "title": "A Family of Calabi-Yau Varieties and Potential Automorphy II",
+  "authors": [
+   "Barnet-Lamb, Tom",
+   "Geraghty, David",
+   "Harris, Michael",
+   "Taylor, Richard"
+  ],
+  "year": 2011,
+  "url": "https://doi.org/10.2977/prims/31",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "analogue-solved",
+  "why": "Sato-Tate is the model 'local-statistics' theorem: a conjecture about every elliptic curve, proved by potential automorphy.",
+  "facts": [
+   "proves potential automorphy for a family of Calabi-Yau varieties (main theorem)",
+   "this yields the Sato-Tate conjecture for elliptic curves over Q"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "doi:10.2307/2118559",
+  "title": "Modular Elliptic Curves and Fermat's Last Theorem",
+  "authors": [
+   "Wiles, Andrew"
+  ],
+  "year": 1995,
+  "url": "https://doi.org/10.2307/2118559",
+  "kind": "paper",
+  "problem": [
+   "bsd"
+  ],
+  "role": "analogue-solved",
+  "why": "The canonical 'big theorem with a complete method' case: modularity of semistable curves, then FLT as a corollary.",
+  "facts": [
+   "proves that every semistable elliptic curve over Q is modular (main theorem)",
+   "deduces Fermat's Last Theorem for all exponents >= 3"
+  ],
+  "license": "unknown",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1610.06229",
+  "title": "The DRAT format and DRAT-trim checker",
+  "authors": [
+   "Heule, Marijn J. H."
+  ],
+  "year": 2016,
+  "url": "https://arxiv.org/abs/1610.06229",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "The certificate format behind every claimed unit-distance lower bound; a SAT answer without a DRAT/LRAT trace is not a proof.",
+  "facts": [
+   "DRAT extends RUP with the RAT rule and is checkable in polynomial time per step (abstract)",
+   "DRAT-trim is the reference checker described in the paper"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:math/0412181",
+  "title": "Computational methods and experiments in analytic number theory",
+  "authors": [
+   "Rubinstein, Michael O."
+  ],
+  "year": 2004,
+  "url": "https://arxiv.org/abs/math/0412181",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "The practical reference for the approximate functional equation and for rigorous zero-counting of L-functions.",
+  "facts": [
+   "surveys the approximate functional equation, smoothed sums and zero-counting for L-functions",
+   "the worked examples include large-scale verification of the Riemann hypothesis for Dirichlet L-functions"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:math/0207280",
+  "title": "Computing special values of motivic L-functions",
+  "authors": [
+   "Dokchitser, Tim"
+  ],
+  "year": 2002,
+  "url": "https://arxiv.org/abs/math/0207280",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "The algorithm that turns a functional equation into certified numerical L-values and Taylor coefficients.",
+  "facts": [
+   "computes L-values and Taylor coefficients from a smoothed approximate functional equation (abstract)",
+   "the method applies to motivic L-functions with a known functional equation"
+  ],
+  "license": "arXiv",
+  "verified": true
+ },
+ {
+  "id": "arXiv:1611.02831",
+  "title": "Arb: Efficient Arbitrary-Precision Midpoint-Radius Interval Arithmetic",
+  "authors": [
+   "Johansson, Fredrik"
+  ],
+  "year": 2016,
+  "url": "https://arxiv.org/abs/1611.02831",
+  "kind": "paper",
+  "problem": [
+   "methods"
+  ],
+  "role": "method",
+  "why": "The interval backend that makes a numerical analytic rank into a certified statement rather than a tolerance test.",
+  "facts": [
+   "implements midpoint-radius interval arithmetic with rigorous error bounds (abstract)",
+   "supports arbitrary-precision special functions used in L-function evaluation"
+  ],
+  "license": "arXiv",
+  "verified": true
+ }
+]

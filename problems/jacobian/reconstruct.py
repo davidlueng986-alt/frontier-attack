@@ -68,10 +68,11 @@ Verdict
 PARTIAL.  The inverse exists as a rational map and restores det J = 1 before
 clearing, but it is not a map L^(1) -> K[x,y].  The paper supplies neither the
 inverse of the composite nor a description of its image.  The shear constants
-c2,c3,c4 are read off from the original polynomial P's leading forms and are
-not determined by the normalized pair.  A config-2 solution therefore needs,
-in addition, the polynomiality (image) conditions - the vanishing of all
-negative powers of y in P0 and Q0 - which Prop. 4.3 does not state.
+c2,c3,c4 are read off from the original polynomial P's leading forms; the
+paper does not express them in terms of the normalized pair.  A config-2
+solution therefore needs, in addition, the polynomiality (image) conditions -
+the vanishing of all negative powers of y in P0 and Q0 - which Prop. 4.3
+does not state.
 
 Run:
     python problems/jacobian/reconstruct.py
@@ -335,6 +336,11 @@ def print_j3_report(r: dict) -> None:
 
     print("J3 family:  P = a0 + a1*x,  Q = b0 + b1*x^2*y,  a1*b1 = 1")
     print("            [P,Q] = x^2")
+    print("  J3 is the vertices-only solution: N(P)={(0,0),(1,0)} and")
+    print("  N(Q)={(0,0),(2,1)}, smaller than either config-2 polygon.  It is")
+    print("  the only explicit solution in runs/jacobian_config2_vertices.json,")
+    print("  hence the required stress test; its failure does not by itself")
+    print("  rule out a reconstructible pair with the full config-2 polygon.")
     print()
 
     for st in r["stages"]:
@@ -418,8 +424,10 @@ def main() -> int:
     print("Config-2 note")
     print("  The same y^-1 mechanism is present at the vertex (1,0) of the")
     print("  config-2 polygon {(0,0),(1,0),(8,14),(8,16)}.  Unlike J3, the")
-    print("  config-2 lattice also contains (1,1) and (1,2), so the coefficient")
-    print("  of y^-1 can in principle be cancelled by the x^-4 shear.  Deeper")
+    print("  config-2 lattice also contains lower points such as (1,1), (1,2)")
+    print("  and (5,b), so the y^-1 coefficient is a nontrivial polynomial in")
+    print("  c2,c3,c4 and the lower coefficients; it can in principle be")
+    print("  cancelled, but cancellation is not automatic.  The deeper")
     print("  negative powers (down to y^-8 from the (8,14),(8,16) vertices)")
     print("  give further conditions.  Prop. 4.3 states none of them, and the")
     print("  paper gives no inverse map and no characterization of the image")

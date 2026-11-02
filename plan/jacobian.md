@@ -207,6 +207,36 @@ supports are always invalid. The support of `det J` is the Minkowski difference
 of the supports, and any truncation must be justified by the Newton-polygon
 edge structure. That is what the cascade is for.
 
+### Reconstruction verdict (measured): `PARTIAL`
+
+`problems/jacobian/reconstruct.py` inverts the composite as a **rational** map
+and restores `det J = 1` before clearing denominators. It is not a map to
+`K[x,y]`: the inverse swap introduces `y^-1`.
+
+For the J3 representative `P = x`, `Q = x^2 y`:
+
+```
+P0 = 1/y,  Q0 = x*y^2
+cleared: P' = 1,  Q' = x*y^2,   det J(P',Q') = 0
+```
+
+No polynomial clearing helps. A polynomial representative is `(f*P0, g*Q0)` with
+`y | f` and `y^2 | g`, and the determinant is then divisible by `y` unless it
+vanishes.
+
+The published data do not supply:
+
+1. the exact shear constants `(c2,c3,c4)` or the branch of the proof;
+2. the vanishing conditions for the negative powers of `y` (down to `y^-8` from
+   the `(8,14),(8,16)` vertices);
+3. a proof that a config-2 solution lies in the image `A(K[x,y])`.
+
+**Consequence: the config-2 system is necessary, not sufficient.** It cannot
+produce a terminal object. The branch is **BLOCKED at the published interface**,
+not at the mathematics of the conjecture. Any further elimination (including the
+edge cascade) produces structure, not a counterexample, until the image
+conditions are derived.
+
 ## 4. Load-bearing decomposition
 
 1. **Write the coefficient system for config 2.** Unknown coefficients on the

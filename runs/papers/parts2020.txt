@@ -1,0 +1,172 @@
+===== PAGE 1 =====
+A small 6-chromatic
+two-distance graph in the plane
+Jaan Parts
+Kazan, Russia, jaan parts@.mail.ru
+Abstract
+We give a new, simple proof for the lower bound of the chromatic
+number of the Euclidean plane with two forbidden distances, based
+on a graph with only 16 vertices.
+1
+Introduction
+One of the possible extensions of the classical coloring problem in which
+it is necessary to ﬁnd the chromatic number χ of the Euclidean plane
+(the minimum number of colors suﬃcient to color the plane so that any
+two points unit distance apart have diﬀerent colors) is to stipulate two
+forbidden distances {1, d} instead of a single one. We will use the notation
+χ(d) for this case, implying that one of the forbidden distances is always
+1. We can also stipulate that d ≥1, since scaling by 1/d also gives the
+forbidden distance 1.
+Since χ is known to be at least 5 [2], it is of interest to explore
+whether there is any d for which χ(d) ≥6. Huddleston [4] showed that
+χ((
+√
+5 + 1)/2) ≥6. Exoo and Ismailescu [1] gave a constructive proof for
+d = 2. P´alv¨olgyi and ´Agoston [5] extended this list, using a probabilistic
+approach, to d =
+√
+3 and d = (
+√
+3 + 1)/
+√
+2.
+2
+The basic construction
+In his proof, Huddleston considers a set of 55 sets of ﬁve elements [4]. On
+this set of elements, each of which is characterized by coordinates and
+color, he introduces an operation of addition, which can be interpreted
+as obtaining a vertex colored in one of ﬁve colors. From combinatorial
+arXiv:2010.12656v2  [math.CO]  26 Mar 2023
+
+===== PAGE 2 =====
+considerations, Huddleston concludes that vertices located at a distance
+r = 5 in any 5-coloring have the same color, which implies χ(d) ≥6. How-
+ever, he does not explicitly construct the graph, leaving the impression
+that it may be huge.
+Corresponding graph was deﬁned explicitly by de Grey [3]:
+G126 = G5 ⊕G5 ⊕G5 ⊕G5 ⊕G5,
+G5 =
+
+
+
+
+R sin 2πk
+5 , R cos 2πk
+5
+
+: R =
+s
+5 +
+√
+5
+10
+, k ∈Z
+
+
+.
+Here G5 is a regular pentagon with side 1 and diagonal d = (
+√
+5+1)/2,
+and ⊕denotes the Minkowski sum. The Minkowski sum of distance graphs
+is a graph whose vertex set is the union of all possible sums of their vertex
+coordinates, and the set of edges includes all pairs of obtained vertices
+for all forbidden distances. The size of this graph is much smaller than
+we expected – it has only 126 vertices, and 350 edges each of length 1
+and d (Fig. 1). This is less than in [1], where the corresponding graph
+Figure 1: The graph G126 with monochromatic vertices shown in black.
+
+===== PAGE 3 =====
+has 214 vertices. In any 5-coloring, the farthest vertices of the graph G126
+from the center form monochromatic pairs with a distance r = 5. There
+is also a color pattern in the form of monochrome stripes.
+In addition, it turns out that the central vertex must have the same
+color, which gives monochromatic pairs at a distance r = 5R. We ﬁnd that
+this allows a large reduction in the size of the required graph. The graph
+G16 that we have obtained is shown on the right in Fig. 2. It is a subgraph
+of the graph G126, has 16 vertices, a symmetry group of order 48, and
+28 edges each of length 1 and d, namely:
+• E(1) = {{1, 2}, {1, 3}, {2, 4}, {2, 5}, {3, 4}, {3, 6}, {4, 7}, {4, 8},
+{5, 6}, {5, 8}, {5, 9}, {6, 7}, {6, 10}, {7, 9}, {7, 12}, {7, 13}, {8, 10},
+{8, 11}, {8, 13}, {9, 11}, {10, 12}, {11, 12}, {11, 14}, {12, 15},
+{13, 14}, {13, 15}, {14, 16}, {15, 16}};
+• E(d) = {{1, 5}, {1, 6}, {2, 3}, {2, 6}, {2, 7}, {2, 9}, {3, 5}, {3, 8},
+{3, 10}, {4, 9}, {4, 10}, {4, 11}, {4, 12}, {5, 13}, {6, 13}, {7, 10},
+{7, 14}, {8, 9}, {8, 15}, {9, 13}, {9, 14}, {10, 13}, {10, 15}, {11, 15},
+{11, 16}, {12, 14}, {12, 16}, {14, 15}}.
+This leads to a new simple proof of the following
+G31
+G16
+Figure 2: A small 6-chromatic two-distance graph, and its half-graph.
+
+===== PAGE 4 =====
+Theorem. [4] χ((
+√
+5 + 1)/2) ≥6.
+Proof. Consider the 31-vertex graph G31, shown on the left in Fig. 2 and
+formed from two copies of G16 rotated around a common vertex 1 by
+the angle arccos((95 +
+√
+5)/100), which gives an additional edge of unit
+length between the copies of vertex 16 (alternatively, you can take the
+angle arccos((95 −
+√
+5)/100) giving an additional edge of length d). This
+forces at least one of the two copies of vertex 16 to be a diﬀerent colour
+than the common vertex 1. Graph G16 contains 5-cliques, so at least 5
+colors are needed. Thus it remains only to show that, in any 5-colouring
+of G16, vertices 1 and 16 are the same colour.
+1. We break the set of vertices into the following subsets: {1}, {2, 3,
+5, 6}, {4, 7, 8, 9, 10, 13}, {11, 12, 14, 15}, {16}.
+2. Since the vertices {1, 2, 3, 5, 6} form a 5-clique, we assign diﬀerent
+colors to these vertices: 1-white, 2-green, 3-blue, 5-red, 6-yellow.
+3. We notice that the set {4, 7, 8, 9, 10, 13} has only three independent
+subsets (i.e., non-edges): {4, 13}, {7, 8} and {9, 10}. We also note that
+the colors green, blue, red, yellow can be used in {4, 7, 8, 9, 10, 13} only
+once. This means that one of {4, 13}, {7, 8}, {9, 10} must have both of
+its vertices colored white.
+4. This forbids all vertices of the set {11, 12, 14, 15} to be white.
+5. This forces vertex 16 to be white, i.e. the same colour as vertex 1.
+3
+A small addition
+Additionally, we identify a new graph G199 with a monochromatic pair
+at a distance of r = 5/
+√
+3 in a 5-coloring with forbidden distances
+{1, 2}, which leads to a 397-vertex 6-chromatic two-distance graph. The
+graph G199 has 199 vertices, 870 edges of length 1 and 273 edges of
+length 2, a symmetry group of order 12 (see Fig.3). It is obtained by
+reducing a 313-vertex graph, which in turn is obtained from the graph
+G19 ⊕G19 ⊕G7 by discarding vertices that do not ﬁt inside the cir-
+cle of radius
+√
+3, where G7 is the 7-vertex hexagonal wheel graph and
+G19 = S1
+k=−1 G7 exp(ik
+2 arccos( 5
+6)). We also tried a monochromatic pair
+with a distance r = 5/3, but it leads to a larger graph after reduction.
+
+===== PAGE 5 =====
+Figure 3: A 5-coloring of G199. A monochromatic pair of vertices
+(−1/2, ±5/
+√
+12) is shown in black.
+4
+Acknowledgements
+I thank Aubrey de Grey for cleaning up this article and clarifying the
+proof of Huddleston, Geoﬀrey Exoo and Dan Ismailescu for digging this
+proof, Alexander Soifer for great patience and Pink Floyd for the music
+in my head.
+References
+[1] G. Exoo and D. Ismailescu. A 6-chromatic two-distance graph in
+the plane. Geombinatorics, vol. 29, no. 3, 2020, pp. 97–103.
+[2] A.D.N.J. de Grey. The chromatic number of the plane is at least 5.
+Geombinatorics, vol. 28, no. 1, 2018, pp. 18–31.
+[3] A. de Grey, Comments in Polymath161 , thread 14, comment 24439,
+October 20, 2019
+[4] J. Owings, M. Tetiva, and M. Huddleston. Coloring the plane. The
+American Mathematical Monthly, vol. 115, no. 2, 2008, pp. 170–172.
+[5] D. P´alv¨olgyi and P. ´Agoston, Comments in Polymath16, thread 14,
+comment 24460, October 21, 2019
+1https://web.archive.org/web/20220818075238/https://asone.ai/polymath/
+index.php?title=Hadwiger-Nelson problem
