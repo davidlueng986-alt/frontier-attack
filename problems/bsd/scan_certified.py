@@ -393,6 +393,9 @@ def load_sample(path: Path, limit: int = SAMPLE_LIMIT) -> list[dict]:
             "ainvs": tuple(int(x) for x in c["ainvs"]),
             "analytic_rank": ka,
             "rank": int(c["rank"]),
+            "special_value": (str(c["special_value"])
+                              if c.get("special_value") is not None else None),
+            "special_value_name": c.get("special_value_name"),
         })
     return out
 
@@ -525,6 +528,22 @@ def main(argv=None) -> int:
         if r["inconsistency"]:
             flags.append("LEAD_INTERVAL_CONTRADICTS_EXACT_ZERO")
 
+        # Independent audit: LMFDB ec_mwbsd special_value (L(1) for rank 0,
+        # L'(1) for rank 1) should lie inside our interval.  This is not
+        # part of the k certificate; it checks the AFE special value.
+        sv = c.get("special_value")
+        sv_inside = sv_diff = sv_ulp = None
+        if sv is not None and k is not None and k == ka:
+            with mp.workdps(50):
+                svm = mp.mpf(sv)
+                sv_ulp_m = mp.mpf(10) ** (-len(sv.split(".")[1]))
+                sv_inside = bool(r["interval"][0] - sv_ulp_m
+                                 <= svm <= r["interval"][1] + sv_ulp_m)
+                sv_diff = dec(abs(mp.mpf(dec(r["value"], 40)) - svm), 6)
+                sv_ulp = dec(sv_ulp_m, 3)
+            if not sv_inside:
+                flags.append("LEAD_SPECIAL_VALUE_OUTSIDE_INTERVAL")
+
         flag = "+".join(flags) if flags else "OK"
         row = {
             "label": c["label"],
@@ -565,6 +584,11 @@ def main(argv=None) -> int:
             "k_match_lmfdb_analytic": bool(k is not None and k == ka),
             "parity_match_lmfdb_rank": bool(
                 k is not None and (kr % 2) == (k % 2)),
+            "lmfdb_special_value": sv,
+            "lmfdb_special_value_name": c.get("special_value_name"),
+            "lmfdb_special_value_inside_interval": sv_inside,
+            "lmfdb_special_value_abs_diff_from_center": sv_diff,
+            "lmfdb_special_value_quote_ulp": sv_ulp,
             "flag": flag,
             "note": (
                 "certified k=0: L(1) interval excludes 0"
@@ -594,12 +618,18 @@ def main(argv=None) -> int:
               f"N={c['conductor']} a_N={r['a_N']:+d} w={r['w']:+d} "
               f"k={k!s:<4} LMFDB(k,r)=({ka},{kr}) "
               f"flag={flag}  ({elapsed:.1f}s)")
-        print(f"      interval for {'L(1)' if r['decisive_derivative']==0 else chr(76)+chr(39)+'(1)'}: "
+        deriv_label = "L(1)" if r["decisive_derivative"] == 0 else "L'(1)"
+        print(f"      interval for {deriv_label}: "
               f"[{dec(r['interval'][0], 20)}, {dec(r['interval'][1], 20)}]")
 
     certified_count = sum(1 for row in results if row.get("certified"))
     anomaly_count = len(anomalies)
     uncertified_count = len(uncertified)
+    sv_checked = sum(1 for row in results
+                     if row.get("lmfdb_special_value_inside_interval")
+                     is not None)
+    sv_inside = sum(1 for row in results
+                    if row.get("lmfdb_special_value_inside_interval") is True)
 
     if anomalies:
         first = anomalies[0]
@@ -636,12 +666,20 @@ def main(argv=None) -> int:
             "consequence": (
                 "no algebraic-rank backend; LMFDB 'rank' and 'analytic_rank' "
                 "are DECLARED inputs, not proofs"),
+            "rank4_probe": (
+                "234446.a1 has conductor 234446 = 2 * 117223, composite; "
+                "it is outside this prime-conductor certifier's scope.  "
+                "No algebraic-rank backend was available to verify its "
+                "rank 4."),
         },
         "inputs": {
             "sample": str(sample_path),
             "sample_source": (
                 "LMFDB ec_curvedata / EllipticCurve search, conductor "
                 "[500000, 520000], prime conductor, analytic_rank in {0,1}"),
+            "special_value_source": (
+                "LMFDB ec_mwbsd special_value, independent of the AFE "
+                "computation; used only as an audit"),
             "lmfdb_complete_range": "N <= 500000 (Cremona); above that the "
                                     "rows are Stein-Watkins / BGR "
                                     "prime-conductor data",
@@ -655,6 +693,16 @@ def main(argv=None) -> int:
         },
         "calibration": calibration,
         "calibration_ok": all(row["ok"] for row in calibration),
+        "special_value_audit": {
+            "checked": sv_checked,
+            "inside_interval": sv_inside,
+            "all_inside": bool(sv_checked > 0 and sv_inside == sv_checked),
+            "note": (
+                "LMFDB ec_mwbsd special_value (L(1) for rank 0, L'(1) for "
+                "rank 1) is an independent computation; it must lie inside "
+                "the AFE interval.  This audits the special value, not the "
+                "order of vanishing."),
+        },
         "curves": results,
         "certified_count": certified_count,
         "uncertified_count": uncertified_count,

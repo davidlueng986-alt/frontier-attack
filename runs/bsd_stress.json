@@ -1,0 +1,1123 @@
+{
+  "script": "problems/bsd/scan_certified.py",
+  "generated_utc": "2026-11-02T12:03:35.821107+00:00",
+  "method": "smoothed approximate functional equation with an explicit incomplete-gamma truncation bound, a priori rounding bound cross-checked at two precisions, and Richardson finite-difference derivatives",
+  "rigour": "numerical with heuristic bound",
+  "structural_note": "A numerical interval can prove a value is non-zero, never that it is exactly zero.  Only k=0 (L(1) interval excludes 0) and k=1 (a_N=-1 forces L(1)=0 exactly; L'(1) interval excludes 0) are certifiable.  k>=2 is not certifiable by this method.",
+  "tooling": {
+    "gp": "absent (the PowerShell 'gp' command is an alias for Get-ItemProperty; no PARI/GP binary found)",
+    "sage": "absent",
+    "cypari2": "absent (ModuleNotFoundError)",
+    "consequence": "no algebraic-rank backend; LMFDB 'rank' and 'analytic_rank' are DECLARED inputs, not proofs"
+  },
+  "inputs": {
+    "sample": "C:\\Users\\daive\\Downloads\\frontier-attack\\research\\scratch\\bsd_stress.json",
+    "sample_source": "LMFDB ec_curvedata / EllipticCurve search, conductor [500000, 520000], prime conductor, analytic_rank in {0,1}",
+    "lmfdb_complete_range": "N <= 500000 (Cremona); above that the rows are Stein-Watkins / BGR prime-conductor data",
+    "declared_not_proved": true
+  },
+  "precision": {
+    "dps": 40,
+    "dps_cross_check": 30,
+    "derivative_step_h": "0.02",
+    "nmax_rule": "max(400, ceil(4*sqrt(N)))"
+  },
+  "calibration": [
+    {
+      "label": "11a1",
+      "conductor": 11,
+      "expected_k": 0,
+      "k": 0,
+      "ok": true,
+      "error": null,
+      "root_number": 1,
+      "nmax": 400,
+      "interval": {
+        "lo": "0.253841860855910684337758923343",
+        "hi": "0.253841860855910684337758923358",
+        "contains_zero": false
+      },
+      "seconds": 1.89,
+      "note": "positive control"
+    },
+    {
+      "label": "37a1",
+      "conductor": 37,
+      "expected_k": 1,
+      "k": 1,
+      "ok": true,
+      "error": null,
+      "root_number": -1,
+      "nmax": 400,
+      "interval": {
+        "lo": "0.30599977364808325799975565009",
+        "hi": "0.305999774020027871896603920103",
+        "contains_zero": false
+      },
+      "seconds": 2.6,
+      "note": "positive control"
+    },
+    {
+      "label": "389a1",
+      "conductor": 389,
+      "expected_k": null,
+      "k": null,
+      "ok": true,
+      "error": null,
+      "root_number": 1,
+      "nmax": 400,
+      "interval": {
+        "lo": "-1.81757011323855438159343499866e-29",
+        "hi": "1.81757011323453530378841156991e-29",
+        "contains_zero": true
+      },
+      "seconds": 9.59,
+      "note": "expected refusal: rank 2, but kmax=1 can only certify k=0 or k=1; L(1) is numerically zero and w=+1, so no k=0 certificate is possible"
+    }
+  ],
+  "calibration_ok": true,
+  "curves": [
+    {
+      "label": "500719.a1",
+      "conductor": 500719,
+      "ainvs": [
+        1,
+        1,
+        1,
+        -260,
+        -1722
+      ],
+      "lmfdb_analytic_rank": 0,
+      "lmfdb_rank": 0,
+      "a_N": 1,
+      "root_number_exact": 1,
+      "root_number_numerical": 1,
+      "root_number_margin": "93.365928",
+      "nmax": 2831,
+      "k": 0,
+      "certified": true,
+      "decisive_derivative": 0,
+      "value": "1.18892437308379698463250043618",
+      "interval": {
+        "lo": "1.18892436129257188268016407328",
+        "hi": "1.18892438487502208658483679908",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "1.1791225102e-8",
+        "rounding": "3.24196283019e-28",
+        "truncation": "0.0",
+        "total": "1.1791225102e-8"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.1791225102e-8",
+          "rounding": "3.24196283019e-28",
+          "truncation": "0.0",
+          "total": "1.1791225102e-8",
+          "interval": [
+            "1.18892436129257188268016407328",
+            "1.18892438487502208658483679908"
+          ],
+          "contains_zero": false
+        },
+        "L1prime": {
+          "tail": "9.43298008156e-6",
+          "rounding": "1.32619259851e-26",
+          "truncation": "1.68034198673e-6",
+          "total": "1.11133220683e-5",
+          "interval": [
+            "-4.93025155055782863631089838915",
+            "-4.9302293239136920498403246917"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=0: L(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.015,
+        "root_number": 0.303,
+        "derivatives_hi": 18.285,
+        "derivatives_lo": 14.057,
+        "total": 14.057
+      },
+      "seconds": 32.68
+    },
+    {
+      "label": "501317.a1",
+      "conductor": 501317,
+      "ainvs": [
+        0,
+        0,
+        1,
+        -50,
+        -132
+      ],
+      "lmfdb_analytic_rank": 0,
+      "lmfdb_rank": 0,
+      "a_N": 1,
+      "root_number_exact": 1,
+      "root_number_numerical": 1,
+      "root_number_margin": "69.722762",
+      "nmax": 2833,
+      "k": 0,
+      "certified": true,
+      "decisive_derivative": 0,
+      "value": "1.79938662448933706581593640484",
+      "interval": {
+        "lo": "1.79938661272331314798198617923",
+        "hi": "1.79938663625536098364988663046",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "1.17660239178e-8",
+        "rounding": "3.11635369379e-28",
+        "truncation": "0.0",
+        "total": "1.17660239178e-8"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.17660239178e-8",
+          "rounding": "3.11635369379e-28",
+          "truncation": "0.0",
+          "total": "1.17660239178e-8",
+          "interval": [
+            "1.79938661272331314798198617923",
+            "1.79938663625536098364988663046"
+          ],
+          "contains_zero": false
+        },
+        "L1prime": {
+          "tail": "9.41281913427e-6",
+          "rounding": "1.30895906614e-26",
+          "truncation": "2.67340574987e-6",
+          "total": "1.20862248841e-5",
+          "interval": [
+            "-7.4627957770743345539754620641",
+            "-7.46277160462456628118378987208"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=0: L(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.056,
+        "root_number": 0.407,
+        "derivatives_hi": 11.105,
+        "derivatives_lo": 6.394,
+        "total": 6.394
+      },
+      "seconds": 18.04
+    },
+    {
+      "label": "503857.a1",
+      "conductor": 503857,
+      "ainvs": [
+        1,
+        -1,
+        0,
+        4,
+        -35
+      ],
+      "lmfdb_analytic_rank": 0,
+      "lmfdb_rank": 0,
+      "a_N": 1,
+      "root_number_exact": 1,
+      "root_number_numerical": 1,
+      "root_number_margin": "1520.8675",
+      "nmax": 2840,
+      "k": 0,
+      "certified": true,
+      "decisive_derivative": 0,
+      "value": "5.59413347427502809423775076546",
+      "interval": {
+        "lo": "5.59413346246096660179901506513",
+        "hi": "5.59413348608908958667648646579",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "1.18140614924e-8",
+        "rounding": "1.08972588544e-28",
+        "truncation": "0.0",
+        "total": "1.18140614924e-8"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.18140614924e-8",
+          "rounding": "1.08972588544e-28",
+          "truncation": "0.0",
+          "total": "1.18140614924e-8",
+          "interval": [
+            "5.59413346246096660179901506513",
+            "5.59413348608908958667648646579"
+          ],
+          "contains_zero": false
+        },
+        "L1prime": {
+          "tail": "9.45124919395e-6",
+          "rounding": "2.16870163337e-26",
+          "truncation": "4.27338571087e-6",
+          "total": "1.37246349048e-5",
+          "interval": [
+            "-23.2152825264303276486502767339",
+            "-23.2152550771605180088309582327"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=0: L(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.025,
+        "root_number": 0.286,
+        "derivatives_hi": 14.884,
+        "derivatives_lo": 13.017,
+        "total": 13.017
+      },
+      "seconds": 28.24
+    },
+    {
+      "label": "504299.a1",
+      "conductor": 504299,
+      "ainvs": [
+        0,
+        1,
+        1,
+        -4,
+        -36
+      ],
+      "lmfdb_analytic_rank": 0,
+      "lmfdb_rank": 0,
+      "a_N": 1,
+      "root_number_exact": 1,
+      "root_number_numerical": 1,
+      "root_number_margin": "20.636608",
+      "nmax": 2841,
+      "k": 0,
+      "certified": true,
+      "decisive_derivative": 0,
+      "value": "1.2912885625955593972499967721",
+      "interval": {
+        "lo": "1.29128855075050010856342658391",
+        "hi": "1.29128857444061868593656696029",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "1.18450592887e-8",
+        "rounding": "5.48636676437e-28",
+        "truncation": "0.0",
+        "total": "1.18450592887e-8"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.18450592887e-8",
+          "rounding": "5.48636676437e-28",
+          "truncation": "0.0",
+          "total": "1.18450592887e-8",
+          "interval": [
+            "1.29128855075050010856342658391",
+            "1.29128857444061868593656696029"
+          ],
+          "contains_zero": false
+        },
+        "L1prime": {
+          "tail": "9.47604743095e-6",
+          "rounding": "7.05458680538e-27",
+          "truncation": "2.09105022586e-6",
+          "total": "1.15670976568e-5",
+          "interval": [
+            "-5.35933633817808066090794689168",
+            "-5.3593132039827670426217430447"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=0: L(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.025,
+        "root_number": 0.416,
+        "derivatives_hi": 22.673,
+        "derivatives_lo": 19.266,
+        "total": 19.266
+      },
+      "seconds": 42.41
+    },
+    {
+      "label": "505763.a1",
+      "conductor": 505763,
+      "ainvs": [
+        0,
+        -1,
+        1,
+        -1569,
+        -23406
+      ],
+      "lmfdb_analytic_rank": 0,
+      "lmfdb_rank": 0,
+      "a_N": 1,
+      "root_number_exact": 1,
+      "root_number_numerical": 1,
+      "root_number_margin": "28.81216",
+      "nmax": 2845,
+      "k": 0,
+      "certified": true,
+      "decisive_derivative": 0,
+      "value": "0.379263220317599707235629602965",
+      "interval": {
+        "lo": "0.37926320844227432788069812143",
+        "hi": "0.3792632321929250865905610845",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "1.18753253794e-8",
+        "rounding": "1.17321431985e-29",
+        "truncation": "0.0",
+        "total": "1.18753253794e-8"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.18753253794e-8",
+          "rounding": "1.17321431985e-29",
+          "truncation": "0.0",
+          "total": "1.18753253794e-8",
+          "interval": [
+            "0.37926320844227432788069812143",
+            "0.3792632321929250865905610845"
+          ],
+          "contains_zero": false
+        },
+        "L1prime": {
+          "tail": "9.50026030348e-6",
+          "rounding": "8.10852382418e-27",
+          "truncation": "1.93142982988e-6",
+          "total": "1.14316901334e-5",
+          "interval": [
+            "-1.57464367543159622515166377862",
+            "-1.57462081205132948748902349074"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=0: L(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.03,
+        "root_number": 0.239,
+        "derivatives_hi": 14.151,
+        "derivatives_lo": 12.604,
+        "total": 12.604
+      },
+      "seconds": 27.05
+    },
+    {
+      "label": "509647.a1",
+      "conductor": 509647,
+      "ainvs": [
+        1,
+        0,
+        0,
+        9,
+        -32
+      ],
+      "lmfdb_analytic_rank": 0,
+      "lmfdb_rank": 0,
+      "a_N": 1,
+      "root_number_exact": 1,
+      "root_number_numerical": 1,
+      "root_number_margin": "38.435508",
+      "nmax": 2856,
+      "k": 0,
+      "certified": true,
+      "decisive_derivative": 0,
+      "value": "1.46714760597038982433249964999",
+      "interval": {
+        "lo": "1.46714759405859529129938119132",
+        "hi": "1.46714761788218435736561810867",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "1.1911794533e-8",
+        "rounding": "1.04830264901e-28",
+        "truncation": "0.0",
+        "total": "1.1911794533e-8"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.1911794533e-8",
+          "rounding": "1.04830264901e-28",
+          "truncation": "0.0",
+          "total": "1.1911794533e-8",
+          "interval": [
+            "1.46714759405859529129938119132",
+            "1.46714761788218435736561810867"
+          ],
+          "contains_zero": false
+        },
+        "L1prime": {
+          "tail": "9.52943562643e-6",
+          "rounding": "5.42863952217e-27",
+          "truncation": "1.76350981767e-6",
+          "total": "1.12929454441e-5",
+          "interval": [
+            "-6.0969545458365169963170984481",
+            "-6.09693195994562879630879926557"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=0: L(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.028,
+        "root_number": 0.475,
+        "derivatives_hi": 28.182,
+        "derivatives_lo": 23.341,
+        "total": 23.341
+      },
+      "seconds": 52.05
+    },
+    {
+      "label": "511171.a1",
+      "conductor": 511171,
+      "ainvs": [
+        1,
+        0,
+        0,
+        20,
+        3
+      ],
+      "lmfdb_analytic_rank": 0,
+      "lmfdb_rank": 0,
+      "a_N": 1,
+      "root_number_exact": 1,
+      "root_number_numerical": 1,
+      "root_number_margin": "15.866602",
+      "nmax": 2860,
+      "k": 0,
+      "certified": true,
+      "decisive_derivative": 0,
+      "value": "1.76272655947040630237397706543",
+      "interval": {
+        "lo": "1.76272654751235796142166601287",
+        "hi": "1.762726571428454643326288118",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "1.1958048341e-8",
+        "rounding": "3.31212324041e-28",
+        "truncation": "0.0",
+        "total": "1.1958048341e-8"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.1958048341e-8",
+          "rounding": "3.31212324041e-28",
+          "truncation": "0.0",
+          "total": "1.1958048341e-8",
+          "interval": [
+            "1.76272654751235796142166601287",
+            "1.762726571428454643326288118"
+          ],
+          "contains_zero": false
+        },
+        "L1prime": {
+          "tail": "9.56643867276e-6",
+          "rounding": "1.81296284915e-26",
+          "truncation": "1.97324101067e-6",
+          "total": "1.15396796834e-5",
+          "interval": [
+            "-7.32790733109418752470523413879",
+            "-7.32788425173482066278892333965"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=0: L(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.03,
+        "root_number": 0.469,
+        "derivatives_hi": 34.056,
+        "derivatives_lo": 32.014,
+        "total": 32.014
+      },
+      "seconds": 66.61
+    },
+    {
+      "label": "517571.a1",
+      "conductor": 517571,
+      "ainvs": [
+        0,
+        0,
+        1,
+        -4,
+        -35
+      ],
+      "lmfdb_analytic_rank": 0,
+      "lmfdb_rank": 0,
+      "a_N": 1,
+      "root_number_exact": 1,
+      "root_number_numerical": 1,
+      "root_number_margin": "15.585702",
+      "nmax": 2878,
+      "k": 0,
+      "certified": true,
+      "decisive_derivative": 0,
+      "value": "1.29332440987119924249343057946",
+      "interval": {
+        "lo": "1.29332439785263327598186097067",
+        "hi": "1.29332442188976520900500018826",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "1.20185659665e-8",
+        "rounding": "1.19291408791e-28",
+        "truncation": "0.0",
+        "total": "1.20185659665e-8"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.20185659665e-8",
+          "rounding": "1.19291408791e-28",
+          "truncation": "0.0",
+          "total": "1.20185659665e-8",
+          "interval": [
+            "1.29332439785263327598186097067",
+            "1.29332442188976520900500018826"
+          ],
+          "contains_zero": false
+        },
+        "L1prime": {
+          "tail": "9.61485277321e-6",
+          "rounding": "2.2067283405e-26",
+          "truncation": "3.14920960794e-6",
+          "total": "1.27640623812e-5",
+          "interval": [
+            "-5.38458563574514828785555341188",
+            "-5.38456010762038598403630162305"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=0: L(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.032,
+        "root_number": 0.36,
+        "derivatives_hi": 19.613,
+        "derivatives_lo": 18.017,
+        "total": 18.017
+      },
+      "seconds": 38.05
+    },
+    {
+      "label": "500921.a1",
+      "conductor": 500921,
+      "ainvs": [
+        1,
+        -1,
+        0,
+        -23,
+        32
+      ],
+      "lmfdb_analytic_rank": 1,
+      "lmfdb_rank": 1,
+      "a_N": -1,
+      "root_number_exact": -1,
+      "root_number_numerical": -1,
+      "root_number_margin": "180.46131",
+      "nmax": 2832,
+      "k": 1,
+      "certified": true,
+      "decisive_derivative": 1,
+      "value": "11.195152298399547568098813054",
+      "interval": {
+        "lo": "11.1951389598454115123539693197",
+        "hi": "11.1951656369536836238436567882",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "9.39906326062e-6",
+        "rounding": "2.29875503098e-25",
+        "truncation": "3.93949087544e-6",
+        "total": "1.33385541361e-5"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.17488290758e-8",
+          "rounding": "4.10296647937e-37",
+          "truncation": "0.0",
+          "total": "1.17488290758e-8",
+          "interval": [
+            "-0.0000000117488290757696725208426566465",
+            "0.0000000117488290757696725208426566465"
+          ],
+          "contains_zero": true
+        },
+        "L1prime": {
+          "tail": "9.39906326062e-6",
+          "rounding": "2.29875503098e-25",
+          "truncation": "3.93949087544e-6",
+          "total": "1.33385541361e-5",
+          "interval": [
+            "11.1951389598454115123539693197",
+            "11.1951656369536836238436567882"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.033,
+        "root_number": 0.427,
+        "derivatives_hi": 22.795,
+        "derivatives_lo": 20.254,
+        "total": 20.254
+      },
+      "seconds": 43.54
+    },
+    {
+      "label": "501341.a1",
+      "conductor": 501341,
+      "ainvs": [
+        1,
+        0,
+        0,
+        10,
+        -31
+      ],
+      "lmfdb_analytic_rank": 1,
+      "lmfdb_rank": 1,
+      "a_N": -1,
+      "root_number_exact": -1,
+      "root_number_numerical": -1,
+      "root_number_margin": "19.500819",
+      "nmax": 2833,
+      "k": 1,
+      "certified": true,
+      "decisive_derivative": 1,
+      "value": "5.62926834418914403949423175347",
+      "interval": {
+        "lo": "5.62925665111677565840749631432",
+        "hi": "5.62928003726151242058096719262",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "9.41871605653e-6",
+        "rounding": "4.43811048583e-26",
+        "truncation": "2.27435631185e-6",
+        "total": "1.16930723684e-5"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.17733950707e-8",
+          "rounding": "3.80245156412e-37",
+          "truncation": "0.0",
+          "total": "1.17733950707e-8",
+          "interval": [
+            "-0.0000000117733950706687369846802850716",
+            "0.0000000117733950706687369846802850716"
+          ],
+          "contains_zero": true
+        },
+        "L1prime": {
+          "tail": "9.41871605653e-6",
+          "rounding": "4.43811048583e-26",
+          "truncation": "2.27435631185e-6",
+          "total": "1.16930723684e-5",
+          "interval": [
+            "5.62925665111677565840749631432",
+            "5.62928003726151242058096719262"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.039,
+        "root_number": 0.455,
+        "derivatives_hi": 26.144,
+        "derivatives_lo": 24.378,
+        "total": 24.378
+      },
+      "seconds": 51.06
+    },
+    {
+      "label": "502507.a1",
+      "conductor": 502507,
+      "ainvs": [
+        0,
+        -1,
+        1,
+        -58,
+        194
+      ],
+      "lmfdb_analytic_rank": 1,
+      "lmfdb_rank": 1,
+      "a_N": -1,
+      "root_number_exact": -1,
+      "root_number_numerical": -1,
+      "root_number_margin": "91.22035",
+      "nmax": 2836,
+      "k": 1,
+      "certified": true,
+      "decisive_derivative": 1,
+      "value": "8.13201707068901011133476916328",
+      "interval": {
+        "lo": "8.13200504748394177419838789865",
+        "hi": "8.1320290938940784484711504279",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "9.45441238445e-6",
+        "rounding": "1.47778205909e-25",
+        "truncation": "2.56879268389e-6",
+        "total": "1.20232050683e-5"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.18180154806e-8",
+          "rounding": "6.83135395736e-37",
+          "truncation": "0.0",
+          "total": "1.18180154806e-8",
+          "interval": [
+            "-0.0000000118180154805595677995357894683",
+            "0.0000000118180154805595677995357894683"
+          ],
+          "contains_zero": true
+        },
+        "L1prime": {
+          "tail": "9.45441238445e-6",
+          "rounding": "1.47778205909e-25",
+          "truncation": "2.56879268389e-6",
+          "total": "1.20232050683e-5",
+          "interval": [
+            "8.13200504748394177419838789865",
+            "8.1320290938940784484711504279"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.032,
+        "root_number": 0.436,
+        "derivatives_hi": 25.438,
+        "derivatives_lo": 36.778,
+        "total": 36.778
+      },
+      "seconds": 62.72
+    },
+    {
+      "label": "504197.a1",
+      "conductor": 504197,
+      "ainvs": [
+        0,
+        0,
+        1,
+        -20,
+        4
+      ],
+      "lmfdb_analytic_rank": 1,
+      "lmfdb_rank": 1,
+      "a_N": -1,
+      "root_number_exact": -1,
+      "root_number_numerical": -1,
+      "root_number_margin": "200.50017",
+      "nmax": 2841,
+      "k": 1,
+      "certified": true,
+      "decisive_derivative": 1,
+      "value": "4.64739369606110977860392189036",
+      "interval": {
+        "lo": "4.64738195174249876998411729555",
+        "hi": "4.64740544037972078722372648517",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "9.45100622708e-6",
+        "rounding": "2.05984839097e-27",
+        "truncation": "2.29331238393e-6",
+        "total": "1.1744318611e-5"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.18137577838e-8",
+          "rounding": "3.31345545256e-37",
+          "truncation": "0.0",
+          "total": "1.18137577838e-8",
+          "interval": [
+            "-0.0000000118137577838480026225223566306",
+            "0.0000000118137577838480026225223566306"
+          ],
+          "contains_zero": true
+        },
+        "L1prime": {
+          "tail": "9.45100622708e-6",
+          "rounding": "2.05984839097e-27",
+          "truncation": "2.29331238393e-6",
+          "total": "1.1744318611e-5",
+          "interval": [
+            "4.64738195174249876998411729555",
+            "4.64740544037972078722372648517"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.096,
+        "root_number": 0.742,
+        "derivatives_hi": 24.086,
+        "derivatives_lo": 16.7,
+        "total": 16.7
+      },
+      "seconds": 41.79
+    },
+    {
+      "label": "507347.a1",
+      "conductor": 507347,
+      "ainvs": [
+        0,
+        1,
+        1,
+        -77,
+        238
+      ],
+      "lmfdb_analytic_rank": 1,
+      "lmfdb_rank": 1,
+      "a_N": -1,
+      "root_number_exact": -1,
+      "root_number_numerical": -1,
+      "root_number_margin": "3.7480256",
+      "nmax": 2850,
+      "k": 1,
+      "certified": true,
+      "decisive_derivative": 1,
+      "value": "11.2075753434769946260483258858",
+      "interval": {
+        "lo": "11.2075623897340956297918732092",
+        "hi": "11.2075882972198936223047785624",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "9.46957246165e-6",
+        "rounding": "1.19597391805e-25",
+        "truncation": "3.48417043735e-6",
+        "total": "1.2953742899e-5"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.18369655771e-8",
+          "rounding": "3.405682251e-37",
+          "truncation": "0.0",
+          "total": "1.18369655771e-8",
+          "interval": [
+            "-0.0000000118369655770607996184353794255",
+            "0.0000000118369655770607996184353794255"
+          ],
+          "contains_zero": true
+        },
+        "L1prime": {
+          "tail": "9.46957246165e-6",
+          "rounding": "1.19597391805e-25",
+          "truncation": "3.48417043735e-6",
+          "total": "1.2953742899e-5",
+          "interval": [
+            "11.2075623897340956297918732092",
+            "11.2075882972198936223047785624"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.049,
+        "root_number": 0.376,
+        "derivatives_hi": 29.175,
+        "derivatives_lo": 20.386,
+        "total": 20.386
+      },
+      "seconds": 50.06
+    },
+    {
+      "label": "512711.a1",
+      "conductor": 512711,
+      "ainvs": [
+        1,
+        -1,
+        1,
+        -6,
+        36
+      ],
+      "lmfdb_analytic_rank": 1,
+      "lmfdb_rank": 1,
+      "a_N": -1,
+      "root_number_exact": -1,
+      "root_number_numerical": -1,
+      "root_number_margin": "14.8011",
+      "nmax": 2865,
+      "k": 1,
+      "certified": true,
+      "decisive_derivative": 1,
+      "value": "4.05780065103641051939811197341",
+      "interval": {
+        "lo": "4.05778958661162865189688881221",
+        "hi": "4.0578117154611923868993351346",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "9.52292825206e-6",
+        "rounding": "1.00975147572e-25",
+        "truncation": "1.54149652981e-6",
+        "total": "1.10644247819e-5"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.19036603151e-8",
+          "rounding": "7.77387208053e-37",
+          "truncation": "0.0",
+          "total": "1.19036603151e-8",
+          "interval": [
+            "-0.0000000119036603150774208973438792274",
+            "0.0000000119036603150774208973438792274"
+          ],
+          "contains_zero": true
+        },
+        "L1prime": {
+          "tail": "9.52292825206e-6",
+          "rounding": "1.00975147572e-25",
+          "truncation": "1.54149652981e-6",
+          "total": "1.10644247819e-5",
+          "interval": [
+            "4.05778958661162865189688881221",
+            "4.0578117154611923868993351346"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.045,
+        "root_number": 0.731,
+        "derivatives_hi": 52.851,
+        "derivatives_lo": 36.26,
+        "total": 36.26
+      },
+      "seconds": 89.94
+    },
+    {
+      "label": "519083.a1",
+      "conductor": 519083,
+      "ainvs": [
+        1,
+        0,
+        1,
+        -12,
+        -39
+      ],
+      "lmfdb_analytic_rank": 1,
+      "lmfdb_rank": 1,
+      "a_N": -1,
+      "root_number_exact": -1,
+      "root_number_numerical": -1,
+      "root_number_margin": "58.878375",
+      "nmax": 2882,
+      "k": 1,
+      "certified": true,
+      "decisive_derivative": 1,
+      "value": "8.73121787881496732492312378899",
+      "interval": {
+        "lo": "8.73120446250549945545599560865",
+        "hi": "8.73123129512443519439025196934",
+        "contains_zero": false
+      },
+      "bound_components": {
+        "tail": "9.64610094399e-6",
+        "rounding": "2.38170683583e-26",
+        "truncation": "3.77020852388e-6",
+        "total": "1.34163094679e-5"
+      },
+      "bound_components_all": {
+        "L1": {
+          "tail": "1.205762618e-8",
+          "rounding": "5.09851157852e-37",
+          "truncation": "0.0",
+          "total": "1.205762618e-8",
+          "interval": [
+            "-0.0000000120576261799880882429632485276",
+            "0.0000000120576261799880882429632485276"
+          ],
+          "contains_zero": true
+        },
+        "L1prime": {
+          "tail": "9.64610094399e-6",
+          "rounding": "2.38170683583e-26",
+          "truncation": "3.77020852388e-6",
+          "total": "1.34163094679e-5",
+          "interval": [
+            "8.73120446250549945545599560865",
+            "8.73123129512443519439025196934"
+          ],
+          "contains_zero": false
+        }
+      },
+      "k_match_lmfdb_analytic": true,
+      "parity_match_lmfdb_rank": true,
+      "flag": "OK",
+      "note": "certified k=1: a_N=-1 gives L(1)=0 exactly; L'(1) interval excludes 0",
+      "timings_s": {
+        "a_n": 0.047,
+        "root_number": 0.721,
+        "derivatives_hi": 22.695,
+        "derivatives_lo": 16.555,
+        "total": 16.556
+      },
+      "seconds": 40.09
+    }
+  ],
+  "certified_count": 15,
+  "uncertified_count": 0,
+  "anomaly_count": 0,
+  "anomalies": [],
+  "uncertified": [],
+  "verdict": "COVERAGE EXTENDED: 15 curves certified, 0 anomalies",
+  "total_seconds": 698.41
+}

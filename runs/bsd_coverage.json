@@ -1,0 +1,304 @@
+{
+  "task1": {
+    "gp_pari_available": false,
+    "gp_probe": "Get-Command gp -> Alias 'Get-ItemProperty' (PowerShell built-in); no gp.exe anywhere on PATH or in Program Files/msys64/cygwin64/scoop/chocolatey",
+    "gp_version": null,
+    "ellrank_test_run": false,
+    "ellrank_test_note": "not run: no PARI/GP binary; the requested gp -q ellinit/ellrank/ellanalyticrank output for 37a1 does not exist on this machine",
+    "sage_available": false,
+    "mwrank_available": false,
+    "cypari2_importable": false,
+    "cypari2_install": {
+      "command": "python -m pip install --user cypari2",
+      "result": "failed after 24.2 s at metadata generation",
+      "blocker": "meson could not find a C compiler: icl, cl, cc, gcc, clang, clang-cl, pgcc all missing; no Visual Studio installer (vswhere.exe absent). cypari2 2.2.4 also needs the PARI library headers.",
+      "log_excerpt": "meson.build:1:0: ERROR: Unknown compiler(s): [['icl'], ['cl'], ['cc'], ['gcc'], ['clang'], ['clang-cl'], ['pgcc']] / error: metadata-generation-failed"
+    },
+    "native_installer_url": "https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari64-2-19-0.exe",
+    "native_installer_version": "PARI/GP 2.19.0, 2026-09-28, 109.8 MB",
+    "native_installer_sha256": "70ff123c371fa071e77632832a914292fb1c8cf98b47e25a57223640bf31f7f7",
+    "system_wide_install_attempted": false,
+    "consequence": "algebraic rank (ellrank r1=r2) cannot be computed on this machine; Task 3 is analytic-side only"
+  },
+  "task2": {
+    "requested_url": "https://www.lmfdb.org/api/ec_curvedata/?_format=json&_fields=lmfdb_label,ainvs,conductor,rank,analytic_rank&conductor=500000-520000&analytic_rank=0-3",
+    "requested_url_status": 404,
+    "requested_url_error": "LMFDB Page Not Found; the deployed API treats every non-underscore argument as an exact-equality column and rejects range values (also tried 500000..520000, 500000,520000, JSON $gte/$lte, repeated params). Python clients also receive a reCAPTCHA challenge.",
+    "working_method": "read the server-rendered search-results table at /EllipticCurve/Q/?conductor=500000-520000 (50 rows/page), then fetch each record by exact lmfdb_label through the API and filter locally",
+    "n_results_in_range_all_ranks": 410,
+    "n_labels_scanned": 50,
+    "n_records_fetched": 50,
+    "n_in_conductor_range": 50,
+    "n_kept": 25,
+    "cap": 25,
+    "selection": "dropped the one analytic_rank=4 curve (501029.a1); then kept both rank-3 curves (505061.a1, 505691.a1) and the earliest remaining conductors up to the 25-record cap",
+    "rank_histogram": {
+      "0": 6,
+      "1": 12,
+      "2": 5,
+      "3": 2
+    },
+    "conductor_min": 500393,
+    "conductor_max": 505691,
+    "output": "research/scratch/bsd_sample.json"
+  },
+  "task3": {
+    "n_sampled": 25,
+    "n_evaluated": 25,
+    "n_failed": 0,
+    "n_mismatches": 0,
+    "mismatches": [],
+    "first_mismatch": null,
+    "n_root_parity_inconsistent": 0,
+    "estimator": "research/scratch/analytic_rank.py :: L_afe + tail_slope (imported, not reimplemented)",
+    "eps_evaluated": [
+      0.0001,
+      3e-05,
+      1e-05,
+      1e-06
+    ],
+    "tail_points": 4,
+    "mp_dps": 30,
+    "total_runtime_s": 1190.5552823001053,
+    "run1": {
+      "curves": 17,
+      "wall_s": 863.0,
+      "note": "hit the 900 s ceiling at 17/25; results transcribed from stdout"
+    },
+    "run2": {
+      "curves": 8,
+      "wall_s": 327.5552823001053
+    },
+    "runtime_note": "run 1 was stopped by the 900 s ceiling after 17 curves; run 2 (327.6 s) completed the remaining 8. Combined wall time 1190.6 s.",
+    "per_curve": [
+      {
+        "label": "505061.a1",
+        "conductor": 505061,
+        "k_lmfdb": 3,
+        "k_est": 3,
+        "tail_slope": 2.99992,
+        "root_number_w": -1,
+        "wall_s": 20.7
+      },
+      {
+        "label": "505691.a1",
+        "conductor": 505691,
+        "k_lmfdb": 3,
+        "k_est": 3,
+        "tail_slope": 2.99992,
+        "root_number_w": -1,
+        "wall_s": 39.5
+      },
+      {
+        "label": "500393.a1",
+        "conductor": 500393,
+        "k_lmfdb": 2,
+        "k_est": 2,
+        "tail_slope": 1.99992,
+        "root_number_w": 1,
+        "wall_s": 33.4
+      },
+      {
+        "label": "500719.a1",
+        "conductor": 500719,
+        "k_lmfdb": 0,
+        "k_est": 0,
+        "tail_slope": -8e-05,
+        "root_number_w": 1,
+        "wall_s": 38.7
+      },
+      {
+        "label": "500921.a1",
+        "conductor": 500921,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.99992,
+        "root_number_w": -1,
+        "wall_s": 36.5
+      },
+      {
+        "label": "500921.b1",
+        "conductor": 500921,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.99992,
+        "root_number_w": -1,
+        "wall_s": 36.2
+      },
+      {
+        "label": "501121.a1",
+        "conductor": 501121,
+        "k_lmfdb": 2,
+        "k_est": 2,
+        "tail_slope": 1.99992,
+        "root_number_w": 1,
+        "wall_s": 47.0
+      },
+      {
+        "label": "501139.a1",
+        "conductor": 501139,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.99992,
+        "root_number_w": -1,
+        "wall_s": 45.2
+      },
+      {
+        "label": "501139.b1",
+        "conductor": 501139,
+        "k_lmfdb": 0,
+        "k_est": 0,
+        "tail_slope": -8e-05,
+        "root_number_w": 1,
+        "wall_s": 44.7
+      },
+      {
+        "label": "501317.a1",
+        "conductor": 501317,
+        "k_lmfdb": 0,
+        "k_est": 0,
+        "tail_slope": -8e-05,
+        "root_number_w": 1,
+        "wall_s": 23.0
+      },
+      {
+        "label": "501341.a1",
+        "conductor": 501341,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.99992,
+        "root_number_w": -1,
+        "wall_s": 47.9
+      },
+      {
+        "label": "501367.a1",
+        "conductor": 501367,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.99992,
+        "root_number_w": -1,
+        "wall_s": 61.8
+      },
+      {
+        "label": "501451.a1",
+        "conductor": 501451,
+        "k_lmfdb": 0,
+        "k_est": 0,
+        "tail_slope": -8e-05,
+        "root_number_w": 1,
+        "wall_s": 61.4
+      },
+      {
+        "label": "501563.a1",
+        "conductor": 501563,
+        "k_lmfdb": 2,
+        "k_est": 2,
+        "tail_slope": 1.99992,
+        "root_number_w": 1,
+        "wall_s": 73.8
+      },
+      {
+        "label": "502237.a1",
+        "conductor": 502237,
+        "k_lmfdb": 2,
+        "k_est": 2,
+        "tail_slope": 1.99992,
+        "root_number_w": 1,
+        "wall_s": 82.5
+      },
+      {
+        "label": "502237.b1",
+        "conductor": 502237,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.99992,
+        "root_number_w": -1,
+        "wall_s": 58.1
+      },
+      {
+        "label": "502237.c1",
+        "conductor": 502237,
+        "k_lmfdb": 0,
+        "k_est": 0,
+        "tail_slope": -8e-05,
+        "root_number_w": 1,
+        "wall_s": 112.6
+      },
+      {
+        "label": "502507.a1",
+        "conductor": 502507,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.999919913190974,
+        "root_number_w": -1,
+        "wall_s": 57.40780809998978
+      },
+      {
+        "label": "502543.a1",
+        "conductor": 502543,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.9999199141734534,
+        "root_number_w": -1,
+        "wall_s": 38.44953420001548
+      },
+      {
+        "label": "502543.b1",
+        "conductor": 502543,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.9999199188565387,
+        "root_number_w": -1,
+        "wall_s": 41.862155799986795
+      },
+      {
+        "label": "502819.a1",
+        "conductor": 502819,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.9999199094570712,
+        "root_number_w": -1,
+        "wall_s": 36.419691899907775
+      },
+      {
+        "label": "502829.a1",
+        "conductor": 502829,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.9999199100124792,
+        "root_number_w": -1,
+        "wall_s": 22.40448670007754
+      },
+      {
+        "label": "503621.a1",
+        "conductor": 503621,
+        "k_lmfdb": 1,
+        "k_est": 1,
+        "tail_slope": 0.9999198908133116,
+        "root_number_w": -1,
+        "wall_s": 36.113095499924384
+      },
+      {
+        "label": "503803.a1",
+        "conductor": 503803,
+        "k_lmfdb": 2,
+        "k_est": 2,
+        "tail_slope": 1.9999198881420874,
+        "root_number_w": 1,
+        "wall_s": 53.24393410002813
+      },
+      {
+        "label": "503857.a1",
+        "conductor": 503857,
+        "k_lmfdb": 0,
+        "k_est": 0,
+        "tail_slope": -8.010879257687952e-05,
+        "root_number_w": 1,
+        "wall_s": 41.64488460007124
+      }
+    ],
+    "min_curve_wall_s": 20.7,
+    "max_curve_wall_s": 112.6,
+    "caveat": "k_est is a numerical AFE estimate with no interval certificate; any mismatch would be a lead, not a result. Here there are none, which is a coverage statement only."
+  }
+}

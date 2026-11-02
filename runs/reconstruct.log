@@ -1,0 +1,71 @@
+﻿=== Stage 1 - extraction (2026-11-02) ===
+Source: J. A. Guccione, J. J. Guccione, R. Horruitiner, C. Valqui,
+"Increasing the degree of a possible counterexample to the Jacobian Conjecture
+from 100 to 108", arXiv:2204.14178v1. Prop. 4.3 is on PDF p.10; the LaTeX
+source (arXiv e-print) has the proposition at lines 1000-1007 and the proof at
+lines 1008-1311. Line numbers below are src.tex lines.
+
+Statement (lines 1000-1007):
+  If there is a counterexample in case (8,28), then there exist P,Q in L^(1)
+  with [P,Q]=x^2 and either
+    (1) N(P)={(0,0),(1,0),(8,14),(8,16),(0,8)},
+        N(Q)={(0,0),(2,1),(12,21),(12,24),(0,12)};
+    (2) N(P)={(0,0),(1,0),(8,14),(8,16)},
+        N(Q)={(0,0),(2,1),(12,21),(12,24)}.
+  Here L^(1)=K[x,x^-1,y] (line 656).
+
+Every transformation used in the proof, in order:
+
+T1. Swap. Line 1012:
+    "we apply the automorphism phi_1 with phi_1(x)=y, phi_1(y)=x".
+    This is applied while P,Q are still in K[x,y].
+T2. Shear by x^-2. Line 1074:
+    "if we apply the morphism given by phi(x)=x and phi(y)=y+lambda_1 x^-2".
+    Used when Pred_P(1,0)=(1,-2).
+T3. Shear by x^-3. Line 1079:
+    "x -> x, y -> y+lambda x^-3 for adequate lambda".
+    Line 1082: "x -> x, y -> y+alpha_1 x^-3".
+T4. Shear by x^-4. Line 1132:
+    "Apply then the automorphism phi_3 given by phi_3(x)=x,
+     phi_3(y)=y+alpha x^-4", reducing the edge {(28,8),(0,1)} to
+    {(28,8),(24,7)}.
+T5. Monomial substitution / localization. Line 1229:
+    "Apply the morphism phi with phi(x)=x^-1 and phi(y)=x^4 y. As in
+     Proposition 4.1, this is not an automorphism and the chain rule gives
+     [phi(P),phi(Q)] = -[P,Q] x^2."
+    The analogous remark for Prop. 4.1 is lines 655-656:
+    "Note that this is an automorphism of L^(1)=K[x,x^-1,y] but not of
+     K[x,y]."
+    Prop. 4.4 uses the same device at line 1395.
+
+The proof also uses factorization data of leading forms (Corollary 7.4,
+Proposition 2.5, Proposition 8.2) to choose the constants lambda_1, lambda,
+alpha_1, alpha. These constants are read off from the original polynomial P,
+not from the final normalized pair.
+
+=== Stage 2 - invertibility of each step ===
+T1 (swap): invertible on K[x,y]; it is its own inverse and det = -1.
+  It is NOT an automorphism of L^(1): it sends the unit x to y, which is not
+  a unit in K[x,x^-1,y]. This is the step that breaks the localization.
+T2-T4 (shears y -> y + c x^-k, k=2,3,4): not maps K[x,y]->K[x,y] because of
+  the negative exponent, but each is an automorphism of L^(1), with inverse
+  y -> y - c x^-k. The constants c are not determined by the normalized pair.
+T5 (phi): x -> x^-1, y -> x^4 y. Not a map K[x,y]->K[x,y]. It is an
+  involution (phi^2=id), hence invertible as a rational map, and it is an
+  automorphism of L^(1) by itself. It introduces x^-1. The paper explicitly
+  says it is "not an automorphism" of K[x,y] (line 1229). det J(phi) = -x^2,
+  so [phi(P),phi(Q)] = -[P,Q] x^2.
+Composite A = T1 o T2 o T3 o T4 o T5:
+  A(x,y) = (x^4 y + s(x^-1), x^-1), with s(x)=sum c_k x^-k, k in {2,3,4}.
+  A is a morphism K[x,y] -> L^(1), not an automorphism of either ring.
+  Its rational inverse is
+    A^-1(u,v) = (v^-1, v^4 (u - s(v))).
+  The first component v^-1 is not in L^(1)=K[u,u^-1,v] (it inverts the
+  second variable). The paper gives no inverse formula and no description
+  of the image A(K[x,y]) inside L^(1).
+Which step introduces the denominator:
+  Forward T5 introduces x^-1. In the inverse, undoing T5 introduces x^-1 in
+  the first argument, which is allowed in L^(1). Undoing T1 (the swap) is the
+  fatal step: it turns that x^-1 into y^-1, which is not in L^(1) and is not
+  a polynomial. So the composite is not invertible on polynomial pairs; the
+  inverse exists only as a rational map, defined on the image.

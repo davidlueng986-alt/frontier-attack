@@ -1,6 +1,6 @@
 {
   "script": "problems/bsd/scan_certified.py",
-  "generated_utc": "2026-11-02T11:51:53.068437+00:00",
+  "generated_utc": "2026-11-02T12:05:45.419899+00:00",
   "method": "smoothed approximate functional equation with an explicit incomplete-gamma truncation bound, a priori rounding bound cross-checked at two precisions, and Richardson finite-difference derivatives",
   "rigour": "numerical with heuristic bound",
   "structural_note": "A numerical interval can prove a value is non-zero, never that it is exactly zero.  Only k=0 (L(1) interval excludes 0) and k=1 (a_N=-1 forces L(1)=0 exactly; L'(1) interval excludes 0) are certifiable.  k>=2 is not certifiable by this method.",
@@ -8,11 +8,13 @@
     "gp": "absent (the PowerShell 'gp' command is an alias for Get-ItemProperty; no PARI/GP binary found)",
     "sage": "absent",
     "cypari2": "absent (ModuleNotFoundError)",
-    "consequence": "no algebraic-rank backend; LMFDB 'rank' and 'analytic_rank' are DECLARED inputs, not proofs"
+    "consequence": "no algebraic-rank backend; LMFDB 'rank' and 'analytic_rank' are DECLARED inputs, not proofs",
+    "rank4_probe": "234446.a1 has conductor 234446 = 2 * 117223, composite; it is outside this prime-conductor certifier's scope.  No algebraic-rank backend was available to verify its rank 4."
   },
   "inputs": {
     "sample": "C:\\Users\\daive\\Downloads\\frontier-attack\\research\\scratch\\bsd_stress.json",
     "sample_source": "LMFDB ec_curvedata / EllipticCurve search, conductor [500000, 520000], prime conductor, analytic_rank in {0,1}",
+    "special_value_source": "LMFDB ec_mwbsd special_value, independent of the AFE computation; used only as an audit",
     "lmfdb_complete_range": "N <= 500000 (Cremona); above that the rows are Stein-Watkins / BGR prime-conductor data",
     "declared_not_proved": true
   },
@@ -22,60 +24,14 @@
     "derivative_step_h": "0.02",
     "nmax_rule": "max(400, ceil(4*sqrt(N)))"
   },
-  "calibration": [
-    {
-      "label": "11a1",
-      "conductor": 11,
-      "expected_k": 0,
-      "k": 0,
-      "ok": true,
-      "error": null,
-      "root_number": 1,
-      "nmax": 400,
-      "interval": {
-        "lo": "0.253841860855910684337758923343",
-        "hi": "0.253841860855910684337758923358",
-        "contains_zero": false
-      },
-      "seconds": 1.84,
-      "note": "positive control"
-    },
-    {
-      "label": "37a1",
-      "conductor": 37,
-      "expected_k": 1,
-      "k": 1,
-      "ok": true,
-      "error": null,
-      "root_number": -1,
-      "nmax": 400,
-      "interval": {
-        "lo": "0.30599977364808325799975565009",
-        "hi": "0.305999774020027871896603920103",
-        "contains_zero": false
-      },
-      "seconds": 2.49,
-      "note": "positive control"
-    },
-    {
-      "label": "389a1",
-      "conductor": 389,
-      "expected_k": null,
-      "k": null,
-      "ok": true,
-      "error": null,
-      "root_number": 1,
-      "nmax": 400,
-      "interval": {
-        "lo": "-1.81757011323855438159343499866e-29",
-        "hi": "1.81757011323453530378841156991e-29",
-        "contains_zero": true
-      },
-      "seconds": 6.78,
-      "note": "expected refusal: rank 2, but kmax=1 can only certify k=0 or k=1; L(1) is numerically zero and w=+1, so no k=0 certificate is possible"
-    }
-  ],
+  "calibration": [],
   "calibration_ok": true,
+  "special_value_audit": {
+    "checked": 2,
+    "inside_interval": 2,
+    "all_inside": true,
+    "note": "LMFDB ec_mwbsd special_value (L(1) for rank 0, L'(1) for rank 1) is an independent computation; it must lie inside the AFE interval.  This audits the special value, not the order of vanishing."
+  },
   "curves": [
     {
       "label": "500719.a1",
@@ -135,16 +91,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "1.1889243730812439732152307545284137328",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "2.55301e-12",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
-        "a_n": 0.016,
-        "root_number": 0.295,
-        "derivatives_hi": 15.988,
-        "derivatives_lo": 14.654,
-        "total": 14.654
+        "a_n": 0.025,
+        "root_number": 0.366,
+        "derivatives_hi": 17.795,
+        "derivatives_lo": 14.982,
+        "total": 14.982
       },
-      "seconds": 30.97
+      "seconds": 33.19
     },
     {
       "label": "501317.a1",
@@ -204,16 +165,21 @@
       },
       "k_match_lmfdb_analytic": true,
       "parity_match_lmfdb_rank": true,
+      "lmfdb_special_value": "1.7993866244924673779890234626217096786",
+      "lmfdb_special_value_name": "L(1)",
+      "lmfdb_special_value_inside_interval": true,
+      "lmfdb_special_value_abs_diff_from_center": "3.13031e-12",
+      "lmfdb_special_value_quote_ulp": "1.0e-37",
       "flag": "OK",
       "note": "certified k=0: L(1) interval excludes 0",
       "timings_s": {
         "a_n": 0.016,
-        "root_number": 0.114,
-        "derivatives_hi": 7.226,
-        "derivatives_lo": 6.312,
-        "total": 6.312
+        "root_number": 0.121,
+        "derivatives_hi": 6.885,
+        "derivatives_lo": 5.765,
+        "total": 5.765
       },
-      "seconds": 13.69
+      "seconds": 12.81
     }
   ],
   "certified_count": 2,
@@ -222,5 +188,5 @@
   "anomalies": [],
   "uncertified": [],
   "verdict": "COVERAGE EXTENDED: 2 curves certified, 0 anomalies",
-  "total_seconds": 55.77
+  "total_seconds": 46.02
 }

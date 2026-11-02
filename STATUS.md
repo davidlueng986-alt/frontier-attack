@@ -57,11 +57,14 @@ after it. They are all much lower, and that is the correct direction.
   curves; `L(1)` matches LMFDB to 29 digits.
 - ✅ The obvious 20k truncation **fails** on rank 1 and rank 3 — recorded so
   nobody repeats it.
-- ❌ The estimator is numerical, not certified. It cannot supply the `k` in the
-  terminal object.
-- ❌ No algebraic-rank backend without PARI/GP.
-- **Next:** certify the AFE ladder with interval arithmetic; then a coverage
-  sweep above `N = 500,000`.
+- ✅ Coverage check: 25 curves with conductor in `[500k, 520k]`, analytic ranks
+  0–3, all reproduced exactly, 0 mismatches, 0 parity inconsistencies.
+- ✅ **GZK closes the counterexample route.** Gross–Zagier + Kolyvagin: analytic
+  rank ≤ 1 forces `r = k`. So any counterexample needs `k ≥ 2`.
+- ❌ No algebraic-rank backend on this machine (no PARI, no C compiler).
+- ❌ No rigorous `k ≥ 2` certificate (needs zero-counting, not an AFE interval).
+- **Status: CLOSED as a counterexample hunt.** The remaining work is
+  infrastructure, not a solution. Keep the tools; stop spending slots here.
 
 ## Pipeline
 

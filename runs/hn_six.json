@@ -551,9 +551,20 @@
         false,
         false
       ],
-      "conclusion": "false at k=5.  W7 is the k=3 primitive (alternating rim triple), and it has an explicit proper 5-colouring with no monochromatic sqrt(3)-triangle.  The structural theorem explains why no 7-vertex replacement can exist."
+      "conclusion": "false at k=5.  W7 is the k=3 primitive (alternating rim triple), and it has an explicit proper 5-colouring with no monochromatic sqrt(3)-triangle.  Even at k=4 W7 alone does not force: two of its four essential 4-colourings lack a mono triple, which is why de Grey uses 52 copies in L.  At k=5 the structural theorem explains why no 7-vertex replacement can exist."
     },
     "scope": "standalone pattern forcing on 7 vertices.  Contextual forcing assisted by the 509 graph is a different question and is not claimed here.",
+    "equality_gadget_status": {
+      "source": "runs/hn_509_relations.json",
+      "pairs_examined_k5": 18889,
+      "forced_equal_pairs_k5": 0,
+      "diamonds": 721,
+      "diamond_relation_k3": "equal",
+      "diamond_relation_k4": "free",
+      "diamond_relation_k5": "free",
+      "conclusion": "the diamond equality primitive is a k=3 tool and is free at k=5, so the 5-colour route must force a 3-vertex pattern, not a two-terminal equality"
+    },
+    "where_it_stops": "No 7-vertex 5-colour pattern-forcing gadget exists.  The 509 graph is 5-chromatic, and a 6-chromatic certificate would need a 5-colour analogue of de Grey's L/M/N construction: a network that forces a monochromatic sqrt(3)-triangle in every 5-colouring, plus a gadget that forbids it in the selected copy.  That object is not known and is not produced by this run; the 509 graph itself remains the chi=5 seed.",
     "drat": null,
     "drat_note": "No 6-chromatic candidate exists in this run, so no new lower-bound DRAT trace is claimed. The negative is the structural proof plus the exhaustive bounded search; the k=5 witness is checkable directly.",
     "w7_countercolouring": [
@@ -593,7 +604,7 @@
       "status": "SAT",
       "worst_abs_d2_minus_1": "1.49675e-49",
       "exit_code": 1,
-      "seconds": 4.249786853790283,
+      "seconds": 2.4600558280944824,
       "ok": true,
       "note": "tools/verify_509.py exits 1 when the instance is SAT"
     },
@@ -603,8 +614,8 @@
       "graphs": 1096,
       "checks": 10504,
       "mismatches": 0,
-      "seconds": 7.202412366867065,
-      "validation_seconds": 7.205336570739746,
+      "seconds": 4.345067501068115,
+      "validation_seconds": 4.348128080368042,
       "w7_triple_k3": true,
       "w7_triple_k4": false,
       "w7_triple_k5": false,
@@ -651,13 +662,76 @@
           304
         ],
         "edges": 12,
-        "triples": 2
+        "triples": 2,
+        "edge_list": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            1,
+            6
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ]
+        ],
+        "triple_list": [
+          [
+            0,
+            4,
+            5
+          ],
+          [
+            2,
+            3,
+            6
+          ]
+        ]
       },
+      "best_is_w7": true,
       "gadget_found": false,
       "gadget": null,
       "exact_verified": null,
       "capped_by": "candidate_cap",
-      "seconds": 138.64547753334045
+      "seconds": 99.94865846633911
     },
     {
       "stage": 4,
@@ -667,7 +741,7 @@
       "attachments_tested": 257,
       "unsat_attachments": [],
       "all_sat": true,
-      "seconds": 21.83037281036377,
+      "seconds": 10.95276927947998,
       "note": "A 4-colourable 7-vertex primitive cannot force a triple at k=5; the control confirms that even geometric attachment to the 509 graph stays 5-colourable."
     }
   ],
@@ -681,6 +755,6 @@
   },
   "verdict": "NEGATIVE: no 7-vertex unit-distance gadget can force a monochromatic sqrt(3)-triangle at k=5 (proof: every 7-vertex UDG is 4-colourable and any 4-colouring refines to a 5-colouring with classes of size <=2), and the bounded search of 20000 candidates found none; the W7 control stays SAT on all 257 sqrt(3)-triples of 509",
   "negative_reason_short": "no 7-vertex unit-distance gadget can force a monochromatic 3-vertex pattern at k=5",
-  "runtime_seconds": 175.47598886489868,
+  "runtime_seconds": 121.09035539627075,
   "negative_theorem": "Every 7-vertex unit-distance graph is 4-colourable. By OEIS A186705 the maximum numbers of unit distances on 7,6,5,4,3 points are 12,9,7,5,3, so every induced subgraph has minimum degree at most 3: the graph is 3-degenerate. A proper 4-colouring splits into at most five independent classes of size <=2 (split classes into pairs), and no class of size <=2 contains a 3-vertex monochromatic pattern. Hence no 7-vertex unit-distance graph can force a monochromatic sqrt(3)-triangle at k=5."
 }

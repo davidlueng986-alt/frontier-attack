@@ -25,3 +25,19 @@ stage2 patterns forced_mono brute-force validation: 1096 graphs, 10504 (graph,tr
 [2026-11-02T20:01:11] stage1 verify_509 n=509 m=2442 k=5 SAT worst|d2-1|=1.49675e-49 exit=1 ok=True
 [2026-11-02T20:01:20] stage2 patterns graphs=1096 checks=10504 mismatches=0 W7 k3=True k4=False k5=False ok=True
 [2026-11-02T20:01:25] geometry n=509 m=2442 sq3_pairs=1175 sq3_triples=257 edges_match=True
+[2026-11-02T20:03:34] stage3 gadget_search candidates=20000 (local=10094, random=40000, lattice=48120) with_sq3=8525 max_edges=12 max_triples=5 found=False capped_by=candidate_cap seconds=128.6
+[2026-11-02T20:03:46] stage4 composition control attachments=257 unsat=0 all_sat=True seconds=12.4
+[2026-11-02T20:03:46] stage5 wrote hn_six.json n=509 m=2442 chi_lower=5 gadget_found=False verdict=NEGATIVE runtime=163.5s
+[2026-11-02T20:04:15] stage1 verify_509 n=509 m=2442 k=5 SAT worst|d2-1|=1.49675e-49 exit=1 ok=True
+[2026-11-02T20:04:19] stage2 patterns graphs=1096 checks=10504 mismatches=0 W7 k3=True k4=False k5=False ok=True
+[2026-11-02T20:04:21] geometry n=509 m=2442 sq3_pairs=1175 sq3_triples=257 edges_match=True
+[2026-11-02T20:05:24] stage3 gadget_search candidates=20000 (local=10094, random=40000, lattice=48120) with_sq3=8525 max_edges=12 max_triples=5 found=False capped_by=candidate_cap seconds=62.6
+[2026-11-02T20:05:35] stage4 composition control attachments=257 unsat=0 all_sat=True seconds=10.9
+[2026-11-02T20:05:35] stage5 wrote hn_six.json n=509 m=2442 chi_lower=5 gadget_found=False verdict=NEGATIVE runtime=82.5s
+[2026-11-02T20:06:00] stage1 verify_509 n=509 m=2442 k=5 SAT worst|d2-1|=1.49675e-49 exit=1 ok=True
+[2026-11-02T20:06:05] stage2 patterns graphs=1096 checks=10504 mismatches=0 W7 k3=True k4=False k5=False ok=True
+[2026-11-02T20:06:08] geometry n=509 m=2442 sq3_pairs=1175 sq3_triples=257 edges_match=True
+[2026-11-02T20:07:48] stage3 gadget_search candidates=20000 (local=10094, random=40000, lattice=48120) with_sq3=8525 max_edges=12 max_triples=5 found=False capped_by=candidate_cap seconds=99.9
+[2026-11-02T20:07:59] stage4 composition control attachments=257 unsat=0 all_sat=True seconds=11.0
+[2026-11-02T20:07:59] stage5 wrote hn_six.json n=509 m=2442 chi_lower=5 gadget_found=False verdict=NEGATIVE runtime=121.1s
+[2026-11-02T20:10:01] stage1 verify_509 n=509 m=2442 k=5 SAT worst|d2-1|=1.49675e-49 exit=1 ok=True

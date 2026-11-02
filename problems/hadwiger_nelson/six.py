@@ -326,6 +326,32 @@ def _candidate_signature(edges, triples):
             tuple(sorted(tuple(sorted(t)) for t in triples)))
 
 
+def is_wheel_w7(edges, n: int = 7) -> bool:
+    """True iff the graph is the regular hexagon wheel W7 (hub + C6 rim)."""
+    adj = [set() for _ in range(n)]
+    for u, v in edges:
+        adj[u].add(v)
+        adj[v].add(u)
+    hubs = [v for v in range(n) if len(adj[v]) == n - 1]
+    if len(hubs) != 1:
+        return False
+    hub = hubs[0]
+    rim = [v for v in range(n) if v != hub]
+    if any(len(adj[v]) != 3 for v in rim):
+        return False
+    if any(len(adj[v] & set(rim)) != 2 for v in rim):
+        return False
+    seen = {rim[0]}
+    stack = [rim[0]]
+    while stack:
+        x = stack.pop()
+        for y in adj[x] & set(rim):
+            if y not in seen:
+                seen.add(y)
+                stack.append(y)
+    return len(seen) == len(rim)
+
+
 def _subset_candidate(subset, edge_set, sq3_set):
     sub = list(subset)
     edges = []
@@ -684,7 +710,7 @@ def exact_509_points(indices):
 
 def stage3_search(points, edges, sq3_pairs) -> dict:
     t0 = time.time()
-    deadline = t0 + SEARCH_SECONDS
+    deadline = time.monotonic() + SEARCH_SECONDS
     rng = random.Random(20261102)
     seen_signatures = set()
 
@@ -720,8 +746,13 @@ def stage3_search(points, edges, sq3_pairs) -> dict:
         if (len(edges_c), len(triples_c)) > (
                 (stats["best"] or {}).get("edges", -1),
                 (stats["best"] or {}).get("triples", -1)):
-            stats["best"] = {**meta, "edges": len(edges_c),
-                             "triples": len(triples_c)}
+            stats["best"] = {
+                **meta,
+                "edges": len(edges_c),
+                "triples": len(triples_c),
+                "edge_list": [list(e) for e in edges_c],
+                "triple_list": [list(t) for t in triples_c],
+            }
         if patterns.forces_mono_triple_set(edges_c, 7, triples_c, K):
             stats["found"] = {**meta, "edges": edges_c, "triples": triples_c}
             return True
@@ -813,6 +844,11 @@ def stage3_search(points, edges, sq3_pairs) -> dict:
         "max_edges": stats["max_edges"],
         "max_triples": stats["max_triples"],
         "best": stats["best"],
+        "best_is_w7": bool(
+            stats["best"]
+            and stats["best"].get("edge_list")
+            and is_wheel_w7([tuple(e) for e in stats["best"]["edge_list"]])
+        ),
         "gadget_found": found is not None,
         "gadget": None if found is None else {
             "phase": found["phase"],
@@ -1101,6 +1137,15 @@ def build_certificate(stage1, stage2, stage4, points, edges):
                 "a two-terminal equality"
             ),
         },
+        "where_it_stops": (
+            "No 7-vertex 5-colour pattern-forcing gadget exists.  The 509 graph "
+            "is 5-chromatic, and a 6-chromatic certificate would need a 5-colour "
+            "analogue of de Grey's L/M/N construction: a network that forces a "
+            "monochromatic sqrt(3)-triangle in every 5-colouring, plus a gadget "
+            "that forbids it in the selected copy.  That object is not known and "
+            "is not produced by this run; the 509 graph itself remains the "
+            "chi=5 seed."
+        ),
         "drat": None,
         "drat_note": (
             "No 6-chromatic candidate exists in this run, so no new lower-bound "
