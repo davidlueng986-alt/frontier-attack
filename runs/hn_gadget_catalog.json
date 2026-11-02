@@ -1,0 +1,952 @@
+{
+  "task": "level-5 virtual edge: abstract catalog first, geometric filter second",
+  "terminal_condition": "unit-distance G, terminals u,v non-adjacent, |uv|^2 = 3, G 5-colourable, every 5-colouring has colour(u) != colour(v)",
+  "verdict": "NEGATIVE_CATALOG",
+  "found": false,
+  "n": null,
+  "uv_dist2": "3",
+  "construction_audit": {
+    "lemma_equal": "for a k-colourable G and non-adjacent u,v: G + uv is not k-colourable  <=>  every k-colouring of G has colour(u) = colour(v)  [EQUAL gadget]",
+    "lemma_different": "for a k-colourable G and non-adjacent u,v: G / uv is not k-colourable  <=>  every k-colouring of G has colour(u) != colour(v)  [DIFFER gadget = virtual edge]",
+    "proof": "(1) a k-colouring of G with colour(u) != colour(v) is exactly a proper k-colouring of G + uv; (2) a k-colouring of G with colour(u) = colour(v) is exactly a proper k-colouring of G / uv.",
+    "consequence": "the recipe 'H 6-critical, G = H - uv, G + uv not 5-colourable' produces an EQUAL gadget, not a virtual edge.  Stage 4's relation(u,v,5) == 'different' test can never pass on that route.  The virtual edge is the vertex-split (quotient) route B.",
+    "route_B_minimal_core": "if G is a forced-difference gadget, take a 6-critical H inside G/uv and the preimage of V(H): a subgraph G'' with |V(G'')| = |V(H)| + 1, m(G'') >= m(H), G'' unit-distance and G''/uv = H.",
+    "controls": {
+      "k6_minus_edge": {
+        "name": "K6 - e",
+        "role": "stage-0 witness: G + uv = K6 is not 5-colourable but relation(0,1,5) = equal, not different",
+        "n": 6,
+        "m": 14,
+        "relation_k5": "equal",
+        "u_n": 9,
+        "structural": {
+          "m": 14,
+          "k4": true,
+          "max_common": 4,
+          "triangles": 16,
+          "edge_in_more_than_2_triangles": true,
+          "uv_adjacent": false
+        },
+        "certifier": {
+          "status": "CERTIFIED-EXCLUDED",
+          "nodes": 3,
+          "seconds": 0.001
+        }
+      },
+      "diamond": {
+        "name": "diamond (K4 - e)",
+        "role": "stage-0 witness: G + uv = K4 is not 3-colourable, tips forced EQUAL",
+        "coords": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "sqrt(3)",
+            "0"
+          ],
+          [
+            "sqrt(3)/2",
+            "1/2"
+          ],
+          [
+            "sqrt(3)/2",
+            "-1/2"
+          ]
+        ],
+        "exact": {
+          "n": 4,
+          "m": 5,
+          "edges_exact": true,
+          "bad_edges": [],
+          "uv_d2": "3",
+          "uv_is_sqrt3": true,
+          "all_points_distinct": true
+        },
+        "relation_k3": "equal",
+        "relation_k5": "free",
+        "certifier": {
+          "status": "PLACEMENT-FOUND",
+          "nodes": 3,
+          "seconds": 0.0
+        }
+      },
+      "route_b_k3_analogue": {
+        "name": "K4 with a vertex split (k=3 analogue of route B)",
+        "role": "validates the corrected construction: quotient K4 is 4-chromatic",
+        "n": 5,
+        "m": 6,
+        "terminals": [
+          3,
+          4
+        ],
+        "edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            4
+          ]
+        ],
+        "quotient_n": 4,
+        "relation_k3": "different",
+        "chi_le_3": true,
+        "quotient_chi_le_3": false
+      },
+      "wheel7": {
+        "name": "hexagon + centre (W6, 12 = u(7) edges)",
+        "role": "positive embedding control: exact sqrt(3) pair, level lemma => free at k=5",
+        "coords": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "1/2",
+            "sqrt(3)/2"
+          ],
+          [
+            "-1/2",
+            "sqrt(3)/2"
+          ],
+          [
+            "-1",
+            "0"
+          ],
+          [
+            "-1/2",
+            "-sqrt(3)/2"
+          ],
+          [
+            "1/2",
+            "-sqrt(3)/2"
+          ]
+        ],
+        "exact": {
+          "n": 7,
+          "m": 12,
+          "edges_exact": true,
+          "bad_edges": [],
+          "uv_d2": "3",
+          "uv_is_sqrt3": true,
+          "all_points_distinct": true
+        },
+        "relation_k5": "free",
+        "certifier": {
+          "status": "PLACEMENT-FOUND",
+          "nodes": 6,
+          "seconds": 0.001
+        }
+      }
+    }
+  },
+  "catalog": {
+    "total": 1497264,
+    "complete": true,
+    "n_min": 6,
+    "n_max": 13,
+    "per_n": {
+      "6": {
+        "graphs": 1,
+        "edges_total": 15,
+        "m_min": 15,
+        "m_max": 15,
+        "min_degree": 5,
+        "min_degree_hist": {
+          "5": 1
+        }
+      },
+      "7": {
+        "graphs": 0,
+        "edges_total": 0,
+        "m_min": null,
+        "m_max": null,
+        "min_degree": null,
+        "min_degree_hist": {}
+      },
+      "8": {
+        "graphs": 1,
+        "edges_total": 23,
+        "m_min": 23,
+        "m_max": 23,
+        "min_degree": 5,
+        "min_degree_hist": {
+          "5": 1
+        }
+      },
+      "9": {
+        "graphs": 2,
+        "edges_total": 53,
+        "m_min": 26,
+        "m_max": 27,
+        "min_degree": 5,
+        "min_degree_hist": {
+          "5": 2
+        }
+      },
+      "10": {
+        "graphs": 22,
+        "edges_total": 672,
+        "m_min": 28,
+        "m_max": 35,
+        "min_degree": 5,
+        "min_degree_hist": {
+          "5": 21,
+          "7": 1
+        }
+      },
+      "11": {
+        "graphs": 393,
+        "edges_total": 13530,
+        "m_min": 29,
+        "m_max": 39,
+        "min_degree": 5,
+        "min_degree_hist": {
+          "5": 386,
+          "6": 7
+        }
+      },
+      "12": {
+        "graphs": 17036,
+        "edges_total": 661765,
+        "m_min": 33,
+        "m_max": 47,
+        "min_degree": 5,
+        "min_degree_hist": {
+          "5": 16944,
+          "6": 91,
+          "7": 1
+        }
+      },
+      "13": {
+        "graphs": 1479809,
+        "edges_total": 64068160,
+        "m_min": 37,
+        "m_max": 51,
+        "min_degree": 5,
+        "min_degree_hist": {
+          "5": 1468126,
+          "6": 11678,
+          "7": 5
+        }
+      }
+    },
+    "m_hist": {
+      "6": {
+        "15": 1
+      },
+      "7": {},
+      "8": {
+        "23": 1
+      },
+      "9": {
+        "26": 1,
+        "27": 1
+      },
+      "10": {
+        "28": 2,
+        "29": 1,
+        "30": 6,
+        "31": 12,
+        "35": 1
+      },
+      "11": {
+        "29": 2,
+        "30": 1,
+        "31": 2,
+        "32": 17,
+        "33": 15,
+        "34": 141,
+        "35": 201,
+        "36": 9,
+        "37": 3,
+        "38": 1,
+        "39": 1
+      },
+      "12": {
+        "33": 2,
+        "34": 1,
+        "35": 6,
+        "36": 173,
+        "37": 418,
+        "38": 4354,
+        "39": 9817,
+        "40": 1656,
+        "41": 434,
+        "42": 117,
+        "43": 57,
+        "47": 1
+      },
+      "13": {
+        "37": 28,
+        "38": 21,
+        "39": 494,
+        "40": 3823,
+        "41": 20425,
+        "42": 230527,
+        "43": 771034,
+        "44": 254132,
+        "45": 142282,
+        "46": 46072,
+        "47": 10361,
+        "48": 569,
+        "49": 29,
+        "50": 3,
+        "51": 9
+      }
+    },
+    "provenance": {
+      "generator": "Olivier Lalonde, gencrit (nauty geng); EJC 32(1) (2025) #P1.18",
+      "host": "users.cecs.anu.edu.au/~bdm/data/crit/crit_<n>_6.g6[.gz]",
+      "pointer": {
+        "url": "https://github.com/HeliCorgi/fourteen-points-six-colors",
+        "commit": "4c84e4d67522e644faef704694cd5ba7fc273abc",
+        "doc": "code/minimality/COMPLETENESS.md sec.1 and code/minimality/README.md",
+        "what": "points at the catalog and re-verifies its counts; the catalog is generated by github.com/lalondeo/gencrit (nauty geng)"
+      },
+      "files": [
+        "C:\\Users\\daive\\AppData\\Local\\Temp\\opencode\\crit\\crit_10_6.g6",
+        "C:\\Users\\daive\\AppData\\Local\\Temp\\opencode\\crit\\crit_11_6.g6",
+        "C:\\Users\\daive\\AppData\\Local\\Temp\\opencode\\crit\\crit_12_6.g6",
+        "C:\\Users\\daive\\AppData\\Local\\Temp\\opencode\\crit\\crit_13_6.g6",
+        "C:\\Users\\daive\\AppData\\Local\\Temp\\opencode\\crit\\crit_6_6.g6",
+        "C:\\Users\\daive\\AppData\\Local\\Temp\\opencode\\crit\\crit_8_6.g6",
+        "C:\\Users\\daive\\AppData\\Local\\Temp\\opencode\\crit\\crit_9_6.g6"
+      ]
+    }
+  },
+  "stage1": {
+    "counts_verified": true,
+    "min_degree_all_graphs": 5,
+    "criticality_sample": {
+      "checked": 423,
+      "all_ok": true,
+      "by_n": {
+        "6": {
+          "checked": 1,
+          "ok": true,
+          "edges_verified": 15,
+          "seconds": 0.007
+        },
+        "8": {
+          "checked": 1,
+          "ok": true,
+          "edges_verified": 23,
+          "seconds": 0.01
+        },
+        "9": {
+          "checked": 2,
+          "ok": true,
+          "edges_verified": 53,
+          "seconds": 0.025
+        },
+        "10": {
+          "checked": 22,
+          "ok": true,
+          "edges_verified": 672,
+          "seconds": 0.388
+        },
+        "11": {
+          "checked": 393,
+          "ok": true,
+          "edges_verified": 13530,
+          "seconds": 9.096
+        },
+        "12": {
+          "checked": 2,
+          "ok": true,
+          "edges_verified": 74,
+          "seconds": 0.05
+        },
+        "13": {
+          "checked": 2,
+          "ok": true,
+          "edges_verified": 80,
+          "seconds": 0.055
+        }
+      },
+      "failures": []
+    }
+  },
+  "u_n": {
+    "values": {
+      "1": 0,
+      "2": 1,
+      "3": 3,
+      "4": 5,
+      "5": 7,
+      "6": 9,
+      "7": 12,
+      "8": 14,
+      "9": 18,
+      "10": 20,
+      "11": 23,
+      "12": 27,
+      "13": 30,
+      "14": 33,
+      "15": 37
+    },
+    "source": "Schade (thesis), exact for n<=14; reproduced in Agoston-Palvolgyi, Period. Math. Hungar. (2022) Table 1, and OEIS A186705; u(15)=37 proved by Agoston-Palvolgyi.  Cross-check: the density recursion u(n) <= floor(n/(n-2) * u(n-1)) holds for every 7 <= n <= 15.",
+    "density_recursion_ok": true,
+    "meaning": "u(n) = max edges of a unit-distance graph on n vertices"
+  },
+  "route_A_literal": {
+    "what": "H 6-critical, G = H - uv (forced EQUALITY: G + uv = H is not 5-colourable)",
+    "per_n": [
+      {
+        "n": 6,
+        "graphs": 1,
+        "edge_pairs": 15,
+        "deduped_classes": 1,
+        "dedupe": "full",
+        "pairs_expanded": 15
+      },
+      {
+        "n": 8,
+        "graphs": 1,
+        "edge_pairs": 23,
+        "deduped_classes": 3,
+        "dedupe": "full",
+        "pairs_expanded": 23
+      },
+      {
+        "n": 9,
+        "graphs": 2,
+        "edge_pairs": 53,
+        "deduped_classes": 15,
+        "dedupe": "full",
+        "pairs_expanded": 53
+      },
+      {
+        "n": 10,
+        "graphs": 22,
+        "edge_pairs": 672,
+        "deduped_classes": 278,
+        "dedupe": "full",
+        "pairs_expanded": 672
+      },
+      {
+        "n": 11,
+        "graphs": 393,
+        "edge_pairs": 13530,
+        "deduped_classes": 9370,
+        "dedupe": "full",
+        "pairs_expanded": 13530
+      },
+      {
+        "n": 12,
+        "graphs": 17036,
+        "edge_pairs": 661765,
+        "deduped_classes": null,
+        "dedupe": "skipped: all G die at 3a on m alone"
+      },
+      {
+        "n": 13,
+        "graphs": 1479809,
+        "edge_pairs": 64068160,
+        "deduped_classes": null,
+        "dedupe": "skipped: all G die at 3a on m alone"
+      }
+    ],
+    "pairs_total": 64744218,
+    "deduped_classes_small_n": 9667,
+    "dedupe_note": "bucket by Weisfeiler-Lehman hash of G plus two pendants at u and v, then networkx.is_isomorphic inside each bucket; this is exact for (G; {u,v})",
+    "filter_3a": [
+      {
+        "n": 6,
+        "m_G_min": 14,
+        "u_n": 9,
+        "margin": 5,
+        "killed": true,
+        "pairs": 15
+      },
+      {
+        "n": 8,
+        "m_G_min": 22,
+        "u_n": 14,
+        "margin": 8,
+        "killed": true,
+        "pairs": 23
+      },
+      {
+        "n": 9,
+        "m_G_min": 25,
+        "u_n": 18,
+        "margin": 7,
+        "killed": true,
+        "pairs": 53
+      },
+      {
+        "n": 10,
+        "m_G_min": 27,
+        "u_n": 20,
+        "margin": 7,
+        "killed": true,
+        "pairs": 672
+      },
+      {
+        "n": 11,
+        "m_G_min": 28,
+        "u_n": 23,
+        "margin": 5,
+        "killed": true,
+        "pairs": 13530
+      },
+      {
+        "n": 12,
+        "m_G_min": 32,
+        "u_n": 27,
+        "margin": 5,
+        "killed": true,
+        "pairs": 661765
+      },
+      {
+        "n": 13,
+        "m_G_min": 36,
+        "u_n": 30,
+        "margin": 6,
+        "killed": true,
+        "pairs": 64068160
+      }
+    ],
+    "killed_by_3a": 64744218,
+    "survivor_sizes": [],
+    "structural_independent": {
+      "clique_le_3": 0,
+      "k23_and_triangle": 0,
+      "tested": 9667,
+      "note": "route A is killed twice over: every deduped G = H - uv contains a K4 (0/9667 pass omega <= 3), and every one also exceeds u(n)"
+    },
+    "verdict": "NEGATIVE by edge count; and structurally this route cannot produce relation 'different' at all (stage 0)"
+  },
+  "route_B_corrected": {
+    "what": "forced DIFFERENCE: G/uv not 5-colourable.  Minimal core = 6-critical H with a vertex split into u,v; |V(core)|=|V(H)|+1, m(core) >= m(H)",
+    "per_n": [
+      {
+        "n": 6,
+        "H_graphs": 1,
+        "split_pairs": 6,
+        "core_n": 7,
+        "m_H_min": 15,
+        "m_core_min": 15
+      },
+      {
+        "n": 8,
+        "H_graphs": 1,
+        "split_pairs": 8,
+        "core_n": 9,
+        "m_H_min": 23,
+        "m_core_min": 23
+      },
+      {
+        "n": 9,
+        "H_graphs": 2,
+        "split_pairs": 18,
+        "core_n": 10,
+        "m_H_min": 26,
+        "m_core_min": 26
+      },
+      {
+        "n": 10,
+        "H_graphs": 22,
+        "split_pairs": 220,
+        "core_n": 11,
+        "m_H_min": 28,
+        "m_core_min": 28
+      },
+      {
+        "n": 11,
+        "H_graphs": 393,
+        "split_pairs": 4323,
+        "core_n": 12,
+        "m_H_min": 29,
+        "m_core_min": 29
+      },
+      {
+        "n": 12,
+        "H_graphs": 17036,
+        "split_pairs": 204432,
+        "core_n": 13,
+        "m_H_min": 33,
+        "m_core_min": 33
+      },
+      {
+        "n": 13,
+        "H_graphs": 1479809,
+        "split_pairs": 19237517,
+        "core_n": 14,
+        "m_H_min": 37,
+        "m_core_min": 37
+      }
+    ],
+    "split_pairs_total": 19446524,
+    "filter_3a": [
+      {
+        "n_H": 6,
+        "n_core": 7,
+        "m_core_min": 15,
+        "u_n_core": 12,
+        "margin": 3,
+        "killed": true,
+        "pairs": 6
+      },
+      {
+        "n_H": 8,
+        "n_core": 9,
+        "m_core_min": 23,
+        "u_n_core": 18,
+        "margin": 5,
+        "killed": true,
+        "pairs": 8
+      },
+      {
+        "n_H": 9,
+        "n_core": 10,
+        "m_core_min": 26,
+        "u_n_core": 20,
+        "margin": 6,
+        "killed": true,
+        "pairs": 18
+      },
+      {
+        "n_H": 10,
+        "n_core": 11,
+        "m_core_min": 28,
+        "u_n_core": 23,
+        "margin": 5,
+        "killed": true,
+        "pairs": 220
+      },
+      {
+        "n_H": 11,
+        "n_core": 12,
+        "m_core_min": 29,
+        "u_n_core": 27,
+        "margin": 2,
+        "killed": true,
+        "pairs": 4323
+      },
+      {
+        "n_H": 12,
+        "n_core": 13,
+        "m_core_min": 33,
+        "u_n_core": 30,
+        "margin": 3,
+        "killed": true,
+        "pairs": 204432
+      },
+      {
+        "n_H": 13,
+        "n_core": 14,
+        "m_core_min": 37,
+        "u_n_core": 33,
+        "margin": 4,
+        "killed": true,
+        "pairs": 19237517
+      }
+    ],
+    "killed_by_3a": 19446524,
+    "survivor_core_sizes": [],
+    "abstract_split_search": {
+      "sampled": true,
+      "splits_tested": 398,
+      "five_colourable": 320,
+      "relation_different": 320,
+      "six_chromatic": 78,
+      "per_n": [
+        {
+          "n": 6,
+          "graphs_tested": 1,
+          "splits": 42,
+          "five_colourable": 33
+        },
+        {
+          "n": 8,
+          "graphs_tested": 1,
+          "splits": 56,
+          "five_colourable": 46
+        },
+        {
+          "n": 9,
+          "graphs_tested": 1,
+          "splits": 60,
+          "five_colourable": 46
+        },
+        {
+          "n": 10,
+          "graphs_tested": 1,
+          "splits": 60,
+          "five_colourable": 50
+        },
+        {
+          "n": 11,
+          "graphs_tested": 1,
+          "splits": 60,
+          "five_colourable": 48
+        },
+        {
+          "n": 12,
+          "graphs_tested": 1,
+          "splits": 60,
+          "five_colourable": 48
+        },
+        {
+          "n": 13,
+          "graphs_tested": 1,
+          "splits": 60,
+          "five_colourable": 49
+        }
+      ],
+      "examples": [
+        {
+          "n_H": 6,
+          "m_H": 15,
+          "m_G": 15,
+          "w": 0,
+          "A_size": 2,
+          "degree_w": 5,
+          "u_n_core": 12,
+          "margin": 3,
+          "relation_k5": "different"
+        },
+        {
+          "n_H": 8,
+          "m_H": 23,
+          "m_G": 23,
+          "w": 0,
+          "A_size": 3,
+          "degree_w": 5,
+          "u_n_core": 18,
+          "margin": 5,
+          "relation_k5": "different"
+        },
+        {
+          "n_H": 9,
+          "m_H": 27,
+          "m_G": 27,
+          "w": 0,
+          "A_size": 2,
+          "degree_w": 5,
+          "u_n_core": 20,
+          "margin": 7,
+          "relation_k5": "different"
+        },
+        {
+          "n_H": 10,
+          "m_H": 31,
+          "m_G": 31,
+          "w": 0,
+          "A_size": 1,
+          "degree_w": 5,
+          "u_n_core": 23,
+          "margin": 8,
+          "relation_k5": "different"
+        },
+        {
+          "n_H": 11,
+          "m_H": 34,
+          "m_G": 34,
+          "w": 0,
+          "A_size": 3,
+          "degree_w": 5,
+          "u_n_core": 27,
+          "margin": 7,
+          "relation_k5": "different"
+        },
+        {
+          "n_H": 12,
+          "m_H": 41,
+          "m_G": 41,
+          "w": 0,
+          "A_size": 4,
+          "degree_w": 7,
+          "u_n_core": 30,
+          "margin": 11,
+          "relation_k5": "different"
+        },
+        {
+          "n_H": 13,
+          "m_H": 43,
+          "m_G": 43,
+          "w": 0,
+          "A_size": 1,
+          "degree_w": 5,
+          "u_n_core": 33,
+          "margin": 10,
+          "relation_k5": "different"
+        }
+      ],
+      "seconds": 1.12,
+      "note": "5-colourable splits are abstract level-5 virtual edges: their quotient is the 6-critical H, so relation(u,v,5) = 'different'. Each still has m(G) >= m(H) and |V(G)| = |V(H)|+1, so filter 3a excludes it geometrically."
+    },
+    "verdict": "NEGATIVE by edge count"
+  },
+  "stage3": {
+    "filters": [
+      {
+        "id": "3a",
+        "name": "edge count",
+        "rule": "m <= u(n)",
+        "sound": true,
+        "why": "u(n) is the exact maximum number of unit distances among n points",
+        "route_A_killed": 64744218,
+        "route_B_killed": 19446524
+      },
+      {
+        "id": "3b",
+        "name": "clique",
+        "rule": "omega(G) <= 3",
+        "sound": true,
+        "why": "no four points of the plane are pairwise at unit distance",
+        "route_A_pass_independent": 0,
+        "tested": 9667
+      },
+      {
+        "id": "3c",
+        "name": "K_2,3",
+        "rule": "K_2,3-free; edge in <= 2 triangles",
+        "sound": true,
+        "why": "two unit circles intersect in at most two points",
+        "route_A_pass_independent": 0,
+        "tested": 9667
+      },
+      {
+        "id": "3d",
+        "name": "certified embedding",
+        "rule": "circle-intersection DFS, interval arithmetic, |uv|^2 = 3",
+        "sound": true,
+        "tested": 0,
+        "survivors": 0
+      }
+    ],
+    "direct_certification_sample": [
+      {
+        "n": 6,
+        "m_G": 14,
+        "u_n": 9,
+        "terminals": [
+          0,
+          1
+        ],
+        "status": "CERTIFIED-EXCLUDED",
+        "nodes": 3,
+        "seconds": 0.001
+      },
+      {
+        "n": 8,
+        "m_G": 22,
+        "u_n": 14,
+        "terminals": [
+          0,
+          2
+        ],
+        "status": "CERTIFIED-EXCLUDED",
+        "nodes": 3,
+        "seconds": 0.0
+      },
+      {
+        "n": 9,
+        "m_G": 25,
+        "u_n": 18,
+        "terminals": [
+          0,
+          2
+        ],
+        "status": "CERTIFIED-EXCLUDED",
+        "nodes": 3,
+        "seconds": 0.0
+      },
+      {
+        "n": 10,
+        "m_G": 27,
+        "u_n": 20,
+        "terminals": [
+          0,
+          2
+        ],
+        "status": "CERTIFIED-EXCLUDED",
+        "nodes": 3,
+        "seconds": 0.0
+      },
+      {
+        "n": 11,
+        "m_G": 28,
+        "u_n": 23,
+        "terminals": [
+          0,
+          2
+        ],
+        "status": "CERTIFIED-EXCLUDED",
+        "nodes": 6,
+        "seconds": 0.001
+      },
+      {
+        "n": 12,
+        "m_G": 32,
+        "u_n": 27,
+        "terminals": [
+          0,
+          2
+        ],
+        "status": "CERTIFIED-EXCLUDED",
+        "nodes": 6,
+        "seconds": 0.001
+      },
+      {
+        "n": 13,
+        "m_G": 36,
+        "u_n": 30,
+        "terminals": [
+          0,
+          3
+        ],
+        "status": "CERTIFIED-EXCLUDED",
+        "nodes": 4,
+        "seconds": 0.001
+      }
+    ],
+    "survivors": 0
+  },
+  "stage4": {
+    "found": false,
+    "smallest_embeddable": null,
+    "reason": "route A: m(G) >= 36 at n = 13 while u(13) = 30.  route B: the minimal core has |V(H)|+1 vertices and at least m(H) edges, so m >= 37 at |V(H)| = 13 while u(14) = 33.  Both routes are excluded with margin >= 4."
+  },
+  "frontier": {
+    "route_A": {
+      "first_n_not_excluded": 15,
+      "argument": "H 6-critical => delta(H) >= 5 => m(H) >= ceil(5n/2); m(G) = m(H)-1.  This alone kills G up to n = 12; with the catalog's actual minimum densities it kills n <= 13 (catalog) and n <= 14 (min-degree at n=14: 34 > u(14) = 33)."
+    },
+    "route_B": {
+      "first_core_size_not_excluded_min_degree_only": 13,
+      "catalog_core_bound": 14,
+      "first_core_size_not_excluded_by_catalog": 15,
+      "argument": "a forced-difference core of size N needs a 6-critical H on N-1 vertices with m(H) <= u(N).  Min degree alone (m(H) >= ceil(5(N-1)/2)) reaches N = 12.  The catalog (H on <= 13 vertices, actual minimum densities 15, 23, 26, 28, 29, 33, 37) reaches N = 14.  At N = 15 the requirement is a 6-critical graph on 14 vertices with at most u(15) = 37 edges; the min-degree bound 35 <= 37 does not exclude it, and no catalog exists at 14 vertices (Lalonde: ~50 CPU-years).",
+      "unconditional_bound_without_catalog": 12
+    }
+  },
+  "conclusion": "NEGATIVE_CATALOG.  The complete catalog of 1497264 edge-6-critical graphs on <= 13 vertices was enumerated (counts, min degree and a SAT criticality sample verified).  Route A (the literal recipe G = H - uv) yields forced-EQUALITY gadgets, not virtual edges: G + uv not 5-colourable is exactly 'every 5-colouring has u = v' (witness K6-e, relation = equal).  Even so it is geometrically dead twice over: every deduped G = H - uv on <= 11 vertices contains a K4 (0 of 9667 pass omega <= 3), and the sparsest G at n = 13 has 36 edges against u(13) = 30.  Route B (the corrected forced-difference object, a vertex split of a 6-critical H) is not vacuous abstractly: 320 of 398 sampled splits are 5-colourable with relation 'different', i.e. genuine abstract level-5 virtual edges.  But every one has |V(G)| = |V(H)|+1 and m(G) >= m(H), so the sparsest is 37 edges on 14 vertices against u(14) = 33.  Hence there is no level-5 virtual edge of this form on <= 14 vertices.  The first size not excluded is a 15-vertex core, which would need a 6-critical graph on 14 vertices with <= 37 edges (the min-degree bound allows 35) -- beyond the published catalog, whose enumeration stops at 13.",
+  "seconds": 37.2
+}

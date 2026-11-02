@@ -117,8 +117,13 @@ monochromatic triple in a 5-colouring needs at least **11 vertices**: every
 refines to a 5-colouring with all colour classes of size ≤ 2 (5 classes of size
 2 cover 10 vertices). A class of size ≤ 2 is not a monochromatic triple.
 
+The red team pushed this further with a SAT proof: a 10-vertex instance with
+`K4`-freeness, 5-colourability, the edge bound `f(10) = 20` and the covering
+condition is UNSAT, and the fixed-triple instance stays UNSAT through `n = 11`.
+So the **non-vacuous minimum is ≥ 12**, not merely ≥ 11.
+
 So the 7-vertex H cannot be a k=5 gadget at all, for a counting reason, and any
-pattern-forcing search at k=5 must start at n ≥ 11. `six.py` found this and
+pattern-forcing search at k=5 must start at n ≥ 12. `six.py` found this and
 proved it, rather than merely failing to find a gadget.
 
 **The route to 6 is a level-5 virtual edge**: a unit-distance gadget forcing its

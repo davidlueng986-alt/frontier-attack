@@ -58,6 +58,7 @@ import os
 import sys
 import time
 import urllib.request
+import warnings
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -65,6 +66,8 @@ import networkx as nx
 import sympy as sp
 from mpmath import iv
 from pysat.solvers import Solver
+
+warnings.filterwarnings("ignore", category=UserWarning, module="networkx")
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -219,21 +222,29 @@ def ensure_files(cache: Path, log: Log, download: bool) -> dict:
         if path is None:
             if not download:
                 raise RuntimeError(f"catalog file for n={n} missing in {cache}")
-            url = BASE_URL.format(n=n) + ".gz"
-            path = cache / f"crit_{n}_6.g6.gz"
-            log("stage1", f"downloading {url}")
-            t0 = time.time()
-            try:
-                with urllib.request.urlopen(url, timeout=180) as r, open(path, "wb") as f:
-                    while True:
-                        chunk = r.read(1 << 20)
-                        if not chunk:
-                            break
-                        f.write(chunk)
-            except Exception as exc:  # noqa: BLE001
-                raise RuntimeError(f"download failed for n={n}: {exc}") from exc
-            log("stage1", f"downloaded n={n} bytes={path.stat().st_size} "
-                          f"in {time.time()-t0:.1f}s")
+            last = None
+            for suffix in ("", ".gz"):
+                url = BASE_URL.format(n=n) + suffix
+                dest = cache / f"crit_{n}_6.g6{suffix}"
+                log("stage1", f"downloading {url}")
+                t0 = time.time()
+                try:
+                    with urllib.request.urlopen(url, timeout=180) as r, open(dest, "wb") as f:
+                        while True:
+                            chunk = r.read(1 << 20)
+                            if not chunk:
+                                break
+                            f.write(chunk)
+                    path = dest
+                    log("stage1", f"downloaded n={n} bytes={dest.stat().st_size} "
+                                  f"in {time.time()-t0:.1f}s")
+                    break
+                except Exception as exc:  # noqa: BLE001
+                    last = exc
+                    if dest.exists():
+                        dest.unlink()
+            if path is None:
+                raise RuntimeError(f"download failed for n={n}: {last}")
         files[n] = path
     return files
 
@@ -245,11 +256,15 @@ def fallback_catalog(log: Log) -> dict:
     here with SAT.  This is the "regenerate a sample yourself" fallback.
     """
     log("stage1", "catalog unreachable -> SAT-regenerated fallback sample")
-    moser = [(0, 1), (0, 2), (1, 2), (0, 3), (1, 3), (2, 4), (3, 4), (4, 5),
-             (4, 6), (5, 6), (2, 5)]
+    from hn import moser_spindle
+    moser = sorted(tuple(int(x) for x in e) for e in moser_spindle().edges)
+    if sat_colourable(7, moser, 3):
+        raise RuntimeError("moser spindle from hn.py is not 4-chromatic")
 
     def join(a, ea, b, eb):
-        return a + b, list(ea) + list(eb) + [(i, a + j) for i in range(a) for j in range(b)]
+        return (a + b,
+                list(ea) + [(a + i, a + j) for i, j in eb]
+                + [(i, a + j) for i in range(a) for j in range(b)])
 
     k6 = (6, [(i, j) for i in range(6) for j in range(i + 1, 6)])
     c5 = [(0, 1), (1, 2), (2, 3), (3, 4), (4, 0)]
@@ -296,6 +311,9 @@ def scan_catalog(files: dict, log: Log) -> dict:
                 delta_hist[min(deg)] += 1
                 if all_edges is not None:
                     all_edges.append(edges)
+                    heap.append((m, cnt, edges))
+                    heap.sort(key=lambda t: (t[0], t[1]))
+                    del heap[8:]
                 else:
                     if len(first) < 8:
                         first.append(edges)
@@ -318,7 +336,7 @@ def scan_catalog(files: dict, log: Log) -> dict:
             keep_all[n] = all_edges
         else:
             samples[n] = first
-            sparsest[n] = [e for _, _, e in heap]
+        sparsest[n] = [e for _, _, e in heap]
     log("stage1", f"parsed {sum(p['graphs'] for p in per_n.values())} graphs "
                   f"in {time.time()-t0:.1f}s")
     if 7 not in per_n:
@@ -375,23 +393,6 @@ def dedupe(n: int, graphs, time_cap: float = 240.0):
 # ---------------------------------------------------------------------------
 # stage 2B: corrected route -- split a vertex w of a 6-critical H
 # ---------------------------------------------------------------------------
-
-def twin_split(n: int, edges, w: int):
-    """H with w replaced by two non-adjacent twins u = w and v = n.
-
-    G/uv is H.  G has n+1 vertices and m(G) = m(H) + deg_H(w).
-    """
-    v = n
-    out = [e for e in edges if w not in e]
-    for a, b in edges:
-        if a == w:
-            out.append((b, w))
-            out.append((b, v))
-        elif b == w:
-            out.append((a, w))
-            out.append((a, v))
-    return n + 1, out, w, v
-
 
 def partial_split(n: int, edges, w: int, A):
     """Split w into u = w (keeps the neighbours in A) and v = n (the rest).
@@ -671,6 +672,89 @@ def control_route_b() -> dict:
 
 
 # ---------------------------------------------------------------------------
+# route B abstract search (sampled)
+# ---------------------------------------------------------------------------
+
+def split_sample_run(per_n, keep_all, samples, log: Log,
+                     max_splits: int = 420, per_n_graphs: int = 4,
+                     per_n_cap: int = 60) -> dict:
+    """Search the catalog for ABSTRACT route-B candidates.
+
+    A candidate is a 5-colourable split of a 6-critical H at a vertex w, so
+    G/uv = H is 6-chromatic and relation(u, v, 5) = 'different'.  Sampled
+    deterministically and spread over n; every candidate found is then subject
+    only to the geometric filters, which already exclude it by edge count.
+    """
+    import random
+    rng = random.Random(20261102)
+    t0 = time.time()
+    tested = five = diff = 0
+    examples = []
+    seen_example_n = set()
+    per_n_rows = []
+    for n in sorted(per_n):
+        if per_n[n]["graphs"] == 0:
+            continue
+        gs = keep_all.get(n) or samples.get(n) or []
+        take = gs if n <= 10 else gs[:per_n_graphs]
+        row = {"n": n, "graphs_tested": 0, "splits": 0, "five_colourable": 0}
+        stop = False
+        for edges in take:
+            row["graphs_tested"] += 1
+            for w in range(n):
+                nb = sorted({b if a == w else a for a, b in edges if w in (a, b)})
+                options = [set(nb)]                       # full twin split
+                for _ in range(6):                        # partial splits
+                    options.append({x for x in nb if rng.random() < 0.5})
+                for A in options:
+                    if tested >= max_splits or row["splits"] >= per_n_cap:
+                        stop = True
+                        break
+                    gn, ge, u, v = partial_split(n, edges, w, A)
+                    tested += 1
+                    row["splits"] += 1
+                    if sat_colourable(gn, ge, 5):
+                        five += 1
+                        row["five_colourable"] += 1
+                        rel = relation(ge, gn, u, v, 5)
+                        if rel == "different":
+                            diff += 1
+                            if n not in seen_example_n and len(examples) < 7:
+                                seen_example_n.add(n)
+                                examples.append({
+                                    "n_H": n, "m_H": len(edges), "m_G": len(ge),
+                                    "w": w, "A_size": len(A), "degree_w": len(nb),
+                                    "u_n_core": U_EXACT.get(gn),
+                                    "margin": len(ge) - (U_EXACT.get(gn) or 0),
+                                    "relation_k5": rel,
+                                })
+                if stop:
+                    break
+            if stop:
+                break
+        per_n_rows.append(row)
+        if tested >= max_splits:
+            break
+    result = {
+        "sampled": True,
+        "splits_tested": tested,
+        "five_colourable": five,
+        "relation_different": diff,
+        "six_chromatic": tested - five,
+        "per_n": per_n_rows,
+        "examples": examples,
+        "seconds": round(time.time() - t0, 2),
+        "note": ("5-colourable splits are abstract level-5 virtual edges: their "
+                 "quotient is the 6-critical H, so relation(u,v,5) = 'different'. "
+                 "Each still has m(G) >= m(H) and |V(G)| = |V(H)|+1, so filter 3a "
+                 "excludes it geometrically."),
+    }
+    log("stage2B", f"abstract split search: {tested} splits sampled, "
+                   f"{five} 5-colourable, {diff} with relation 'different'")
+    return result
+
+
+# ---------------------------------------------------------------------------
 # pipeline
 # ---------------------------------------------------------------------------
 
@@ -752,7 +836,9 @@ def main(argv=None) -> int:
                         "m_min": min(ms), "m_max": max(ms),
                         "min_degree": min(deltas), "m_hist": {}, "min_degree_hist": {}}
         keep_all = {n: gs for n, gs in fb.items() if n <= 11}
-        samples, sparsest, files, sources = {}, {}, {}, []
+        samples = {}
+        sparsest = {n: gs[:2] for n, gs in fb.items()}
+        files, sources = {}, []
 
     # criticality re-verification
     crit, pool, seen = [], [], set()
@@ -772,6 +858,15 @@ def main(argv=None) -> int:
         seen.add(key)
         crit.append(verify_criticality(n, e))
     crit_ok = all(r["ok"] for r in crit)
+    crit_by_n = {}
+    for r in crit:
+        e = crit_by_n.setdefault(str(r["n"]), {"checked": 0, "ok": True,
+                                               "edges_verified": 0, "seconds": 0.0})
+        e["checked"] += 1
+        e["ok"] = e["ok"] and bool(r["ok"])
+        e["edges_verified"] += r.get("edges_checked", 0)
+        e["seconds"] = round(e["seconds"] + r.get("seconds", 0.0), 3)
+    crit_bad = [r for r in crit if not r["ok"]]
     log("stage1", f"criticality re-check on {len(crit)} graphs: "
                   + ("all chi=6 and chi(H-e)=5" if crit_ok else "FAILURES PRESENT"))
 
@@ -810,6 +905,10 @@ def main(argv=None) -> int:
                         "m_core_min": per_n[n]["m_min"]})
     log("stage2B", f"corrected route: {sum(r['split_pairs'] for r in stage2b)} "
                    f"(H, w) splits; core has |V(H)|+1 vertices and m >= m(H)")
+
+    # stage 2B abstract search: do 5-colourable splits (genuine abstract
+    # virtual edges) actually occur in the catalog?
+    split_sample = split_sample_run(per_n, keep_all, samples, log)
 
     # ---- stage 3 ---------------------------------------------------------
     # 3a route A: m(G) = m(H) - 1 vs u(n)
@@ -872,34 +971,8 @@ def main(argv=None) -> int:
                                for k, v in audit["controls"].items()
                                if "certifier" in v))
 
-    # validation of the corrected construction on a sample of (H, w)
-    split_sample = {"tested": 0, "five_colourable": 0, "relation_different": 0,
-                    "six_chromatic": 0, "items": []}
-    for n in sorted(per_n):
-        if per_n[n]["graphs"] == 0 or n > 12:
-            continue
-        gs = keep_all.get(n) or (samples.get(n) or [])
-        for edges in gs:
-            if n == 11 and split_sample["tested"] > 40:
-                break
-            w = max(range(n), key=lambda x: sum(1 for a, b in edges if x in (a, b)))
-            gn, ge, u, v = twin_split(n, edges, w)
-            ok5 = sat_colourable(gn, ge, 5)
-            split_sample["tested"] += 1
-            if ok5:
-                split_sample["five_colourable"] += 1
-                rel = relation(ge, gn, u, v, 5)
-                if rel == "different":
-                    split_sample["relation_different"] += 1
-                if len(split_sample["items"]) < 8:
-                    split_sample["items"].append(
-                        {"n_H": n, "m_H": len(edges), "m_G": len(ge),
-                         "relation_k5": rel, "degree_w": len([1 for a, b in edges if w in (a, b)])})
-            else:
-                split_sample["six_chromatic"] += 1
-    log("stage3d", f"twin-split sample: {split_sample['tested']} splits, "
-                   f"{split_sample['five_colourable']} 5-colourable, "
-                   f"{split_sample['six_chromatic']} 6-chromatic")
+    # validation of the corrected construction: sample (H, w) splits
+    # (moved above; split_sample computed just after stage 2B)
 
     # ---- stage 4 ---------------------------------------------------------
     found = False
@@ -955,7 +1028,8 @@ def main(argv=None) -> int:
             "min_degree_all_graphs": (min(v["min_degree"] for v in per_n.values()
                                          if v["min_degree"]) if per_n else None),
             "criticality_sample": {"checked": len(crit), "all_ok": crit_ok,
-                                   "items": crit},
+                                   "by_n": crit_by_n,
+                                   "failures": crit_bad[:8]},
         },
         "u_n": {
             "values": {str(k): v for k, v in sorted(U_EXACT.items()) if k <= 15},
@@ -976,7 +1050,11 @@ def main(argv=None) -> int:
             "survivor_sizes": a_surv,
             "structural_independent": {"clique_le_3": b_pass,
                                        "k23_and_triangle": both,
-                                       "tested": len(classes_a)},
+                                       "tested": len(classes_a),
+                                       "note": ("route A is killed twice over: every "
+                                                "deduped G = H - uv contains a K4 "
+                                                "(0/9667 pass omega <= 3), and every "
+                                                "one also exceeds u(n)")},
             "verdict": ("NEGATIVE by edge count; and structurally this route "
                         "cannot produce relation 'different' at all (stage 0)"),
         },
@@ -989,7 +1067,7 @@ def main(argv=None) -> int:
             "filter_3a": b_rows,
             "killed_by_3a": b_killed,
             "survivor_core_sizes": b_surv,
-            "twin_split_sample": split_sample,
+            "abstract_split_search": split_sample,
             "verdict": "NEGATIVE by edge count",
         },
         "stage3": {
@@ -1030,14 +1108,18 @@ def main(argv=None) -> int:
                              "34 > u(14) = 33)."),
             },
             "route_B": {
-                "first_core_size_not_excluded": frontier_b,
-                "argument": ("core size N needs a 6-critical H on N-1 vertices with "
-                             "m(H) <= u(N).  min-degree alone reaches N = 12; the "
-                             "catalog (H <= 13 vertices) reaches N = 14.  At N = 15 "
-                             "the requirement is a 6-critical graph on 14 vertices "
-                             "with at most u(15) = 37 edges, which is exactly the "
-                             "min-degree bound ceil(5*14/2) = 35 <= 37: uncataloged."),
-                "catalog_covers_core_upto": 14,
+                "first_core_size_not_excluded_min_degree_only": frontier_b,
+                "catalog_core_bound": 14,
+                "first_core_size_not_excluded_by_catalog": 15,
+                "argument": ("a forced-difference core of size N needs a 6-critical H "
+                             "on N-1 vertices with m(H) <= u(N).  Min degree alone "
+                             "(m(H) >= ceil(5(N-1)/2)) reaches N = 12.  The catalog "
+                             "(H on <= 13 vertices, actual minimum densities 15, 23, "
+                             "26, 28, 29, 33, 37) reaches N = 14.  At N = 15 the "
+                             "requirement is a 6-critical graph on 14 vertices with "
+                             "at most u(15) = 37 edges; the min-degree bound 35 <= 37 "
+                             "does not exclude it, and no catalog exists at 14 "
+                             "vertices (Lalonde: ~50 CPU-years)."),
                 "unconditional_bound_without_catalog": 12,
             },
         },
@@ -1053,15 +1135,20 @@ def main(argv=None) -> int:
             f"Route A (the literal recipe G = H - uv) yields forced-EQUALITY "
             f"gadgets, not virtual edges: G + uv not 5-colourable is exactly "
             f"'every 5-colouring has u = v' (witness K6-e, relation = equal).  "
-            f"Even so it is geometrically dead: the sparsest G at n = 13 has 36 "
-            f"edges against u(13) = 30.  Route B (the corrected forced-difference "
-            f"object, a vertex split of a 6-critical H) is dead by a wider margin: "
-            f"its minimal core has |V(H)|+1 vertices and at least m(H) edges, so "
-            f"37 edges on 14 vertices against u(14) = 33.  Hence there is no "
-            f"level-5 virtual edge of this form on <= 14 vertices.  The first "
-            f"size not excluded is a 15-vertex core, which would need a 6-critical "
-            f"graph on 14 vertices with <= 37 edges (the min-degree bound allows "
-            f"35) -- beyond the published catalog, whose enumeration stops at 13."
+            f"Even so it is geometrically dead twice over: every deduped G = H - uv "
+            f"on <= 11 vertices contains a K4 (0 of 9667 pass omega <= 3), and the "
+            f"sparsest G at n = 13 has 36 edges against u(13) = 30.  "
+            f"Route B (the corrected forced-difference object, a vertex split of a "
+            f"6-critical H) is not vacuous abstractly: "
+            f"{split_sample['five_colourable']} of {split_sample['splits_tested']} "
+            f"sampled splits are 5-colourable with relation 'different', i.e. "
+            f"genuine abstract level-5 virtual edges.  But every one has "
+            f"|V(G)| = |V(H)|+1 and m(G) >= m(H), so the sparsest is 37 edges on "
+            f"14 vertices against u(14) = 33.  Hence there is no level-5 virtual "
+            f"edge of this form on <= 14 vertices.  The first size not excluded is "
+            f"a 15-vertex core, which would need a 6-critical graph on 14 vertices "
+            f"with <= 37 edges (the min-degree bound allows 35) -- beyond the "
+            f"published catalog, whose enumeration stops at 13."
         )
     else:
         payload["conclusion"] = (
