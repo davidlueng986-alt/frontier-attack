@@ -330,6 +330,100 @@ class Gadget:
             a, b = self.distinguished[:2]
         return self.forced_relation(k).forced_equal(a, b)
 
+    def _find_colouring_separating(self, k, a, b):
+        """Return a proper k-colouring with colour[a] != colour[b], or None.
+
+        Exact backtracking.  By colour symmetry a is fixed to colour 0 and
+        colour 0 is forbidden at b, which is precisely the constraint
+        colour[a] != colour[b].  Returns None iff no such colouring exists.
+        """
+        n = self.n
+        k = int(k)
+        if k <= 0 or n == 0:
+            return None
+        colour = [-1] * n
+        sat = [0] * n
+        neighbours = [
+            [u for u in range(n) if (self.adj[v] >> u) & 1]
+            for v in range(n)
+        ]
+        degrees = self.degrees()
+
+        colour[a] = 0
+        for w in neighbours[a]:
+            sat[w] |= 1
+        sat[b] |= 1          # forbid colour 0 at b, so b != a
+
+        def rec(remaining):
+            if remaining == 0:
+                return True
+            v = -1
+            best = (-1, -1)
+            for u in range(n):
+                if colour[u] >= 0:
+                    continue
+                sc = bin(sat[u]).count("1")
+                if sc >= k:
+                    return False
+                key = (sc, degrees[u])
+                if key > best:
+                    best = key
+                    v = u
+            forbidden = sat[v]
+            for c in range(k):
+                if (forbidden >> c) & 1:
+                    continue
+                colour[v] = c
+                touched = []
+                for u in neighbours[v]:
+                    if colour[u] < 0 and not ((sat[u] >> c) & 1):
+                        sat[u] |= 1 << c
+                        touched.append(u)
+                if rec(remaining - 1):
+                    return True
+                for u in touched:
+                    sat[u] &= ~(1 << c)
+                colour[v] = -1
+            return False
+
+        if rec(n - 1):
+            return tuple(colour)
+        return None
+
+    def forced_equal_pairs(self, k, vertices=None):
+        """Exact forced-equal pairs, via constrained colouring witnesses.
+
+        Equivalent to filtering ``forced_relation(k)`` for EQUAL pairs, but
+        usually much faster on sparse graphs: a colouring that separates one
+        pair also separates every other pair whose colours differ, so only
+        pairs not yet separated need a fresh constrained search.
+
+        Returns None if the graph is not k-colourable (relations are vacuous
+        there and must not be reported as certificates).
+        """
+        if vertices is None:
+            vertices = self.distinguished
+        vertices = tuple(sorted(set(int(v) for v in vertices)))
+        if not self.is_k_colourable(k):
+            return None
+
+        pairs = [
+            (a, b)
+            for a, b in itertools.combinations(vertices, 2)
+            if not ((self.adj[a] >> b) & 1)
+        ]
+        witnesses = []
+        forced = []
+        for a, b in pairs:
+            if any(w[a] != w[b] for w in witnesses):
+                continue
+            witness = self._find_colouring_separating(k, a, b)
+            if witness is None:
+                forced.append((a, b))
+            else:
+                witnesses.append(witness)
+        return forced
+
     # -- serialisation -----------------------------------------------------
     def structural_key(self):
         return (self.n, tuple(sorted(self.edges)))
@@ -774,16 +868,22 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
     for _name, g in bases:
         register(g, True)
 
-    def analyse_forcing(g, chi):
-        """Full pair relations at every level k at which g is k-colourable."""
+    def analyse_forcing(g, chi, cross_check=False):
+        """Forced-equal pairs at every level k at which g is k-colourable."""
         found = []
         for k in (3, 4, 5):
             if k < chi:
                 continue
-            rel = g.forced_relation(k, vertices=range(g.n))
-            if not rel.colorable:
+            eq = g.forced_equal_pairs(k, vertices=range(g.n))
+            if eq is None:
                 continue
-            eq = rel.equal_pairs()
+            if cross_check:
+                rel = g.forced_relation(k, vertices=range(g.n))
+                if not rel.colorable or rel.equal_pairs() != eq:
+                    raise AssertionError(
+                        "fast forced-equal scan disagrees with exhaustive "
+                        f"enumeration on {g.label} at k={k}"
+                    )
             if eq:
                 level_pairs[k].append({
                     "graph": g.label,
@@ -881,7 +981,7 @@ def composition_search(max_graphs=22, max_vertices=13, seed=1):
             best = g
 
         # ---- forced-relation analysis and forced-equality lifts ----------
-        local_forcing = analyse_forcing(g, chi)
+        local_forcing = analyse_forcing(g, chi, cross_check=True)
         attempt_lifts(g, local_forcing, enqueue=True)
 
         # ---- rigid edge gluing with each base ---------------------------

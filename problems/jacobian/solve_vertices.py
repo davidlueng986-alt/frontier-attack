@@ -136,7 +136,7 @@ def _normal_form(p, basis):
     r, rem = dict(p), {}
     while r:
         m = max(r, key=_mono_key)
-        c = r.pop(m)
+        c = r[m]
         for g in basis:
             mg = max(g, key=_mono_key)
             if all(a >= b for a, b in zip(m, mg)):
@@ -145,6 +145,7 @@ def _normal_form(p, basis):
                 break
         else:
             rem[m] = c
+            r.pop(m)
     return rem
 
 
@@ -250,11 +251,6 @@ def _as_expr(text, gens):
     return sp.sympify(text, locals={s.name: s for s in gens})
 
 
-def monomial_support(expr, gens):
-    p = sp.Poly(sp.expand(expr), *gens)
-    return [set(i for i, e in enumerate(m) if e) for m in p.monoms()]
-
-
 def krull_dimension(basis_exprs, gens):
     """dim Q[a]/I via the leading-term ideal: max independent set of variables.
 
@@ -265,7 +261,9 @@ def krull_dimension(basis_exprs, gens):
     for e in basis_exprs:
         p = sp.Poly(sp.expand(e), *gens)
         for m in p.monoms():
-            supports.append({i for i, k in enumerate(m) if k})
+            s = {i for i, k in enumerate(m) if k}
+            if s:                      # ignore the constant monomial
+                supports.append(s)
     n = len(gens)
     best = 0
     for mask in range(1 << n):
@@ -336,8 +334,8 @@ def solve_family(data, basis_exprs):
             "parametrization_ideal_equals_system_ideal": bool(same_ideal),
             "support_used": {"P": used(P_sub), "Q": used(Q_sub)},
             "uses_all_four_corners": (
-                used(P_sub) == [list(p) for p in P_CORNERS]
-                and used(Q_sub) == [list(p) for p in Q_CORNERS]),
+                set(map(tuple, used(P_sub))) == set(P_CORNERS)
+                and set(map(tuple, used(Q_sub))) == set(Q_CORNERS)),
         })
     return out
 
@@ -370,9 +368,10 @@ def representative_check(values, data):
         "residuals_zero": all(r == 0 for r in residuals),
         "det_J_equals_x2": sp.expand(det - x ** 2) == 0,
         "exact_collision": {
-            "points": [list(p), list(q)],
+            "points": [[sp.sstr(c) for c in p], [sp.sstr(c) for c in q]],
             "distinct": p != q,
-            "images": [list(img_p), list(img_q)],
+            "images": [[sp.sstr(c) for c in img_p],
+                       [sp.sstr(c) for c in img_q]],
             "same_image": img_p == img_q,
         },
         "numerical_fibre_search": {"hits": hits, "samples": 6, "starts": 4},
@@ -512,6 +511,10 @@ def run(out_path: Path, timeout: float):
         "critical_locus": "x = 0, where det J = x^2 vanishes",
         "exact_collision_on_critical_locus": bool(collision_ok),
         "generic_fibre_hits": [r["numerical_fibre_search"]["hits"] for r in reps],
+        "generic_fibre_search_note": (
+            "jac.find_collision samples random targets.  Every fibre with "
+            "x != 0 is a single point, so no generic hit is expected; the "
+            "collision lives on the critical value (a0, b0)."),
         "injective_off_critical_locus": True,
         "injectivity_argument": (
             "P = a0 + a1*x with a1 != 0 determines x; for x != 0, "
@@ -529,9 +532,11 @@ def run(out_path: Path, timeout: float):
 
     record["verdict"] = (
         "CONSISTENT_BUT_DEGENERATE: det J = x^2 has a 3-parameter solution "
-        "family, every member of which drops the four genuine vertices, so "
-        "no P, Q have the required Newton polygons.  The unique family is "
-        "triangular and not a Keller map."
+        "family, every member of which sets a2 = a3 = b2 = b3 = 0, so the four "
+        "genuine vertices are absent and no P, Q have the required Newton "
+        "polygons.  The family is P = a0 + a1*x, Q = b0 + b1*x^2*y with "
+        "a1*b1 = 1: it is not a Keller map (det J = x^2) and it collapses the "
+        "line x = 0, so it is not a counterexample either."
     )
     record["seconds"] = round(time.perf_counter() - t_start, 3)
     return record

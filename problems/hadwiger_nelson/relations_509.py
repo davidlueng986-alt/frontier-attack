@@ -29,10 +29,11 @@ What is measured
 
 Method and cost
 ---------------
-`relation()` rebuilds and re-solves the whole CNF per call (~25 ms here).
+`relation()` rebuilds and re-solves the whole CNF per call (~25-30 ms here).
 The bulk loop therefore uses one incremental solver with selector literals
 (same CNF, same variable numbering, assumption-driven), which is semantically
-identical and about 50x faster.  The shortcut is not trusted: a stratified
+identical and several times faster (~8 ms per pair at this size, including the
+301k-clause selector build).  The shortcut is not trusted: a stratified
 sample of pairs is re-probed with `relation()` itself and the two answers must
 agree, and all diamond apex pairs are re-probed with `relation()` as well.
 The total wall clock is capped at 900 s (default); the cap, the elapsed time
@@ -132,6 +133,7 @@ def load_graph() -> dict:
                 pts2.append(p)
     edges2, worst2 = build_unit_edges(pts2, TOL)
     verify_seconds = time.perf_counter() - t0
+    assert worst2 <= TOL
 
     e1 = {(min(u, v), max(u, v)) for u, v in edges}
     e2 = {(min(u, v), max(u, v)) for u, v in edges2}

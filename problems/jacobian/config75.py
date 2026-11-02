@@ -37,7 +37,7 @@ That is exact (no truncation), much smaller than the dense symbolic object,
 and gives the monomial support, the coefficient degrees, and the constant
 term directly.  The vertices-only result is cross-checked against
 ``config2_system.size_system`` (SymPy) in the report.  A full SymPy
-cross-check is available behind ``--slow-cross-check`` (about 105 s measured).
+cross-check is available behind ``--slow-cross-check`` (about 95-105 s measured).
 
 The target is ``det J - x^2 = 0``.  The script also sizes ``det J - 1 = 0``
 for comparison; at this corner the two systems have the same number of
@@ -201,12 +201,67 @@ def _support_bound_det(support_p, support_q):
         "mode": "support_bound_only",
         "monomials": len(bound),
         "monomials_are_upper_bound": True,
+        "support_bound_monomials": len(bound),
+        "cancellations_vs_support_bound": None,
+        "cancelled_monomials": [],
         "max_total_degree": max(p + q for p, q in bound),
         "min_total_degree": min(p + q for p, q in bound),
         "max_total_degree_in_coefficients": 2,
+        "max_terms_per_equation": None,
         "constant_term_present": None,
         "constant_term_zero": None,
         "constant_coefficient": None,
+        "pair_products": None,
+        "seconds": None,
+    }
+
+
+def _bound_target_record(target, unknowns, bound, label):
+    """Honest upper-bound record used when the dense expansion is skipped."""
+    target_monomial = (int(target[0]), int(target[1]))
+    monomials = set(bound) | {target_monomial}
+    equations = len(monomials)
+    effective = max(0, unknowns - 2)
+    return {
+        "label": label,
+        "target": "x^2" if target_monomial == TARGET_X2 else "1",
+        "target_support": [[target_monomial[0], target_monomial[1]]],
+        "unknowns": unknowns,
+        "equations": equations,
+        "equations_are_upper_bound": True,
+        "det_monomials": None,
+        "max_total_degree": max(p + q for p, q in monomials),
+        "min_total_degree": min(p + q for p, q in monomials),
+        "max_total_degree_in_coefficients": 2,
+        "max_terms_per_equation": None,
+        "coefficient_degree_histogram": {},
+        "constant_equation": None,
+        "target_monomial_equation": None,
+        "constant_term_of_det_zero": None,
+        "target_monomial_present_in_det": None,
+        "constant_term_test": "not evaluated (support-bound mode)",
+        "constant_term_test_infeasible": None,
+        "target_monomial_test": "not evaluated (support-bound mode)",
+        "infeasible_by_target_monomial": None,
+        "effective_unknowns": effective,
+        "nontrivial_equations": None,
+        "equations_minus_effective_unknowns": equations - effective,
+        "determinedness": (
+            "overdetermined" if equations > unknowns
+            else "underdetermined" if equations < unknowns
+            else "square"
+        ),
+        "determinedness_effective": (
+            "overdetermined" if equations > effective
+            else "underdetermined" if equations < effective
+            else "square"
+        ),
+        "sample_equations": [],
+        "equation_monomials": [
+            [m[0], m[1]]
+            for m in sorted(monomials, key=lambda z: (z[0] + z[1], z[0], z[1]))
+        ],
+        "equation_summaries": [],
     }
 
 
@@ -373,30 +428,18 @@ def build_variant(label, support_p, support_q):
     }
 
     if pair_products > MAX_PAIR_PRODUCTS:
-        bound = _support_bound_det(support_p, support_q)
+        bound = det_support_bound(support_p, support_q)
         record.update({
             "mode": "support_bound_only",
             "reason": (
                 f"{pair_products} derivative pairs exceeds guard "
                 f"{MAX_PAIR_PRODUCTS}; not expanded"
             ),
-            "det_J": bound,
-            "target_x2": {
-                "mode": "support_bound_only",
-                "equations": len(det_support_bound(support_p, support_q)
-                                 | {TARGET_X2}),
-                "equations_are_upper_bound": True,
-                "max_total_degree": bound["max_total_degree"],
-                "max_total_degree_in_coefficients": 2,
-            },
-            "target_1": {
-                "mode": "support_bound_only",
-                "equations": len(det_support_bound(support_p, support_q)
-                                 | {TARGET_ONE}),
-                "equations_are_upper_bound": True,
-                "max_total_degree": bound["max_total_degree"],
-                "max_total_degree_in_coefficients": 2,
-            },
+            "det_J": _support_bound_det(support_p, support_q),
+            "target_x2": _bound_target_record(
+                TARGET_X2, unknowns, bound, f"{label}/detJ-x^2"),
+            "target_1": _bound_target_record(
+                TARGET_ONE, unknowns, bound, f"{label}/detJ-1"),
             "seconds": round(time.perf_counter() - t0, 3),
         })
         return record
@@ -410,6 +453,9 @@ def build_variant(label, support_p, support_q):
         "monomials_are_upper_bound": False,
         "support_bound_monomials": len(bound),
         "cancellations_vs_support_bound": len(bound) - len(det),
+        "cancelled_monomials": [
+            [int(p), int(q)] for p, q in sorted(bound - set(det))
+        ],
         "max_total_degree": max(p + q for p, q in det),
         "min_total_degree": min(p + q for p, q in det),
         "max_total_degree_in_coefficients": 2,
@@ -506,7 +552,7 @@ def _vertices_sympy_cross_check(vtx_record):
 
 
 def _full_sympy_cross_check(full_record, full_p, full_q):
-    """Optional slow SymPy check (about 105 s measured)."""
+    """Optional slow SymPy check (about 95-105 s measured)."""
     x, y = sp.symbols("x y")
     t0 = time.perf_counter()
     slow = size_system(
@@ -575,20 +621,25 @@ def build_report(slow_cross_check=False):
         ),
         "full_support_bound_monomials": len(bound_p),
         "full_det_cancellations_vs_support_bound": (
-            len(bound_p) - full["det_J"]["monomials"]
+            full["det_J"]["cancellations_vs_support_bound"]
         ),
         "vertices_only_sympy_cross_check": _vertices_sympy_cross_check(vtx),
     }
-    if slow_cross_check:
+    if slow_cross_check and full["mode"] != "support_bound_only":
         verification["full_lattice_sympy_cross_check"] = _full_sympy_cross_check(
             full, full_p, full_q)
+    elif slow_cross_check:
+        verification["full_lattice_sympy_cross_check"] = {
+            "ran": False,
+            "note": "skipped: the full system was not expanded",
+        }
     else:
         verification["full_lattice_sympy_cross_check"] = {
             "ran": False,
             "note": (
                 "not run by default; --slow-cross-check runs "
                 "config2_system.size_system on the full system "
-                "(about 105 s measured)"
+                "(about 95-105 s measured)"
             ),
         }
 
@@ -597,11 +648,22 @@ def build_report(slow_cross_check=False):
         "lines": [902, 906, 908, 922],
         "quotes": [
             {
+                "line": 858,
+                "text": (
+                    "Section 11 is a by-product section: 'None is needed for "
+                    "Theorem A. All three are stated because they are genuine "
+                    "theorems.'"
+                ),
+            },
+            {
                 "line": 902,
                 "text": (
                     "At $(75,125)$: $80/29$, so $\\alpha = 80$, "
-                    "$q_{\\mathrm{window}} = 29$, ... so no relation "
-                    "$c\\Phi = eB$ can exist there."
+                    "$q_{\\mathrm{window}} = 29$, and the $y$-order cap "
+                    "$L(w) = \\lceil \\alpha w/q\\rceil$ is superadditive off "
+                    "the period: $L(5) + L(24) = 14 + 67 = 81 > 80 = L(29) = "
+                    "\\mathrm{ord}_y\\Phi$, so no relation $c\\Phi = eB$ can "
+                    "exist there."
                 ),
             },
             {
@@ -609,17 +671,25 @@ def build_report(slow_cross_check=False):
                 "text": (
                     "Because $q_{\\mathrm{window}} = 29 = M$ exactly, no split "
                     "with $1 \\le w < M$ is a multiple of $q_{\\mathrm{window}}$, "
-                    "so the carry is $1$ on every admissible split ... "
-                    "So $(75,125)$ is more firmly obstructed by this mechanism."
+                    "so the carry is $1$ on every admissible split and there is "
+                    "no weight at which the obstruction could vanish. ... "
+                    "So $(75,125)$ is more firmly obstructed by this mechanism "
+                    "than the earlier numbers claimed, not less."
                 ),
             },
             {
                 "line": 908,
                 "text": (
                     "Theorem 11.4 (criterion). Let $\\alpha/q$ be "
-                    "$\\mathrm{ord}_y(\\Phi)/M$ in lowest terms ... "
+                    "$\\mathrm{ord}_y(\\Phi)/M$ in lowest terms, so "
+                    "$\\gcd(\\alpha,q) = 1$ and $q \\mid M$; let "
+                    "$L(w) = \\lceil\\alpha w/q\\rceil$ and "
+                    "$\\mathrm{carry}(w_1,w_2) := L(w_1)+L(w_2)-L(w_1+w_2)$. "
+                    "For any candidate relation $c\\Phi = eB$ with $c$ a nonzero "
+                    "constant and $w(e)+w(B) = M$, $1 \\le w(e) < M$: "
                     "$\\mathrm{carry}(w(e), M-w(e)) = 0 \\iff "
-                    "q_{\\mathrm{window}} \\mid w(e)$."
+                    "$q_{\\mathrm{window}} \\mid w(e)$, and the carry is exactly "
+                    "$0$ or $1$, never more."
                 ),
             },
             {
@@ -658,6 +728,19 @@ def build_report(slow_cross_check=False):
             "obstruction'. That is accurate only for the K-syzygy mechanism; "
             "it is not an exclusion of (75,125)."
         ),
+        "repo_status": {
+            "file": "research/scratch/wstrinz/README.md",
+            "lines": "201-203",
+            "quote": (
+                "Theorem 2.1 is strict (max >= 125), so F_2(3,5)/125 sits *at* "
+                "the bound and correctly stays open -- it is the unique row "
+                "there, and the next increment of the bound depends on it "
+                "alone."
+            ),
+            "meaning": (
+                "The wstrinz repo itself lists (75,125) as open, not excluded."
+            ),
+        },
     }
 
     full_x2 = full["target_x2"]
@@ -723,8 +806,21 @@ def build_report(slow_cross_check=False):
             "boundary_points_P": pick_p["boundary_points"],
             "interior_points_Q": pick_q["interior_points"],
             "boundary_points_Q": pick_q["boundary_points"],
+            "interior_points_total": (
+                pick_p["interior_points"] + pick_q["interior_points"]
+            ),
+            "boundary_points_total": (
+                pick_p["boundary_points"] + pick_q["boundary_points"]
+            ),
             "support_sha256_P": _points_hash(full_p),
             "support_sha256_Q": _points_hash(full_q),
+            "symbols": {
+                "P": "a0..a123",
+                "Q": "b0..b320",
+                "note": (
+                    "0-based, matching config2_system.build_polynomial"
+                ),
+            },
         },
         "degrees": {
             "deg_P_total": max(a + b for a, b in P_CORNERS),
@@ -761,6 +857,8 @@ def build_report(slow_cross_check=False):
                 "full_lattice": {
                     "constant_equation": full_1["constant_equation"],
                     "verdict": (
+                        "not evaluated (support-bound mode)"
+                        if full_1["constant_term_test_infeasible"] is None else
                         "not excluded by the constant-term test: "
                         "c00 - 1 = 0 is a genuine equation, with "
                         "c00 = -a1*b26 + a16*b1"
@@ -772,6 +870,8 @@ def build_report(slow_cross_check=False):
                 "vertices_only": {
                     "constant_equation": vtx_1["constant_equation"],
                     "verdict": (
+                        "not evaluated (support-bound mode)"
+                        if vtx_1["constant_term_test_infeasible"] is None else
                         "infeasible: det J has no constant term, so the "
                         "constant equation is -1 = 0"
                     ),
@@ -791,10 +891,14 @@ def build_report(slow_cross_check=False):
                     "constant_term_test": full_x2["constant_term_test"],
                     "target_monomial_test": full_x2["target_monomial_test"],
                     "verdict": (
+                        "not evaluated (support-bound mode)"
+                        if full_x2["infeasible_by_target_monomial"] is None else
                         "not excluded by the constant-term test: c00 = 0 is a "
                         "genuine equation and (2,0) is present"
                     ),
-                    "infeasible_by_target_monomial": False,
+                    "infeasible_by_target_monomial": (
+                        full_x2["infeasible_by_target_monomial"]
+                    ),
                 },
                 "vertices_only": {
                     "det_constant_term_zero": vtx_x2[
@@ -802,16 +906,25 @@ def build_report(slow_cross_check=False):
                     "constant_term_test": vtx_x2["constant_term_test"],
                     "target_monomial_test": vtx_x2["target_monomial_test"],
                     "verdict": (
+                        "not evaluated (support-bound mode)"
+                        if vtx_x2["infeasible_by_target_monomial"] is None else
                         "infeasible: the x^2 monomial is absent from det J, so "
                         "the (2,0) equation is -1 = 0"
                     ),
-                    "infeasible_by_target_monomial": True,
+                    "infeasible_by_target_monomial": (
+                        vtx_x2["infeasible_by_target_monomial"]
+                    ),
                 },
             },
             "detJ_minus_x2_feasible_by_constant_term": {
-                "full_lattice": not full_x2["constant_term_test_infeasible"],
-                "vertices_only": not vtx_x2[
-                    "constant_term_test_infeasible"],
+                "full_lattice": (
+                    None if full_x2["constant_term_test_infeasible"] is None
+                    else not full_x2["constant_term_test_infeasible"]
+                ),
+                "vertices_only": (
+                    None if vtx_x2["constant_term_test_infeasible"] is None
+                    else not vtx_x2["constant_term_test_infeasible"]
+                ),
                 "note": (
                     "For vertices_only the pure constant-term test is vacuous "
                     "(0 = 0); the system is excluded instead by the x^2 "
@@ -840,8 +953,12 @@ def build_report(slow_cross_check=False):
                 "constant_term_zero"],
             "vtx_det_constant_term_zero": vtx["det_J"][
                 "constant_term_zero"],
-            "full_detJ_minus_x2_infeasible": False,
-            "vtx_detJ_minus_x2_infeasible": True,
+            "full_detJ_minus_x2_infeasible": (
+                full_x2["infeasible_by_target_monomial"]
+            ),
+            "vtx_detJ_minus_x2_infeasible": (
+                vtx_x2["infeasible_by_target_monomial"]
+            ),
         },
         "theorem_11_4": theorem,
         "verification": verification,
@@ -854,7 +971,7 @@ def build_report(slow_cross_check=False):
                 "The exact bilinear accumulator expands the full 445-unknown "
                 "system in well under a second; the measured SymPy expansion "
                 "of the same determinant is about 13 s, and the full SymPy "
-                "coefficient extraction is about 105 s (optional "
+                "coefficient extraction is about 95-105 s (optional "
                 "--slow-cross-check)."
             ),
         },
@@ -870,6 +987,9 @@ def build_report(slow_cross_check=False):
             "infeasible for det J = x^2 because the x^2 monomial is absent "
             "from det J; this is a support obstruction, not a Groebner "
             "obstruction.",
+            "No nonvanishing constraint is imposed on the vertex coefficients; "
+            "solutions whose support drops to a smaller Newton polygon are "
+            "included in the generic ansatz as boundary strata.",
             "Theorem 11.4 is not an exclusion of (75,125); see "
             "theorem_11_4 above.",
         ],
@@ -894,8 +1014,8 @@ def print_report(rep):
     print()
     print("full lattice    : %d unknowns, %d equations (det J - x^2)"
           % (full_x2["unknowns"], full_x2["equations"]))
-    print("                  max total degree %d (x,y); %d (coefficients); "
-          "%d terms max/equation"
+    print("                  max total degree %s (x,y); %s (coefficients); "
+          "%s terms max/equation"
           % (full_x2["max_total_degree"],
              full_x2["max_total_degree_in_coefficients"],
              full_x2["max_terms_per_equation"]))
@@ -936,7 +1056,7 @@ def main(argv=None):
     ap.add_argument("--no-write", action="store_true",
                     help="do not write the JSON")
     ap.add_argument("--slow-cross-check", action="store_true",
-                    help="also run the ~105 s full SymPy cross-check")
+                    help="also run the ~100 s full SymPy cross-check")
     args = ap.parse_args(argv)
 
     t0 = time.perf_counter()

@@ -132,8 +132,15 @@
     "boundary_points_P": 39,
     "interior_points_Q": 256,
     "boundary_points_Q": 65,
+    "interior_points_total": 341,
+    "boundary_points_total": 104,
     "support_sha256_P": "0237bb50304ff16969ba967d8831eb52ccd6ea2f13d39351ed81e41674c505e0",
-    "support_sha256_Q": "4d24ed0bd637fbbdd3ea322372a50babb2db5a7da25b80b39db6f84fb742b046"
+    "support_sha256_Q": "4d24ed0bd637fbbdd3ea322372a50babb2db5a7da25b80b39db6f84fb742b046",
+    "symbols": {
+      "P": "a0..a123",
+      "Q": "b0..b320",
+      "note": "0-based, matching config2_system.build_polynomial"
+    }
   },
   "degrees": {
     "deg_P_total": 15,
@@ -239,6 +246,12 @@
         "monomials_are_upper_bound": false,
         "support_bound_monomials": 724,
         "cancellations_vs_support_bound": 1,
+        "cancelled_monomials": [
+          [
+            31,
+            7
+          ]
+        ],
         "max_total_degree": 38,
         "min_total_degree": 0,
         "max_total_degree_in_coefficients": 2,
@@ -247,7 +260,7 @@
         "constant_term_zero": false,
         "constant_coefficient": "-a1*b26 + a16*b1",
         "pair_products": 66570,
-        "seconds": 0.026
+        "seconds": 0.021
       },
       "target_x2": {
         "label": "full_lattice/detJ-x^2",
@@ -19273,7 +19286,7 @@
           }
         ]
       },
-      "seconds": 0.029
+      "seconds": 0.024
     },
     "vertices_only": {
       "label": "vertices_only",
@@ -19294,6 +19307,12 @@
         "monomials_are_upper_bound": false,
         "support_bound_monomials": 7,
         "cancellations_vs_support_bound": 1,
+        "cancelled_monomials": [
+          [
+            31,
+            7
+          ]
+        ],
         "max_total_degree": 38,
         "min_total_degree": 28,
         "max_total_degree_in_coefficients": 2,
@@ -19764,16 +19783,20 @@
     ],
     "quotes": [
       {
+        "line": 858,
+        "text": "Section 11 is a by-product section: 'None is needed for Theorem A. All three are stated because they are genuine theorems.'"
+      },
+      {
         "line": 902,
-        "text": "At $(75,125)$: $80/29$, so $\\alpha = 80$, $q_{\\mathrm{window}} = 29$, ... so no relation $c\\Phi = eB$ can exist there."
+        "text": "At $(75,125)$: $80/29$, so $\\alpha = 80$, $q_{\\mathrm{window}} = 29$, and the $y$-order cap $L(w) = \\lceil \\alpha w/q\\rceil$ is superadditive off the period: $L(5) + L(24) = 14 + 67 = 81 > 80 = L(29) = \\mathrm{ord}_y\\Phi$, so no relation $c\\Phi = eB$ can exist there."
       },
       {
         "line": 906,
-        "text": "Because $q_{\\mathrm{window}} = 29 = M$ exactly, no split with $1 \\le w < M$ is a multiple of $q_{\\mathrm{window}}$, so the carry is $1$ on every admissible split ... So $(75,125)$ is more firmly obstructed by this mechanism."
+        "text": "Because $q_{\\mathrm{window}} = 29 = M$ exactly, no split with $1 \\le w < M$ is a multiple of $q_{\\mathrm{window}}$, so the carry is $1$ on every admissible split and there is no weight at which the obstruction could vanish. ... So $(75,125)$ is more firmly obstructed by this mechanism than the earlier numbers claimed, not less."
       },
       {
         "line": 908,
-        "text": "Theorem 11.4 (criterion). Let $\\alpha/q$ be $\\mathrm{ord}_y(\\Phi)/M$ in lowest terms ... $\\mathrm{carry}(w(e), M-w(e)) = 0 \\iff q_{\\mathrm{window}} \\mid w(e)$."
+        "text": "Theorem 11.4 (criterion). Let $\\alpha/q$ be $\\mathrm{ord}_y(\\Phi)/M$ in lowest terms, so $\\gcd(\\alpha,q) = 1$ and $q \\mid M$; let $L(w) = \\lceil\\alpha w/q\\rceil$ and $\\mathrm{carry}(w_1,w_2) := L(w_1)+L(w_2)-L(w_1+w_2)$. For any candidate relation $c\\Phi = eB$ with $c$ a nonzero constant and $w(e)+w(B) = M$, $1 \\le w(e) < M$: $\\mathrm{carry}(w(e), M-w(e)) = 0 \\iff $q_{\\mathrm{window}} \\mid w(e)$, and the carry is exactly $0$ or $1$, never more."
       },
       {
         "line": 922,
@@ -19785,7 +19808,13 @@
     "headline": "Theorem 11.4 does NOT exclude (75,125). It is a criterion for the existence of the K-syzygy relation c*Phi = e*B. At (75,125), q_window = 29 = M and w(e) = 5, so no admissible split has carry 0; the relation cannot exist. The theorem therefore removes the (72,108) syzygy route at this corner; it says nothing about whether a Jacobian pair with these Newton polygons exists.",
     "role": "negative/diagnostic tool for the K-syzygy mechanism, not an obstruction to the (75,125) coefficient system",
     "what_it_does_not_say": "It does not say det J = x^2 is infeasible, and it does not exclude any (P,Q) with N(P)=3*Delta', N(Q)=5*Delta'.",
-    "research_note_claim": "research/jacobian-degree-pairs-ge125.md:81 calls it 'a proved obstruction'. That is accurate only for the K-syzygy mechanism; it is not an exclusion of (75,125)."
+    "research_note_claim": "research/jacobian-degree-pairs-ge125.md:81 calls it 'a proved obstruction'. That is accurate only for the K-syzygy mechanism; it is not an exclusion of (75,125).",
+    "repo_status": {
+      "file": "research/scratch/wstrinz/README.md",
+      "lines": "201-203",
+      "quote": "Theorem 2.1 is strict (max >= 125), so F_2(3,5)/125 sits *at* the bound and correctly stays open -- it is the unique row there, and the next increment of the bound depends on it alone.",
+      "meaning": "The wstrinz repo itself lists (75,125) as open, not excluded."
+    }
   },
   "verification": {
     "pick_P": {
@@ -19847,22 +19876,23 @@
     },
     "full_lattice_sympy_cross_check": {
       "ran": false,
-      "note": "not run by default; --slow-cross-check runs config2_system.size_system on the full system (about 105 s measured)"
+      "note": "not run by default; --slow-cross-check runs config2_system.size_system on the full system (about 95-105 s measured)"
     }
   },
   "timings": {
-    "full_lattice_seconds": 0.029,
+    "full_lattice_seconds": 0.024,
     "vertices_only_seconds": 0.0,
     "expanded_dense": true,
     "blow_up": false,
-    "note": "The exact bilinear accumulator expands the full 445-unknown system in well under a second; the measured SymPy expansion of the same determinant is about 13 s, and the full SymPy coefficient extraction is about 105 s (optional --slow-cross-check)."
+    "note": "The exact bilinear accumulator expands the full 445-unknown system in well under a second; the measured SymPy expansion of the same determinant is about 13 s, and the full SymPy coefficient extraction is about 95-105 s (optional --slow-cross-check)."
   },
   "notes": [
     "No solving, elimination, Groebner basis, or collision search was performed.",
     "det J is bilinear in the coefficients, so every nonconstant coefficient equation has total degree 2 in the unknowns.",
     "The full-lattice system is overdetermined: 723 equations in 445 unknowns, or 723 in 443 after the two additive constants are removed.",
     "The vertices-only system is 8 unknowns / 7 equations, but it is infeasible for det J = x^2 because the x^2 monomial is absent from det J; this is a support obstruction, not a Groebner obstruction.",
+    "No nonvanishing constraint is imposed on the vertex coefficients; solutions whose support drops to a smaller Newton polygon are included in the generic ansatz as boundary strata.",
     "Theorem 11.4 is not an exclusion of (75,125); see theorem_11_4 above."
   ],
-  "elapsed_seconds": 0.096
+  "elapsed_seconds": 0.091
 }
