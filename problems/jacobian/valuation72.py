@@ -292,7 +292,9 @@ def krull_dimension(eqs, variables, max_slices=None, seed=12345):
         data.append({"slices": k, "zero_dimensional": bool(zd),
                      "gb_size": len(gb.exprs)})
         if zd:
-            return n - k, data
+            # intersecting a d-dimensional ideal with k generic hyperplanes is
+            # zero dimensional exactly when k = d
+            return k, data
     return None, data
 
 
@@ -341,6 +343,12 @@ def stage1(support_p, support_q, det_poly):
     for a, _b in actual:
         hist[a] = hist.get(a, 0) + 1
 
+    # det J vanishes on x = 0: every monomial has x-degree >= 1, i.e. x | det J
+    x_divides = min(a for a, _ in actual) >= 1
+    y_only_monomials = [m for m in attainable if m[0] == 0]
+    # the only x = 0 candidates are (0,1),(0,2),...; none is attainable
+    x_zero_attainable = [m for m in attainable if m[0] == 0]
+
     missing = sorted(set(attainable) - set(actual))
     # each missing monomial must cancel between the two signed contributions
     cancelled = []
@@ -369,6 +377,8 @@ def stage1(support_p, support_q, det_poly):
         "x2_coefficient": str(c20),
         "x2_coefficient_is_a10_times_b21": bool(x2_ok),
         "min_x_degree": min(a for a, _ in actual),
+        "x_divides_det_J": bool(x_divides),
+        "x_zero_monomials_attainable": [list(m) for m in x_zero_attainable],
         "max_total_degree": max(a + b for a, b in actual),
         "x_degree_histogram": {str(k): v for k, v in sorted(hist.items())},
         "det_monomials": [list(m) for m in actual],
@@ -376,7 +386,10 @@ def stage1(support_p, support_q, det_poly):
         "conclusion": (
             "(2,0) is attainable and its coefficient is exactly a1_0*b2_1, "
             "so det J = x^2 is NOT excluded by support.  EMPTY_BY_SUPPORT is "
-            "ruled out."),
+            "ruled out.  Note that x | det J (min x-degree 1) while the "
+            "y-only monomials (0,1),(0,2),... are NOT attainable: the naive "
+            "'det J is divisible by y' reading is wrong, because N(Q) has the "
+            "vertex (2,1) and Q_y therefore carries the exponent (2,0)."),
     }
 
 
@@ -461,18 +474,20 @@ def max_face(points, w):
 
 
 def stage4(support_p, support_q):
-    normals = []
+    slots = []
     for w, a, b in edge_normals(P_CORNERS):
-        normals.append((w, "N(P)", (a, b)))
+        slots.append((w, "N(P)", (a, b)))
     for w, a, b in edge_normals(Q_CORNERS):
-        normals.append((w, "N(Q)", (a, b)))
+        slots.append((w, "N(Q)", (a, b)))
 
-    seen = set()
+    order = []
+    for w, _src, _edge in slots:
+        if w not in order:
+            order.append(w)
+
     rows = []
-    for w, src, edge in normals:
-        if w in seen:
-            continue
-        seen.add(w)
+    for w in order:
+        srcs = [(s, e) for (ww, s, e) in slots if ww == w]
         dP, fP = max_face(support_p, w)
         dQ, fQ = max_face(support_q, w)
         filt = dP + dQ - (w[0] + w[1])
@@ -488,8 +503,8 @@ def stage4(support_p, support_q):
 
         row = {
             "w": list(w),
-            "source": src,
-            "edge": [list(edge[0]), list(edge[1])],
+            "edge_slots": [{"polygon": s, "edge": [list(e[0]), list(e[1])]}
+                           for s, e in srcs],
             "dP": dP, "dQ": dQ,
             "face_P": [list(p) for p in fP],
             "face_Q": [list(q) for q in fQ],
@@ -499,19 +514,19 @@ def stage4(support_p, support_q):
 
         if filt < tgt:
             row["status"] = "CONTRADICTION"
-            row["equation"] = None
             rows.append(row)
             continue
 
-        if filt > tgt:
-            kind = "det J(P_w,Q_w) = 0"
-        else:
-            kind = "det J(P_w,Q_w) = x^2"
+        kind = ("det J(P_w,Q_w) = 0" if filt > tgt
+                else "det J(P_w,Q_w) = x^2")
         row["kind"] = kind
         row["leading_form"] = str(sp.factor(lead))
 
         if lead == 0:
             row["status"] = "vacuous (leading form identically 0)"
+            row["why"] = ("both edge forms are univariate in the same "
+                          "monomial (or one of them is a monomial), so the "
+                          "2x2 Jacobian vanishes identically")
             rows.append(row)
             continue
 
@@ -520,19 +535,41 @@ def stage4(support_p, support_q):
         poly = sp.Poly(sp.expand(lead - rhs), x, y)
         eqlist = [sp.expand(c) for c in poly.coeffs()]
         variables = sorted(set(vP.values()) | set(vQ.values()), key=str)
+        row["leading_block_size"] = {"equations": len(eqlist),
+                                     "variables": len(variables)}
+        if len(variables) > 8:
+            row["status"] = ("non-empty (not solved: %d unknowns; reduced to "
+                             "the (F0) block in stage 5)" % len(variables))
+            rows.append(row)
+            continue
         solved = solve_block(eqlist, variables,
                              "leading form at w=%s" % (w,))
         row["status"] = ("non-empty leading block"
                          if not solved.get("empty") else "EMPTY leading block")
         row["leading_block"] = solved
+        if tuple(w) == (1, 0):
+            # strict-chart component: A = y^14 a (y-r)^2, B = y^21 b (y-r)^3
+            aa, bb, rr = sp.symbols("a_par b_par r_par")
+            A = aa * y ** 14 * (y - rr) ** 2
+            B = bb * y ** 21 * (y - rr) ** 3
+            family = sp.expand(8 * A * sp.diff(B, y) - 12 * sp.diff(A, y) * B)
+            row["strict_chart"] = {
+                "family": "A = a*y^14*(y-r)^2, B = b*y^21*(y-r)^3 "
+                          "(all corner coefficients nonzero when a*b*r != 0)",
+                "identity_holds": bool(family == 0),
+                "parameters": 3,
+            }
         rows.append(row)
 
     return {
+        "edge_slots": [{"w": list(w), "polygon": s, "edge": [list(e[0]), list(e[1])]}
+                       for w, s, e in slots],
+        "distinct_primitive_normals": [list(w) for w in order],
         "rows": rows,
         "conclusion": (
-            "Every edge weight gives a satisfiable (or vacuous) leading-form "
-            "condition; none is empty.  No single-edge valuation yields a "
-            "certificate of emptiness."),
+            "Every distinct edge weight gives a satisfiable (or vacuous) "
+            "leading-form condition; none is empty.  No single-edge valuation "
+            "yields a certificate of emptiness."),
     }
 
 
@@ -596,6 +633,19 @@ def stage5():
         bsol[b[n - 1]] = sp.expand(-(e - coef * b[n - 1]) / coef)
     residual = [sp.expand(c.subs(bsol)) for c in g0c[11:17]] if triangular else []
 
+    # exact 1-parameter family of (F0):  A = lam*z, B = z^2/lam
+    lam = sp.Symbol("lam")
+    fam_A = lam * z
+    fam_B = z ** 2 / lam
+    family_ok = sp.simplify(-3 * sp.diff(fam_A, z) * fam_B
+                            + 2 * fam_A * sp.diff(fam_B, z) - z ** 2) == 0
+    # 8 A B' - 12 A' B = 0 on the two edge forms, general (a,b,r)
+    aa, bb, rr = sp.symbols("a_par b_par r_par")
+    eA = aa * y ** 14 * (y - rr) ** 2
+    eB = bb * y ** 21 * (y - rr) ** 3
+    edge_family_ok = sp.expand(8 * eA * sp.diff(eB, y)
+                               - 12 * sp.diff(eA, y) * eB) == 0
+
     return {
         "substitution": "u = y, z = x*y^2  (x = z*u^-2)",
         "identity": "det J(P,Q) = u^2 * Jac_{z,u}(P,Q);  target x^2 = z^2 u^-4",
@@ -623,6 +673,19 @@ def stage5():
             "residual_in": 7,
             "residual_degrees": [sp.Poly(r, *a).total_degree() for r in residual],
             "degenerate_solution": "A = z, B = z^2 (A1 = B1 = 1) satisfies (F0)",
+            "exact_family": ("A = lam*z, B = z^2/lam satisfies (F0) exactly "
+                             "for every lam != 0"),
+            "exact_family_verified": bool(family_ok),
+            "solution_dimension_lower_bound": 1,
+            "solution_dimension_certificate": (
+                "(F0) is invariant under (A,B) -> (lam*A, B/lam), and the "
+                "explicit orbit A = lam*z, B = z^2/lam is a 1-parameter family "
+                "of exact solutions, so the (F0) solution set has dimension "
+                ">= 1."),
+            "strict_chart_edge_family": (
+                "A = a*y^14*(y-r)^2, B = b*y^21*(y-r)^3 solves the (2,-1) "
+                "leading form 8 A B' - 12 A' B = 0 exactly"),
+            "strict_chart_edge_family_verified": bool(edge_family_ok),
             "status": "non-empty as a system; the exact-degree (7,10) part is "
                       "reduced to 6 equations in 7 unknowns and is NOT resolved",
         },
@@ -651,6 +714,14 @@ def stage6(det_poly, support_p, support_q):
     a_param = sp.Rational(3, 5)
     b_param = sp.Rational(2, 3)
     r_param = sp.Rational(1, 2)
+
+    # exact closed form of the (quadratic) x-degree-19 level:
+    #   8 A B' - 12 A' B = 0  =>  A = a y^14 (y-r)^2, B = b y^21 (y-r)^3
+    A_edge = a_param * y ** 14 * (y - r_param) ** 2
+    B_edge = b_param * y ** 21 * (y - r_param) ** 3
+    top_level_ok = sp.expand(8 * A_edge * sp.diff(B_edge, y)
+                             - 12 * sp.diff(A_edge, y) * B_edge) == 0
+
     val = {
         (8, 14): a_param * r_param ** 2,
         (8, 15): -2 * a_param * r_param,
@@ -717,6 +788,7 @@ def stage6(det_poly, support_p, support_q):
         "method": "x-degree ordered cascade; level 19 solved in closed form "
                   "(A = a(y-r)^2, B = b(y-r)^3 on the x=8/x=12 slices); every "
                   "lower level is affine-linear in the new coefficients",
+        "top_level_closed_form_verified": bool(top_level_ok),
         "parameters_used": {"a": str(a_param), "b": str(b_param),
                             "r": str(r_param)},
         "levels": rows,
@@ -782,11 +854,21 @@ def build_report():
     })
 
     verdict = "NOT_DECISIVE"
+    n_equations = len(list(det_poly.monoms()))
+    x_degrees = sorted({int(a) for a, _ in det_poly.monoms()})
     rep = {
         "problem": "jacobian-config2-full-lattice-valuation",
         "source": "GGHV arXiv:2204.14178, Prop. 4.3, case (2)",
         "target": "det J(P,Q) = x^2",
         "support_convention": "full lattice points of the two Newton polygons",
+        "system_size": {
+            "unknowns": len(support_p) + len(support_q),
+            "equations": n_equations,
+            "overdetermined_by": n_equations - (len(support_p) + len(support_q)),
+            "note": "det J - x^2 has exactly as many monomials as det J, since "
+                    "(2,0) is in the support already",
+            "x_degree_levels": x_degrees,
+        },
         "supports": {
             "N(P)_corners": [list(p) for p in P_CORNERS],
             "N(Q)_corners": [list(p) for p in Q_CORNERS],
@@ -866,8 +948,9 @@ def print_report(rep):
     print()
     print("stage 4  weighted valuations")
     for r in rep["stage3_weighted_valuations"]["rows"]:
-        print("  w=%-8s %-6s filt=%2d target=%2d  %s"
-              % (tuple(r["w"]), r["source"], r["det_filtration_degree"],
+        polys = "+".join(s["polygon"] for s in r["edge_slots"])
+        print("  w=%-8s %-8s filt=%2d target=%2d  %s"
+              % (tuple(r["w"]), polys, r["det_filtration_degree"],
                  r["target_degree"], r["status"]))
     print()
     s4 = rep["stage4_quasihomogeneous_reduction"]
@@ -878,6 +961,8 @@ def print_report(rep):
     print("  top block residual equations     : %d in %d unknowns"
           % (s4["top_block"]["residual_equations"],
              s4["top_block"]["residual_in"]))
+    print("  top block exact family            : %s"
+          % s4["top_block"]["exact_family_verified"])
     print()
     print("stage 6  x-adic cascade (diagnostic)")
     for row in rep["stage5_x_adic_cascade_diagnostic"]["levels"]:

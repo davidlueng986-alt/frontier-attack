@@ -71,18 +71,24 @@ vertex is c_i * k(vertex)^power, which can be matched by rescaling c_i.  The
 four edge conditions therefore cut out a non-empty variety: the two diagonal
 edges remove 7 + 28 dimensions and the two vacuous edges remove none.  The
 computed dimension of that variety is reported in ``joint_solution_set``
-(410 scaled, 408 in the strict chart).  This is a statement about the
-*filter*, not about det J = x^2: every edge condition is necessary, none is
-sufficient.
+(408 in the strict chart, 410 with the two vertex scalings restored; the
+degenerate components where an edge form vanishes identically are excluded
+there and reported separately, exactly as in ``cascade75.py``).  This is a
+statement about the *filter*, not about det J = x^2: every edge condition is
+necessary, none is sufficient.
 
 DIMENSION CONVENTIONS
 ---------------------
-* ``scaled``  : the coefficient space of the full lattice (445 unknowns).
 * ``strict``  : the strict Newton-polygon chart used by ``cascade75.py``,
                 which fixes the two vertex coefficients a_(12,3) = b_(20,5) = 1
                 (they are vertices of N(P), N(Q), hence nonzero).  The edge
                 systems are homogeneous of degree 1 in each block, so this
                 removes exactly the two scalings.
+* ``scaled``  : the same power family with those two scalings restored
+                (per edge: deg k + 2).  It is not the dimension of the literal
+                variety, which also contains the degenerate components where
+                an edge form vanishes; those are reported separately and are
+                excluded by the Newton-polygon hypothesis.
 
 Run:
     python problems/jacobian/cascade75_full.py
@@ -127,7 +133,6 @@ PRIOR_CASCADE = ROOT / "runs" / "jacobian_75_125_cascade.json"
 
 EDGE_CAP_S = 180.0          # hard cap per edge, as required
 TOP_GB_CAP_S = 60.0         # the top edge's direct Groebner is known to be hard
-MODULUS = 32003
 DECLARED_CONDITIONS = 16    # the number asserted by the task
 SEED = 20260101
 
@@ -350,6 +355,8 @@ def edge_family_certificate(slot, rng):
             "reason": "vacuous edge: no leading-form equation to solve",
         }
     k_coeffs = [sp.Integer(rng.randint(-7, 7)) for _ in range(shape["deg_k"])]
+    if k_coeffs and k_coeffs[-1] == 0:
+        k_coeffs[-1] = sp.Integer(1)   # far vertex coefficient stays nonzero
     c1, c2 = sp.Integer(2), sp.Integer(3)
     vals = family_point(slot, k_coeffs, c1, c2)
     system = build_edge_system(slot["points_P"], slot["points_Q"])
@@ -482,6 +489,17 @@ def analyse_edge(slot, index, previous_slot, cap, fixed_symbols, rng,
         "structure theorem (Wronskian + unique factorisation) and an explicit "
         "%d-parameter family; strict chart removes the two vertex scalings"
         % (shape["deg_k"] + 2))
+    record["dimension_literal_with_degenerate_forms"] = int(max(
+        shape["deg_k"] + 2, len(pts_p), len(pts_q)))
+    record["degenerate_components"] = {
+        "P_edge_form_identically_zero": int(len(pts_q)),
+        "Q_edge_form_identically_zero": int(len(pts_p)),
+        "power_family": int(shape["deg_k"] + 2),
+        "note": "the literal variety also contains the two degenerate "
+                "components; the Newton-polygon hypothesis excludes them "
+                "(a vertex coefficient would vanish), so the headline "
+                "dimension is the strict-chart one",
+    }
 
     record["leading_form_identity"] = certificate_leading_form(slot)
     record["family_certificate"] = edge_family_certificate(slot, rng)
@@ -502,10 +520,14 @@ def analyse_edge(slot, index, previous_slot, cap, fixed_symbols, rng,
         record["groebner"] = gb
     elif attempt_groebner and index == 1:
         carried = _prior_top_groebner()
-        record["groebner"] = carried if carried is not None else {
-            "status": "not_run",
-            "reason": "34 variables: direct Groebner is not a small system",
-        }
+        if carried is not None:
+            record["groebner"] = carried
+        else:
+            gb = groebner_capped(slot["normal"], fixed_symbols, TOP_GB_CAP_S)
+            gb["fallback_cap_seconds"] = TOP_GB_CAP_S
+            gb["note"] = "no prior run to reuse; direct basis attempted at " \
+                         "the fallback cap"
+            record["groebner"] = gb
     else:
         record["groebner"] = {
             "status": "not_run",
@@ -610,8 +632,9 @@ def joint_solution_set(decomp, records):
     return {
         "definition": (
             "dimension of the common solution set of all genuine edge "
-            "leading-form conditions, in the full 445-dimensional coefficient "
-            "space; not the dimension of det J = x^2"),
+            "leading-form conditions in the strict Newton-polygon chart "
+            "(every vertex coefficient nonzero, a_(12,3) = b_(20,5) = 1); "
+            "this is a statement about the filter, not about det J = x^2"),
         "unknowns_total": int(n_total),
         "interior_coefficients_free": int(n_interior),
         "boundary_coefficients": int(len(boundary)),
@@ -622,7 +645,7 @@ def joint_solution_set(decomp, records):
         "edge_family_parameters_after_gluing": int(params_after_gluing),
         "per_edge": detail,
         "codimension": int(n_total - dim_scaled),
-        "dimension_scaled": int(dim_scaled),
+        "dimension_scaled_family_only": int(dim_scaled),
         "dimension_strict": int(dim_strict),
         "breakdown": {
             "interior": int(n_interior),
@@ -633,9 +656,20 @@ def joint_solution_set(decomp, records):
         },
         "consistent_with_recorded_per_edge_dimensions": bool(
             [r.get("dimension") for r in records] == [4, 1, 26, 42]),
+        "degenerate_forms_not_counted": {
+            "top_edge_component": "P_top = 0, Q_top free: dimension 21",
+            "second_edge_component": "P_edge = 0, Q_edge free: dimension 6",
+            "why_excluded": "they set a vertex coefficient to zero, which "
+                            "the Newton-polygon hypothesis forbids",
+            "consequence": "no literal-variety dimension is claimed; only the "
+                           "strict-chart dimension above",
+        },
         "convention": (
-            "scaled counts all 445 coefficients; strict fixes "
-            "a_(12,3) = b_(20,5) = 1, the chart used by cascade75.py"),
+            "strict: all vertex coefficients nonzero and a_(12,3) = "
+            "b_(20,5) = 1, matching cascade75.py.  dimension_scaled_family_only "
+            "restores the two vertex scalings but still excludes the "
+            "degenerate edge forms, so it is not the literal variety "
+            "dimension."),
     }
 
 
@@ -657,9 +691,13 @@ def joint_point(decomp, rng):
 
     vals = {}
     k1 = [sp.Integer(rng.randint(-6, 6)) for _ in range(shape_second["deg_k"])]
+    if k1 and k1[-1] == 0:
+        k1[-1] = sp.Integer(1)
     vals.update(family_point(second, k1, sp.Integer(1), sp.Integer(1)))
 
     k2 = [sp.Integer(rng.randint(-6, 6)) for _ in range(shape_top["deg_k"])]
+    if k2 and k2[-1] == 0:
+        k2[-1] = sp.Integer(1)
     trial = family_point(top, k2, sp.Integer(1), sp.Integer(1))
     a_target = vals["a_12_3"]
     b_target = vals["b_20_5"]
@@ -685,6 +723,20 @@ def joint_point(decomp, rng):
                 vals[key] = sp.Integer(rng.randint(-5, 5))
 
     vals = {k: sp.nsimplify(v) for k, v in vals.items()}
+
+    # strict Newton-polygon chart: every vertex coefficient of N(P), N(Q) is
+    # nonzero.  Family vertices already are (k(0) = 1); the vacuous edges'
+    # vertices are random, so bump a zero to 1.
+    vertex_keys = ([str(sym_a(*e["start"])) for e in decomp["edges_P"]]
+                   + [str(sym_b(*e["start"])) for e in decomp["edges_Q"]])
+    bumped = []
+    for key in vertex_keys:
+        if vals[key] == 0:
+            vals[key] = sp.Integer(1)
+            bumped.append(key)
+    if any(vals[k] == 0 for k in vertex_keys):
+        raise AssertionError("strict chart violated")
+
     sub = {sp.Symbol(k): v for k, v in vals.items()}
 
     checks = []
@@ -700,7 +752,10 @@ def joint_point(decomp, rng):
         })
     if any(c["nonzero_residuals"] for c in checks):
         raise AssertionError("joint point does not satisfy the edge conditions")
-    return vals, checks
+    return vals, checks, {
+        "vertex_coefficients_nonzero": True,
+        "zero_vertices_bumped_to_one": bumped,
+    }
 
 
 def rejected_candidate_conditions(decomp, vals):
@@ -769,6 +824,33 @@ def rejected_candidate_conditions(decomp, vals):
 # stage 5: after a vacuous edge, the next filtration level
 # --------------------------------------------------------------------------
 
+def _rank_mod_p(rows, p):
+    """Gaussian elimination rank over GF(p) for an integer matrix."""
+    m = [[int(sp.Integer(x)) % p for x in row] for row in rows]
+    nrows = len(m)
+    ncols = len(m[0]) if nrows else 0
+    rank = 0
+    for col in range(ncols):
+        pivot = None
+        for i in range(rank, nrows):
+            if m[i][col]:
+                pivot = i
+                break
+        if pivot is None:
+            continue
+        m[rank], m[pivot] = m[pivot], m[rank]
+        inv = pow(m[rank][col], p - 2, p)
+        m[rank] = [(x * inv) % p for x in m[rank]]
+        for i in range(nrows):
+            if i != rank and m[i][col]:
+                f = m[i][col]
+                m[i] = [(a - f * b) % p for a, b in zip(m[i], m[rank])]
+        rank += 1
+        if rank == nrows:
+            break
+    return rank
+
+
 def next_level_after_vacuous(decomp, rng):
     """Check the first sub-leading condition on the two vacuous edges.
 
@@ -803,7 +885,6 @@ def next_level_after_vacuous(decomp, rng):
             kind = "horizontal"
             layer = "y^1"
             condition = "P_0' Q_1 - P_1 Q_0' = 0"
-            lift = (sp.diff(p0, var), sp.diff(q0, var))
         else:
             deg_p0, deg_q0 = 15, 25
             deg_p1, deg_q1 = 14, 24
@@ -820,7 +901,6 @@ def next_level_after_vacuous(decomp, rng):
             kind = "vertical"
             layer = "x^1"
             condition = "P_1 Q_0' - P_0' Q_1 = 0"
-            lift = (sp.diff(p0, var), sp.diff(q0, var))
 
         poly = sp.Poly(sp.expand(expr), var)
         deg = int(poly.degree())
@@ -829,13 +909,28 @@ def next_level_after_vacuous(decomp, rng):
         for k in range(deg + 1):
             coeff = sp.expand(poly.coeff_monomial(var ** k))
             rows.append([sp.expand(sp.diff(coeff, g)) for g in gens])
-        matrix = sp.Matrix(rows)
-        rank = int(matrix.rank())
+
+        # The rank is computed over GF(p) for several primes.  A modular rank
+        # is a lower bound for the rank over Q; when it reaches the number of
+        # equations the rational rank is that number exactly.
+        primes = (32003, 32009, 32027)
+        ranks = [_rank_mod_p(rows, p) for p in primes]
+        rank = max(ranks)
         n = len(gens)
-        dim = n - rank
+        n_eq = len(rows)
+        exact = bool(rank == min(n, n_eq))
+        dim = n - rank if exact else None
 
         # the explicit lift must be in the kernel, and fit the polygon
-        lift_val = sp.expand(expr.subs(dict(zip(gens, lift))))
+        lift_p, lift_q = sp.diff(p0, var), sp.diff(q0, var)
+        lift_poly = sp.Poly(sp.expand(lift_p), var)
+        lift_qoly = sp.Poly(sp.expand(lift_q), var)
+        lift_coeffs = (
+            [lift_poly.coeff_monomial(var ** i) if i <= lift_poly.degree() else 0
+             for i in range(deg_p1 + 1)]
+            + [lift_qoly.coeff_monomial(var ** i) if i <= lift_qoly.degree() else 0
+               for i in range(deg_q1 + 1)])
+        lift_val = sp.expand(expr.subs(dict(zip(gens, lift_coeffs))))
         out.append({
             "normal": slot["normal"],
             "kind": kind,
@@ -844,18 +939,22 @@ def next_level_after_vacuous(decomp, rng):
             "explicit_lift": "(P_1,Q_1) = (P_0',Q_0')",
             "condition_vanishes_identically": bool(lift_val == 0),
             "lift_inside_newton_polygon": bool(
-                sp.degree(lift[0], var) <= deg_p1 and
-                sp.degree(lift[1], var) <= deg_q1),
+                sp.degree(lift_p, var) <= deg_p1 and
+                sp.degree(lift_q, var) <= deg_q1),
             "linear_system": {
                 "unknowns": int(n),
-                "equations": int(deg + 1),
-                "rank_over_Q": int(rank),
-                "solution_dimension": int(dim),
+                "equations": int(n_eq),
+                "rank_mod_p": [int(r) for r in ranks],
+                "rank_over_Q": int(rank) if exact else None,
+                "rank_lower_bound": int(rank),
+                "rank_certified_exact": exact,
+                "solution_dimension": int(dim) if exact else None,
             },
             "conclusion": (
-                "the next level is non-empty: a linear system with %d "
-                "unknowns, %d equations, rank %d and dimension %d"
-                % (n, deg + 1, rank, dim)),
+                "the next level is non-empty: the linear system has %d "
+                "unknowns and %d equations, rank over Q %s, dimension %s"
+                % (n, n_eq, rank if exact else ">= %d" % rank,
+                   dim if exact else "not decided")),
         })
     return out
 
@@ -883,17 +982,20 @@ def build_report(cap):
 
     joint = joint_solution_set(decomp, records)
     log_stage("3_joint_dimension", {
-        "dimension_scaled": joint["dimension_scaled"],
         "dimension_strict": joint["dimension_strict"],
+        "dimension_scaled_family_only":
+            joint["dimension_scaled_family_only"],
         "codimension": joint["codimension"],
     })
 
-    vals, point_checks = joint_point(decomp, rng)
+    vals, point_checks, chart = joint_point(decomp, rng)
     joint["explicit_joint_point_checks"] = point_checks
+    joint["strict_chart_certificate"] = chart
     log_stage("4_joint_point", {
         "edges_checked": len(point_checks),
         "max_nonzero_residuals": max(c["nonzero_residuals"]
                                      for c in point_checks),
+        "vertex_coefficients_nonzero": chart["vertex_coefficients_nonzero"],
     })
 
     rejected = rejected_candidate_conditions(decomp, vals)
@@ -908,6 +1010,8 @@ def build_report(cap):
         "edges": [e["normal"] for e in next_level],
         "all_identically_zero": all(
             e["condition_vanishes_identically"] for e in next_level),
+        "linear_dimensions": [
+            e["linear_system"]["solution_dimension"] for e in next_level],
     })
 
     first_empty = None
@@ -936,12 +1040,12 @@ def build_report(cap):
             "strict chart) and the two horizontal/vertical edges are "
             "vacuous. The %d off-diagonal pairs in the 4x4 grid are not "
             "leading-form conditions and are rejected, not descended. The "
-            "edge conditions cut the 445-dimensional coefficient space down "
-            "to dimension %d (strict chart %d), so the cascade is a filter "
-            "that cannot decide this corner: it is non-empty by structure, "
-            "not by accident."
-            % (len(records), rejected["count"], joint["dimension_scaled"],
-               joint["dimension_strict"]))
+            "edge conditions leave a strict-chart solution set of dimension "
+            "%d (codimension %d of 445), so the cascade is a filter that "
+            "cannot decide this corner: it is non-empty by structure, not by "
+            "accident."
+            % (len(records), rejected["count"], joint["dimension_strict"],
+               joint["codimension"]))
 
     if verdict == "SURVIVES_ALL_EDGES":
         verdict_detail = detail
@@ -970,6 +1074,8 @@ def build_report(cap):
             for rec in records),
         "joint_point_satisfies_all_edges": all(
             c["nonzero_residuals"] == 0 for c in point_checks),
+        "joint_point_lies_in_strict_chart":
+            chart["vertex_coefficients_nonzero"],
         "joint_dimension_bookkeeping_closes": (
             joint["interior_coefficients_free"]
             + joint["boundary_coefficients_free"]
@@ -984,12 +1090,21 @@ def build_report(cap):
         "vacuous_edges_non_empty_at_next_level": all(
             e["condition_vanishes_identically"] for e in next_level),
         "next_level_linear_systems_have_positive_dimension": all(
-            e["linear_system"]["solution_dimension"] > 0 for e in next_level),
+            (e["linear_system"]["solution_dimension"] or 0) > 0
+            for e in next_level),
         "lead_verdict_is_one_of_the_three_allowed_forms": verdict in (
             "SURVIVES_ALL_EDGES",
             "EMPTY_AT_EDGE %d" % (first_empty or 0),
             "UNDECIDED_AT_EDGE %d" % (undecided[0] if undecided else 0)),
     }
+
+    log_stage("7_verdict", {
+        "verdict": verdict,
+        "edges_done": len(records),
+        "first_empty_edge": first_empty,
+        "checks_all_pass": all(checks.values()),
+        "dimension_strict": joint["dimension_strict"],
+    })
 
     report = {
         "problem": "jacobian-75-125-cascade-full",
@@ -1015,6 +1130,14 @@ def build_report(cap):
         "next_level_after_vacuous": next_level,
         "first_empty_edge": first_empty,
         "edges_done": len(records),
+        "conditions_accounted_for": {
+            "declared_in_task": DECLARED_CONDITIONS,
+            "genuine_edge_conditions_descended": len(records),
+            "off_diagonal_pairs_rejected": rejected["count"],
+            "accounting": "%d = %d descended + %d rejected (not conditions)"
+                          % (DECLARED_CONDITIONS, len(records),
+                             rejected["count"]),
+        },
         "verdict": verdict,
         "verdict_detail": verdict_detail,
         "verdict_reading": {
@@ -1029,6 +1152,19 @@ def build_report(cap):
             "all_pass": all(checks.values()),
             "checks": {k: bool(v) for k, v in checks.items()},
         },
+        "limitations": [
+            "every edge condition is necessary, none is sufficient; a "
+            "non-empty cascade is not a solution of det J = x^2",
+            "joint_solution_set.dimension_strict is the dimension of the "
+            "edge-condition variety in the strict chart, not the dimension "
+            "of det J = x^2",
+            "the 12 off-diagonal pairs are rejected on structural grounds; "
+            "descending them would not be a stronger filter, it would be an "
+            "unsound one",
+            "the leading-form cascade is exhausted at this corner: any "
+            "emptiness here must come from the sub-leading Newton-Puiseux "
+            "layers or from the full 445-unknown system",
+        ],
         "conventions": {
             "leading_part": "LP_w(det J) = det J(P_w, Q_w)",
             "strict_chart": "a_(12,3) = b_(20,5) = 1",
@@ -1065,15 +1201,19 @@ def print_report(rep):
         print("        %s" % (rec.get("non_empty_certificate")
                               or rec.get("reason")))
         gb = rec.get("groebner", {})
-        print("        groebner: %s%s"
-              % (gb.get("status"), " (cap %s s)"
-                 % gb.get("cap_seconds") if gb.get("cap_seconds") else ""))
+        cap_text = (" (cap %s s)" % gb.get("cap_seconds")
+                    if gb.get("cap_seconds") else "")
+        carried_text = (" [carried from %s]" % gb["carried_from"]
+                        if gb.get("carried_from") else "")
+        print("        groebner: %s%s%s"
+              % (gb.get("status"), cap_text, carried_text))
     print()
     j = rep["joint_solution_set"]
-    print("joint edge variety : dimension %d scaled, %d strict "
-          "(codimension %d of %d)"
-          % (j["dimension_scaled"], j["dimension_strict"], j["codimension"],
-             j["unknowns_total"]))
+    print("joint edge variety : dimension %d strict chart "
+          "(codimension %d of %d); %d with the two scalings restored, "
+          "degenerate edge forms excluded"
+          % (j["dimension_strict"], j["codimension"], j["unknowns_total"],
+             j["dimension_scaled_family_only"]))
     print("  breakdown        : interior %d + free boundary %d + edge "
           "parameters %d - strict fixes 2"
           % (j["breakdown"]["interior"], j["breakdown"]["free_boundary"],
@@ -1090,10 +1230,13 @@ def print_report(rep):
     for e in rep["next_level_after_vacuous"]:
         ls = e["linear_system"]
         print("beyond w=%-8s (vacuous): next level %s is linear, "
-              "%d unknowns / %d equations, rank %d, dimension %d"
+              "%d unknowns / %d equations, rank over Q %s, dimension %s"
               % (e["normal"], e["next_layer"], ls["unknowns"],
-                 ls["equations"], ls["rank_over_Q"],
-                 ls["solution_dimension"]))
+                 ls["equations"],
+                 ls["rank_over_Q"] if ls["rank_certified_exact"]
+                 else ">= %d" % ls["rank_lower_bound"],
+                 ls["solution_dimension"] if ls["rank_certified_exact"]
+                 else "not decided"))
     print()
     print("first empty edge   : %s" % rep["first_empty_edge"])
     print("VERDICT: %s" % rep["verdict"])

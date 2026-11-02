@@ -261,17 +261,28 @@ on reconstruction; a degree bound is the deliverable that is actually reachable.
 The `(75,125)` cascade is now on-core again: an empty cascade at that corner is a
 degree-bound step, not a dead end.
 
-**Cascade result so far (J6).** 3 of the 16 edge conditions descended, no
-contradiction:
+**Cascade result, complete (J7).** The cascade is **not decisive**, and now we
+know why:
 
-| edge | weight | result |
-|---|---|---|
-| 1 | `[1,1]` | dimension **4** (strict chart); family `p = h³`, `q = h⁵`, `h = u⁴ + c3u³ + c2u² + c1u + c0` |
-| 2 | `[1,-1]` | dimension 1 |
-| 3 | `[0,-1]` | **vacuous** — horizontal edge, `det J(P_e,Q_e) ≡ 0` for every choice |
+| item | value |
+|---|---|
+| genuine edge conditions | **4** (2 diagonal, 2 horizontal/vertical) |
+| diagonal edge dimensions | 4 and 1 (strict chart) |
+| horizontal / vertical edges | **vacuous** — identically zero leading form |
+| off-diagonal pairs (12) | rejected: normal cones disjoint, not leading-form conditions |
+| joint edge variety | **dimension 408** in the strict chart (codimension 35 of 445) |
 
-Each edge condition is only *necessary*, so this is a filter, not a solution. The
-next task is to descend all 16 and report the first empty edge, if any.
+So the edge conditions impose only 37 independent equations on 445 unknowns. The
+corner is **non-empty by structure, not by accident**: the filter cannot decide
+it, and no further descent changes that. The cascade is the wrong tool for
+`(75,125)`.
+
+That is why the transfer analysis points at **Moh's approximate roots**: it
+couples the edges instead of filtering them. `P` and `Q` share an approximate
+root `G`, so `P = G³ + …` and `Q = G⁵ + …`, collapsing 445 coefficients to
+roughly the ten coefficients of `G` before any lower-order correction. If that
+reduction is valid here, the corner becomes small enough to decide; if it is not,
+the corner stays open and the degree bound does not move.
 
 ## 4. Load-bearing decomposition
 

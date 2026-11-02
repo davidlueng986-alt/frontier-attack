@@ -1,5 +1,5 @@
-2026-11-02T13:10:30Z stage=1_support {"actual": 92, "attainable": 112, "min_x_degree": 1, "x2_attainable": true, "x2_coefficient": "a1_0*b2_1"}
-2026-11-02T13:10:54Z stage=1_support {"actual": 92, "attainable": 112, "min_x_degree": 1, "x2_attainable": true, "x2_coefficient": "a1_0*b2_1"}
-2026-11-02T13:10:54Z stage=2_lowest_block {"block_monomials": [[1, 0], [1, 1], [1, 2]], "equations": ["a1_0*b1_1", "2*a1_0*b1_2", "a1_1*b1_2 - a1_2*b1_1"], "min_x_degree": 1, "x1_dimension": 2, "x1_plus_x2_dimension": 3}
-2026-11-02T13:11:17Z stage=1_support {"actual": 92, "attainable": 112, "min_x_degree": 1, "x2_attainable": true, "x2_coefficient": "a1_0*b2_1"}
-2026-11-02T13:11:17Z stage=2_lowest_block {"block_monomials": [[1, 0], [1, 1], [1, 2]], "equations": ["a1_0*b1_1", "2*a1_0*b1_2", "a1_1*b1_2 - a1_2*b1_1"], "min_x_degree": 1, "x1_dimension": 2, "x1_plus_x2_dimension": 3}
+2026-11-02T13:28:47Z stage=1_support {"actual": 92, "attainable": 112, "min_x_degree": 1, "x2_attainable": true, "x2_coefficient": "a1_0*b2_1"}
+2026-11-02T13:28:47Z stage=2_lowest_block {"block_monomials": [[1, 0], [1, 1], [1, 2]], "equations": ["a1_0*b1_1", "2*a1_0*b1_2", "a1_1*b1_2 - a1_2*b1_1"], "min_x_degree": 1, "x1_dimension": 3, "x1_plus_x2_dimension": 3}
+2026-11-02T13:28:50Z stage=3_weights {"statuses": ["vacuous (leading form identically 0)", "non-empty (not solved: 19 unknowns; reduced to the (F0) block in stage 5)", "non-empty leading block", "vacuous (leading form identically 0)", "non-empty leading block"], "weights": [[0, -1], [2, -1], [1, 0], [-2, 1], [1, -2]]}
+2026-11-02T13:28:53Z stage=4_quasihomogeneous {"identity_verified": true, "top_residual_equations": 6, "u_powers": [0, 1, 2, 3, 4]}
+2026-11-02T13:28:53Z stage=5_cascade_diagnostic {"first_rank_jump": {"augmented_rank": 5, "consistent": false, "eqs": 5, "free": 3, "new": 7, "rank": 4, "x_degree": 17}, "levels": [{"augmented_rank": 4, "consistent": true, "eqs": 5, "free": 3, "new": 7, "rank": 4, "x_degree": 18}, {"augmented_rank": 5, "consistent": false, "eqs": 5, "free": 3, "new": 7, "rank": 4, "x_degree": 17}]}

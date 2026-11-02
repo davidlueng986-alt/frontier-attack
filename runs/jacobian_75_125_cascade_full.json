@@ -344,6 +344,29 @@
       }
     ],
     "vertex_face_conditions_all_vacuous": true,
+    "readings_of_16": [
+      {
+        "reading": "4 P-edges x 4 Q-edges = 16 edge pairs",
+        "consistent_with_recorded_order": true,
+        "valid_conditions": 4,
+        "invalid_conditions": 12,
+        "why": "only the diagonal pairs share a normal; the other twelve have disjoint normal cones"
+      },
+      {
+        "reading": "4 edges + 4 vertices per polygon, 2 polygons = 16 faces",
+        "consistent_with_recorded_order": false,
+        "valid_conditions": 4,
+        "vacuous_conditions": 4,
+        "invalid_conditions": 8,
+        "why": "faces pair only across the two polygons by a common weight; the four matched vertex pairs are vacuous and an unmatched face has no common weight"
+      },
+      {
+        "reading": "4 edges x 4 coefficient layers",
+        "consistent_with_recorded_order": false,
+        "valid_conditions": null,
+        "why": "the recorded weights (1,1), (1,-1), (0,-1) are edge normals, not layers of one grading; the layered descent is a different (sub-leading) filtration and has 39 levels for w=(1,1), not 4"
+      }
+    ],
     "finding": "the corner has 4 genuine edge conditions, not 16.  The 4 x 4 reading (16 pairs of a P-edge with a Q-edge) contains 4 valid diagonal pairs and 12 off-diagonal pairs whose normal cones are disjoint, so no single weight exposes both faces and det J(P_ei,Q_ej) = 0 is not a leading-form condition.  The 4 matched vertex pairs are also vacuous because the vertices are proportional.  See rejected_candidate_conditions for a witness where the off-diagonal determinants fail at a point that satisfies every genuine edge condition."
   },
   "edges": [
@@ -378,6 +401,13 @@
       "dimension_scaled": 6,
       "dimension": 4,
       "dimension_method": "structure theorem (Wronskian + unique factorisation) and an explicit 6-parameter family; strict chart removes the two vertex scalings",
+      "dimension_literal_with_degenerate_forms": 21,
+      "degenerate_components": {
+        "P_edge_form_identically_zero": 21,
+        "Q_edge_form_identically_zero": 13,
+        "power_family": 6,
+        "note": "the literal variety also contains the two degenerate components; the Newton-polygon hypothesis excludes them (a vertex coefficient would vanish), so the headline dimension is the strict-chart one"
+      },
       "leading_form_identity": {
         "identity": "det J(P_e,Q_e) = x^(p0+r0-1) y^(q0+s0-1) * [(p0*s0-q0*r0)*f*g + (p0*v-q0*u)*t*f*g' + (u*s0-v*r0)*t*f'*g]",
         "trials": 2,
@@ -464,6 +494,13 @@
       "dimension_scaled": 3,
       "dimension": 1,
       "dimension_method": "structure theorem (Wronskian + unique factorisation) and an explicit 3-parameter family; strict chart removes the two vertex scalings",
+      "dimension_literal_with_degenerate_forms": 6,
+      "degenerate_components": {
+        "P_edge_form_identically_zero": 6,
+        "Q_edge_form_identically_zero": 4,
+        "power_family": 3,
+        "note": "the literal variety also contains the two degenerate components; the Newton-polygon hypothesis excludes them (a vertex coefficient would vanish), so the headline dimension is the strict-chart one"
+      },
       "leading_form_identity": {
         "identity": "det J(P_e,Q_e) = x^(p0+r0-1) y^(q0+s0-1) * [(p0*s0-q0*r0)*f*g + (p0*v-q0*u)*t*f*g' + (u*s0-v*r0)*t*f'*g]",
         "trials": 2,
@@ -681,7 +718,7 @@
           "b_18_3",
           "b_19_4"
         ],
-        "seconds": 1.295,
+        "seconds": 1.026,
         "sample": [
           "-125*b_15_0**3*b_19_4 + 50*b_15_0**2*b_16_1*b_18_3 + 25*b_15_0**2*b_17_2**2 - 35*b_15_0*b_16_1**2*b_17_2 + 7*b_16_1**4",
           "-625*b_15_0**3 - 175*b_15_0**2*b_16_1*b_19_4 + 250*b_15_0**2*b_17_2*b_18_3 - 5*b_15_0*b_16_1**2*b_18_3 - 90*b_15_0*b_16_1*b_17_2**2 + 21*b_16_1**3*b_17_2",
@@ -832,7 +869,7 @@
     "convention": "strict fixes a_(12,3) = b_(20,5); vacuous edges report all their coefficients as free"
   },
   "joint_solution_set": {
-    "definition": "dimension of the common solution set of all genuine edge leading-form conditions, in the full 445-dimensional coefficient space; not the dimension of det J = x^2",
+    "definition": "dimension of the common solution set of all genuine edge leading-form conditions in the strict Newton-polygon chart (every vertex coefficient nonzero, a_(12,3) = b_(20,5) = 1); this is a statement about the filter, not about det J = x^2",
     "unknowns_total": 445,
     "interior_coefficients_free": 341,
     "boundary_coefficients": 104,
@@ -860,7 +897,7 @@
       }
     ],
     "codimension": 35,
-    "dimension_scaled": 410,
+    "dimension_scaled_family_only": 410,
     "dimension_strict": 408,
     "breakdown": {
       "interior": 341,
@@ -870,7 +907,13 @@
       "total_strict": 408
     },
     "consistent_with_recorded_per_edge_dimensions": true,
-    "convention": "scaled counts all 445 coefficients; strict fixes a_(12,3) = b_(20,5) = 1, the chart used by cascade75.py",
+    "degenerate_forms_not_counted": {
+      "top_edge_component": "P_top = 0, Q_top free: dimension 21",
+      "second_edge_component": "P_edge = 0, Q_edge free: dimension 6",
+      "why_excluded": "they set a vertex coefficient to zero, which the Newton-polygon hypothesis forbids",
+      "consequence": "no literal-variety dimension is claimed; only the strict-chart dimension above"
+    },
+    "convention": "strict: all vertex coefficients nonzero and a_(12,3) = b_(20,5) = 1, matching cascade75.py.  dimension_scaled_family_only restores the two vertex scalings but still excludes the degenerate edge forms, so it is not the literal variety dimension.",
     "explicit_joint_point_checks": [
       {
         "edge": 1,
@@ -908,7 +951,13 @@
         "equations": 0,
         "nonzero_residuals": 0
       }
-    ]
+    ],
+    "strict_chart_certificate": {
+      "vertex_coefficients_nonzero": true,
+      "zero_vertices_bumped_to_one": [
+        "b_0_0"
+      ]
+    }
   },
   "rejected_candidate_conditions": {
     "pairs": [
@@ -1115,7 +1164,20 @@
       "explicit_lift": "(P_1,Q_1) = (P_0',Q_0')",
       "condition_vanishes_identically": true,
       "lift_inside_newton_polygon": true,
-      "conclusion": "the next level is non-empty as well"
+      "linear_system": {
+        "unknowns": 28,
+        "equations": 25,
+        "rank_mod_p": [
+          25,
+          25,
+          25
+        ],
+        "rank_over_Q": 25,
+        "rank_lower_bound": 25,
+        "rank_certified_exact": true,
+        "solution_dimension": 3
+      },
+      "conclusion": "the next level is non-empty: the linear system has 28 unknowns and 25 equations, rank over Q 25, dimension 3"
     },
     {
       "normal": [
@@ -1128,13 +1190,32 @@
       "explicit_lift": "(P_1,Q_1) = (P_0',Q_0')",
       "condition_vanishes_identically": true,
       "lift_inside_newton_polygon": true,
-      "conclusion": "the next level is non-empty as well"
+      "linear_system": {
+        "unknowns": 40,
+        "equations": 39,
+        "rank_mod_p": [
+          39,
+          39,
+          39
+        ],
+        "rank_over_Q": 39,
+        "rank_lower_bound": 39,
+        "rank_certified_exact": true,
+        "solution_dimension": 1
+      },
+      "conclusion": "the next level is non-empty: the linear system has 40 unknowns and 39 equations, rank over Q 39, dimension 1"
     }
   ],
   "first_empty_edge": null,
   "edges_done": 4,
+  "conditions_accounted_for": {
+    "declared_in_task": 16,
+    "genuine_edge_conditions_descended": 4,
+    "off_diagonal_pairs_rejected": 12,
+    "accounting": "16 = 4 descended + 12 rejected (not conditions)"
+  },
   "verdict": "SURVIVES_ALL_EDGES",
-  "verdict_detail": "all 4 genuine edge conditions are non-empty; the two diagonal edges carry the (3,5) power family (dimensions 4 and 1 in the strict chart) and the two horizontal/vertical edges are vacuous. The 12 off-diagonal pairs in the 4x4 grid are not leading-form conditions and are rejected, not descended. The edge conditions cut the 445-dimensional coefficient space down to dimension 410 (strict chart 408), so the cascade is a filter that cannot decide this corner: it is non-empty by structure, not by accident.",
+  "verdict_detail": "all 4 genuine edge conditions are non-empty; the two diagonal edges carry the (3,5) power family (dimensions 4 and 1 in the strict chart) and the two horizontal/vertical edges are vacuous. The 12 off-diagonal pairs in the 4x4 grid are not leading-form conditions and are rejected, not descended. The edge conditions leave a strict-chart solution set of dimension 408 (codimension 35 of 445), so the cascade is a filter that cannot decide this corner: it is non-empty by structure, not by accident.",
   "verdict_reading": "no genuine edge condition is empty; the final dimension is in joint_solution_set",
   "checks": {
     "all_pass": true,
@@ -1147,14 +1228,22 @@
       "every_non_vacuous_edge_has_an_explicit_solution": true,
       "every_non_vacuous_edge_family_has_identically_zero_det_J": true,
       "joint_point_satisfies_all_edges": true,
+      "joint_point_lies_in_strict_chart": true,
       "joint_dimension_bookkeeping_closes": true,
       "per_edge_dimensions_match_cascade75": true,
       "all_twelve_off_diagonal_cones_disjoint": true,
       "mixed_conditions_fail_at_joint_point": true,
       "vacuous_edges_non_empty_at_next_level": true,
+      "next_level_linear_systems_have_positive_dimension": true,
       "lead_verdict_is_one_of_the_three_allowed_forms": true
     }
   },
+  "limitations": [
+    "every edge condition is necessary, none is sufficient; a non-empty cascade is not a solution of det J = x^2",
+    "joint_solution_set.dimension_strict is the dimension of the edge-condition variety in the strict chart, not the dimension of det J = x^2",
+    "the 12 off-diagonal pairs are rejected on structural grounds; descending them would not be a stronger filter, it would be an unsound one",
+    "the leading-form cascade is exhausted at this corner: any emptiness here must come from the sub-leading Newton-Puiseux layers or from the full 445-unknown system"
+  ],
   "conventions": {
     "leading_part": "LP_w(det J) = det J(P_w, Q_w)",
     "strict_chart": "a_(12,3) = b_(20,5) = 1",
@@ -1162,7 +1251,7 @@
     "edge_order": "boundary cycle from the top edge, clockwise; equals decreasing filtration degree"
   },
   "timings": {
-    "total_seconds": 12.201
+    "total_seconds": 11.785
   },
-  "elapsed_seconds": 12.201
+  "elapsed_seconds": 11.785
 }

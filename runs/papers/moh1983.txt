@@ -1,0 +1,2946 @@
+
+
+===== PAGE 1 =====
+On the Jacobian conjecture
+and the conflgurations of roots
+By T. T. Moh*) at West Lafayette
+Introduction
+The well-known Jacobian conjecture states "let k be an algebraically closed field of
+characteristic zero and f(x, y), g(x, y) two polynomials over k. If
+then k[x, y] = &[/, g]." In other words a polynomial map from A2 to A2 is one-one and
+onto iff the Jacobian of the map is a nonzero coristant. Clearly this conjecture is false
+if the characteristic p of the field k is positive. For instance f=x + xp, g = y furnish
+a counter example. Furthermore this conjecture is false in the analytic case. The pair
+/=e*, g = ye~x furnishes a counter-example. For the history of this problem the reader
+is referred to [B-C-W.l] and [W. 2]. Throughout this article the field k is assumed to be
+algebraically closed and of characteristic zero.
+The treatment in the present article is rather classical. Let K be a valued field
+and g(y) a polynomial which factors completely over K i.e.
+where τ,· e K. Then we may associate the following configuration data of real numbers
+where | | denotes the value of the field K. In the case of complex numbers the above
+data and the leading coefficients a0 uniquely determine the polynomial g (y) up to the
+translations, the rotations and the reflection. In the case of a non-archimedean valued
+field K the above data give some weak but valuable Information about the polynomial
+Let the valued field K be k ((t)) the meromorphic field of one variable and the
+polynomial g(y) be irreducible over K. Then it can be shown that the configuration
+data of g(y) over its Splitting field is equivalent to the classical data of the characteristic
+pairs of an algebroid curve.
+*) This work was partially supported by N.S.F. at Purdue University.
+0075-4102/83/0340-0008S02.00
+Copyright by Walter de Gruyter & Co.
+
+
+===== PAGE 2 =====
+M o h, Onthe Jacobian conjecture 
+141
+In general, given a polynomial g(x, y) e k[x, y]9 we may factor g(x, y) completely
+over the Puiseux field fc<f> where t = x~1 and &«'» = U MC"))· Note the field fc«i»
+n = l
+oo 
+_i
+is algebraically closed (cf. [W.l]). Similarly we defme k[n] «i» = U k\n] (('")) with π
+a symbol. Let us assume that 
+n=1
+degx>y g(x, y) = degy g(x, 7).
+Then it is easy to see that the configuration data determine the number of points of the
+plane curve g(x, y) = Q at oo and the desingularization processes at those points.
+Let K be a non-archimedian field and {τ1?..., τη} n elements in K. It is more
+convenient to consider the following tree data (cf. § 1) of {τ ΐ 9..., τη} in place of the con-
+figuration data. Let D± be the minimal disc which contains all rt. Let {Dlj2} be the
+collection of the minimal subdiscs of D1 with
+(1) 
+(JD^^'.^eD,} 
+( = {τ1?...,τΜ}),
+(2) 
+£>M2n/)lj2 = 0 if i2=K/2,
+(3) 
+the distance between Dl i2 and D1J2 is the radius of Dl if i2 3=j2 -
+Due to the non-archimedean property of the field K the collection {D1>i2} uniquely
+exists. We may repeat the above process for D1 >i2. Finally we stop when all discs are with
+radii zero. In this way we obtain a tree of discs in K. Then the tree data consist of the
+radii and the numbers of τ,-'s in those discs. It is easy to see this tree of numbers is the
+characteristic pairs for an algebroid curve g(x, y) = 0 if we set K= k^x^ and {τ^ , . . . , τη]
+the complete set of roots of g(x, y) = 0 over K.
+The major portion of this article consists of the study of the tree data of two
+polynomials f(x, y) and g(x, y) satisfying the Jacobian condition
+fxgy ~fygx = l ·
+It can be illustrated that the Jacobian condition implies some similarities between the
+two tree data. Namely consider any disc DaK—k^t^ where t = x~l with
+Then the number of roots of /(i~1,^) = 0 and g(i~1,>;) = 0 in D are proportional to
+the degrees of /(je, y) and g(x, y) if both numbers of roots are positive. This qualitative
+observation is not useful for our purpose. To obtain the useful quantitative properties
+of those similarities we have to adapt the concept of the approximate roots for the
+present task (cf. [M.l], [A-M.l]).
+Journal f r Mathematik. Band 340 
+19
+
+
+===== PAGE 3 =====
+142 
+M o h, On t he Jacobian conjecture
+In § 2 we show that the Jacobian condition implies the existence of a finite sequence
+of polynomials monic in y 1?(f(x, y)9 g(x, y)) e k[f(x, y), g(x, y)~] with .y-degree (-μ,·)
+(cf. § 2). The polynomials Tf are specialized approximate roots of the defining equation
+of f(x, y) and g(x9 y) over k [χ], This sequence {— μ{} determines and is determined
+by the characteristic sequence of the rational curve parametrized by (/(O, y), g(0, y))
+at y = oo. Our analysis of the distribution of roots of f(t"1
+9 y) = 0 and g ( t ~
+1
+9 y ) = Q over
+solely depends on the existence of the said polynomials 7]*.
+In § 3 we relate the sequence of polynomials Tf with the Jacobian condition for
+f(x9 y) and g(x9 y). It is easy to see that the task is to study the partial derivatives
+of 7J*(/, g) with respect to /. Proposition 3.3 shows that if the similarity of the dis-
+tribution of roots holds for g(x9 y), Tf (f(x9 y), g(x9y)),..., T* (f(x, y), g(x, y))9 then it
+holds for the extra polynomials — 1^+1 (f(x, y)9 g(x, y)). It furnishes an important step
+in our study. From the next section on the Jacobian condition is assumed.
+In §4 we study the basic Splitting phenomena and nonsplitting phenomena. In-
+ductively we locate a certain disc D in k^t^. The question is to determine if some roots
+τί9 TJ of g (i"1, y) Π Tp(f(t~l
+9 y), g (i"1, y)) in D have a distance which equals the radius
+i = l
+of D. If all distances are less than the radius of Z), then the disc D is not one of the
+discs which determine the tree data of the said polynomial. In this case we have a non-
+splitting phenomenon. To locate the tree data we have to further shrink the radius of
+the disc. Proposition 4.4 establishes some sufficient numerical criteria for the non-
+splitting phenomena. On the other band if there are some roots τί9 τ,· having a distance
+which equals the radius of /), then the disc D is clearly one of the discs which determine
+the tree data of the said polynomial. In this case we have a Splitting phenomenon.
+Proposition 4. 6 establishes some sufficient numerical criteria for the Splitting phenomenon
+and some Information about the size of the disc D and the number of the subdiscs of D
+in the next step of the decomposition in the construction of the tree of discs. Later on
+we implicitly establish that the two numerical criteria of Propositions 4. 4 and 4. 6 cover
+all possibilities.
+According to the number of roots in it, the disc D can be classified 
+s either
+a major disc or a minor disc. A major disc is one which contains more than a pre-
+determined number of roots (cf. Definition 4.1). Otherwise it is a minor one. In § 5 we
+study the towers of major discs. Propositions 5. l, 5.2 and 5. 3 establish the existence
+and the critical numerical properties of them. Namely a new sequence {vs9 vs_l9..., v2}
+of restricted integers which are the relative numbers of roots in a tower of major discs
+A13 A-i"· iDD2=>Di will determine the radii of those discs completely.
+In the remaining part of § 5 we show various applications of Proposition 5. 3.
+Proposition 5.4 establishes that in the case of <5f> — l (i.e. there is only one point at oo
+for f(x9 y)) there is a reduction of deg/(;c, y) and deg g(;c, y). Proposition 5. 5 establishes
+the similar result for the case of two characteristic pairs.
+
+
+===== PAGE 4 =====
+M o h, On the Jacobian conjecture 
+143
+In § 6 we study those minor discs. In Proposition 6. l we show that in a minor disc
+the proportional property of the numbers of roots will be carried to its extreme limit.
+Then we compile the results in Propositions 5. 4 and 6. l to be the main theorem of
+this article. The other propositions in § 6 are dealing with the phenomena of reducing
+the degrees of the polynomials involved while increasing the Jacobian. This trade-off is
+sometimes very useful s illustrated in Appendix II.
+In this article we make an effort to compare our results and our methods with
+the published one ([A.l]). The explicit references are included in various places.
+In Appendix I we collect all needed propositions of the polynomial Solutions of the
+differential equations involved. There is a simple Computer program essentially based on
+the discussion at the end to determine the possible counterexamples to the Jacobian
+conjecture for all polynomials of degrees less than or equal to 100. In fact there are only
+very few possibilities. However the number of coefficients of those possible counter-
+examples r nge from 3370 to 7328. In Appendix II we give some theoretic arguments
+to reduce the number of coefficients to at most 12. Thus it becomes a computable problem
+to show that the Jacobian conjecture is valid for all polynomials of degrees less than
+or equal to 100. The direct computation is presented in Appendix II.
+The Computer program is a routine one and will be furnished to anyone upon
+request. It uses 147.148 sec of a CDC 6500 and costs only $2.41.
+After many years of research we feel little Information about the distribution of
+roots can be added to the present article. As we pointed out before, these distribution
+of roots correspond to the desingularization at oo. The geometric approach of de-
+singularization will probably add only little Information. Our Appendix II shows that the
+Jacobian conjecture is quite plausible. Even if it is false a counterexample may require
+a large number of coefficients and is thus almost uncheckable. If the Jacobian conjecture
+is valid, the logical sequence to the present article is to show that a part of the data
+collected thus far is not permissible algebraically. The arguments in Appendix II implicitly
+imply that the tree data deduced thus far are permissible for two individual polynomials
+f(x, y) and g(x, y). This is a fact. The only hope, in our opinion, is to put all these tree
+data in the defining equation of f(x, y) and g(x, y) over k[x] to establish their non-
+permissibility. However we have had limited success in this complicated task.
+The materials of this article are compiled from our research during years 1971—1978.
+We wish to thank our friends for their encouragement. We wish to express our appreciation
+t o Professor D. Drasin for reading carefully part of our manuscript.
+§ 1. The roots configurations and the tree data
+Let K be a non-archimedean valued field with value | |. Let f ( y ) be a polynomial
+in K[y~] which factors completely with roots τ1?. . ., tm. Then the data
+determine the configuration of the roots of f(y). Equivalently let τί be any one of the
+roots, consider the discs centered at τ,· with various radii. As the radius of the disc shrinks
+the other roots will gradually be left outside. When the number of roots inside the disc
+is just about to drop we record the number of roots inside the disc and its radius.
+19*
+
+
+===== PAGE 5 =====
+144 
+M o h, On the Jacobian conjecture
+For a fixed τΐ9 let Si={\xi — ij\\ y* = l,. . ., m}. We see that the set Si is the set of these
+critical radii. Let the elements in S, be ordered s Wn > Wi2 > ··· > Wih> Wih+1 = 0. Let
+Z>0 = the disc centered at if with radius Wtj.
+Then the numbers {dijy Wy} will be called the tree data of the polynomial f ( y ) along
+its root τ,·.
+We may define the tree data of the polynomial f ( y ) 
+s follows. Let D± be the
+smallest disc which contains all roots of f ( y ) and let
+d^ = the number of roots in Όλ = deg/(>>),
+»7 = the radius of D!.
+Due to the non-archimedean property of the distance function | |, the disc D1 uniquely
+exists.
+Let us consider the partition of all roots of f ( y ) induced by the following equiv-
+alence relation
+Using the strong triangle inequality it is a simple exercise to verify the above Statement.
+Let the set R1 of all roots of f ( y ) be thus decomposed into disjoint union of subsets R^
+For each Α1; let Dlj be the smallest disc which contains all elements in it and let
+dfj = the number of roots in DU9
+Wfj = the radius of D1 j .
+Note that the distance between two roots τ4 and xj which belong to two distinct Dlj's
+is Wf.
+We may repeat the above discussion for each Dlj and cover the roots in it by
+a disjoint union of subdiscs Dljr with the roots from different subdiscs having distances
+precisely W*j. Thus we formulate the following definition.
+Definition 1. 1. Let f(y) e K[y] with roots τί9. . ., τη. The tree data off(y) 
+consist
+of {dfti2 
+is, W?fi2f...,i, for some s^m} where dfti2ttmttig are positive integers and 
+W f i 2 t f i s
+are numbers satisfying the following conditions:
+2) Z<i2,...,isj = ^*i2,...,is-
+j
+3) The smallest disc Dt which contains all roots is of radius Wf.
+
+
+===== PAGE 6 =====
+M o h , Onthe Jacobian conjecture 
+1 45
+4) For any subindices l, i'2,. · ., Js there is a disc Dltttmtit with radius W?f...ffe which
+contains df 
+is roots of
+5) Any proper subdisc of D± 
+is contains less than d% 
+is roots of f(Y).
+6) 0i.....wSJ>i....,i.·
+7) Any two roots of /(>>) in two D! 
+f /s with distinct last indices have distance
+*?,...!.·
+8) The minimal discs Dti 
+is are with radii zero.
+In fact, it is elementary to establish the following proposition. Since it will not be
+used in this article the proof is omitted.
+Proposition 1. 1. Given a polynomial f ( y ) which factors completely over a non-
+archimedean valuedfield K. Then the roots configuration V^ — \\τι — TJ\: τί? τ·3 roots 
+off(y)}
+and the tree data {d* 
+is, W% ^ determine each other.
+Definition 1. 2. Given a polynomial f ( y ) e K[y] with roots τ1?. . ., im. Let the tree
+data of f ( y ) be {rf*i2,...,ijr, Wi,i2,...,i,} and the associated discs be {Dithf 
+>is}. Let if be
+any root of f ( y ) and D^DltJ2^ ··· ^>Dij2,...jh+1 3 τ,· be the tower of associated discs
+containing τ,·. Then the tree data along τ,· are
+Lemma 1. 1. Given a polynomial f (y) e K\y\ with roots τ ΐ 9. . ., τη. Let the tree data
+of f ( y ) be {d* i2 
+/s, ^*i2...,;s} and the associated discs be {Diti2t^ttis}. Let D be any
+disc in K. Then /)"e {A,il...,i-J iff
+(1) 
+TJ E D 
+for some j,
+(2) 
+there exist τί,τί in D with {τί — τ^Μάίηζ of D.
+Proof. Suppose that De {£ι,,·2,... ,,·,}. If D is one of the minimal discs, then D is
+of radius zero. The above conditions are satisfied with τ{ = τ,· = any root in D. On the
+other hand if D is not among the minimal discs in {Dlfilf...,Je}, say, D = D1 ti 
+is, then
+it follows from the conditions (2) (4) (5) of Definition l', l that
+for two different indices j. The conditions (1) and (2) of this lemma follow from the
+condition (7) of Definition 1.1.
+Let us consider the converse. Let D be a disc with the conditions (1) & (2) of this
+lemma fulfilled. Since
+radius of D = \rt - τ,-l ^ max {|τΓ - τβ| ; r, s = l, ... , m}
+= radius of D1
+and
+τ, e Z> n D! .
+
+
+===== PAGE 7 =====
+146 
+M oh, On the Jacobian conjecture
+Then we have
+D^D.
+Let us use the notations of Definition l . 2 with
+Let
+We claim
+D = Dij2_Js+i.
+Otherwise suppose for a moment that we have
+radius of D>W?J2 
+js+i = radius of D1 J2 ,...,js+1.
+Then it follows from
+and the condition (7) of Definition l . l that
+radius of D = |τ,· - τ,-l = Wft I2> . . . , is = radius of D^ 
+is .
+Then we must have that D = Dl 
+is. A contradiction. 
+Q.E. D.
+One famous example of the concept of the tree data can be deduced from the
+classical characteristic pairs of algebroid curves (cf. [Z.l]).
+Reniark. Our primary concern in this article is the case that K=k((t)} or K=
+= the Puiseux field of k ((t)). We shall use |σί-σ7·| = 2~ΟΓά(σί~^) and denote -Iog2 W^·
+by My. We henceforth reformulate the tree data along τ{ s the set {M^dy} with
+{ordiTf-^): 7=!,. . ., m} = {Ma<Mf2< ··· <ΜίΛ<ΜίΛ+1 = οο} and
+dij = card {s : ord (xt — TS) ^ Mu} .
+The tree data of a polynomial will be reformulated accordingly with order Mx t-2
+replacing distance Wfti2 ..... is.
+The following elementary algebraic tool will be useful.
+Definition 1. 3. Let K be fc<i> and π a symbol. Let σ= Σ ο/
+with η E k. Then σ is said to be a π-approximate root (abbr. π-root) of a polynomial
+f ( y ) if in the expression in k[n]
+/(σ) =/σ(π) /λ 4- higher terms in i
+we have l ^dQgnfff(n)< 
+oo. The multiplicity of σ s an π-root of f ( y ) is defined to be
+(n) s polynomial in π.
+
+
+===== PAGE 8 =====
+M o h, Onthe Jacobian conjecture 
+147
+A π-root σ= Σ α]^ + πίδ is a general point in the disc with radius 2~δ centered
+at Σ aj*j- Any disc will uniquely determine a π-root as a general point in it. The
+multiplicity of σ is the number of roots of /(y) in the said disc. More precisely we have
+Proposition 1. 2. The element σ= Σ α^ + πίδ is an π-root off(y) 
+e K[y] iff there
+is a root τ,· such that οτά(σ-τί) = δ. Moreover let {τ ΐ 5..., ij be the collection of roots
+of f ( y ) with οτά(σ — τί) = δ and let the coefficient oft0 in τ ΐ 9 . . . , τ8 be a 1 ?..., as respec-
+tively. Then, with /σ(π) as defined in Definition 1.3, we have
+c Π (π - α,·)
+where c is a nonzero constant.
+Proof. Let us extend {τΐ9. . ., TS} to a complete set of roots {τΐ9. . ., rm} of
+It is clear that /σ(π) = π (the leading coefficient of (σ — τ^)). If ord(a — Tf)<(5, then the
+leading coefficient of (σ — Tf) is a nonzero constant. Moreover ord(a — Tf)^<$ iff l ^/^5
+and the leading coefficient of (σ — τ,·) is (π — α£) in this case. Our Statement follows
+trivially. 
+Q.E. D.
+Corollary. Lei σ = Σ ajtj + πίδ be a π-root off(y) 
+with /(σ) =/σ(π)ίλ + higher terms
+in t. Let τ{ be a root off(y) 
+with ord (σ — τ^) = δ. Then the only permissible degree for
+/σ(π) is dij for some j. Moreover /σ(π) has only one root iff δ Φ Μί7· for all j.
+Proof. Proposition 1. 2 and Lemma 1.1.
+As in the theory of the classical characteristic pairs for plane algebroid curves we
+shall introduce the following auxiliary data:
+7 = 2 , . . . , h.
+j
+ij = Σ
+s=l
+The following proposition and its proof indicate the meaning of the derived numbers
+qtj and Ay.
+Proposition 1. 3. Let σ = Σα^ + πίδ be a π-root for f ( y ) = H(y -τ s). Suppose
+ord (σ — τ{} = δ for some i and Μ^<δ^Μ^+ι. Then
+if y = 0.
+
+
+===== PAGE 9 =====
+148 
+M o h, On the Jacobian conjecture
+Proof. 
+Let us compute ord(a — TS) for various s. If ord (τ, — τ5) < δ then
+ord(a — Ts) = ord(ti — TS). On 
+the other hand if οτά(τι — τΒ)^δ 
+then we have
+ord (σ — Ts) = <5. In the case j^ l we have
+u - dtJ+ 0 My
++ dl2 qi2 + · · · + dtjQij + dij+ 1 (δ - M;J.)
+In the case 7 = 0 we have ord (σ — τ5) = <5 for all s. We clearly have, with y = 0, the
+following
+= m(5. 
+Q.E. D.
+Two natural properties of a System of π-roots are the complete and the coherent
+conditions (cf. Definition 5 & 8 of [M.l]) which are defined s follows.
+Definition 1.4. A System of π-roots (σ1?. . ., σ5) of f ( y ) is said to be complete if
+with
+^ = Σ«υί"/ + πί 
+for i= !,···> s
+we have
+(1) 
+ord (ΟΊ - σ,.) < min (<5£, 5,·),
+(2) 
+Zde&/^(^ = deg/(y) = m.
+Moreover the complete System is said to be coherent if
+(3) 
+ord/(^) = A for /=!,...,$
+and the common value λ of (3) will be called the accuracy of the coherent complete
+system.
+In the above definition the condition (1) means that the 2~5i-discs associated with
+σ/s are all disjoint. The condition (2) means that the numbers of roots of f ( y ) in those
+disjoint 2~<5i-discs add up to the total degree of f(y). The condition (3) means, in case
+f ( y ) is monic, the product of the distances between the general point σ( and the roots
+of/00 is 2~A for all σ/s.
+Recall the following concept of the approximate roots (cf. [M.l]).
+Definition. Let f ( y ) be a monic polynomial of degree m - d over a ring R with d
+a unit in R. Let = j-1 and R[y]^R((ff)). 
+Then the d-th root of f ( y ) exists in R((9))
+and let it be 0~~
+m + a10~m+1 4- ··· +α_ιθ+ ···. Then the d-th approximate root fd(y) of
+f ( y ) is defined to be /" + a, ym~l + ··· +am = 0~m + a10-m+1 + - +am.
+We shall quote a simpler Version of the main result of [M.l] for later references.
+
+
+===== PAGE 10 =====
+M o h , Onthe Jacobian conjecture 
+1 49
+Theorem 1.1. Lei f ( y ) be monic in K[y~\ with K=k^t^. Lei (σΐ9...,σ5) be a
+coherent complete System of n-roots of f ( y ) 
+with multiplicities (/l9...,/s). Lei
+d| g.c.d. (/!,..., /s) and fd(y) 
+the d-th approximate root of f ( y ) . Then (σ ΐ 9...,σ β) is a
+coherent complete System of π-roots offd(y) 
+with multiplicities (-7,. . ., -7
+\d 
+d
+The following further refinement of Theorem 1. 1 and the generalization of the
+approximate roots are interesting. We shall show some of their applications in Appendix II.
+A proof of Theorem 1. 2 can be found in [M. 4].
+Definition 1. 5. Let {σ1?...,σ5} be a coherent complete System of π-roots for a
+polynomial /( y) in /:</> \_y\. Let the multiplicities be {/19. . ., /J and the accuracy be λ.
+Let d be an integer with d|g.c.d. (/15 . . . , /s). A monic polynomial h(y) is said to be a d-th
+quasi-approximate root of f ( y ) with accuracy λ if {σΐ9. . ., σ8} is a coherent complete
+System of π-roots of h(y) with multiplicities <-—,..., -7- > and accuracy — .
+d 
+d 
+d
+Theorem 1. 2. Let f ( y ) be monic in k^t^ [>>] and {σΐ9. . ., as} be a coherent com-
+plete System of π-roots with multiplicities {/19. . ., /J and accuracy λ. Let d|g.c.d. (/19. . ., /s)
+and h(y) a d-th quasi-approximate root off(y) 
+with accuracy λ. Let
+where
+Then we have for i= 19. . ., s and j= 19. . ., d
+J^-j.
+§ 2. The characteristic data for a pair of polynomials
+The purpose of this section is to introduce the characteristic data for a pair of
+polynomials f(x, y) and g(x, y). It will be illustrated in the sections 4, 5 & 6 that the
+Jacobian condition
+implies certain relations between the root configurations of f(x,y) = Q and g(x, j) = 0
+s equations over ;^.*"1^. Furthermore we shall show that the characteristic data
+introduced here will control the tree data of the two polynomial equations within certain
+natural limitations.
+Let /(χ, y) and g(x, y) be two polynomials monic in y with
+degy /(*, y) = m, degy g(x, y) = n .
+Journal f r Mathematik. Band 340 
+20
+
+
+===== PAGE 11 =====
+150 
+M oh, On the Jacobian conjecture
+Then we may view (f(x, y), g(x, y)} s a parametrization over k(x) of a plane rational
+curve with y s the parameter. Clearly the said curve has only one place at 7=00.
+Analytically, if we let
+then
+j> — m
+Let Ωί be the automoφhism of k[x] ((η)} defined by
+where ω is a fixed n-th primitive root of unity. Suppose
+y e k ( x 9 f ( x 9 y ) 9 
+g(x9y)).
+Since y is integral over k[x9 g(x9 y)"] which is integrally closed, we deduce that/(x, y)
+satisfies a monic polynomial of degree n over k[x9 g(x, y)]. The equation is irreducible
+over k[x] ((g~1)) = k[x] ((η*
+1)). Then the defining equation of f(x, y) over
+L·· Γ v· l l(vi^\\ — L·' Γγ· Ι l i ff 
+i i
+L J \\ l // — 
+L J \Vo 
+//
+is the following
+n
+where / is a symbol s usual. In fact the above equation is the analytic factorization
+of the defining equation of the said rational curve at g= oo or g"1 =0.
+Due t o the existence of the automorphisms Ωί9 the tree data associated with the
+configuration of the roots of the equation (1) over k[x] ((η)} are completely Symmetrie.
+Hence the tree data along any root will determine the tree data completely. Let the tree
+data along one root (hence all roots) be (reindexed s) {M,·, dj}. We shall call {MJ9 dj}
+the characteristic data of the pair of polynomials (f(x9 y), g(x, y)) with respect to x.
+Recall(cf. [A-M.l] p. 68)
+and the following auxiliary notations
+n -l 
+n—4-
+HO-i, 
+nj~~ Λ
+= Σ 
+= -
+Το make some sense out of the long list of notations introduced above, we shall
+insert the following lemma first observed by S. S. Abhyankar ([A.l], p. 149).
+
+
+===== PAGE 12 =====
+M o h, On the Jacobian conjecture 
+151
+Lemma 2.1. Lei f(x,y), g(x, y) ek[x, y] be two polynomiah monic in y with
+y-degree m, n respectively. Lei
+Then JXfy(f(x, 
+y), g(x,y)) = c a nonzero constant iff
+and
+Proof. It follows from chain rule that
+Jx,y(f(
+x> y)> £(*> y)) = /*,„(/(*, y), g(x, y)) Jx.y(x, n)
+The right hand side is in k[x, y] and a unit in k[_x\ [M], 
+hence a nonzero constant,
+iff
+and
+fn- 1 (x) — nonzero constant . 
+Q. E. D.
+Note that since /„_ι(χ)φΟ and (w,n-l) = l, then M^n-l for all i^A. Thus
+we know all M/s terminate at n — l if the Jacobian condition is satisfied. Note that this
+implies that f ( x 9 y ) has n conjugates over k[x] ((g"1)) and yek(x, g(x,y), f(x,y)). We
+shall call the reader's attention to our ignorance about the numbers M{. For instance,
+after long computation we ( s verified by A. Sathaye) established that for the following
+polynomials over k
+the value M2 could never be 13. It shows how little we know about M( in the polynomial
+case.
+The characteristic data \d{\ MJ are analytic in nature. We shall replace them,
+and thus algebraicize them, by the approximate roots. This method has been well
+demonstrated in [A-M.l]. In the present article we are interested in some specializations
+of the approximate roots. Let
+n/,£)=fi(/- i(T
+m+ Σ y}w^))=°
+i = l 
+j>-m
+be the deflning equation of f(x9 y) and g(x, y) over k[x], Let ψ be the specialization
+k[x]—*k defined by
+20*
+
+
+===== PAGE 13 =====
+152 
+M o h, On the Jacobian conjecture
+we shall extend ψ naturally t o k[x} [/, g] with /, g symbols. Then clearly we have
+F*(f,g) = Π υ-Ωί(η~'" + Σ/](0)η%
+i = l
+We shall establish the following proposition.
+Proposition 2. 1. Lei Tr(f,g) be the dr-th approximate root of F(f,g) with f viewed
+s the variable. Then 7^(/, g) is the dr-th approximate root of F*(f, g) with f viewed s
+the variable.
+Proof. Recall the definition of the approximate roots in §1. Let the dr-th root of
+Then we have
+Naturally we conclude the following
+"'
+W, *)=/+ Σ «,(<>,*)./
+^ί>0
+= the dr-th approximate root of F*(f, g). 
+Q. E. D.
+The advantage of the specialization ψ:χ—+0 is that the polynomials Γ/(/, g)
+are in k[f,g] 
+while the polynomials Tr(f,g) 
+are with coefficients in k[x\. Thus the
+differentiation of the polynomial Tr(f(x, y), g(x, y)) with respect to χ which will be used
+later on will be rather complicated. The most useful Information provided by the
+polynomials Tr(f, g) are the ^-degrees of the polynomials Tr(f(x, y), g(x, y)). This valu-
+able Information is largely retained by the simpler polynomials T*(f9g). To be more
+precise let e be an integer defined by (cf. Lemma 2. 1).
+We are primarily interested in T*(f, g) for Mr^e. Let us prove the following proposition
+(cf.[A.l],p.!55).
+Proposition 2. 2. Let e be an integer defined by
+Let Mr ^ e. Then we have
+(1) deg, T* (f(x, y), g(x, y)) = deg, Tr (f(x, y), g(x, y)) =-μ,.
+If Mr<e, then we have
+(2) Tf(f(x,y),g(x,y)) 
+and 1? (f(x, y), g(x, y)) are monic in y.
+If Mr = e, then we have for some nonzero constant c the following
+(3) 1?(f(x, y), g(x, y)) = cfe(x)y'"' + lower terms in y.
+
+
+===== PAGE 14 =====
+M o h, On the Jacobian conjecture 
+153
+Proof. Let
+(4) 
+o = n~m+ 
+Σ 
+fjW
+-m<j<Mr
+Due to the restriction of Mr^e, i.e. f j ( x ) e k , we have that σ is also a π-root of the
+equation
+^(/,s)=o.
+Let us set
+σ = i/~ M+ 
+Σ /,-W-
+-m<j<M r
+Then the greatest common divisor of all exponents of the terms with nonzero coefficients
+in σ and the integer n is dr according to the deflnition of dr. The automorphisms Ω^
+will produce ( — l distinct conjugates of σ. Let the corresponding π-roots for F(f9 g) in
+\dr /
+the Mr-discs be {σΐ9. . ., σ^}. Note that at is simply the summation of a conjugate of σ
+dr
+and iiv\Mr. Then this System of π-roots is coherent and complete for F(f9 g) with multi-
+plicities {dr,. . . , dr} and accuracy λ. It follows from Proposition 1. 3 that
+As we pointed out before, the inequality
+implies f j ( x ) e k in the expression (4). Then the above reasoning works for 
+F*(f9g).
+Thus the same π-root System {σ1?. . ., σ^} is coherent and complete for F*(f,g) with
+dr
+identical multiplicities [dr,. . ., dr} and λ = λ, = μ,ά,..
+Let us consider the polynomials Tr(f, g) and T*(f, g) with / viewed s the variable.
+It follows from Theorem 1. 1 that the π-roots System {σΐ5. . . , σκ} is coherent and com-
+~d
+plete for T*(f, g) (resp. Tr(f, g)) with multiplicities {!,...,!}. Its accuracy can be easily
+determined to be -f = a. s follows. Let {τ ΐ 5...,τ η} be the complete set of roots of
+dr
+F(f,g) 
+(resp. F*(f,g)) and {τ?,. . ., τ*} be the complete set of roots of Tr(f,g) (resp.
+)- Since the Mr-discs associated with a^s are all disjoint (cf. Definition 1.4), then
+it follows from the strong triangle inequality that for TS, τ* belonging to the Mr-disc
+associated with as with s Φ ι we always have
+ord (σ, - τβ) = ord (at - σχ), ord (σ£ - τ*) = ord (at - σ8)
+while in each Mr-disc there are dr TJ'S and only one τ*. Α simple computation verifles
+that the accuracy is indeed -p = μΓ .
+«r
+Let us reorder if necessary the complete set of roots {τ*,. . ., τ^} so that
+dr
+ord (σ t — τ?) = Mr .
+
+
+===== PAGE 15 =====
+154 
+M o A, On the Jacobian conjecture
+We claim the following
+σ·. — τ* = ηηΜ' -f higher terms in η .
+Otherwise the leading coefficient is of the form (π — α) with some nonzero α which is
+the coefficient of r\Mr in τ?. Note that the automorphisms Ω, will leave g fixed and
+change η to αΛ/. Thus the automorphisms Qj will produce too many roots for ΓΓ(/, g)
+(resp. 7^ (/,#)). A contradiction. Let σ1 = σ be the one defmed by equation (4). Then it
+follows from the fact fMr(x) Φ 0 that
+ord (f(x, y) - τ*) = Mr = ord (σ, - τ*).
+Moreover it follows from the disjointness of the Mr-discs associated with σ/s that for i Φ l
+ord (/(*, y) - τ? ) = ord (σ1 - τ? ).
+Thus we conclude
+degy Γ, (/(*, y)9 g(x, y)) = -ord, Tr(f(x, y), g(x, y))
+= -Σ ord (A*, JO- τ?)
+= -Σ
+and
+We have established the conclusion (1).
+To prove the conclusions (2) and (3) we observe that the leading coefficient
+(f(x,y) — tf) is /MrW while the leading coefficients of (/(*, y) — τ?) for /Φ1 are all
+nonzero constants. Thus the product of all leading coefficients is either a nonzero con-
+stant if fMr(x) is a constant or of the form cfMr(x). We shall remind the reader that the
+term monic means the coefficient of the highest term is a unit in our terminology.
+Q.E.D.
+In the tradition of Pythagoras we compute numbers. In fact we show that there
+is a sequence of polynomials Γ/(/(χ, y), g(x, y)) with j-degree ( — μΓ). One can convince
+oneself that the sequences {«, μ1?. . ., μΓ} and {«, M1?. . ., Mr] determine each other.
+Especially one has
+g.c.d. {η,μΐ9...9μ,} = g.c.d. {n, M1 , . . . , Mr] .
+Moreover the existence of such a sequence of polynomials T*(f(x, y), g(x, y))
+implies that the characteristic data {dh MJ can be recovered by (cf. [A-M.l], [S.l],
+[AN.l]) the following formula:
+~-- — - —
+dj~dj+i
+Γ 
+j~1 
+1
+Itydj- Σ (dt-dt+JMt \.
+L 
+f=i 
+J
+The mere ^-degrees of the polynomials T?(f(x, y), g(x, y)) will form a foundation of our
+investigation of the Jacobian problem.
+
+
+===== PAGE 16 =====
+M o h, On the Jacobian conjecture 
+155
+§ 3. The partial derivatives of Tf
+Let //(/, g) be a polynomial in k[f, g]. We may compute the Jacobian of
+H(f(x> y), g(X y)) and g(X y) by the chain rule s follows
+JX9,(H(f(x9 
+y), g(x, y))9 g(x9 y)) = Jftg(H(f, 
+g), g) /,,,(/(*, V)* g(x> >0)
+= H(f(x9 y), g(x, y))f · Jx,y(f(x9 y), g(x9 y)).
+We are primarily interested in the case that the Jacobian condition is satisfied
+and for H(f, g) = T^(f9 g) s introduced in the last section. In those cases the Jacobians
+become the partial derivatives. We shall deduce the necessary Information about the
+forms and the ^-degrees of the partial derivatives in this section.
+Let us list the three basic arithmetic properties of the polynomials Tr(f, g) and the
+sequence {n, μΐ9. . ., μΓ} s follows (cf. [A-M.l], p. 51 and Proposition 2. 2):
+(1) §.ο.ά.(Λ,μ1,...,μ</) = </ / + 1<έ/ /,
+(2) 
+Tr(f, g) =f% + lower terms in /,
+(3) Tr(f(x9 y), g(x, y)) = cry~^ + lower terms in y for all r with Mr<e.
+For the definition of the number e the reader is referred to Proposition 2. 2. Recall
+from § 2
+Then clearly we have
+(4) 
+deg/rr(/,g) = ^=rK·.
+"r 
+j=l
+We shall use the three basic arithmetic properties listed above and the technique of the
+decimal expansions to establish a canonical expansion for Tr+l(f9g) in terms of 7J(/, g)
+for j <£ r.
+r-l
+We may use the integers l, w l 9 n1 - «2?. . . , Π wj to express any nonnegative integer /
+uniquely s 
+j=1
+/ = Σ α/Π^
+i=l 
+j=l
+with the following restrictions
+(5) 
+Ο^ΛΙ<ΗΙ 
+for /<r,
+(6)
+
+
+===== PAGE 17 =====
+156 
+M o h, On the Jacobian conjecture
+The above expansion of the nonnegative integer / is not different in principle from the
+usual decimal expansions. We shall use the following common vector notation
+Then it follows from equation (4) that
+i- 1
+(7) 
+deg£ = Z«inij.
+J = l
+We shall establish the following lemma (cf. [A-M.l], p. 40).
+Lemma 3.1. Lei H(f,g) 
+be a polynomial in k [ x ] [ f , g ] . 
+Then H(f,g) 
+can be
+uniquely expressed over k [x] s follows
+(8)
+with α = (α1?. . ., ar) satisfying the restriction (5) & (6) in the preceding paragraph. More-
+over we have
+degr //(/, g) = max {degr ΤΛ : c^ Φ 0 for some j }
+i-i
+«i Π η}\ ^α
+j=i
+Proof. Let us use the expansion technique for the following integer /
+We have the following expression for H(f, g)
+H(f, g) = Σ (c^)/1 + lower terms in /
+= Σ cjtaLgjT^ 4- lower terms in /
+j
+where ^/ = ^·α for all j. The existence of the expression (8) can be easily established by
+applying the preceding process to the polynomial
+which is of /-degree less than /.
+Note that in the expression (8) the terms with distinct α indices will have distinct
+/-degrees. This is simply due to the fact that the /-degrees of the terms of the right hand
+side of the equation (7) are the expansions of distinct nonnegative integers if the a's are
+distinct.
+
+
+===== PAGE 18 =====
+M o h, Onthe Jacobian conjecture 
+1 57
+For the uniqueness of the expression (8) it suffices, s usual, to give a prove for
+the zero polynomial. Let
+Using the preceding argument about /-degrees we separate the above equation into many
+equations for fixed a' s s follows
+or
+j
+Certainly we have for all j and all α
+Q.E.D.
+The first half of the following proposition follows from §7.2 of [A-M.l]. For
+completeness we give a short argument.
+Proposition 3. 1. The polynomial Tr+1(f, g) has a unique expression over k[x\ of the
+following form
+(9) 
+Tr+1 (/, g) = T,(f, g?- + Σ ο^ΤΛ
+j,«
+with α = (αΐ5. . ., ar) satisfying the restrictions (5) and (6). Moreover let r be an integer
+with Mr<e (cf. Proposition 2. 2), we have the following for cj ,αφΟ
+(1) ar<«r,
+(2) deg, g>(x, y) Γα(/(χ, j), g(x, j))^(-Mr)«r.
+Furthermore there is a unique j and a unique α for the equality to hold in (2) and this
+particular α is with ar = 0.
+Proof. Applying Lemma 3. l to the polynomial
+we establish the first part of the proposition.
+Since both polynomials Tr+1(f, g) and Tr(f, g)"r have leading coefficient l and are of
+degree ( — — l in / then we have
+·
+ar+l 
+j=l
+Thus it follows from Lemma 3. l that in the expression (9) we always have
+i- 1
+Journal f r Mathematik. Band 340
+
+
+===== PAGE 19 =====
+158 
+M o h, On the Jacobian conjecture
+Hence we conclude easily for Cj > αφΟ the conclusion (1)
+Lei us replace the Symbols / and g in all terms of the expression (9) by f(x, y)
+and g(x, y) and compute the ^-degrees of the resulting polynomials. We have (cf. Pro-
+position 2. 2)
+(10) 
+deg, Tr+1 (f(x, y), g(x, y))= -μr+ί=(-μr)nr-qr+1
+and for the other terms we have
+(11) 
+deg, cjiaig*(x9 y) Tu(f(x9 y), g(x9 ?))=./π + Σ (-Λ)«*
+where α = (OLI , . . . , ar). We shall prove t hat any two terms with distinct j and α indices
+will have distinct y degrees. The proof is arithmetic in nature. Let y* and a* be the
+other indices with
+fe&ygj(x,y) T.(f(x,y), g(x,y)) = fcgygr(x,y) T+(f(x,y), 
+g(x,y)).
+Then we have
+(12) 
+7-
+Recall
+rfj
+It is easy to see that the residue
+is a unit in Z/(«r). Let us divide the numbers «, — μ;,. . ., — μ, in the equation (12) by
+dr+1 and then mod the equation by -~— = nr. The residue equation is of the following
+form 
+p+1
+f
+r+1 
+r+1
+or
+ar = de* mod nr .
+Recall
+We thus conclude
+— (Y*
+r 
+wr ·
+Now we may throw away ar and a* from the equation (12) and proceed likewise. It is
+routine to show
+7=7*.
+
+
+===== PAGE 20 =====
+Mo /z, On the Jacobian conjecture 
+159
+Thus we establish that distinct j and α indices in the equation (1) will produce terms
+with distinct j-degrees. In light of the equation (10) we must have the conclusion (2)
+and the uniqueness of a particular term of ^-degree ( —μπ)«Γ. We are left to show that
+this particular term is with ar = 0. Let it be with indices j and α = (α ΐ 9..., ocr). Then we
+need to solve the following arithmetic equation
+(13) 
+7w + Z(-ft)ai = (-A 
+«r·
+Let us divide the numbers n, — μ1?..., — μ, in the above equation by dr+l. The residue
+equation mod -^— is of the following form
+Since the residue of ——- is a unit and
+«r-r+l
+we must have
+ar = 0. 
+Q.E.D.
+Remark. Proposition 3. l remains valid after applying the specialization ψ with
+ψ: χ — >0.
+In fact the specialized proposition is the one interesting to us in the present article.
+We shall give an arithmetic proof of the following proposition about the forms
+and the ^-degrees of the partial derivatives of Tr(f, g) (cf. [A.l], p. 155).
+Proposition 3. 2. We have the following
+(1) Ti(f(x,y),g(x,y))J 
+= \,
+(2) Tr+1 (f(x, y), g(x, y))f = n,TT(f(x, y), g(x, y))"^1 · Tr(f(x, y), g(x, y))f
+where the terms under the summation sign satisfy
+degy Tr+ 1 (/, g)f = degy Tr(f, gT' 1 Tr(f, g)f
+> deg, gl(x, y) T (f(x, y), g(x,
+for r^l.
+(3) deg, TT+1(f(x, y), g(x, y))f = (- A.+I) + Mr+i = ΘΓ+Ι
+far r^l.
+
+
+===== PAGE 21 =====
+160 
+Moh, On the Jacobian conjecture
+Proof. The Statement (1) is trivial. Let us prove the Statements (2) and (3) for the
+case r = 1. The equation (9) of Proposition 3. l is of the following form
+where α = (α1) and the unique j9 α which gives the maximal >>-degree is with a = (0).
+So we conclude
+Multiply the above equation by 7i(/, g) and the right hand side is restored to the
+original form except for the change of coefficients and the dropping out of the unique
+term in Σ^ί>α^1^ which gives the maximal j-degree and all other terms with a = 0.
+Thus we conclude
+l +M2
+which proves Statements (2) and (3) for r = l .
+In general let us assume that the Statements (2) and (3) have been proved for all
+smaller indices and we shall proceed for the index r + 1 . From the equation (9) of
+Proposition 3. l we have the following
+Note that the unique term giving the maximal ^-degree in Σ Cj>(3Lg
+jTa of the equation (9)
+is with α = (ax , . . . , αΓ_! , 0). We have
+deg, ΓΓ(/, gT~l Tr(f, g)f = (-μ,)η, + Mr
+by mathematical induction. And the term (gjTa)f can be spread out s
+where α = (a1 , . . . , ar) and α(ί) = (αλ , . . . , α{ — l, . . . , ar). We have by mathematical induction
+(14) 
+deg, gjT^(Ti}f = degy gT. 4- M{
+and there are only two possibilities; either
+or
+degy gjTa = (- ΛΚ = degy Tr(f, g)n".
+In the second case the corresponding ar is zero, we may assume the following for the
+equation (14)
+Mf<Mr.
+
+
+===== PAGE 22 =====
+Mo h, On the Jacobian conjecture 
+161
+In either case we always have
+degy ΛοΉ), < deg, TT(f, g)"'"1 (Tr)f .
+In other words we must have
+deg, ΓΓ+1</, g)f = degy Tr(f, g)^1 (Tr)ff
+which establishes Statement (3). To fmish Statement (2) we note t hat in the following
+expression (cf. Lemma 3. 1)
+the j-degree of the left hand side is less than degy Tr+1(f9g)f 
+s proved above and the
+j^-degrees of all terms on the right side are distinct (cf. the proof of Lemma 3. 1). Thus
+we must have
+for each individual term glT . 
+Q.E. D.
+Remark. For r with Mr+1^e we may specialize ψ:χ—+0 and thus replace
+Ti(f,g) 
+by Tf(f9g) 
+for all i'^r-fl in proposition 3.2. All conclusions are valid. In
+fact, we are only interested in 7]*(/, g) for the obvious reason that Tf(f9 g) e k[f9 g].
+We are in a position to connect Tp(f9 g) with the concept of π-root introduced
+in § l . For this purpose we give the following defmition
+Definition 3. 1. Let hi(y),. . ., hs(y) be polynomials in K[y] where K=
+A common π-root σ = Σα</·ί·/' + πί* °f ^(y)^ . . 9h s(y) is said to be a distribution
+detector if given
+(1)
+(2) h{ (σ) = Αίσ (π) t λ? 4- higher terms in t
+we have for some λ and ctj E k the following
+(3) λ? = λΡί,
+(4) hia(nr = Cijhj(J(nr.
+Remark. Note that condition (4) is equivalent to the Statement that with
+/? = g.c.d. (pi9. - .,ps) there exists a polynomial Λ (π) of degree p such that
+hM^Cih&T
+with
+A =/"·!·
+The existence of a distribution detector σ = Σ^·^ + π^ implies that the roots of
+AI(J),. . ., hs(y) in the ^-disc centered at Σ^·^ are all distributed proportionally ac-
+cording to the degrees of ht(y).
+
+
+===== PAGE 23 =====
+162 
+M oh, On the Jacobian conjecture
+Now we are in a position to state the first connection between the approximate
+roots 7]*(/, g) and the concept of π-root introduced in § 1. Namely we have
+Proposition 3. 3. Lei g(y) = g(x,y\ Tf(y) = Tf(f(x9y)9g(x9y)) 
+and
+be considered 
+s polynomiah in k^f^\y\ 
+with x = t~i. Suppose σ = Σ α/·ί·
+/ + πί
+<5 is a
+distribution detector for g(y)9 1?(y), /=!,..., r where r is an integer with Mr^e and
+ordg(a)<0. Then σ is a distribution detector after we add Tr^i(y)f to the above list of
+polynomials.
+Proof. Let λ be the rational negative number satisfying
+Then we have for /= l, . . . , r
+and
+We shall establish for /= l,. . ., r H- 1
+Note that for i = l both sides of the above equation are zeroes hence equal. In general
+let us consider the following equation mentioned in the conclusion (2) of Proposition 3. 2
+(cf. the Remark after it).
+(14)* 
+T*+l(y}f =
+By mathematical induction we have
+and, note λ < 0, the following for the terms in equation (14)*
+/Hdeg^OO"·"1 T*(y)f)A
+<(degygi(>') Τβ(γϊ)λ = θΐάέ(σ) Τβ(σ).
+Thus
+ord (T*. , (σ)), = ord (Γ/ (σ)"'-
+I?00*-1 ϊ^ω/)Α = (deg,
+We have verified the condition (3) in Definition 3. 1. To verify the condition (4) we note
+that the leading coefficient T(n) of T*+1(a)f is the leading coefficient of Τ*(σ}η*~ι ΓΓ*(σ)/·
+We know that there is a polynomial A (π) (cf. the remark after Definition 3. 1) such that
+the leading coefficients of ΤΓ
+Ψ (σ) and T*(a)f are of the form ^Α(π)Γ< where r{ equals
+(the j-degree of the corresponding polynomial in j)-(a common constant q). Thus Γ(π),
+the leading coefficient of ΓΓ^ι(σ)/5 equals ch( )r* where r* equals (degy T*+l(y)f)q.
+The condition (4) of Definition 3. l is thus verified. 
+Q.E. D.
+
+
+===== PAGE 24 =====
+M o h, On the Jacobian conjecture 
+163
+§ 4. The Splitting and nonsplitting phenomena
+From this section on we shall assume that the following Jacobian condition is
+satisfied for a pair of polynomials monic in y, f(x,y) and g(x, y) in k[x, y] if the
+opposite is not explicitly stated.
+Jacobian condition:
+= 1.
+As usual we set t = x * and consider the polynomials f(x 9 y) and g(x, y) s polynomials
+in y with coefficients in fc<C/>. We shall write f ( x 9 y ) 
+s f ( y ) and g(x, y) s g(y) to
+simplify our notations. Our problem is to investigate the tree data of f(y)9 g(y) and
+Sf(x,y)
+dx '
+S g (χ, y)
+dx '
+df(x,y)
+dy
+dg(x, y)
+dy
+As we pointed out in section l, the algebraic tool for our investigation is the notion
+of π-root σ e k[n] <^i> for a polynomial h (y) with
+σ=
+Then we have established in § l that
+(1) The number of roots of h(y) = 0 inside the disc centered at Σα]^ with the
+logarithmic radius δ is the π-degree of the leading coefficient of h(a) i.e. the multi-
+plicity of σ s a π-root of h(y) = 0 (cf. Proposition 1. 2).
+(2) The leading coefficient of h (σ) has two distinct roots for π iff the disc centered
+at Σ <*jt
+j with radius δ is a disc associated with the tree data of h(y) = 0 (cf. Lemma 1. 1).
+Hence, if the leading coefficient of h (σ) has only one root, then we have to shrink the
+radius to locate the disc associated with the tree data.
+(3) Let (n — b) be a factor of the leading coefficient of h(a) with multiplicity /.
+Then there are precisely / roots τ1?. . ., τ{ of the equation h(y) = 0 (cf. Proposition 1.2)
+which satisfy
+ord (τ,- Σ «/ *'
+thus
+In view of the discussion preceding Definition l . l there is a disc associated with the tree
+data and of radius less than δ which contains those / roots τ1?. . ., τ{. Note that the size
+of this disc is not determined.
+
+
+===== PAGE 25 =====
+164 
+M o h, On t he Jacobian conjecture
+To summarize the preceding discussions we have the nonsplitting phenomena
+(cf. Proposition 4. 4): If the leading coefficient of Λ (σ) has only one root, then the <5-disc
+has to be shrunk to determine the tree data. The Splitting phenomena (cf. Proposition 4. 6):
+If the leading coefficient of h (σ) has distinct roots bi9. . ., bs with multiplicities I l 9. . ., /s
+then the (5-disc can be covered by s proper subdisc containing /x , . . . , ls roots respectively
+(cf. Definition 1.1).
+In this section we shall determine the conditions for the nonsplitting phenomena
+and the Splitting phenomena for the polynomials f ( y ) , g(y) and T^(y). For the Split-
+ting phenomena we shall further determine the necessary restrictions on the number of
+roots and the corresponding multiplicities.
+First ly we shall establish the following simple proposition.
+Proposition 4. 1. Let x = t~i and σ = Σ α,-^ + πΓ5 be a π-root of g(y) = g(x,y).
+Given any polynomial h(y) = h(f(x, y), g(x, y)) e k[f(x, y), g(x, y)~] with
+g(G) = gff(n)t*9 + higher terms in t,
+h(a) = ha(n)t^ + higher terms in t
+we have
+(1) 
+^η(ϊι(σ·)^(σ)) = \:λι,!ισ(π^'σ(π)-λ^σ(π)Η'σ(π)·]ί*<>+^-1 
++ ...
+Proof. The first equality follows trivially from the defmition of Jacobians. For
+the second equality we have by the chain rule the following
+Jt.,(h(a)9 g(*)) = //f ,(A, g) Jx.,(f, g) Jt,n(x, σ)
+= Α/(σ).1./ί>7ί(χ,σ) = -Α/(σ)/-2^. 
+Q.E.D.
+The ordinary differential operator involving two polynomials ha(n) and ga(n) in
+the parenthesis of the equation (1) is of some interest to us. In Appendix I we shall give
+a detailed discussion of the polynomial Solutions of some equations involving this dif-
+ferential operator. For the convenience of our discussions we shall introduce the following
+definition.
+Definition 4. 1. Let a, b be constants in k and/? (π), q(n) be two polynomials in A: [π].
+Then the symbol D (a, b,p(n), q(n)) is defined s
+D (a, b,p(n)9 q(n)) = ap(n) q'(n)-bq(n)p'(n).
+In Proposition 3. 3 we have established t hat under the condition ordg(a)<0 if σ
+is a distribution detector for g(y), Tf(y)9· . ., T*(y) then it is a distribution detector for
+Tr+1(y)f. The following proposition will allow us to proceed one step further if certain
+conditions are satisfied.
+
+
+===== PAGE 26 =====
+M o h, On the Jacobian conjecture 
+165
+Proposition 4. 2. Lei σ = Σ<*^ + πίδ be a distribution detector (cf. Definition 3.1)
+for g(y) = g(*,y), 1?(y) = 1?(f(x9y)9g(x9y)) 
+where /=!,..., r. Lei
+Suppose for some λ < 0 we have
+(1) ordg(σ) = nλ,
+(2)
+(3)
+σ w a distribution detector for g(y), Tf(y), i= l,..., r 4-1.
+Proo/. We observe the following
+Λ< ~ * ο «Α + (-μΓ+ΟΑ-1<-2 + <5 + (-μΓ+1 + Μ,+ιμ.
+n — Mr+l
+Note it follows from the proof of Proposition 3. 3 and Definition 3. l and Proposition 3.2
+that
+Thus the left band side of equation (1) of Proposition 4. l with h = T^+l has a smaller
+formal order. We must then have
+Let
+and
+— -
+«*
+Then the above ordinary differential equation (4) can be reduced to the following form
+with a— — μΓ+1 —
+c
+It follows from Proposition A. l of Appendix I that
+and
+where (— μ,.*!)* is thus defined and Ci is a nonzero constant. Our proposition follows
+from Definition 3. 1. 
+Q.E. D.
+Journal f r Mathematik. Band 340 
+22
+
+
+===== PAGE 27 =====
+166 
+M o h, On the Jacobian conjecture
+Before handling the general nonsplitting phenomena, we shall state the following
+proposition which is illustrative (cf. [A.l], pp. 158, 159). Recall that Mh is the last Mi in
+our notation.
+Proposition 4. 3. Suppose that deg g(x, y) = degy g(x, y) = n > l, and M^n — 2 for
+/=!,..., h. Then the highest homogeneous forms of g(x, y), T^(f(x, y), g(x, y)) for
+all i with M{<n — 2 are powers of a common linear form (i.e. one point at infinite).
+Proof. Let δ be the number defined s
+( 
+^
+(5 = min <ordu: τ root of g(y) Π 
+Tf(y)
+( 
+f=i
+h
+Let σ be the π-root of g(y) Π 7]*00 defined s
+Let us consider the possibility of δ > — l . With this possibility we know that all roots
+of the equation g(y) = Q are in the disc centered at zero with logarithmic radius δ> — 1.
+Then we set
+and conclude (cf . Proposition l . 3) that
+The above Statement is equivalent to the degree n homogeneous form of g(x, y) being y".
+Similarly the highest homogeneous forms of Tt(f(x, y), g(x, y)) are powers of yn. Our
+proposition is thus trivial. Let us henceforth assume that
+Therearetwocasesi.e. (1) Mh^n — l, thus Mh<n — 2(cf. Lemma 2. 1) (2) Mh = n — 1.
+Case 1. We shall apply Proposition 4. 2. It follows straightforward from the defini-
+tion of δ that we have
+=-Mi for /=!,...,*,
+ord Τ^(σ) = (-μί)δ 
+for /= l,. . ., h.
+We shall set
+A = (5.
+Now it is simply assumed that
+Mt<n-2 
+for i = l,...,A.
+
+
+===== PAGE 28 =====
+M o h, On the Jacobian conjecture 
+167
+Then we must have
+which is equivalent to
+λ = δ<
+Thus the conditions of Proposition 4. 2 are verified. The conclusion of Proposition 4. 2
+states that σ is a distribution detector for g(y), T^(y\..., Th(y). Recall
+g.c.d.Oi, -μ1,...,-μΛ)=1.
+Thus the polynomials ga(π), Τ£σ(π),..., Th^ σ(π) are powers of a common linear polynomial
+(cf. Definition 3. 1).
+We claim that
+<$ = -!.
+Otherwise suppose for a moment that
+Due to the assumption
+it is elementary to see
+= π
+Thus the common linear polynomial for £σ(π), Tfttr(n)9. . ., Τ^σ(π) must be simply π. It
+contradicts the very definition of δ. Hence our claim has been proved. Let
+y) =gn(
+x> y) + lower terms in *> y·
+Then it is easy to see
+g(t~1,nri) = gn(l9n)rn + higher terms in t.
+Moreover we have proved that the polynomial g„(l, π) = £σ(π) is a power of a linear
+polynomial in π. It follows trivially that the highest homogeneous forms of g(x, y),
+Tt(f(x, y), g(x, y)) are powers of a linear form.
+Case 2. Mh = n — l . The following Proposition 4. 4 will establish that the polynomials
+gff(n), Γ^σ(π),. . ., Τ^σ(π) are powers of a common linear polynomial (n — a). Then the
+last paragraph of the proof for Case l can be used verbatim to fmish Case 2. 
+Q.E. D.
+The following proposition gives some sufficient conditions for the nonsplitting
+phenomena.
+22*
+
+
+===== PAGE 29 =====
+168 
+M o h, On the Jacobian conjeclure
+Proposition 4. 4. Suppose thatfor some r, λ, ν, ε and a π-root σ = Σ ajtJ + π?ί °fg(y)
+we have the following:
+(1)
+(2) oτdg(σ) = nλ<0,
+<
+3) 
+.-
+(4)
+(5)
+(6)
+(7) 
+The number ε defined above satisfies ε> — 1.
+Then gff(n), 7^σ(π),. . ., Τ*σ(π) are powers of a common linear polynomial in n.
+Remarkc This proposition has been applied to the second case of the preceding
+proposition with r = A, Mr = n— l, λ = δ, v = dh and ε= — — .
+o
+Proof of the proposition. It follows from the conditions (1), (2), (3), and Proposi-
+tion 4. 2 that σ is a distribution detector for g(y), Tf(y)9. . ., Tr
+ltl(y). Thus the π-degrees
+of the leading coefficients of g (σ), Τγ(σ),. . ., Tr
+{j/_1(a) are proportional to
+Note that g.c.d. (n, — μΐ9. . ., — μ,_1) = ά,.. Hence the said degrees must be ^ - 7 - ,
+/__„ \ 
+/«.» 
+\ 
+V "r/
+t? ( — r-^ ),..., v l — j^ l for the integer v satisfying condition (4). It follows from the
+definition of the distribution detectors that there is a polynomial p (n) of degree V such
+that
+dr
+
+
+===== PAGE 30 =====
+M o h, On the Jacobian conjecture 
+169
+In view of the condition (6) after comparing the Orders on both sides of equation (1)
+of Proposition 4. l with h(f, g) = T+(f, g) we conclude that 1*σ(π) satisfies the following
+differential equation
+(deg ϊ£,(π) + β) 7£(π) g» - deg g» g, (π) (Ί+σ(π))'
+= cp(n) 
+d' 
+.
+After simplifying, the above equation becomes
+(deg ΐ£,(π) + ε) Τ*σ(π) ρ'(π)-νρ(π) (Τ*σ(π)}'
+— μΓ + Μr — η
+= c*p(n) 
+d" 
++1.
+It follows from Proposition A. 2 of Appendix I that the polynomials p (n) and Τ*σ(π)
+are powers of a common linear polynomial in π. Our proposition is thus established.
+Q.E.D.
+Remark. With a verbatim proof, for a slightly general Jacobian condition of the
+following form (cf. Appendix II)
+Proposition 4. 4 is still valid with the condition (6) replaced by the following
+(6)*
+The following proposition will be proved after Proposition 4. 6. The purpose of
+inserting Proposition 4. 5 is to illustrate the Splitting phenomena. One Interpretation of
+Proposition 4. 5 is that there are at most two points at infinite for f(x, y) = 0. Note that
+the conditions of Proposition 4. 5 complete the conditions of Proposition 4. 3 (cf. [A.l],
+p. 139).
+Proposition 4. 5. Suppose that degg(x, ^) = degyg(x, y) = n>\ and Mr = n-2 for
+some r. Then the highest homogeneous forms of g(x, y), T i(f(x,y),g(x,y)} 
+for i<r are
+powers of a common form which has at most two distinct linear factors. Moreover the
+multiplicities for the two factors are 
+different.
+The following proposition gives some sufficient conditions for the general Splitting
+phenomena.
+
+
+===== PAGE 31 =====
+170 
+Moh, Onthe Jacobian conjecture
+Proposition 4. 6. Suppose that for some r, λ, v and a π-root a = 'Zlajti + ntd of g(y)
+we have the following:
+(1)
+(2) ordg(<r) = «A<0, ord Ί?(σ) = (-μ,)λ 
+/=!,..., r,
+A = 
+<
+n — m 
+η — γη
+(4)
+(5)
+=
+\ 
+4
+Then we have, if r ^2, the following:
+(1) σ 
+« distribution detector for g(y), Tf(y),. . ., 7?^ (χ)· ΓΛ^ leading coefficients
+of g (σ), Tf(a),. . ., 7^! (σ) are /? wer5 o/« common polynomial p (n) of degree υ,
+(2) 
+Τ*σ(π) =ρ(π) 
+dr 
+- q(n) where q(n) is a polynomial of degree v
+V 
+<*r
+(3) q(n) has all distinct roots,
+(4) all roots of p(n) are roots of q(n),
+(5) p(n) is not a power of q(n).
+Moreover if r=l then g0(n) and Τ^σ(π) satisfy the following differential 
+equation
+D (n, —M^ge (π), Tft0 (π)) = nonzero constant.
+Proof. Let us consider the case r ^2. The conclusion (1) follows from Proposi-
+tion 4. 2 and Definition 3. 1.
+Let us apply Proposition 4. l for h(y) = T?(y). It follows from the conditions (2)
+and (3) that we have
+λ= ~1+ ο w - w A = -
+<=> the order of both sides of the equation (1)
+of proposition 4. l are equal.
+
+
+===== PAGE 32 =====
+M o h , Onthe Jacobian conjecture 
+171
+Thus we conclude that the polynomials gff(n) and 1%σ(π) must satisfy the following
+differential equation
+(6)
+= C the leading coefficient of T*(n)f .
+Note that the conclusion (1) and Proposition 3. 3 imply
+(T*a(n))f = the leading coefficient of T*(a)f
+The differential equation (6) can be simplified s follows
+— μΓ + Mr — n
+( (-u\ 
+\ 
+""r+M
+(υ f-^J υ, ρ(π), 1*σ(π)\ = C*p(n) 
+*·
+Note that
+άεΒΊ+,(π) = υ(-Ι±) = ν( 
+μ' + ™' ") + ^(JL/^)·
+Then the conclusions (2), (3), (4) and (5) follow at once from Propositions A.3 and A.4
+of Appendix 1.
+Let us consider the case r = l. As in the preceding argument we shall apply Pro-
+position 4. l for h(y) = Tf(y). Note that
+7f =/+polynomial in g.
+It follows
+It is elementary to show that Orders of both sides of the equation (1) of Proposition 4. l
+are equal. Thus the leading coefficients £σ(π) and 7\ σ(π) must satisfy the said equation.
+Q.E.D.
+Remark. With a verbatim proof, for a slightly general Jacobian condition of the
+following form (cf. Appendix II)
+Proposition 4. 6 is still valid with the condition (3) replaced by the following:
+, 
+-l-/+<5 
+-1-
+(3)* 
+A = 
+- <
+n — mr 
+n
+
+
+===== PAGE 33 =====
+172 
+M o h, On the Jacobian conjecture
+Proof of Proposition 4. 5. Let δ be the number defined s
+5 = min <ordi: τ root of g(y) Π Τ·
+i=i
+Using the first paragraph of the proof of Proposition 4. 3 verbatim we reduce the proof
+to the case that
+We claim
+Otherwise assume for a moment
+δ<-ί.
+Then we shall apply Proposition 4. 2 with (r — l) replacing r, λ = δ and σ = ηίδ. The con-
+ditions (1) and (2) are trivially verified. To verify the condition (3) we observe
+λ = δ<
+.
+n — Mr 
+2
+Thus σ is a distribution detector for g(y), 7i(>0>· . ., T^(^). With the assumption that
+degg(x,7) = deg^(x, y)
+we see at once
+It follows from the defmition of the distribution detectors (cf. Definition 3. 1) that
+It thus contradicts the defmition of δ. Our claim is established.
+We shall now apply Proposition 4.6 with r = r, λ = δ = — l, v = dr and σ = πίδ. It
+is trivial to verify all conditions. Note that r ^2. Otherwise we have Mi=n — 2^0.
+Note that we then have from the defmition of M
+=> Mi > 0,
+deg, 7? (/(x, y), g(x, y)) = - μι = - M! < 0.
+A contradiction. The polynomial q (n) in the conclusion (2) is of degree
+Thus the polynomial #(π) has two distinct roots. Since the polynomial p (n) has at most
+two roots (cf. the conclusion (4)) with distinct multiplicities (cf. the conclusion (5)). Thus
+our proposition follows from the conclusion (2). 
+Q. E. D.
+
+
+===== PAGE 34 =====
+M o h, On the Jacobian conjecture 
+173
+§ 5. The major discs
+r
+In this section we shall study the root configurations of g(y) Π ^(y) f°r
+r=l,...,A. Propositions 4.4 and 4.6 are our main tools. Topologically in both pro-
+positions we investigate certain <5-discs. Under the conditions of Proposition 4. 4 we prove
+that all roots of g (y) Π Tf(y) in it have distances less than 2~δ or the order of their
+i = l
+differences are bigger than δ. In the terminology of Section l this particular <5-disc is not
+r
+one of the discs associated with the tree data of g(y) Π T^(y) (cf. Definition 1. 1). In
+other words we have to further shrink the size of the discs to locate the tree data. After
+finitely many shrinking steps we expect that the conditions of Proposition 4. 6 will be
+r
+satisfied. Proposition 4. 6 implies that there are roots of g(y) Yl T{(y) in the corresponding
+i = l
+(5-disc with distances equal to 2~δ. Thus the (5-disc D1 ti2 
+ir is associated with the tree
+r
+data of g(y) Π T^(y). Moreover if r^2 then the roots in it will be covered by sub-
+i = l
+discs Di,i2t...,irj satisfying the criterion of Definition 1. 1. Furthermore Proposition 4.6
+specifies that the number of subdiscs £>i,i2,...,ir,j is the degree of #(π), and the number
+of roots in those subdiscs are unequal. If we choose one of the subdiscs with the num-
+ber of roots above a certain number (cf. Definition 5. 1) and drop T*(y) from the product
+r 
+r-1
+g(y) Π T^(y), i.e. we shall consider g(y) Π Τ?(ν\ then the phenomena of shrinking
+i=l 
+i=l
+the size of the disc until the conditions of Proposition 4. 6 being met will reappear again.
+r
+This way we plan to get certain Information of the root configurations of g(y) Π 
+Tf(y\
+i = l
+especially g(y) Tf(y). The most important result of this section is Proposition 5. 3 which
+establishes the existence of major towers ending in D^ (cf. Definition 5. 1). The com-
+plicated formula of 
+r can be used to show the reductions of "one point at infinite"
+(cf. Proposition 5. 4) and "the t wo characteristic pair case" (cf. Proposition 5. 5).
+We shall start our process by establishing the following proposition.
+Proposition 5. 1. Suppose that g(x,y) is monic in y with y-degree n>\. Let ds be
+defined for s = h — l, h s follows
+s
+d^-^): τ,, τ, roots of g(y) Π
+i=i
+Then we have:
+_ j
+(1) If Mh = n-\ then 6h = dh^i^= - ·— - -. Moreover the conditions of Pro-
+n — Mh_1 — l
+Position 4. 6 are satisfied with σ the unique π-root in the δ^^-disc Dh_i containing all roots
+ofg(y) Π Tf(y)9 5 = Vi=^, r = A-l and v = dh.i.
+i = l
+Journal f r Mathematik. Band 340 
+23
+
+
+===== PAGE 35 =====
+174 
+Moh, On the Jacobian conjecture
+(2) If Mh<n — l, then 
+h = 
+-——-. Moreover the conditions of Proposition 4.6
+n-Mh-l 
+h
+are satisfied with σ the unique n-root in the oh-disc Dh containing all roots ofg(y) 
+Y[ T^(y),
+δ = h = A, r— h and v = dh.
+Definition — Remark. The conclusion (1) implies that if Mh = n — \, then we should
+drop it from our own consideration. The "effective" characteristic pairs exclude Mh if
+Mh = n — 1. The last effective characteristic pair is denoted by Ms in this article.
+Proof. (1) Let us assume for a moment that
+,, 
+i
+" »-Λ4-1-1
+Then the conditions of Proposition 4.4 can be verified with σ the unique π-root of
+h
+g(y) Π T?(y) in the <Vdisc and let
+l
+= «fc = A<0, r = A, v = dk, =-^·
+The conclusion of Proposition 4. 4 implies that
+H
+for all τ h τ,· roots of g(y) Π T?(y)· It contradicts the definition of 
+h. Thus we must
+have 
+i=1
+Now we shall verify the conditions of Proposition 4. 6 for σ the unique π-root of
+h
+g(y) Π Τ?(γ) in the (5*-disc and let
+This verification is elementary. Note the polynomial factor q(n) of T^_lf(T(n) in Pro-
+position 4. 6 is with degree s follows
+and has distinct roots. Thus we have
+and the conclusion (1) is finished.
+(2) Let us assume for a moment that
+
+
+===== PAGE 36 =====
+M o h, Onthe Jacobian conjecture 
+175
+Then the conditions of Proposition 4. 2 can be easily verified with σ the unique π-root
+h
+of g(y) Π Tf(y) in the 
+h-disc and let
+i = l
+δ = h = λ < 0, r = h, v = dh.
+Note that
+g.c.d.O, -/*!,..., -/O = 1.
+The conclusion of Proposition 4.2 implies that the leading coefficients of g (σ),
+Tf (σ),. . ., Γ/ (σ) are powers of a polynomial of degree 1. Thus
+H
+for all roots τ£, τ,· of g Ο) Π 71*00· K contradicts the defmition of <5h. Thus we must
+have 
+l=1
+Now we shall verify the conditions of Proposition 4. 6 for σ the unique π-root of
+h
+g(y) Π 71*00 in the <5*-disc and let
+This verification is elementary. Note the polynomial factor q(n) of 7/(π) in Proposi-
+tion 4. 6 is with degree s follows
+degq(n) = n-Mh^2
+and has distinct roots. Thus we have
+-l
+" n-Mh-\
+and our proposition is 
+finished. 
+Q.E.D.
+In fact later on we shall prove that the possibility of
+<.-,_^_,
+i.e. h = 2 in the first case, A = l in the second case, will imply that
+However we postpone the proof of the above Statement to avoid the repetition of certain
+arguments. Let us examine the conclusion of Proposition 4. 6 for h — l ^ 2 in the first
+case and h ^ 2 in the second case. Let s = h — l in the first case and s = h in the second
+case, then we have the following:
+(1) All roots of p(n) are roots of q(n) which is a polynomial of degree n — Ms
+and with distinct roots,
+(2) the polynomial p (n) with degree ds is not a power of g (π).
+23*
+
+
+===== PAGE 37 =====
+176 
+M o h, On the Jacobian conjecture
+Thus among the roots of p (n) there must be some with multiplicities bigger
+than - L— . Let cs be any one of them. Then we shall establish
+n-Ms
+Proposition 5. 2. Suppose that g(x, y) is monic in y with y-degree n>\. Let Ms be
+the largest M{ which is less than n — i. Let 6S be defined 
+s in Proposition 5. l and suppose
+s ^2. Let σΣ^ί] + πί
+δ* be the unique π-root of g(y) Π T?(y) in the ds-disc Ds and
+i = l
+n — cs be a factor of p (π) (cf. Proposition 4.6) with multiplicity Vs> - - — . Let τ and
+s^1 be defined 
+s follows 
+s
+r 
+^ 
+]
+<5s_1=min<ord(Ti--T/): τ^ roots of g(y) Π T?(y) with ord (^ - τ) > 5S >
+l 
+f=i 
+J s
+= the logarithmic radius of Ds_1 which contains all roots Tf of g(y) Π
+οτά(τί-τ)>δ5.
+Then we have the following
+Moreover the conditions of Proposition 4. 6 are satisfied with σ* the unique π-root
+'
+of g(y) Π Tt(y) in the s_rdisc Z)s_1? δ = δ,_1=λ, r = s-l and v = ]
+The above proposition is a special case of Proposition 5. 3 which will be stated
+and proved in a moment. We shall prove the following numerical lemmas. The readers
+are advised to skip them for the time being and return to them when are needed.
+Lemma 5. L Let L, Vs be numbers with L^Ms<n-\ and Vs(n-Ms)>ds. Let δ (L),
+<5S and λ (L) be defined as
+n-Ms 
+-l
+n-M-\ 
+n-M-l'
+Then δ (L) is a monotonically decreasing function of L and we have
+
+
+===== PAGE 38 =====
+M oh, On the Jacobian conjecture 
+177
+Proof. It is easy to see that δ (L) is a monotonically decreasing function of L.
+To establish
+-1+(5*<0
+we simply observe the following
+(n-Ms-\)[Vs(n-L)-ds-\
+and
+F> - L) - d, > Vs(n - Ms} - ds > 0.
+We shall establish the equality
+o (n - L) [(rf.- F.) (l - δ,) + Vs(\ - δ*) - rf.] = (l - δ*Κ
+o [(/i - L) K, - rfj (l - δ*) = (n - L)rf. -(n- L) (d,- Fs) (l - δ,)
+(n-L) [_ds(n-Ms-i)-(ds- 
+Vs) (n
+n-Ms-\
+n-M.-l
+The last one is equivalent t o the definition of (L) = *. 
+Q.E. D.
+The following lemma is a generalization of the preceding lemma and will be used
+in the proof of Proposition 5. 3.
+Lemma 5. 2. Lei L and V{ for i = r, r -f l , . . . , s be numbers with
+L^Mr<
+and
+Vi(n
+Lei δ (L), δ t and λ (L) be defined 
+s
+(n-Ms-\)[Vr(n-L)-dr-\ 
+Π
+(n-Mt) Π
+}=i+1
+(n-Ms-\) Π 
+Wn-Mj^
+j=i + l
+*=ί/Λ+ Σ ^ 4 ( ^ - i -
+
+
+===== PAGE 39 =====
+178 
+M o h, On the Jacobian conjecture
+Then δ (L) is a monotonically decreasing function of L and we have
+Proof. It is easy to see that δ (L) is a monotonically decreasing function of L.
+To establish
+-1+<5*<0
+we observe that
+-l+<5* = 
+i^ 
+-
+(n-Ms-\)[_VT(n-L)-dr-\ 
+Π 
+\Υ}(η->
+and
+(n-L)^(n-Ms)>(n-Ms-l)>0,
+Vr(n-L)-dr^Vr(n-Ms}-dr>Q,
+Vj(n — Mj„j) — dj> Vj(n — M,·) — dj>0
+which imply
+We shall establish the equality
+fn-L
+Note the following identities:
+(n-M.-l) Π
+j=i+l
+dtWt-M^) Π
+(«-Μ5-1)Π
+Substitute them into the following summation
+
+
+===== PAGE 40 =====
+M o h, Onthe Jacobian conjecture 
+179
+Note that
+n-Ms-\ 
+in-Ms-\
+Vs(n-Ms}-ds
+After repeating the above computation s — r times we see at once that
+Q.E.D.
+No w we shall treat the generalization of Proposition 5. l and 5. 2. Inductively
+suppose that for some r^2 we identify a tower of major discs Ds^Ds_l^-"^:Dr
+defined s
+Definition 5. 1. A tower of major discs Ds^Ds_i^'"^Dr satisfies the following
+four criteria with a sequence of integers {J/>/ =
+(1) In the disc Dt the polynomials g(y) have precisely - — Vi+i roots. Tf(y) has
+-μ. 
+di+1
+precisely — —
+ J- Vi+l roots for j= l,. . ., /,
+«i + l
+(2) 
+the numbers V{ satisfy
+— for / = r+l,...,5, F + 1=d + 1,
+i+i 
+n - t
+(3) the disc D{ is with logarithmic radius bi where for / = r, . . . , s
+(n -M,) Π
+(/ι-Μ,-1) Π 
+L V j f r - M j - J - d j ]
+(4) for i = r,..., s, let σ,· = Σ u>jt* + ntdi be the unique general point in the disc Dt
+then the conditions of Proposition 4.6 are satisfied for σ = σί9 δ = c^· and t? = K j + 11 -i-1
+\«i+
+Note that Proposition 5.1, which has been proved, implies that the minimal disc
+h
+Ds which contains all roots of g00 Π T?(y) satisfies the criteria (1), (2), (3) and (4).
+Proposition 5. 2 simply states that among the disjoint minimal subdiscs of Ds (cf. Defini-
+s
+tion 1.1) which cover the roots of g(y) Π Tf(y) in Ds any subdisc can be used s Ds_1
+if it contains more than the average number of roots. The existence of such a subdisc
+is ensured by Proposition 4. 6.
+
+
+===== PAGE 41 =====
+180 
+M oh, On the Jacobian conjecture
+Proposition 5. 3. Suppose that g(x, y) is monic in y with y-degree n>\ and for r ^ 2
+a tower of major discs DS^DS^1 g ··· g/)r is constructed. Lei n — Cr be a factor of p (π)
+s in the conclusions of Proposition 4. 6 with multiplicity Vr satisfying
+r+i
+Lei τ and r_i be defined 
+s follows
+r
+<OTd(ri-rj): 
+τί? τ,· roots of g(y) Π 71*00 with οτά(τί-τ)>δί. and
+"'
+= the logarithmic radius of Dr_i which is the minimal disc containing all roots
+τ,· of g(y) Π J?(y) with ord (τ - τ() > „ .
+Then we have the following:
+Moreover the tower Dsg ··· ^Dr^.Dr_1 is a tower of major discs.
+Proof. The criterion (2) of Definition 5. l is automatic. Let us handle the remaining
+ones. Let δ (L) denote
+(«-Ms-l)[Fr(«-L)-i/r] Π 
+Wn-Mj-J-dj·]
+j = r+l
+Firstly we claim the following
+Let us assume the contrary for a moment. i.e.
+Due to the monotony of δ (L) s a function of L, we have for some L* with
+MP
+the equality
+
+
+===== PAGE 42 =====
+M o h, On the Jacobian conjecture 
+181
+r
+Let σ* be the unique π-root of g(y) Π 7j*00 in the <5r_rdisc with
+ord(a* — τ)>δΓ.
+We shall verify the conditions of Proposition 4. 4 with σ = σ*, r = r, v = Vr to produce
+a contradiction. Note that it follows from Proposition 1. 3 that
+i-<^+F W (<5*-<5r)
+Then it follows from Lemma 5. 2 that
+Λ*<0 or A<0.
+It is straightforward to verify
+Thus the condition (2) of Proposition 4.4 is established. Note that it follows from
+Lemma 5. 2 that
+λ*_-1+δ* 
+-1 + 0* 
+-l+<3*
+rfr 
+n — L 
+n — Mr_1 
+n — Mi
+Thus the condition (3) of Proposition 4. 4 is fmished. The conditions (4) and (5) are
+trivial. Let us consider condition (6) of Proposition 4. 4. It follows from Proposition 1. 3,
+criterion (4) of Definition 5. l and Proposition 4. 6 that
+i=r+l
+^.+ Σ ^ ^ - i -
+r 
+«r 
+i = r + l 
+«i
+Using lemma 5.2 with L = Mr, we have δ(Μ^ = δΓ and
++ Σ ^
+Journal f r Mathematik. Band 340 
+24
+
+
+===== PAGE 43 =====
+182 
+M o h, On the Jacobian conjecture
+We thus deduce
+where
+We have verified all conditions of Proposition 4. 4. The conclusion of it means
+for all τί? τ,· roots of g(y) Π Τ?(γ) satisfying
+ί = 1
+ord (τ i — τ) > δ, , ord (τ,· — τ) > δ, .
+It contradicts the very defmition of r_1. Our claim has thus been established.
+r
+Let δ** denote S(Mr_i). Let σ** be the unique π-root of g(y) Π Tf(y) 
+in the
+<5**-disc with 
+i=1
+οΜ(σ**-τ)><5Γ.
+We shall verify the conditions of Proposition 4. 6 (the Splitting phenomena) with σ = σ**,
+5 = <5**, F= Fr ( -^fi ) and r - l replacing r. Note that
+r-l
+and
+ord 7?
+Conditions (1) and (2) are verified. Moreover it follows from Lemma 5. 2 that
+-l+<5** 
+-l+<5**
+= 
+τ-,— < 
+TT
+We thus have condition (3). The conditions (4) and (5) are trivial. Note that the
+polynomials q (n) and p (n) in Proposition 4.6 are of degree
+
+
+===== PAGE 44 =====
+M o h, On the Jacobian conjecture 
+183
+Moreover the polynomial q(n) has distinct roots. It implies that at least two roots of
+T^Li(y) in the (5**-disc have distance 2~
+<5**. Thus we conclude
+The criteria (1), (3) and (4) follow for the extended tower. 
+Q.E. D.
+From the second criterion of Definition 5. l we can find the smallest disc which
+contains all roots of g(y) Tf(y). Namely (cf. [A.l], p. 14) "one point at infinite".
+Proposition 5. 4. Suppose that g(x, y) is monic in y with y-degree n>\ and a tower
+of major discs Z^ig/)^ ig ··· gZ^ is constructed. Then the smallest disc which contains
+all roots of g(y) T^(y) is the D{ with
+Moreover if 
+t> — l then either k[x, y] = £[7^, g] =/:[/, g~] or there exists an auto-
+morphism of k[x, y\ which reduces the degrees of Tf(f(x, y), g(x, y)], g(x, y) and f(x,y)
+simultaneously.
+Vd 
+__«
+Proof. As proved in Proposition 5. 3 the numbers — ~ — are the degrees of p(n)'s
+dr
+_
+involved. Clearly 
+r r 1 = Vr_1 iff p(n) has only one root which means the leading
+dr
+coefficients gff(n) 
+and Τ^σ(η) have only one root. It is thus evident that Dt is the
+smallest disc which contains all roots of g(y) T^
+Suppose that we have
+<5;>-1 and ^^L=Vj 
+for j = i
+"j+i
+Then it follows from the defmition of δ{ that
+(n -M,} Π 
+lVj(n-Mj)-d
+There are two possibilities / = l or / > l. In the first case we shall establish that
+k[x> y]—k[Tf9g] = k[f9g]. In the second case we shall show the existence of certain
+automorphisms of k[x, y].
+Let the number n — M{ — \ be /. Suppose that i—l. Then Proposition 4.6 implies
+that the leading coefficients ga{n) and Γ^σ(π), which are polynomials in π, satisfy the
+following differential equation (cf. Definition 4.1)
+(1) 
+D(n, —μι,&,(π), Τ^σ(π)) = ηοηζ6Γθ constant.
+24*
+
+
+===== PAGE 45 =====
+184 
+M o h, On the Jacobian conjecture
+Note that M1 =μι = — degy T^(y) a negative integer. We thus have
+It follows from Proposition A. 5 of Appendix l that the polynomial ga(n) has all distinct
+i
+roots. Any root of g(y) with nonzero coefficient of t1 will produce a different root
+for g(y) under the automorphism over k ((t)) of the following form
+i 
+i
+tl-+(Dtl
+where ω is a /-th primitive root of unity. Thus we must have
+n = l = n — M± — l 
+or Mt = — 1.
+Hence Tf is a monic polynomial of degree l in y and an automorphism of k [x, y]
+will send Tf to y. A simple computation on the Jacobian shows at once that under the
+same automorphism
+g(x, y) — > χ + polynomial in y.
+Thus we have
+Let us consider the possibility of i>l. Let σ{ be the unique π-root of g(y) 
+Tf(y)
+in the <5rdisc Dt and
+Then Propositions 5. 3 and 4. 6 show that £σ(π) and Tft<r(n) are powers of a common
+polynomial p(n). Our definition of dt implies that p(n) has more than one root. Let π — a
+be a factor of /?(π) with αΦθ. Let the unique π-root at be
+Since a noninteger exponent j in the above expression will produce different roots for
+g(y) Tf(y) 
+s shown in the previous case, then all exponents must be integers. In other
+words for some polynomial h(x) we have
+The following automorphism
+x-*x, 
+y-+y-h(x)
+will reduce σ to the following simple form
+and without changes in the j-degrees of g(y) and Tf(y). We shall simply assume from
+the beginning, that the π-root σ is of the form
+
+
+===== PAGE 46 =====
+M o h, Onthe Jacobian conjecture 
+185
+It follows from
+that we have
+ordg(i~', π?~1) = -« or
+Similarly we have for the nonzero a deflned above
+(t~\ at~^}> —n or degg(xl, ax)<n.
+This way we have established that the highest weighted form of g(x, y) with χ of weight
+/ and y of weight l has a factor of the form
+An automorphism of k {x, y] deflned by
+l
+r
+will save the weight of every term while sending alx — y1 to alx. Thus under the auto-
+morphism the polynomial g(x, y) will have χ s a factor for the highest weighted form
+of weight n. This proves at once the (unweighted) degree of g(x, y) must drop at least 1.
+Similar arguments work for Tf. As for /(x, y) we note that (cf. Proposition 2. 2)
+Tf =/+ polynomial in g
+and
+deg Tf(f(x9 
+y), g(x, y)) = deg, Tf = -Μ,φ (η).
+Thus if both degrees of g(x, y) and Tf drops, then the degree of /(x, y) must drop
+too. 
+Q.E. D.
+The following lemma will specify the implications of Proposition 5. 4 in terms of
+the forms of the polynomial g(x, y) (cf. [A.l], p. 139).
+Lemma 5. 3. Suppose that g(x, y) is monic in y with deg g(x, y) = degy g(x, y) = n > 1.
+Then the smallest disc which contains all roots of g(y) Tf(y) 
+is of logarithmic radius —l
+iff Ms = n — 2 and the highest homogeneous form of g(x, y) has two roots with one root
+having a multiplicity — vs where vs satisfies
+d
+Proof. Necessary. Let Ds z> · · · z> Di be any tower of major discs with logarithmic
+radii s< ··· <5le The proof of Proposition 5. 4 shows for some i the following
+
+
+===== PAGE 47 =====
+186 
+M o h, On the Jacobian conjecture
+We conclude that
+Thus
+Ms = n-2.
+It follows from Proposition 5. 4 and 5. 3
+n-Ms 
+2
+Recall
+We thus have
+The criteria (4) of Definition 5. l and Proposition 4. 6 specify the degree of the polynomial
+q(n) (cf. Proposition 4.6) is n — Ms = 2. Then the polynomial /?( ) has two roots with
+one of the multiplicities being Vs. It is routine to deduce the stated properties of the
+highest homogeneous form of g(x, y) (cf. Propositions 4. 3 and 4. 5).
+Sufficient. 
+It follows from Proposition 5. 3 that there is a tower of major discs
+A13 A-i ^ ·" ^ A wfth ^e corresponding ^ given by this lemma. Thus the index i äs
+specified in Proposition 5. 4 is
+and the corresponding logarithmic radius dt is
+The following proposition shows that there is a reduction for the two characteristic
+pairs case.
+Proposition 5. 5. Suppose that g(x, y) is monic in y with y-degree n>2. If there
+are only two effective characteristic pairs i. e. 5 = 2, t hen either k [x, y] = k [Tf9 g] = k [/, g]
+or there exists an automorphism ofk[x, y] which reduces the degrees ofT^(f(x, y), g(x, y)},
+g(x,y) and f(x,y) simultaneously.
+Proof. It follows from Proposition 5.4 that we may assume that the smallest disc D{
+which contains all roots of g(y) T^(y) is of logarithmic radius —l i.e. for i = l or 2
+the following
+
+
+===== PAGE 48 =====
+M o h, Onthe Jacobian conjecture 
+187
+We shall deduce a contradiction. It follows from M1 = μ1 = — degy T^(y) a negative
+integer that we must have i = 2 and
+Hence we have a tower of major discs D2^>Di (cf. Proposition 5. 3) with the correspond-
+ing numbers F2, F3 satisfying
+or d2>V>
+d2 
+d2
+n-M2
+ 
+z 
+2 n-M2 
+2
+Then it follows from Proposition 5. 3 that the logarithmic radius δ1 of D± is
+Recall
+i/2 = g.c.d. («, MO-
+Let us write
+= d2-V2<V2
+and write (^ in its reduced form s
+_(
+1~
+Clearly we have
+i.e. the rational number δ i is a true fraction and ^4>1. Let σ be the π-root in the
+(5rdisc Dl and
+Then it follows from Proposition 5. 3 and Proposition 4. 6 that £σ(π) and Tft<r(n) satisfy
+the following differential equation
+D (n, —Mlyga(n), Γ^σ(π)) = ηοηζ6Γθ constant.
+Proposition A. 5 implies that
+and
+
+
+===== PAGE 49 =====
+188 
+M o h, On the Jacobian conjecture
+The conjugations of k((tA)) over k((t)) show us that if the reduced denominator A of δ±
+is not a factor of deg gff(n) = n* V2 then π is a factor of ga(n). Moreover if A is a factor
+of «* V 2 then ga(n) e fcJV4] and π is a factor of —— g.(n). In view of the two co-prime
+απ
+conditions above we must have
+A\n*V2 
+and A)(m*V2 
+or A)(n*V2 
+and yl|ra*F2.
+Moreover we always have from the very defmition of A the following
+A\(n*+m*)V2-\.
+Let us consider the possibility of
+(1) 
+A\n*V2 
+and A\m*V2-\.
+The other possibility can be treated verbatim. Let
+n*V2 = AD, m*V2-\=AE.
+The second equality implies
+G4,F2) = 1.
+Thus we must have from the first equality
+V2\D.
+Let us consider the following equation
+where
+(>z* + m*)F2- 1 =
+Then we deduce the following
+A contradiction. 
+Q.E. D.
+The following proposition will take Proposition 5. 5 s a special case and gives
+a different proof of the reduction of the two characteristic pair case.
+Proposition 5. 6. Suppose that s ^2 and that a tower of major discs
+has been constructed. If the corresponding π-root σΐ9 which is the unique one in D19
+is of the following form
+then either k [χ, y] = k [Tf, g] = k [/, g] or there exists an automorphism k [x, y] — > k [x, y]
+which will reduce the degrees of f(x, y), g(x, y) and Tf(f(x, y), g(x, y)} simultaneously.
+
+
+===== PAGE 50 =====
+M o h, Onthe Jacobian conjecture 
+189
+Proof. It follows from Proposition 5.4 and Lemma 5. 3 that we shall only consider
+the case ds=— l, Ms = n — 2 and ds>vs. It suffices to produce a numerical contradiction
+for this case. Note the following
+= 1 — -
+Recall that
+Then we conclude
+Vs(n-Ms_,)>Vs(n-Ms}>ds,
+We shall establish di<0 to produce a contradiction.
+First we shall point out a trivial observation about the Jacobian problem. Namely
+the polynomials g(;c, y) and Tf(f(x9 
+y), g(x, y)) have no common polynomial factor.
+Otherwise let it be A(JC, y). A simple computation will show at once that
+JXt,Crf9g)e(h(X,y)).
+A contradiction. Especially y is not a factor of either Tf + c1 or g + c2, say g + c2,
+for all possible constants q and c2. We conclude at once that there must be a term
+of the form xl in g(x, y) for /^l. Then we have
+Note that the Orders of the two sides of the equation (1) of Proposition 4. l are equal
+for σ = σ1 and H= Tf (cf. the criteria of Definition 5. l and Proposition 4. 6) and
+Then it follows from δ1 ^ 0 that
+Λλ + (-Μ1μ-
+We must have
+-/
+which implies
+/=!,
+and
+A contradiction. 
+Q.E. D.
+Journal f r Mathematik. Band 340 
+25
+
+
+===== PAGE 51 =====
+190 
+Mo A, On the Jacobian conjecture
+To deduce Proposition 5. 5 from Proposition 5. 6 we note that we only have to
+consider (cf. the first part of the proof of Proposition 5. 5)
+Thus we have for suitable constants a and b the following
+And an automorphism of the following form
+χ — +x, y —*y — ax — b
+will change σΐ to nt~dl. Proposition 5. 5 follows from Proposition 5. 6.
+§ 6. The minor dises
+In the last section we have discussed the construction of the towers of major discs
+(cf. Definition 5. l and Proposition 5. 3). Note that the minimal disc Ds which contains
+h
+all roots of g(y) Π T^(y) is a tower of one major disc (cf. Proposition 5. 1). Suppose
+that we have constructed a tower of major discs DS^DS_1 g ·-· g r. The criterion (4)
+of Definition 5. l implies the conditions of Proposition 4. 6 are fulfilled. The conclusions
+of Proposition 4. 6 thus implies the existence of a certain polynomial p (n). Let (π — Cr)
+be a factor of the polynomial p (n) with multiplicity Vr. If the multiplicity Vr satisfies
+r+1
+then we may extend the tower of major discs Ds^"-^Dr^Dr_i according to the
+construction of Dr_i s described in Proposition 5. 3. On the other band the multiplicity
+Vr may satisfy
+4· >F
+= r'
+We shall construct the corresponding disc D*^ thus denoted a minor disc with the
+following characterizations.
+Proposition 6.1. Suppose that g(x, y) is monic in y with y-degree n>\ and for r ^2
+a tower of major discs Ds^ ··· g/)r is constructed. Let n — crbea factor of p (π) s in
+the conclusions of Proposition 4. 6 with multiplicity Vr satisfying
+dr
+n-Mr~ r-
+
+
+===== PAGE 52 =====
+Moh, On the Jacobian conjecture 
+191
+Lei τ and δ*_ l be defmed 
+s
+f
+δ*_! =min ^ ord (τ,· -τ,·): t„ τ, roots of g(y) Π 1?(y)
+ί=1 
+}
+with ord (t; — τ) ><5,. and 
+ord (τ,· — τ) > <5r >
+= f/ze logarithmic radius ofD*_l which is the minimal disc conlaining all roots τ(
+of
+g(y)Tl1?(y) 
+with οΜ(τ;-τ)><5,.
+i = l
+r-1
+Then we have *_i^l. Moreover let a = ^bjtj + nt0 be any π-root of g(y) Π T^(y)
+with 
+i=i
+ord (σ — τ) > 
+r .
+Then we have
+(1) the inequality δ<\ implies ord #(σ) < 0;
+(2) the inequality ordg(a)<0 implies that σ is a distribution detector for g(y),
+Proof. Suppose for a moment that £*_ i < l . We shall deduce a contradiction 
+s
+r
+follows. Let σ* be the unique π-root of g(y) Y[ Tf'(y) in the disc Df_lt Then it follows
+i = l
+from Definition 5.1 and Proposition 1. 3 that
+Σ 
+Vi
+For the definition of A (L) (or the special case of L = r) and the last equality the reader
+is referred to Lemma 5. 2. Note that we have
+_*_>F
+n-Mr- "
+25*
+
+
+===== PAGE 53 =====
+192 
+M o h, On the Jacobian conjecture
+Thus we conclude trivially the following
+(1) 
+ord g(u*) = n Γ— ^7 (- 1 + <5r) + ^ (δ?- λ - <5r)l = «A* < 0
+|_rc-Mr 
+dr 
+J
+with λ* defined by the above equation. Similarly we conclude
+(2) 
+θΓά77"(σ*) = (-μί)Α* for /=!,... ,r-l.
+We have thus verified the conditions (1) and (2) of Proposition 4. 4. We shall establish
+the condition (3) of Proposition 4. 4
+*<^!±L 
+/-l ..... r-i.
+or equivalently the following inequalities
+r=n-Mr'
+For condition (4) and (5) (cf. Definition 5. l and Proposition 4. 6) we simply let v — Vr.
+We shall finally verify conditions (6) and (7) of Proposition 4.4. Note that
+ί-r+l
+- (- «, + Λί, - n) [-^J, (- 1 + «,) + j W- , - «,)] + (- 1 + i,) + («?- 1 - W
+where it follows from Definition 5. l and Proposition 4. 6
+which is equivalent to
+.-(-!+«.,) 
+-l.
+
+
+===== PAGE 54 =====
+M o h, Onthe Jacobian conjecture 
+193
+Condition (7) follows from
+o -l+^L^O ο α?-!«:!.
+Hence conditions (6) and (7) are satisfied. The conclusions of Proposition 4. 4 imply that
+r
+the leading coefficient of g (σ*) Π 7^ O*) has only one root. It thus contradicts the
+very defmition of δ*_1 (cf. Proposition 1.2). We have established δ*_1 ^ 1.
+The second part of our proposition, i.e. the inequality δ<1 implies ordg(a)<0,
+follows almost verbatim from the second paragraph of this proof with σ* replaced by σ
+and £*_! replaced by δ. The equations (1) and (2) become
+(3)
+with λ defined by the above equation and
+(4)
+For the last part of our proposition if δ < l then the first part of our proposition
+shows that the leading coefficients of g (σ), Γ/ (σ),. . ., 7^ (σ) are powers of a common
+linear polynomial in π of degree Vr—-,Vr\ — -^ ),..., VA — f— M respectively. The
+dr \ dr ) 
+\ 
+dr )
+second part of our proposition, i.e. the equation (3) and (4), shows
+ordg(tf), ord Tf(a)9. . ., ord Γ/.^σ)
+are proportional to n, — μΐ9. . ., — μ,-!· Thus it follows from Definition 3. l that σ is
+a distribution detector for g ( y ) 9 T f ( y ) 9 . . . 9 T + _ i ( y ) . 
+We are left with the case <5^1.
+We shall apply Proposition 4. 2 inductively. Note that it suffices to check
+(5)
+(6) 
+ord 7^(σ) = (-Λ)λ 
+ι = l,. . ., r-1,
+(7) 
+Λ< 
+,-1....,,-1
+with equation (5) s the definition of λ.
+Suppose that there is a σ which is not a distribution detector. Then we may
+choose one with the corresponding δ minimal. Proposition l . 3 implies at once that
+equation (6) is satisfied. Equation (7) is trivial due to the fact 5^1. Thus we conclude
+that σ is a distribution detector. A contradiction. 
+Q.E. D.
+The above proposition does not specify the logarithmic radius c)*.^ of DjfL1. We
+only get an estimate δ*_1 ^ 1. The significance of the minor disc D?_± is that the roots
+°f S(y\ T^(y),..., Trti(y) in it are all distributed proportionally according to the
+^-degrees up to the uncertainty of 2° = l . In other words if our estimate of the roots
+
+
+===== PAGE 55 =====
+194 
+Moh, On theJacobian conjecture
+is blurred s the order of g, T f , . . . , 7^1 A simultaneously reach 0, then all roots in the
+disc £>*_! of g(y), T f ( y ) , . . . , T^L^(y) are indeed proportional to the j>-degrees of
+g(y)9 T f ( y ) , . . . , TjL^y). This uncertainty is intrinsic due to two different reasons. First
+we may change g(y) to g(y) + c. Let σ be a π-root of g(y) such that ordg(a) = 0. Then
+the leading coefficient of g(a) + c is with a variable constant c. There is no way to
+control the roots of it. Second, in all our arguments we may replace the approximate
+roots Tf(y) 
+by the corresponding quasi-approximate roots (cf. section 1). As the ap-
+proximate roots T f ( y ) 9 . . . , Tr
+{lL1(y) simultaneously become units with y substituted by
+a π-root σ, the corresponding quasi-approximate roots will become units with different
+leading coefficients. This fact thus introduces some uncertainties in the conclusions.
+We shall apply Proposition 6. l to deduce some Information about the Jacobian
+conjecture. As pointed out in Proposition 5. 4 and Lemma 5. 3 we shall only consider the
+JL
+case Ms = n — 2 and the highest homogeneous form g(x, y) equals \_(y — ax)Vs (y — bx}ui]ds
+for αΦί? where us = ds — vs. Note that Proposition 6. l implies that the highest homo-
+geneous forms in χ and y of T f , . . . , T? are determined up to constant multiples. The
+major disc Ds is of logarithmic radius — 1. It contains a major disc Ds_1 and a minor
+disc D*_t (cf. Propositions 5.3 and 6.1). The logarithmic radius 
+s_1 of Ds_l is the
+following (cf. Definition 5.1)
+= i 
+£-Ι)(Ρ,-Μ,) = us(n-Ms_1)-ds
+Recall that
+ds = g.c.d.(n, M l 9..., Ms_j).
+We have
+Lemma 6. 1. Suppose that g(x, y) is monic in y with deg g(x, y) = degy g(x, y) = n > l .
+Let Ds^Ds_i be a tower of major discs with logarithmic radius 
+s and δ 5_ ί. If δ8= —l
+then (5
+Proof. Preceding discussions. 
+Q.E. D.
+It follows from Lemma 6. l that all roots of g(y) and 1^(y)foTi=l9...9s 
+in the
+major disc Ds_i are of the form
+(8) 
+y = at ~ 1 + Cj -f higher terms in t
+where c/s are constants. It follows from Proposition 6. l that the logarithmic radius of
+the minor disc D*_i is greater than or equal to 1. Thus all roots of g(y) and 
+Tf(y)
+for i"= l,. . ., s in the minor disc D*_1 are of the form
+(9) 
+y = bt -1 + e 4- cjt 4- higher terms in t
+where e is common for all roots. We may choose y properly such that in equation (8)
+a = 0. Let
+(10) 
+z = y-bx-e.
+
+
+===== PAGE 56 =====
+Mo h, On the Jacobian conjecture 
+195
+Then we may trade the monic property with a reduction of j-deg (or z-deg) for the
+polynomials involved s follows.
+Proposition 6. 2. Suppose that g(x, y) is monic in y with
+deg g(x, y) = degy g(x, y) = n>\, 
+s=-i.
+Furthermore suppose that in the equation (8) a = 0. Lei z be defined 
+s in equation (10).
+Lei g(x, y), T^ (f(x, y), g(x, y)) for i — l,..., s— l be expressed s polynomials g, T? in y
+and z. Then we have
+(1) 
+degyg = vs~,
+®s
+(2) deg2g = w s—,
+(3) 
+degv77 = t;s —p- 
+for 
+i = l,.... j-1,
+V <*. /
+_ 
+/ — LL· \
+(ά\ 
+Ηρσ ΤΨ — u l 
+l 
+fnr 
+/ — 1 
+^ — 1
+(*) 
+aegz it. — w si 
+/ r 
+i — Ι , . , . , Λ 
+ι.
+Proof. The proofs of the four equations are similar. We shall only prove the first
+one. Let the factorization of g(y) in k^t^ be
+where
+fei 1 -fe-hcf f+ higher terms in t for i = l,..., MS-J-,
+f -l· higher terms in i 
+for / = us — H- 1, ...,«.
+Let
+Then we have
+£(σ) = g(T(a) i "s rs ds + higher terms in t.
+Let
+Then
+(11)
+
+
+===== PAGE 57 =====
+196 
+M o h, On t he Jacobian conjecture
+If we have in the above expression
+n
+i>v*~Tds
+for some i, then we may take the largest one. In addition
+Then we have
+j-i<(ua-vs) — .
+'S 
+VS/
+us
+Note that the coefficient nj in equation (11) guarantees that the terms with different j
+indices will not cancel out. Hence we conclude
+ordg(a)<(us-vs)-r .
+ds
+A contradiction. 
+Q.E. D.
+The following lemma will be used in Proposition 6. 3.
+Lemma 6. 2 (Inversion lemma). Lei χ and y be two elements in k^t^ with
+Suppose that
+Then we have k^t^ = k^9^. Furthermore in the following expression
+χ = χ(θ)
+we have for arbitrary rational q and positive integer p :
+(1) x(0)mod € and y(t)moatq 
+uniquely determine each other,
+(2) x(0) mod 0q E k (( ^)) mod θ« ο y(t) mod t*ek ((t*)) mod tq.
+Proof. Since we have
+then it follows from the definition of Puiseux fields that k^t^^k^ ^. Suppose that
+y(t)ek((r))
+for some positive integer m. Then let
+
+
+===== PAGE 58 =====
+Mo h, On the Jacobian conjecture 
+197
+Then the conclusions (1) and (2) follow from the classical Inversion formula for plane
+meromorphic curves [M. 3]. 
+Q. E. D.
+The following Proposition shows that in some cases the degrees of the polynomials
+involved can be reduced by some transformations while the Jacobian will be modifled
+to a monomial.
+Proposition 6. 3. Suppose that g(x, y) is monic in y with
+deg g(x, y) = degy g(x, y) = n>l,
+<5S= — l and the logarithmic radius of δ*_± of the minor disc D*.^ — . Lei z be deflned
+^s
+by equation (10), y'1 =9 and consider g, Tf9. . ., Γβ* t s elements g (z) Tf(z)9. . ., T*- 1 (z)
+in k^9^ [z]. Then there is a π-root σ of the following form
+such that with
+i
+y = 9Us
+we have
+(1) g(a\ T* (o), . . . , T*, i (σ) e k [y, π] ,
+(2) £(σ), Tf(o),. . ., 7^1 ! (σ) are monic in π with π-degree
+s 
+dus
+respectively,
+(3) 
+Jy,M°\T^(^=-fs~Us~'·
+Proof. It follows from Proposition 6. 2 that
+vsn 
+usn
+g(y^ z) = (y ds 4- · · ·) z ds 4· lower terms in z
+usn
+vsn 
+ds
+= (>> "· + -) Π (*-τ,)
+ί = 1
+where τί6Α:<θ>. Let us consider all parametrizations of g(x, y) in the following form
+v —
+χ —
+y = bt 1 4- e + Π ej + higher terms in i.
+Journal f r Mathematik. Band 340 
+26
+
+
+===== PAGE 59 =====
+198
+M o h, On t he Jacobian conjecture
+By the assumption on the logarithmic radius f_ x of the minor disc D*_ ^ we have all
+are common. Hence it follows from Lemma 6. 2 that in the following inversion
+l Γ 
+<"* 
+l
+x = — 0-1Η- Σ ^0' +higher terms in θ L y = 9~1
+b L 
+1=1 
+J
+all c/s are common. With z defined s
+z = y — bx — e
+we conclude that in all parametrizations of g (y, z) of the following form
+"s
+y = "1, z = (c0 - e) - Σ cfi -l· higher terms in θ
+all cf's are common. Thus if we let σ be defined s
+i=0
+then we have
+= ga(n) + terms of higher degree in θ and lower degree in π
+where
+The conclusions (1) and (2) for g (σ) are evident. Similar arguments prove the conclusions
+(1) and (2) for 7)*(σ) for i= l,..., s—1. To prove conclusion (3) we note that
+) = J^(x,y)Jx,y(g(x,y), 
+Tf (f(x,y), g(x, y)))
+= det
+*
+Q.E. D.
+Proposition 6. 4. Suppose that g(x, y) is monic in y with
+deg g(x, y) = degy g(x, y) = n>l,
+—l and ws=l. Then the logarithmic radius f ^ i of the minor disc
+
+
+===== PAGE 60 =====
+M o h, Onthe Jacobian conjecture 
+199
+Proof. Suppose for a moment that we have
+o.*-i<«V
+Let σ be the unique π-root in the minor disc D^_i with
+δί-^Σα^ + Μ*-1.
+Then clearly we have
+-M + ^ M . ^ »<0.
+It follows from Proposition 6. l that σ is a distribution detector for g(y), Tf(y), . . . ,
+Let
+Τ&(π)Γ"λ+- 
+for 
+* = !,... ,5-
+where
+and
+* Λ-Λ_ ~~^ί
+for i= l,..., 5— 1.
+Note that
+g.c.d.f^-,-?1,...
+Thus the polynomials ga(n), 7^σ(π),..., Τ*_^σ(π) are powers of a common linear
+polynomial. It contradicts the very defmition of df_1. 
+Q.E.D.
+Corollary 6.1. Suppose that there is a pair of polynomials (f(x, y), g(x, y)) satisfying
+the Jacobian condition with
+(1) f(x, y) and g(x, y) are monic in y with y-degrees m and n respectively,
+(2) the associated characteristic data {Mhdt} are with Ms = n — 2, flfs = 3,
+(3) ds= — l (i.e., more than one point at infinite).
+Then there exists a transformation χ which send f(x, y), g(x, y), T^(f(x,y), 
+g(x,y))
+for 
+i = l,...,5 — 1 to polynomials /(y, π), g(y, π), Tf for /=!,...,5 —l in fc[y, π]
+a polynomial ring in two indeterminates with
+(4) /(y, π), £(σ, π) are monic in π with π-degrees — and — respectively,
+as 
+as
+(5) the associated characteristic data are 1—^, -f> for i= l,..., s— l,
+K 
+ds)
+(6) Jyt1t(f(y, π), g(y, π)) = α nonzero constant.
+26*
+
+
+===== PAGE 61 =====
+200 
+M o h, On the Jacobian conjecture
+Proof. Since we have (cf. Lemma 6. 3)
+d^
+Then we must have
+Our corollary follows from Propositions 6. 4 and 6. 3. 
+Q.E.D.
+The previous corollary shows that in looking for a possible counter-example for the
+Jacobian conjecture of the smallest possible degrees we must assume that ds>3.
+We may summarize some of our results in the following theorem.
+Theorem. Lei f(x, y) and g(x, y) be two polynomials satisfying the Jacobian con-
+dition and the following conditions:
+(1) deg f(x, y) = degy/(x, y) = m, deg g(x, y) = degy g(x,y) = n,
+(2) the associated characteristic data are {Mi9 4} for i= l,..., A,
+(3) the number Ms is the largest one ^n — 2.
+Then for any r^.2 we may construct a tower of major discs DS^DS_1 g ··· gZ)r
+r
+according to Definition 5.1. The roots of f] g(y) T^(y) in Dr can be covered by a dis-
+joint union of subdiscs (j Ej satisfying the requirements of Definition 1.1. We have
+(4) if the number of roots of g(y) in E{ is > 
+then the tower of major discs
+n — Mr
+Ds g Ds_ l g · · · g Dr can be extended to Ds g Ds_± g · · · g Eh
+(5) if the number of roots ofg(y) in E{ is ^ 
+—, then E( is a minor disc and any
+n — Mr
+π-root σ of g(y) with ordg(a)<0 is a distribution detector for g(y), Tf(y),..., 
+Τ*_±(γ)
+(cf. Definition 3.1).
+(6) 
+The number of subdiscs Et is bounded by
+K*1
+(7) there must be at least one E{ satisfying the requirement in (4).
+Proof. Propositions 5.4 and 6.1.
+One application of the theorem and the propositions of this article is to solve the
+Jacobian conjecture for all polynomials of degrees less than 100. For this purpose we
+consider a pair of polynomials / and g with the nonrestrictive assumption that /= 
+Tf.
+We shall search for the sequences of integers {n, Ml9..., MJ with
+(1) deg /(*, y) = m = - M, < deg g(x, y) = n g 100,
+(2) ηφι, Af, = /i-2,
+(3) JXiy(f(x,y), g(x,y))=l and the degrees of f(x,y) and g(x,y) can not be
+reduced simultaneously,
+
+
+===== PAGE 62 =====
+M o h , Onthe Jacobian conjecture 
+20 1
+(4) {«, M1?. . ., MJ is the part of characteristic data of (/, g) which are less
+than n - 2,
+(5) ^ = g.c.d.{n,M1,...,Mr.1}.
+Note that it follows from Corollary 6.1 that ds^4. A simple computation shows that
+s 5^5. Combining this with Proposition 5. 5 we conclude
+(6) 3^s^5, rfs^4.
+Furthermore we assign a sequence of integers {J^,. . ., ^} for a hypothetically existing
+tower of major discs £>SID ··· ZD/^ (cf. Theorem and Definition 5. 1) with
+(7) 
+Fr
+dr+1) = r 
+n-M,'
+(8) the radii s,. . ., δ^ of Ds,. . ., D1 can be computed from Definition 5. 1. We
+shall consider the increment of the denominator Ar_i of r_1 with respect t o s,...9Sr.
+Namely let the l.c.m. of the reduced denominators of <5 s,...,(5 r be L. Then Ar_± is
+defined to be the reduced denominator of Ldr_1. Let us consider the following division
+algorithm equation
+(9)
+Let (T)LAr-i = t. Due to the existence of the following automorphism of fc<F> over
+t— »ωί
+where ω is a /lr_rth root of unity, the value of VT_^ is further restricted by
+(10) 
+Vr-^^r-l
+if the corresponding factor of p (π) is of the form π — α with αΦΟ or for some j the
+following
+αϊ) 
+^-Μ-ι+α-ι
+if the corresponding factor of p (π) is of the form π. Finally, when r = 2 we must have
+the following (cf. the proof of Proposition 5. 5):
+<
+12
+> 
+"ν· "-'Ur·-
+1
+or
+,/w:
+(13) 
+ΑΛ-\ :
+Furthermore we shall note that the Situation indicated by the equation (11) can not
+always happen s established by Proposition 5. 6.
+
+
+===== PAGE 63 =====
+202
+M oh, Onthe Jacobian conjecture
+The above discussion can be easily put into a Computer program. The Computer
+program produces only the following exceptions which satisfy the necessary numerical
+restrictions.
+n
+64
+84
+75
+99
+m = —Ml
+48
+56
+50
+66
+M2
+52
+64 [72]
+55
+77
+M3
+62
+82
+73
+97
+M4
+63
+83
+^3
+3
+3
+4
+8
+^2
+3
+2 [5]
+3 [2]
+8
+δ2
+1i
+2Γ1Ί
+7[4J
+1I
+1
+"3
+«5i
+9
+16
+16Γ7Ί
+21 |_12j
+1[ι]
+4
+9^
+It is easy to see that the above table is very restrictive. For instance given degg = 75
+deg/=50 there are 25 possible values for M2 and 2 possible values for F3 etc. The
+above table determines only one possible value for M2 and one for F3. These data are
+very useful in excluding these four exceptional data from the possible counterexamples
+to the Jacobian conjecture. Without them a br te force computation will involve the
+four thousands coefficients of g(x, y) and/(;c, y). The treatment of these four exceptional
+cases will be presented in Appendix II.
+Appendix I. The polynomial Solutions of some ordinary differential equations
+Recall Definition 4.1 of the Symbol D(a,b,p(n},q(n)] from Section4. We shall
+further assume that p(n) and q(n) are nonconstants in this section.
+Proposition A. 1. Suppose that at hast one of the constants a, b is not zero. Then
+the following equation
+D(a,b,p(n),q(n)) = 0
+implies for some e, cek the following:
+(1) a = edeg„p(n),
+(2) b = edeg„q(n),
+(3)
+
+
+===== PAGE 64 =====
+M o h, Onthe Jacobian conjecture 
+203
+Proof. Let p (n) and q(n) be expressed s
+p(n) = ainm + lower terms in π,
+q(n) = a2nn + lower terms in π.
+Then we have
+D (a, b,p(n), q(n)) = ap(n) q'(n)-bq(n) p'(n)
+= (an — bm)a1a2nn+m~1 -hlower terms.
+Clearly we must have
+an = bm.
+Thus the conclusions (1) and (2) follow. Clearly we have
+D (a, b,p(n), q(n}} = 0 o D (m, Λ, ρ(π), 9(π)) = 0.
+The following identity is elementary
+n
+^
+D
+n
+,p(nTj 
+ρ(π)2η
+Thus we conclude
+ρ(πγ
+and (3) follows. 
+Q.E.D.
+Proposition A. 2. Let m = degp(n) and n = degq(n). Suppose that « = (/—l)m + l
+and p (π), q(n) satisfy the following equation
+D(m,n + ε,p(n\ q(n)} = cp(n)1 Φ0
+where cek and ε is a rational number > — 1. Then p (n) and q(n) are powers of a
+common linear polynomial.
+Proof. Let us prove the case /= 1. Then we have n = deg q(n) = 1. We may assume
+q(n) = n. The differential equation is reduced to the following form
+Note that the coefficients are not zero. Consider the multiplicities of roots of p (n).
+We deduce that π is the only root of p (n). Hence the proposition has been established
+for the case /= 1.
+Inductively let us assume that />! and the proposition has been proved for
+smaller /. We claim that
+p(n)\q(n).
+
+
+===== PAGE 65 =====
+204 
+M oh τ On the Jacobian conjecture
+Let π (or in general π — α) be a factor of p (π) with
+with
+with
+Το prove our claim it suffices to show that u ^ v. Note that the differential equation is
+of the following form
+(1) 
+mp(n) q'(n)-
+Let
+Then the left hand side of the differential equation is of the following form
+[mv — (n4-B)u']b()CQnu+v~1 +higher terms in π.
+The restriction
+ε>-1
+implies
+Thus the inequality
+(2) 
+u>v
+implies
+After comparing π-orders on the two sides of the differential equation (1) we conclude
+v — \ =lu.
+It contradicts the inequality (2). Thus we must have
+It is clear that the above argument works for an arbitrary factor (n — ) of p (n). Thus
+we conclude
+A simple computation shows
+)
+1 o D (m, (n-m) + β,/>(π), q*(n)) = cp(n)l~1 .
+Thus by the induction hypothesis we conclude that the polynomials p (n), q*(n) and q(n)
+are all powers of a common linear polynomial. 
+Q.E. D.
+
+
+===== PAGE 66 =====
+M o h, On the Jacobian conjecture 
+205
+Proposition A. 3. Lei m = deg/?(7i), n = dQgq(n). Suppose that the polynomiah p (τι)
+and q(n) satisfy
+D (m, n, p (n), q(n)} = cp(n)
+where c=^0ek. Then we have:
+(1) every root ofp(n) is a root of q(n),
+(2) q(n) has no multiple root,
+(3) p (n) is not a power of q(n),
+(4) there is at least one root ofp(n) with multiplicity > — .
+Proof. The differential equation can be rewritten s
+nq(n) p' (n) = (mq'(n) - c) p(n) .
+Let (π — ) be a factor of p (n). Comparing the multiplicities of (π — α) on both sides of
+the above equation, we conclude that (n -a) is a factor of q(n). The conclusion (1) thus
+follows.
+It is easy to see that every multiple root of q(n) must be a root of p (n). Let (π — a),
+say a = 0, be a multiple factor of q(n) with
+Then we have
+if+v-l\D(m,n,p(n)9q(n)) = cp(n).
+A contradiction. The conclusion (2) thus follows.
+In case that p (n) is a power of q(n) it is elementary to verify
+D(m9n,p(n),q(n)) = 0.
+It contradicts our assumptions on c and p (π).
+Suppose that all roots of p (π) are with multiplicities ^ — . Then it follows from
+conclusions (1) and (2) that all multiplicities must be equal to — . Thus we must have
+n
+It contradicts conclusion (3). 
+Q.E. D.
+Journal f r Mathematik. Band 340 
+27
+
+
+===== PAGE 67 =====
+206 
+M o h, On the Jacobian conjecture
+Proposition A. 4. Lei m = degp(n) and n~dQgq*(n). Suppose that we have
+where c=i=0 € k and /^O. Then we have
+(1) 9*(π) = ρ(π)'9(π),
+(2) D (m, n- Im, p(n\q (π)) = cp (n) .
+Proof. For / = 0 it is Proposition A. 3. Let us assume that /^ l and our proposition
+has been proved for all smaller /. Clearly we have
+n>m.
+Otherwise the right hand side of the differential equation has a larger π-degree. Let
+π — α, say a = 0, be a factor of p (n) with
+Let
+Then we have
+If we have
+v<u
+then the leading coefflcient
+(mv — nu)b0cQ=^0.
+After comparing the multiplicities of π on both sides of the differential equation we
+deduce a contradiction. Thus we conclude
+It is clear that the above arguments work for any factor (π — α) of p (n). Thus we
+conclude
+p(n)\q*(n)=p(n)q(n).
+We clearly have
+Our proposition has been established by mathematical induction. 
+Q.E. D.
+
+
+===== PAGE 68 =====
+M o h, Onthe Jacobian conjecture
+207
+Proposition A. 5. Lei w = deg/?(7i) and n = degq(n). Suppose that p (n) and q(n)
+satisfy
+D(m,n,p(n),q(n)) = c
+where £ΦΟ e k. Then p (n) - q(n) has only simple roots.
+Proof. Routine.
+Appendix II. Some special cases
+A simple Computer program shows that the only possible counter-examples to the
+Jacobian conjecture for polynomials of degrees less than 100 are of degrees (64, 68),
+(84, 56), (75, 50) and (99, 66) with some special data attached. A routine computation
+shows that the numbers of coefficients of the pairs of polynomials involved are 3370,
+5308, 4352 and 7348 respectively. The task of direct verification of the Jacobian con-
+jecture by computation for those pairs of polynomials with the said degrees is beyond
+the capacity of a large Computer. In this Appendix we shall illustrate some methods to
+reduce the numbers of coefficients, and then settle the problems of computations.
+We shall apply Proposition 6. 4 to the first three cases. Note that in these cases
+we always have
+Thus it follows from Proposition 6. 3 that our table can be transformed to the following
+table.
+n
+16
+21
+15
+m = — Mj
+12
+14
+10
+M2
+13
+16 [18]
+11
+V2
+3
+2 [5]
+3 [2]
+δ2
+_ i
+-it-n
+-1
+<5i
+1
+4
+mm
+Jacobian
+X
+X
+X2
+The numbers of coefficients are reduced to 244, 373 and 202 respectively.
+We shall use the first case to illustrate the method of further reduction of the
+numbers of coefficients. We shall choose x, y properly so that the π-root in the major
+disc £>! is of the following form
+and the π-root σ* in the minor disc D* is of the following form
+σ* = rl + a0 + a^ t + a212 + nt3.
+27*
+
+
+===== PAGE 69 =====
+208 
+M o h, On the Jacobian conjecture
+To truncate σ* properly we define σ s
+11
+Then it is easy to see that {σ, σ} is a coherent complete System of π-roots for g(y)
+( 
+3\
+(and j ( y ) — Tl(y)} with accuracy —l l resp. — 7 ) . Then it follows from Theorem 1.2
+that 
+V 
+4S
++-a 2(y) h(y)2 + *3(y) h(y) + &4(y),
+with
+= ihQ fourth approximate root of f ( y )
+- 9
+ord A (σ) ^ - -, ord Α(σ) ^ - - .
+It is easy to see that
+(1) 
+h(x9y)^
+with A(x, y) and B(x, y) defined by the above equations and
+(2) 
+o^ is a constant,
+(3) a2 = c1
+(5) a4 = cn^-f c
+Thus the total number of coefflcients is further reduced to 17.
+Similar arguments can be applied to the second case to show the impossibility
+directly and to the third case to reduce the number of coefflcients to 22 [15 or 13].
+We shall use the following method to further simplify our computations. Let
+
+
+===== PAGE 70 =====
+M oh, Onthe Jacobian conjecture
+209
+Then we may replace (/, g) by If- — a3, g-a1f-a4\ to reduce the above expression to
+in η with positive exponents.
+Note that
+It is easy to conclude that
+where γ and δ are defined by
+with
+degy y* < deg h = 4, deg δ* < deg h2 = 8.
+Thus the total number of coefficients are reduced to 10. This method can be used to
+reduce the numbers of coefficients of the third case to 12 [10 or 7].
+In the fourth case there are complications. First, there are two possibilities according
+to the distribution of the roots of g(y) in the minor disc J5J. Namely, there is an unique
+π-root σ of g(y) of the following form
+with
+The polynomial gff(n) is either a power of a linear polynomial or the 9-th power of
+a cubic polynomial with precisely two roots. For the first possibility the data can be
+transformed to
+n
+27
+m = — M!
+18
+M2
+21
+V2
+8
+*2
+-1
+*1
+0
+Jacobian
+X4
+The above mentioned method can be used to reduce the number of coefficients to 10.
+For the second possibility we can show that for suitable variables χ and y there is
+a transformation Ω of the following form
+,.-1
+y
+t2+ yx3
+such that
+
+
+===== PAGE 71 =====
+210 
+M o h, On the Jacobian conjecture
+A discussion of the Solutions of Q(g(x, j)) = 0 in k^x~1^ and in fcO"1^ w h a slightly
+modified Version of the above method we may reduce the direct computation to involve
+only 11 variables.
+Now we are in the position to settle these cases by direct computation. Let us
+handle the case « = 15, m = 10, M2 = ll, F2 = 3. After simplifying, we may assume
+~ 
+~ 
+-
+where a, fc, c, i/ are constants and b Φ 0, c Φ 0. Clearly we have
+i 
+3 
+2 
+l 
+3 3 4
+"Ml·-]·
+Substituting the above expressions into the expression for g we have
+(1) 
+g = h3 ,
+where d* is a constant and a, y are deflned by the following equations:
+(2) 
+2 = aA + y
+with the restriction
+degyy<degyA = 5.
+Since g is a polynomial in y, then the powerseries in y~l in the expression (1) shall
+naturally cancel out. Thus we must have the following equations (3) and (4)
+(3) 
+/?3 = (3y + 0)A2 + sh + δ
+where ε and δ are polynomials with j-degrees less than 4,
+\ 
+JL
+(4) 
+— ε = bf10 + c(x3 + </*) j + a powerseries in j; *.
+Let us consider the possible forms of the polynomial h(x9 y). Since we assume that
+the polynomials f(x9 y) and g(jc, y) are the transforms of some polynomials of degrees
+50 and 75 respectively according to Proposition 6. 3, the inverse transformation implies
+that there is a minor disc. Thus in the major disc D2 there are precisely three subdiscs
+which contains 2, 2, 6 of roots / respectively. The datum δ1 =~ implies that the poly-
+
+
+===== PAGE 72 =====
+M o h, On the Jacobian conjecture 
+21 1
+nomials h(x, y) and 
+(x,y) must be of the following form (cf. the beginning of this
+Appendix)
+(5) 
+h = (y2-x2 + a1y +
+as = By2 + (a6 χ + α7) y + as ,
+(6)
+12
+with A, B thus defmed. In fact the existence of the polynomials h and β of the above
+forms and satisfying the equations (2), (3), (4) will furnish a counterexample to the
+Jacobian conjecture.
+From equation (3) we deduce
+(7) 
+deg,y^2.
+Using the equations (5) and (6) we get
+2 = (alB + 2a9alQ}h + \_(a2
+9a6 + 2a9aii)x + (α\αΊ + 2a9al2)~]A
+In view of equation (2) we conclude
+n) x + (alai + 2a9a
+-h (a10 ^ 4- n χ + α12)2 - 2α8 α9 α10 .
+In view of equation (7) we have the following equations
+We have two possibilities a9 = 0 or a9 Φ 0.
+Case l . a9 = 0. We then have
+Thus equation (3) can not be fulfilled.
+Case 2. a9 Φ 0. We then have
+Thus equation (3) implies that the polynomial y must be of ^-degree 2. A contradiction.
+This establishes the impossibility for « = 15, m = 10, M2 = ll and F2 = 3.
+All other cases can be computed directly as above. There is no counter-example
+of polynomials of degrees less than or equal to 100 for the Jacobian conjecture.
+
+
+===== PAGE 73 =====
+212 
+M o h, On the Jacobian conjecture
+References
+[A-M.l] 
+S. S. Abhyankar and T. T. Moh, Newton-Puiseux expansion and Tschirnhausen transformation.
+I & II, J. reine angew. Math. 260 (1973), 47—63 and 261 (1973), 29—54.
+[A-M.2] 
+5. S. Abhyankar and T. T. Moh, Embeddings of the line in the plane, J. reine angew. Math. 276
+(1975), 148—166.
+[A.l] 
+S. S. Abhyankar, On Expansion Techniques in Algebraic geometry, TATA Institute Bombay
+1977.
+[AN.l] 
+G. Angerm ller, Die Wertehalbgruppe einer ebenen irreduziblen algebroiden Kurve, Math. Z. 153
+(1977), 267—282.
+[B-C-W.l] 
+H. Bass, E. Connell and D. Wright, Polynomial automorphisms and the Jacobian conjecture,
+Preprint.
+[E.l] 
+W. Engel, Ein Satz ber ganze Cremona-Transformationen der Ebene, Math. Ann. 130 (1955),
+11—19.
+[K.l] 
+O. H. Keller, Ganze Cremona-Transformationen, Monatshefte Math. Phys. 47 (1973), 299—306.
+[M.l] 
+T. T. Moh, On the concept of approximate roots for algebra, J. Alg. 65 (1980), 301—306.
+[M.2] 
+Γ. Γ. Moh, On analytic irreducibility at oo, Proc. Amer. Math. Soc. 44 (1974), 22—24.
+[M.3] 
+Γ. T. Moh, On characteristic pairs, Bull. Inst. Math. Acad. Sinica l (1973), 75—91.
+[M.4] 
+T. Γ. Moh, On two fundamental theorems for the concept of approximate roots, J. Math. Soc.
+Japan 34 (1982), 637—652.
+[N.l] 
+M. Nagata, On the Automorphism group of K[X, F], Lectures in Mathematics, Tokyo 1972.
+[S.l] 
+A. Sathaye, On planar curves, Amer. J. Math. 99 (1977), 1105 — 1135.
+[S.2] 
+B. Segre, Forme differenziali e loro integrali. 2, Roma 1956.
+[W.l] 
+R. Walker, Algebraic Curves, New York 1962.
+[W.2] 
+S. Wang, A Jacobian criterion for separability, J. Alg. 65 (1980), 453—494.
+[Z.l] 
+O. Zariski, Algebraic Surfaces, Berlin-Heidelberg-New York 1935.
+Department of Mathematics, Purdue University, West Lafayette, Indiana 47907 USA
+Eingegangen 10. Januar 1979, in revidierter Form 18. August 1982
+
+
+===== PAGE 74 =====
+Correction to the paper
+Moduli spaces of covers and the
+Hurwitz monodromy group
+(this Journal 335 (1982), 87—121)
+By M. Fried at Irvine and R. Biggers at Atlanta
+The opening paragraph contains a serious misprint. The fourth sentence should
+read:
+We give examples of Nielsen types for which the moduli space is reducible.
+Further corrections:
+p. 98, line l instead of G (σ) read G (σ),
+p. 113, lines 14/15 instead of ... is a cyclic group whose generator ... read ... is
+a cyclic cover whose group generator ....
+Department of Mathematics, University of California, Irvine, California 92717, USA
+Department of Mathematics, Atlanta University, Atlanta, Georgia 30314, USA
+Eingegangen 18. Oktober 1982
+0075-4102/83/0340-0009$02.00
+Copyright by Walter de Gruyter & Co.

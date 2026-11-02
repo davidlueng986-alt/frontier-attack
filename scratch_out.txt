@@ -1,0 +1,43 @@
+== GGHV config 2, full lattice: valuation / leading-term analysis ==
+unknowns 72 (|N(P)| = 25, |N(Q)| = 47)
+
+stage 1  attainable support
+  monomials from P_x Q_y - P_y Q_x : 112
+  monomials actually present       : 92
+  identically cancelled            : 20
+  (2,0) attainable                 : True
+  coefficient of x^2               : a1_0*b2_1
+  min x-degree                     : 1
+
+stage 2/3  lowest x-degree block (x^1)
+  x^1 y^0  : a1_0*b1_1
+  x^1 y^1  : 2*a1_0*b1_2
+  x^1 y^2  : a1_1*b1_2 - a1_2*b1_1
+  x^1 block dimension              : 3
+  x^1 + (a1_0 b2_1 = 1) dimension  : 3
+
+stage 4  weighted valuations
+  w=(0, -1)  N(P)     filt= 1 target= 0  vacuous (leading form identically 0)
+  w=(2, -1)  N(P)+N(Q) filt= 4 target= 4  non-empty (not solved: 19 unknowns; reduced to the (F0) block in stage 5)
+  w=(1, 0)   N(P)+N(Q) filt=19 target= 2  non-empty leading block
+  w=(-2, 1)  N(P)+N(Q) filt= 1 target=-4  vacuous (leading form identically 0)
+  w=(1, -2)  N(Q)     filt= 2 target= 2  non-empty leading block
+
+stage 5  exact quasi-homogeneous reduction
+  identity verified                : True
+  u-powers                         : [0, 1, 2, 3, 4]
+  top block residual equations     : 6 in 7 unknowns
+  top block exact family            : True
+
+stage 6  x-adic cascade (diagnostic)
+  x^18  new=7 eqs=5 rank=4 aug=4 
+  x^17  new=7 eqs=5 rank=4 aug=5 RANK JUMP
+
+VERDICT: NOT_DECISIVE
+  (2,0) is attainable -> EMPTY_BY_SUPPORT ruled out.
+  lowest block has dimension 3 -> not decisive.
+  every edge leading-form block is non-empty -> no single-weight
+  valuation certificate.
+
+written: C:\Users\daive\Downloads\frontier-attack\runs\jacobian_72_valuation.json
+
