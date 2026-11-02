@@ -8,9 +8,10 @@ edges**, connected, minimum degree 4. Its **4-colouring instance is UNSAT** and 
 graph has chromatic number exactly 5. Since every edge is exactly unit length, any proper 4-colouring of the
 plane would induce a proper 4-colouring of this graph; therefore **chi(R^2) >= 5**.
 
-Three independent solvers return UNSAT (CaDiCaL 1.9.5 133.2 s, CaDiCaL 1.5.3 122.2 s, Glucose 4.2.1 103.2 s,
-all inside a 600 s cap), and a structurally different binary encoding gives the same verdict. The file
-contains **coordinates only** —there is no `p edge` header and no edge list; the 2442 edges are recovered from
+Three solver runs across two solver families return UNSAT (CaDiCaL 1.9.5 133.2 s, CaDiCaL 1.5.3 122.2 s,
+Glucose 4.2.1 103.2 s, all inside a 600 s cap), and a structurally different binary encoding gives the same
+verdict. The file
+contains **coordinates only** — there is no `p edge` header and no edge list; the 2442 edges are recovered from
 exact unit-distance relations, and every one of them was proved symbolically to have squared length exactly 1.
 The derived count matches the published record (Jaan Parts, arXiv:2010.12665: 509 vertices, 2442 edges).
 
@@ -42,7 +43,7 @@ Interpretation of the SAT run: variables `x[v][c]` ("vertex v has colour c", one
 clauses are one at-least-one per vertex (509 x size 4), six at-most-one pairs per vertex (3054 binary), and
 `not(x[u][c] and x[v][c])` for every edge and colour (2442 x 4 = 9768). Total 13,331 clauses. UNSAT means no
 proper 4-colouring exists. The binary encoding uses 2 bits per vertex (1018 vars) and no one-hot clauses at
-all —only the 4 clauses per edge forbidding equal 2-bit patterns —so it is an independent CNF for the same
+all — only the 4 clauses per edge forbidding equal 2-bit patterns — so it is an independent CNF for the same
 combinatorial claim.
 
 Environment: Windows, Python 3.14.2, `python-sat 1.9.dev17` (bundled CaDiCaL 1.9.5 = `cadical195` and CaDiCaL
@@ -147,9 +148,10 @@ n=509 m=2442 k=5 vars=2545 clauses=17809 solver=cadical195
 colours used: 5 bad edges: 0
 ```
 
-The 600 s cap was enforced by a timer calling `solver.interrupt()`; all 4-colour runs finished well inside it,
-so the verdicts are not timeout artefacts. Encoding self-test (`research/scratch/encoding_selftest.py`, same
-`build()` function):
+The 600 s cap was enforced by a timer calling `solver.interrupt()`; all 4-colour runs finished well inside it
+(slowest 133.2 s), so the verdicts are not timeout artefacts. Summed wall time of the five solver runs above is
+491.0 s, inside the 600 s budget. Encoding self-test (`research/scratch/encoding_selftest.py`, same `build()`
+function):
 
 ```
 K4: k=1 UNSAT OK   k=2 UNSAT OK   k=3 UNSAT OK   k=4 SAT OK
@@ -161,19 +163,19 @@ K3: k=1 UNSAT OK   k=2 UNSAT OK   k=3 SAT OK
 
 - **No explicit edge list or DIMACS graph header in the file.** `509_parts.vtx` is a bare list of 509
   Mathematica-syntax coordinate pairs; the 2442 edges are *derived* (all unit-distance pairs), not stated.
-  Parts' paper (arXiv:2010.12665) also defines *strict* unit-distance graphs —every pair at distance exactly 1
-  is an edge —so the derivation matches the published convention, and the derived `M = 2442` matches Table 1.
+  Parts' paper (arXiv:2010.12665) also defines *strict* unit-distance graphs — every pair at distance exactly 1
+  is an edge — so the derivation matches the published convention, and the derived `M = 2442` matches Table 1.
 - **No machine-checked proof of non-4-colourability for the 509-vertex graph in the repository.** The README
   says the smallest known Parts graph is "currently beyond the capabilities of `build_edge`" and lists its
   formalization as TODO; only the 510-vertex Heule graph is formalized there.
-- **No UNSAT certificate (DRAT/LRAT) was produced or checked.** The verdict rests on two CaDiCaL versions
-  (1.9.5, 1.5.3) plus a structurally different binary encoding, all agreeing, and on encoding self-tests.
-  A DRAT proof would make the result independently machine-checkable; `python-sat`'s CaDiCaL wrappers do not
-  expose proof logging here.
+- **No UNSAT certificate (DRAT/LRAT) was produced or checked.** The verdict rests on three independent
+  solvers (CaDiCaL 1.9.5, CaDiCaL 1.5.3, Glucose 4.2.1) plus a structurally different binary encoding, all
+  agreeing, and on encoding self-tests. A DRAT proof would make the result independently machine-checkable;
+  `python-sat`'s CaDiCaL wrappers do not expose proof logging here.
 - **One solver wrapper could not be used as an extra cross-check.** The `kissat404` wrapper in this
   `python-sat` build crashes the interpreter (no output, exit 1) on even a 2-clause CNF; it was dropped.
-  (Glucose 4.2.1 did finish —UNSAT in 103.18 s —and is included above.)
+  (Glucose 4.2.1 did finish — UNSAT in 103.18 s — and is included above.)
 - **No claim about minimality.** I verified that *this* graph is 5-chromatic; I did not verify that 509 is the
-  smallest possible, nor re-derive the graph. Parts (2020) likewise does not claim vertex-minimality —the
-  paper's method returns a minimum among the subgraphs it searches —and the file is not checked against the
+  smallest possible, nor re-derive the graph. Parts (2020) likewise does not claim vertex-minimality — the
+  paper's method returns a minimum among the subgraphs it searches — and the file is not checked against the
   paper's own vertex list beyond the matching vertex/edge counts.

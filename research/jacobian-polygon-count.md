@@ -15,7 +15,8 @@ enumeration of a conservative subfamily gives 3,691,505 polygons at 105,
 condition `m,n > 1` gives `3.36e9` at 106, `4.81e9` at 108 and `6.84e9` at 110,
 and allowing equal component degrees gives `~10^17`. The `10^9` gate therefore
 turns on the published normal-form/complete-chain theorems, not on the five
-bullets being numerically small.
+bullets being numerically small. Gate verdict: `ADMISSIBLE_ACTIONS_EXIST`, but
+the only action is the `(72,108)` case, not a broad degree-105–110 sweep.
 
 ## Objects and numbers
 
@@ -25,9 +26,9 @@ bullets being numerically small.
 | `(72,108)` Newton configurations | 2 in Prop. 4.3: config 1 has slope-1 edge, config 2 does not | GGHV, arXiv:2204.14178, Prop. 4.3 | cited; slope check ran |
 | full published count, 105…110 | `0, 0, 0, 2, 0, 0` | Thm. 2.1 + Prop. 4.3 | cited |
 | count with no-bisector imposed on the displayed configs | `0, 0, 0, 1, 0, 0` | this note, `check_config` | ran |
-| strict GGHV arc, `D=105` | 3,691,505 polygons in the S3 subfamily | this note | ran |
-| strict GGHV arc, `D=108` | 5,610,784 polygons in the S3 subfamily | this note | ran |
-| strict GGHV arc, `D=110` | 41,559 polygons in the S3 subfamily | this note | ran |
+| strict normal-form arc, `D=105` | 3,691,505 polygons in the S3 subfamily | this note | ran |
+| strict normal-form arc, `D=108` | 5,610,784 polygons in the S3 subfamily | this note | ran |
+| strict normal-form arc, `D=110` | 41,559 polygons in the S3 subfamily | this note | ran |
 | S3 at the GGHV corner `(a,b)=(8,28)`, `e=36` | 994,614 polygons | this note | ran |
 | weak arc (`m=1` allowed), `D=106/108/110` | 3,356,627,123 / 4,807,171,343 / 6,839,140,446 | this note | ran |
 | equal-degree arc, `D=105…110` | 5.57e16 … 2.36e17 (log10 16.7458 … 17.3731) | this note | ran |
@@ -91,6 +92,8 @@ inside `T(a,b)`. It contains `(1,0)` and `(0,1)`, has the unique top vertex
 `(a,b)` (hence two points at infinity), and has no edge of slope 1. The number
 of such polygons is counted exactly by a 2-D unbounded knapsack over primitive
 edge directions, with multiplicities representing one edge vector `t·(p,q)`.
+`S1` is the `k=0` subfamily (maximal vertical right edge); `S2` adds exactly
+one lower-right edge; `S3` is the main model with arbitrary lower-right chains.
 `S3(e)` denotes the sum over all `a < b`, `a+b=e`.
 
 **What is exact.**
@@ -106,7 +109,7 @@ edge directions, with multiplicities representing one edge vector `t·(p,q)`.
 
 **What is approximated or omitted.**
 
-- `S3` is a **strict subfamily**: polygons whose lower chain rises above
+- `S3` is a **proper subfamily**: polygons whose lower chain rises above
   `c` but still stays below the upper chain are not counted. Thus all S3
   numbers are lower bounds on the five-bullet count.
 - The GGHV complete-chain machinery (Algorithms 1–8 of arXiv:1708.07936:
@@ -123,7 +126,7 @@ edge directions, with multiplicities representing one edge vector `t·(p,q)`.
   is exact inside `T(a,b)`, but it is a sufficient, not a necessary, lattice
   condition in general.
 
-### Table 1 — full published constraints
+### Table 1 — full published constraints (GGHV 2022 is unrefereed)
 
 Applying GGHV 2022 Theorem 2.1 and Proposition 4.3:
 
@@ -160,9 +163,14 @@ directly; the table reports both readings.
 
 ### Table 2 — five bullets only, three normal-form choices
 
-`strict` is the GGHV arc (`m,n > 1`, `m < n`). `weak` allows `m = 1` but keeps
-`m < n`. `inclusive` also allows equal degrees (`m=n=1`). All entries are exact
-counts of the S3 subfamily, hence lower bounds on the full five-bullet count.
+`strict` is the GGHV normal-form arc (`m,n > 1`, `m < n`). `weak` allows
+`m = 1` but keeps `m < n`. `inclusive` also allows equal degrees (`m=n=1`). All
+entries are exact counts of the S3 subfamily, hence lower bounds on the full
+five-bullet count. Applying the further Heitmann/GGHV condition `gcd != 2p`
+removes the `D=110` entry, because `e=22=2·11`; the 105 and 108 entries are
+unchanged (21=3·7, 35=5·7, 18=2·9, 27=3³, 36=2²·3²). Table 2 is a sensitivity
+table, not a competing count: its 105 and 110 entries are killed by the
+GGHV 2022 theorem in Table 1.
 
 | D | strict (`m,n>1`) | weak (`m>=1`) | inclusive (equal degrees allowed) | log10(inclusive) |
 |---|---|---|---|---|
@@ -175,8 +183,11 @@ counts of the S3 subfamily, hence lower bounds on the full five-bullet count.
 
 The strict column is the main five-bullet result. It counts distinct
 `N0(f)=m P0` supports; `n=D/e` is fixed by `D` and `e`, so this is also the
-number of distinct `(N0(f),N0(g))` support pairs for that `D`. The weak and
-inclusive columns show that the `10^9` answer is model-dependent: dropping `m,n > 1`
+number of distinct `(N0(f),N0(g))` support pairs for that `D`. In the weak and
+inclusive columns the `a=1` primitive shapes are removed when `m=1`, because
+they have top `x`-coordinate 1 and violate `n>m>1`; the correction is `O(e)` and
+does not change any exponent. The weak and inclusive columns show that the
+`10^9` answer is model-dependent: dropping `m,n > 1`
 puts 106, 108 and 110 above `10^9`; allowing equal degrees puts every degree
 at `~10^16.7–10^17.4`. The published standard `(m,n)`-pair normal form is what
 excludes both.
@@ -190,7 +201,7 @@ excludes both.
 | 108 | 18 | 2,100 | 5 | 2,100 |
 | 108 | 27 | 129,087 | 3 | 129,087 |
 | 108 | 36 | 5,479,597 | 2 | 5,479,597 |
-| 110 | 22 | 13,853 | 2,3,4 | 41,559 |
+| 110 | 22 | 13,853 | 2,3,4 | 41,559 (0 after `gcd != 2p`) |
 
 ### Growth ratios
 
@@ -216,7 +227,7 @@ five-degree band).
   This is a lower bound on the full five-bullet count, so it does not by
   itself prove that the full count is below `10^9`.
 - **Weak model (`m=1` allowed):** yes. 106: `3.36e9` (exponent 9.53);
-  108: `4.81e9` (9.68); 110: `6.84e9` (9.83).
+  108: `4.81e9` (9.68); 110: `6.84e9` (9.84).
 - **Inclusive model (equal degrees):** yes, by a wide margin:
   `5.57e16` at 105 (exponent 16.75) to `2.36e17` at 110 (exponent 17.37).
 - **Full published constraints:** no; the count is 2 at 108 and 0 elsewhere.
@@ -244,11 +255,12 @@ generator.
   `conv{(0,0),(1,0),(1,3),(0,1)}`. It has top vertex `(1,3)`, so `m=1`, and
   the strict minimal-counterexample model gives 0 at degree 4; the known
   quartic non-triangular Keller families `Φ_{a,b,d}` and `F_{c,s}` (Starkov
-  2017) have `deg f = 2`, `deg g = 4`, `gcd = 2 < 16`, and `N(f)` starts on
-  the `y`-axis, so they are outside the minimal-counterexample trapezoid. The
-  generator therefore reproduces the empty **counterexample** set at degree 4,
-  but not the full list of non-triangular tame Keller maps, which it was never
-  meant to enumerate.
+  2017) have `deg f = 2`, `deg g = 4`, `gcd = 2 < 16`; `F_{c,s}` has
+  `N(f)` with top vertex `(0,2)` on the `y`-axis, and `Φ_{a,b,d}` has the
+  non-monomial top form `(ax+by)^2`, so neither is the minimal-counterexample
+  trapezoid shape. The generator therefore reproduces the empty
+  **counterexample** set at degree 4, but not the full list of non-triangular
+  tame Keller maps, which it was never meant to enumerate.
 - **Degrees 5–7:** exhaustive totals 2, 7, 14 versus S3 2, 4, 6. The S3
   generator is a proper subfamily as designed; it never overcounts.
 
@@ -291,6 +303,11 @@ config_2 {'N(P)': {'top': (8, 16), 'n_gt_m_gt_1': True, 'has_slope_1_edge': Fals
 
 The JSON payload with the full S1/S2/S3 tables for every degree 2…110 is
 `research/scratch/polygons.json`.
+
+Two independent recursive chain enumerators (not the knapsack) were also run:
+`verify_chains.py` agrees with `U[a][b-c]` for `(a,b) <= (5,8)`, and
+`verify_lower.py` agrees with `Lcum[a][k]` for `(a,k) <= (6,4)`. Both print
+`ok` on every tested case.
 
 ## What I could not find
 
