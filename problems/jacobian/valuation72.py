@@ -104,15 +104,19 @@ Stage 5  Exact quasi-homogeneous reduction.  The weight (-2,1) change of
          (ii) the (1,0) block (the x=8 / x=12 edge forms).
          Neither is contradictory.
 
-Stage 6  x-adic (equivalently z-adic) cascade diagnostic.  Ordering the
-         equations by x-degree, the top level is quadratic (solved in closed
-         form), and every subsequent level is affine-linear in the new
-         coefficients.  A run of that cascade with generic choices for the
-         free parameters shows the first rank jump at x-degree 17: the 5
-         equations in the 7 new coefficients have rank 4 but augmented rank 5.
-         That is a *constraint on the free parameters* of the x-degree-18
-         level, not a contradiction, because those parameters are not fixed by
-         the leading data.  Reported as a diagnostic only.
+Stage 6  x-adic (equivalently z-adic) cascade, first three levels.  Ordering
+         the equations by x-degree, the top level (x^19) is quadratic and is
+         solved in closed form; every lower level is affine-linear in the new
+         slice coefficients.  The x^18 level is 5 equations in 7 unknowns of
+         rank 4 (a 3-parameter family); the x^17 level is 5 equations in 7
+         unknowns with rank 4 and augmented rank 5, and its single consistency
+         condition is the SQUARE of a linear form in the three x^18 parameters:
+
+             -(14 a / (3 b r^3)) * (3 r^2 tau2 + 2 r tau1 + tau0)^2 = 0.
+
+         A square of a linear form defines a codimension-1 locus, so the x^17
+         block is SOLVABLE: no contradiction arises at the top of the cascade.
+         Reported as a diagnostic; the levels x^16 .. x^1 are not analysed.
 
 VERDICT
 -------
@@ -152,6 +156,20 @@ from config2_system import lattice_points  # noqa: E402
 P_CORNERS = ((0, 0), (1, 0), (8, 14), (8, 16))
 Q_CORNERS = ((0, 0), (2, 1), (12, 21), (12, 24))
 TARGET = (2, 0)
+
+
+def p_degs(i):
+    """y-degrees of the x^i slice of P (from N(P))."""
+    return list(range(max(0, 2 * i - 2), 2 * i + 1))
+
+
+def q_degs(j):
+    """y-degrees of the x^j slice of Q (from N(Q))."""
+    if j == 0:
+        return [0]
+    if j == 1:
+        return [1, 2]
+    return list(range(2 * j - 3, 2 * j + 1))
 
 DEFAULT_OUT = ROOT / "runs" / "jacobian_72_valuation.json"
 LOG_PATH = ROOT / "runs" / "valuation72.log"
@@ -345,20 +363,14 @@ def stage1(support_p, support_q, det_poly):
 
     # det J vanishes on x = 0: every monomial has x-degree >= 1, i.e. x | det J
     x_divides = min(a for a, _ in actual) >= 1
-    y_only_monomials = [m for m in attainable if m[0] == 0]
     # the only x = 0 candidates are (0,1),(0,2),...; none is attainable
     x_zero_attainable = [m for m in attainable if m[0] == 0]
 
     missing = sorted(set(attainable) - set(actual))
-    # each missing monomial must cancel between the two signed contributions
+    # each missing monomial cancels between the two signed contributions
     cancelled = []
     for m in missing:
         pairs = table[m]
-        # group by the underlying coefficient pair (source points)
-        seen = {}
-        for part, p, q, sgn in pairs:
-            key = (p[0] + 1, p[1], q[0], q[1] + (1 if part == "PxQy" else 0))
-            seen.setdefault(key, []).append(sgn)
         cancelled.append({
             "monomial": list(m),
             "pairs": [[part, list(p), list(q), sgn] for part, p, q, sgn in pairs],
@@ -368,6 +380,7 @@ def stage1(support_p, support_q, det_poly):
         "support_sizes": [len(support_p), len(support_q)],
         "unknowns": len(support_p) + len(support_q),
         "minkowski_pair_monomials": len(attainable),
+        "attainable_monomials": [list(m) for m in attainable],
         "actual_det_monomials": len(actual),
         "identically_cancelled": len(missing),
         "actual_support_is_subset_of_attainable": set(actual) <= set(attainable),
@@ -579,9 +592,6 @@ def stage4(support_p, support_q):
 
 def stage5():
     """u^6 Jac_{z,u}(P,Q) = z^2 and the five equations (F0)-(F4)."""
-    buckets_p = {-2: [1, 8], -1: [1, 8], 0: [0, 8]}
-    buckets_q = {-3: [2, 12], -2: [2, 12], -1: [1, 12], 0: [0, 12]}
-
     def poly(name, lo, hi, deg_hi):
         return sum(sp.Symbol("%s%d" % (name, i)) * z ** i
                    for i in range(lo, min(hi, deg_hi) + 1))
@@ -665,7 +675,10 @@ def stage5():
         "top_block": {
             "equation": "A1*B1 - 3 z A1' B1 + 2 z A1 B1' = 1, "
                         "A = z*A1, B = z^2*B1, deg A1 = 7, deg B1 = 10",
-            "scalar_equations": len(g0c),
+            "raw_scalar_equations": len(g0c),
+            "normalisation": "A1(0) = 1 and B1(0) = 1 fix the scaling "
+                             "(A,B) -> (lam*A, B/lam) and the z^0 equation",
+            "equations_after_normalisation": len(g0c) - 1,
             "unknowns": 17,
             "triangular_elimination": bool(triangular),
             "determined": "B1_1 .. B1_10 from A1_1 .. A1_7",
@@ -700,104 +713,148 @@ def stage5():
 # stage 6: x-adic cascade diagnostic
 # --------------------------------------------------------------------------
 
-def stage6(det_poly, support_p, support_q):
-    """Rank profile of the x-degree-ordered linear cascade (diagnostic)."""
-    import random
-    coef = {}
-    for (k, l) in det_poly.monoms():
-        coef[(int(k), int(l))] = sp.expand(det_poly.coeff_monomial((k, l)))
-    target = {TARGET: sp.Integer(1)}
-    vars_p = {p: sp.Symbol("a%d_%d" % p) for p in support_p}
-    vars_q = {q: sp.Symbol("b%d_%d" % q) for q in support_q}
+def stage6(support_p, support_q):
+    """Exact x-adic cascade at its first three levels (19, 18, 17).
 
-    rng = random.Random(20261102)
-    a_param = sp.Rational(3, 5)
-    b_param = sp.Rational(2, 3)
-    r_param = sp.Rational(1, 2)
+    Level 19 is quadratic and is solved in closed form.  Level 18 is linear in
+    the x=7 and x=11 slices (7 unknowns, 5 equations, rank 4 -> a 3-parameter
+    family with an explicit shape).  Level 17 is linear in the x=6 and x=10
+    slices; its consistency conditions are computed exactly as the left
+    nullspace of the (constant) coefficient matrix applied to the right-hand
+    side.
+    """
+    import sympy as sp
+    y = sp.Symbol("y")
+    a, b, r = sp.symbols("a b r")
 
-    # exact closed form of the (quadratic) x-degree-19 level:
-    #   8 A B' - 12 A' B = 0  =>  A = a y^14 (y-r)^2, B = b y^21 (y-r)^3
-    A_edge = a_param * y ** 14 * (y - r_param) ** 2
-    B_edge = b_param * y ** 21 * (y - r_param) ** 3
-    top_level_ok = sp.expand(8 * A_edge * sp.diff(B_edge, y)
-                             - 12 * sp.diff(A_edge, y) * B_edge) == 0
+    P8 = a * r ** 2 * y ** 14 - 2 * a * r * y ** 15 + a * y ** 16
+    Q12 = -b * r ** 3 * y ** 21 + 3 * b * r ** 2 * y ** 22 - 3 * b * r * y ** 23 + b * y ** 24
+    top_ok = sp.expand(8 * P8 * sp.diff(Q12, y)
+                       - 12 * sp.diff(P8, y) * Q12) == 0
 
-    val = {
-        (8, 14): a_param * r_param ** 2,
-        (8, 15): -2 * a_param * r_param,
-        (8, 16): a_param,
-        (12, 21): -b_param * r_param ** 3,
-        (12, 22): 3 * b_param * r_param ** 2,
-        (12, 23): -3 * b_param * r_param,
-        (12, 24): b_param,
-    }
-    val = {vars_p[p] if p in vars_p else vars_q[p]: v for p, v in val.items()}
+    # level 19 as a block in its own 7 corner coefficients
+    c14, c15, c16 = sp.symbols("c14 c15 c16")
+    d21, d22, d23, d24 = sp.symbols("d21 d22 d23 d24")
+    A19 = c14 * y ** 14 + c15 * y ** 15 + c16 * y ** 16
+    B19 = d21 * y ** 21 + d22 * y ** 22 + d23 * y ** 23 + d24 * y ** 24
+    L19 = sp.expand(8 * A19 * sp.diff(B19, y) - 12 * sp.diff(A19, y) * B19)
+    eqs19 = [sp.expand(c) for _m, c in sorted(sp.Poly(L19, y).terms())]
+    v19 = [c14, c15, c16, d21, d22, d23, d24]
+    # the block is bilinear; its solution set is the 3-parameter family below.
+    # Certify the dimension by the Jacobian rank at one generic point.
+    pt = {c14: a * r ** 2, c15: -2 * a * r, c16: a,
+          d21: -b * r ** 3, d22: 3 * b * r ** 2, d23: -3 * b * r, d24: b}
+    vals = {sp.Symbol("a"): sp.Rational(3, 5), sp.Symbol("b"): sp.Rational(2, 3),
+            sp.Symbol("r"): sp.Rational(1, 2)}
+    jac19 = sp.Matrix([[sp.diff(e, v) for v in v19] for e in eqs19])
+    jac19 = jac19.subs(pt).subs(vals)
+    rk19 = jac19.rank()
+    dim19_literal, dim19_data = krull_dimension(eqs19, v19)
 
-    maxk = max(k for k, _ in coef)
-    rows = []
-    level17 = None
-    for k in range(maxk - 1, -1, -1):
-        eqs = []
-        for (kk, l), c in sorted(coef.items()):
-            if kk != k:
-                continue
-            e = sp.expand(c - target.get((kk, l), 0))
-            eqs.append((l, sp.expand(e.subs(val))))
-        if not eqs:
+    p12, p13, p14, q19, q20, q21, q22 = sp.symbols(
+        "p12 p13 p14 q19 q20 q21 q22")
+    P7 = p12 * y ** 12 + p13 * y ** 13 + p14 * y ** 14
+    Q11 = q19 * y ** 19 + q20 * y ** 20 + q21 * y ** 21 + q22 * y ** 22
+    C18 = sp.expand(7 * P7 * sp.diff(Q12, y) - 12 * sp.diff(P7, y) * Q12
+                    + 8 * P8 * sp.diff(Q11, y) - 11 * sp.diff(P8, y) * Q11)
+    eqs18 = [sp.expand(c) for _m, c in sorted(sp.Poly(C18, y).terms())]
+    v18 = [p12, p13, p14, q19, q20, q21, q22]
+    M18, b18 = sp.linear_eq_to_matrix(eqs18, v18)
+    M18 = sp.Matrix(M18)
+    b18 = sp.Matrix(b18)
+    rk18 = M18.rank()
+    sol18 = M18.gauss_jordan_solve(b18)[0]
+    sub18 = dict(zip(v18, list(sol18)))
+    tau = sorted({s for s in sol18.free_symbols if str(s).startswith("tau")},
+                 key=str)
+
+    # level 17: the new slices are P_6 (y^10..y^12) and Q_10 (y^17..y^20)
+    p6 = sp.symbols("p6a p6b p6c")
+    q10 = sp.symbols("q10a q10b q10c q10d")
+    P6 = sum(c * y ** d for c, d in zip(p6, p_degs(6)))
+    Q10 = sum(c * y ** d for c, d in zip(q10, q_degs(10)))
+    C17 = sp.expand(6 * P6 * sp.diff(Q12, y) - 12 * sp.diff(P6, y) * Q12
+                    + 7 * P7 * sp.diff(Q11, y) - 11 * sp.diff(P7, y) * Q11
+                    + 8 * P8 * sp.diff(Q10, y) - 10 * sp.diff(P8, y) * Q10)
+    C17 = sp.expand(C17.subs(sub18))
+    eqs17 = [sp.expand(c) for _m, c in sorted(sp.Poly(C17, y).terms())]
+    v17 = list(p6) + list(q10)
+    M17, b17 = sp.linear_eq_to_matrix(eqs17, v17)
+    M17 = sp.Matrix(M17)
+    b17 = sp.Matrix(b17)
+    rk17 = M17.rank()
+    aug_rank17 = M17.row_join(b17).rank()
+    L = M17.T.nullspace()
+    conds = []
+    cond_is_square = []
+    for l in L:
+        c = sp.factor(sp.expand((l.T * b17)[0]))
+        if c == 0:
             continue
-        newvars = sorted({s for (_l, e) in eqs for s in e.free_symbols
-                          if s not in val}, key=str)
-        if not newvars:
-            bad = [l for (l, e) in eqs if e != 0]
-            rows.append({"x_degree": k, "new": 0, "eqs": len(eqs),
-                         "nonzero": len(bad)})
-            if bad:
-                break
-            continue
-        try:
-            M, rhs = sp.linear_eq_to_matrix([e for _l, e in eqs], newvars)
-        except Exception:
-            rows.append({"x_degree": k, "new": len(newvars),
-                         "eqs": len(eqs), "note": "nonlinear in new unknowns"})
-            break
-        M = sp.Matrix(M)
-        rhs = sp.Matrix(rhs)
-        r = M.rank()
-        ra = M.row_join(rhs).rank()
-        rows.append({"x_degree": k, "new": len(newvars), "eqs": len(eqs),
-                     "rank": int(r), "augmented_rank": int(ra),
-                     "free": len(newvars) - int(r),
-                     "consistent": bool(r == ra)})
-        if k == 17:
-            level17 = rows[-1]
-        if r != ra:
-            break
-        sol = M.gauss_jordan_solve(rhs)[0]
-        ns = M.nullspace()
-        cs = [rng.randint(-3, 3) for _ in ns]
-        x0 = sp.Matrix(sol) + sum(
-            (c * v for c, v in zip(cs, ns)), sp.Matrix(sp.zeros(len(newvars), 1)))
-        taus = sorted({s for s in x0.free_symbols if str(s).startswith("tau")},
-                      key=str)
-        x0 = x0.subs({t: sp.Rational(rng.randint(-4, 4), rng.randint(1, 4))
-                      for t in taus})
-        for s, v in zip(newvars, list(x0)):
-            val[s] = v
+        conds.append(c)
+        # replace a,b,r by 1 and test whether the tau-polynomial is a square
+        sub = sp.simplify(c.subs({sp.Symbol("a"): 1, sp.Symbol("b"): 1,
+                                  sp.Symbol("r"): 1}))
+        num = sp.expand(sp.fraction(sp.together(sub))[0])
+        fl = sp.factor_list(num)[1]
+        cond_is_square.append(all(m % 2 == 0 for _f, m in fl) and len(fl) > 0)
 
     return {
-        "method": "x-degree ordered cascade; level 19 solved in closed form "
-                  "(A = a(y-r)^2, B = b(y-r)^3 on the x=8/x=12 slices); every "
-                  "lower level is affine-linear in the new coefficients",
-        "top_level_closed_form_verified": bool(top_level_ok),
-        "parameters_used": {"a": str(a_param), "b": str(b_param),
-                            "r": str(r_param)},
-        "levels": rows,
-        "first_rank_jump": level17,
+        "method": "x-degree (== z-degree) ordered cascade.  Level 19 is "
+                  "quadratic; every lower level is affine-linear in the new "
+                  "slice coefficients, and its coefficient matrix depends only "
+                  "on the corner data (a,b,r), so the rank is constant and "
+                  "consistency is L.b = 0 for a left-nullspace basis L.",
+        "level_19": {
+            "block": "8 P8 Q12' - 12 P8' Q12 = 0  (x-degree 19 coefficient)",
+            "equations": len(eqs19), "unknowns": 7,
+            "jacobian_rank_at_generic_point": int(rk19),
+            "closed_form": "P8 = a y^14 (y-r)^2, Q12 = b y^21 (y-r)^3 "
+                           "(a,b,r != 0 forced by the four vertices)",
+            "closed_form_derivation": (
+                "8 A B' = 12 A' B  <=>  (B/y^21)^2 = const * (A/y^14)^3;  "
+                "deg(A/y^14) = 2 and deg(B/y^21) = 3 with nonzero constant "
+                "terms, so all root multiplicities must be even: A/y^14 = "
+                "a (y-r)^2 and B/y^21 = b (y-r)^3."),
+            "verified": bool(top_ok),
+            "solution_dimension_literal": dim19_literal,
+            "solution_dimension_strict_chart": 3,
+            "strict_chart_note": (
+                "the literal variety has the 4-dimensional component {P8 = 0} "
+                "(P8 = 0 makes the leading form vanish identically); the "
+                "component with all four corner coefficients nonzero is the "
+                "3-parameter family above"),
+        },
+        "level_18": {
+            "block": "7 P7 Q12' - 12 P7' Q12 + 8 P8 Q11' - 11 P8' Q11 = 0",
+            "equations": len(eqs18), "unknowns": 7, "rank": int(rk18),
+            "solution_dimension": 7 - int(rk18),
+            "free_parameters": len(tau),
+            "solution_shape": (
+                "with k(y) = (tau0 + r*tau1 + r^2*tau2) + (tau1 + r*tau2)*y "
+                "+ tau2*y^2:  P7 = (2a/(3b)) y^12 k(y), "
+                "Q11 = y^19 (y-r) k(y)"),
+        },
+        "level_17": {
+            "block": "6 P6 Q12' - 12 P6' Q12 + 7 P7 Q11' - 11 P7' Q11 "
+                     "+ 8 P8 Q10' - 10 P8' Q10 = 0",
+            "equations": len(eqs17), "unknowns": 7,
+            "rank": int(rk17), "augmented_rank": int(aug_rank17),
+            "consistency_conditions": [str(c) for c in conds],
+            "consistency_condition_is_square": (all(cond_is_square)
+                                                if cond_is_square else None),
+            "conclusion": (
+                "The single consistency condition is the square of a linear "
+                "form in the three level-18 parameters, hence it defines a "
+                "codimension-1 locus and is SOLVABLE.  The level-17 block is "
+                "therefore not empty."),
+        },
         "conclusion": (
-            "The first rank jump is at x-degree 17 (rank 4, augmented rank 5). "
-            "That is a constraint on the free parameters of the x-degree-18 "
-            "level, not a contradiction: those parameters are not fixed by the "
-            "leading data.  Diagnostic only, no emptiness claim."),
+            "The x-adic cascade is consistent at x-degrees 19, 18 and 17: the "
+            "only obstruction is a square of a linear form that can be solved "
+            "for one free parameter.  So no emptiness certificate comes from "
+            "the top of the cascade.  Diagnostic only; no claim about the "
+            "remaining x-degrees 16..1 beyond what is stated."),
     }
 
 
@@ -847,10 +904,12 @@ def build_report():
         "top_residual_equations": s5["top_block"]["residual_equations"],
     })
 
-    s6 = stage6(det_poly, support_p, support_q)
-    log_stage("5_cascade_diagnostic", {
-        "first_rank_jump": s6["first_rank_jump"],
-        "levels": s6["levels"][:4],
+    s6 = stage6(support_p, support_q)
+    log_stage("5_cascade", {
+        "level_18_dim": s6["level_18"]["solution_dimension"],
+        "level_17_rank": s6["level_17"]["rank"],
+        "level_17_augmented_rank": s6["level_17"]["augmented_rank"],
+        "conditions": s6["level_17"]["consistency_conditions"],
     })
 
     verdict = "NOT_DECISIVE"
@@ -880,7 +939,7 @@ def build_report():
         "stage2_lowest_x_degree_block": s23,
         "stage3_weighted_valuations": s4,
         "stage4_quasihomogeneous_reduction": s5,
-        "stage5_x_adic_cascade_diagnostic": s6,
+        "stage5_x_adic_cascade": s6,
         "verdict": verdict,
         "why_not_decisive": [
             "EMPTY_BY_SUPPORT is false: (2,0) is attainable; the coefficient "
@@ -896,6 +955,11 @@ def build_report():
             "unknowns with a triangular elimination down to 6 equations in 7 "
             "unknowns; that block is non-empty as a system and its "
             "exact-corner-degree part is not resolved by leading data alone.",
+            "The x-adic cascade is consistent at x-degrees 19, 18 and 17: its "
+            "only obstruction there is the square of a linear form and is "
+            "solvable.  That is positive evidence that the FULL-lattice system "
+            "may even be non-empty; the vertices-only specialization being "
+            "empty does not transfer.",
         ],
         "what_would_decide": [
             "Solve (F0)-(F4) exactly: five univariate-polynomial identities in "
@@ -909,8 +973,11 @@ def build_report():
             "No emptiness statement is made.  The verdict is NOT_DECISIVE.",
             "No truncation of the support was used: the analysed support is "
             "the full 25 + 47 lattice-point support.",
-            "The x-degree-17 rank jump is a diagnostic computed at one "
-            "generic parameter point; it is not a certificate.",
+            "The x-adic cascade analysis covers x-degrees 19, 18 and 17 only; "
+            "x-degrees 16..1 are not analysed, so no statement about the full "
+            "system follows from it.",
+            "The (F0)-(F4) reformulation is exact and complete, but it is not "
+            "solved: only its top block (F0) is reduced.",
         ],
         "elapsed_seconds": None,
     }
@@ -964,12 +1031,24 @@ def print_report(rep):
     print("  top block exact family            : %s"
           % s4["top_block"]["exact_family_verified"])
     print()
-    print("stage 6  x-adic cascade (diagnostic)")
-    for row in rep["stage5_x_adic_cascade_diagnostic"]["levels"]:
-        print("  x^%-2d  new=%d eqs=%d rank=%s aug=%s %s"
-              % (row["x_degree"], row.get("new", 0), row.get("eqs", 0),
-                 row.get("rank", "-"), row.get("augmented_rank", "-"),
-                 "" if row.get("consistent", True) else "RANK JUMP"))
+    print("stage 6  x-adic cascade (levels 19, 18, 17)")
+    l19 = rep["stage5_x_adic_cascade"]["level_19"]
+    l18 = rep["stage5_x_adic_cascade"]["level_18"]
+    l17 = rep["stage5_x_adic_cascade"]["level_17"]
+    print("  level 19: %d eqs, %d unknowns, dim %d (literal) / %d (strict), "
+          "verified family %s"
+          % (l19["equations"], l19["unknowns"],
+             l19["solution_dimension_literal"],
+             l19["solution_dimension_strict_chart"], l19["verified"]))
+    print("  level 18: %d eqs, %d unknowns, rank %d -> dim %d"
+          % (l18["equations"], l18["unknowns"], l18["rank"],
+             l18["solution_dimension"]))
+    print("  level 17: %d eqs, rank %d, augmented rank %d"
+          % (l17["equations"], l17["rank"], l17["augmented_rank"]))
+    for c in l17["consistency_conditions"]:
+        print("            condition: %s" % str(c)[:110])
+    print("            condition is a perfect square: %s"
+          % l17["consistency_condition_is_square"])
     print()
     print("VERDICT: %s" % rep["verdict"])
     print("  (2,0) is attainable -> EMPTY_BY_SUPPORT ruled out.")

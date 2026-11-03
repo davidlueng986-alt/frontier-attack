@@ -284,6 +284,20 @@ roughly the ten coefficients of `G` before any lower-order correction. If that
 reduction is valid here, the corner becomes small enough to decide; if it is not,
 the corner stays open and the degree bound does not move.
 
+**Valuation result on config-2, full lattice: `NOT_DECISIVE`.** This is the
+control case for the vertices-only obstruction, and it behaves differently:
+
+- `(2,0)` **is attainable** once the interior lattice points are present
+  (`x²_attainable = true`), so `EMPTY_BY_SUPPORT` is ruled out.
+- The lowest x-adic block has dimension 3; the next levels are consistent.
+- Every edge leading-form block is non-empty, so no single-weight valuation
+  certificate exists.
+
+Both corners therefore survive all the cheap filters for the same reason: the
+systems are non-empty by structure, and only a coupling argument can decide them.
+The cascade and the valuation are both filters; neither is a decision procedure.
+`approx_roots.py` is the only live Jacobian lead.
+
 ## 4. Load-bearing decomposition
 
 1. **Write the coefficient system for config 2.** Unknown coefficients on the

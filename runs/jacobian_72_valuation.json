@@ -78,6 +78,456 @@
     ],
     "unknowns": 72,
     "minkowski_pair_monomials": 112,
+    "attainable_monomials": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        5,
+        11
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        6,
+        11
+      ],
+      [
+        6,
+        12
+      ],
+      [
+        6,
+        13
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        7,
+        14
+      ],
+      [
+        7,
+        15
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        13
+      ],
+      [
+        8,
+        14
+      ],
+      [
+        8,
+        15
+      ],
+      [
+        8,
+        16
+      ],
+      [
+        8,
+        17
+      ],
+      [
+        9,
+        14
+      ],
+      [
+        9,
+        15
+      ],
+      [
+        9,
+        16
+      ],
+      [
+        9,
+        17
+      ],
+      [
+        9,
+        18
+      ],
+      [
+        9,
+        19
+      ],
+      [
+        10,
+        16
+      ],
+      [
+        10,
+        17
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        10,
+        19
+      ],
+      [
+        10,
+        20
+      ],
+      [
+        10,
+        21
+      ],
+      [
+        11,
+        18
+      ],
+      [
+        11,
+        19
+      ],
+      [
+        11,
+        20
+      ],
+      [
+        11,
+        21
+      ],
+      [
+        11,
+        22
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        12,
+        20
+      ],
+      [
+        12,
+        21
+      ],
+      [
+        12,
+        22
+      ],
+      [
+        12,
+        23
+      ],
+      [
+        12,
+        24
+      ],
+      [
+        12,
+        25
+      ],
+      [
+        13,
+        22
+      ],
+      [
+        13,
+        23
+      ],
+      [
+        13,
+        24
+      ],
+      [
+        13,
+        25
+      ],
+      [
+        13,
+        26
+      ],
+      [
+        13,
+        27
+      ],
+      [
+        14,
+        24
+      ],
+      [
+        14,
+        25
+      ],
+      [
+        14,
+        26
+      ],
+      [
+        14,
+        27
+      ],
+      [
+        14,
+        28
+      ],
+      [
+        14,
+        29
+      ],
+      [
+        15,
+        26
+      ],
+      [
+        15,
+        27
+      ],
+      [
+        15,
+        28
+      ],
+      [
+        15,
+        29
+      ],
+      [
+        15,
+        30
+      ],
+      [
+        15,
+        31
+      ],
+      [
+        16,
+        28
+      ],
+      [
+        16,
+        29
+      ],
+      [
+        16,
+        30
+      ],
+      [
+        16,
+        31
+      ],
+      [
+        16,
+        32
+      ],
+      [
+        16,
+        33
+      ],
+      [
+        17,
+        30
+      ],
+      [
+        17,
+        31
+      ],
+      [
+        17,
+        32
+      ],
+      [
+        17,
+        33
+      ],
+      [
+        17,
+        34
+      ],
+      [
+        17,
+        35
+      ],
+      [
+        18,
+        32
+      ],
+      [
+        18,
+        33
+      ],
+      [
+        18,
+        34
+      ],
+      [
+        18,
+        35
+      ],
+      [
+        18,
+        36
+      ],
+      [
+        18,
+        37
+      ],
+      [
+        19,
+        34
+      ],
+      [
+        19,
+        35
+      ],
+      [
+        19,
+        36
+      ],
+      [
+        19,
+        37
+      ],
+      [
+        19,
+        38
+      ],
+      [
+        19,
+        39
+      ]
+    ],
     "actual_det_monomials": 92,
     "identically_cancelled": 20,
     "actual_support_is_subset_of_attainable": true,
@@ -3064,7 +3514,7 @@
           "gb_size": 6
         }
       ],
-      "seconds": 0.018,
+      "seconds": 0.017,
       "monomials": [
         [
           1,
@@ -3596,7 +4046,7 @@
               "gb_size": 10
             }
           ],
-          "seconds": 0.882
+          "seconds": 0.703
         },
         "strict_chart": {
           "family": "A = a*y^14*(y-r)^2, B = b*y^21*(y-r)^3 (all corner coefficients nonzero when a*b*r != 0)",
@@ -3848,7 +4298,9 @@
     "decomposition_verified_symbolically": true,
     "top_block": {
       "equation": "A1*B1 - 3 z A1' B1 + 2 z A1 B1' = 1, A = z*A1, B = z^2*B1, deg A1 = 7, deg B1 = 10",
-      "scalar_equations": 17,
+      "raw_scalar_equations": 17,
+      "normalisation": "A1(0) = 1 and B1(0) = 1 fix the scaling (A,B) -> (lam*A, B/lam) and the z^0 equation",
+      "equations_after_normalisation": 16,
       "unknowns": 17,
       "triangular_elimination": true,
       "determined": "B1_1 .. B1_10 from A1_1 .. A1_7",
@@ -3873,51 +4325,50 @@
     },
     "conclusion": "The system is exactly equivalent to (F0)-(F4); the top block (F0) reduces to 6 equations in 7 unknowns and admits the degenerate solution A = z, B = z^2.  No contradiction at this level."
   },
-  "stage5_x_adic_cascade_diagnostic": {
-    "method": "x-degree ordered cascade; level 19 solved in closed form (A = a(y-r)^2, B = b(y-r)^3 on the x=8/x=12 slices); every lower level is affine-linear in the new coefficients",
-    "top_level_closed_form_verified": true,
-    "parameters_used": {
-      "a": "3/5",
-      "b": "2/3",
-      "r": "1/2"
+  "stage5_x_adic_cascade": {
+    "method": "x-degree (== z-degree) ordered cascade.  Level 19 is quadratic; every lower level is affine-linear in the new slice coefficients, and its coefficient matrix depends only on the corner data (a,b,r), so the rank is constant and consistency is L.b = 0 for a left-nullspace basis L.",
+    "level_19": {
+      "block": "8 P8 Q12' - 12 P8' Q12 = 0  (x-degree 19 coefficient)",
+      "equations": 4,
+      "unknowns": 7,
+      "jacobian_rank_at_generic_point": 3,
+      "closed_form": "P8 = a y^14 (y-r)^2, Q12 = b y^21 (y-r)^3 (a,b,r != 0 forced by the four vertices)",
+      "closed_form_derivation": "8 A B' = 12 A' B  <=>  (B/y^21)^2 = const * (A/y^14)^3;  deg(A/y^14) = 2 and deg(B/y^21) = 3 with nonzero constant terms, so all root multiplicities must be even: A/y^14 = a (y-r)^2 and B/y^21 = b (y-r)^3.",
+      "verified": true,
+      "solution_dimension_literal": 4,
+      "solution_dimension_strict_chart": 3,
+      "strict_chart_note": "the literal variety has the 4-dimensional component {P8 = 0} (P8 = 0 makes the leading form vanish identically); the component with all four corner coefficients nonzero is the 3-parameter family above"
     },
-    "levels": [
-      {
-        "x_degree": 18,
-        "new": 7,
-        "eqs": 5,
-        "rank": 4,
-        "augmented_rank": 4,
-        "free": 3,
-        "consistent": true
-      },
-      {
-        "x_degree": 17,
-        "new": 7,
-        "eqs": 5,
-        "rank": 4,
-        "augmented_rank": 5,
-        "free": 3,
-        "consistent": false
-      }
-    ],
-    "first_rank_jump": {
-      "x_degree": 17,
-      "new": 7,
-      "eqs": 5,
+    "level_18": {
+      "block": "7 P7 Q12' - 12 P7' Q12 + 8 P8 Q11' - 11 P8' Q11 = 0",
+      "equations": 5,
+      "unknowns": 7,
+      "rank": 4,
+      "solution_dimension": 3,
+      "free_parameters": 3,
+      "solution_shape": "with k(y) = (tau0 + r*tau1 + r^2*tau2) + (tau1 + r*tau2)*y + tau2*y^2:  P7 = (2a/(3b)) y^12 k(y), Q11 = y^19 (y-r) k(y)"
+    },
+    "level_17": {
+      "block": "6 P6 Q12' - 12 P6' Q12 + 7 P7 Q11' - 11 P7' Q11 + 8 P8 Q10' - 10 P8' Q10 = 0",
+      "equations": 5,
+      "unknowns": 7,
       "rank": 4,
       "augmented_rank": 5,
-      "free": 3,
-      "consistent": false
+      "consistency_conditions": [
+        "-14*a*(3*r**2*tau2 + 2*r*tau1 + tau0)**2/(3*b*r**3)"
+      ],
+      "consistency_condition_is_square": true,
+      "conclusion": "The single consistency condition is the square of a linear form in the three level-18 parameters, hence it defines a codimension-1 locus and is SOLVABLE.  The level-17 block is therefore not empty."
     },
-    "conclusion": "The first rank jump is at x-degree 17 (rank 4, augmented rank 5). That is a constraint on the free parameters of the x-degree-18 level, not a contradiction: those parameters are not fixed by the leading data.  Diagnostic only, no emptiness claim."
+    "conclusion": "The x-adic cascade is consistent at x-degrees 19, 18 and 17: the only obstruction is a square of a linear form that can be solved for one free parameter.  So no emptiness certificate comes from the top of the cascade.  Diagnostic only; no claim about the remaining x-degrees 16..1 beyond what is stated."
   },
   "verdict": "NOT_DECISIVE",
   "why_not_decisive": [
     "EMPTY_BY_SUPPORT is false: (2,0) is attainable; the coefficient of x^2 in det J is exactly a1_0*b2_1, a single nonzero bilinear term from the vertices (1,0) of N(P) and (2,1) of N(Q).",
     "The minimal x-degree of det J is 1, and the x^1 block is three equations in five unknowns with a 3-dimensional solution set; adding a1_0*b2_1 = 1 keeps dimension 3.",
     "Every single-edge leading-form condition is either vacuous (leading form identically zero) or satisfiable; no weight yields an empty leading block.",
-    "The strongest weight, w = (2,-1), reduces to 16 equations in 17 unknowns with a triangular elimination down to 6 equations in 7 unknowns; that block is non-empty as a system and its exact-corner-degree part is not resolved by leading data alone."
+    "The strongest weight, w = (2,-1), reduces to 16 equations in 17 unknowns with a triangular elimination down to 6 equations in 7 unknowns; that block is non-empty as a system and its exact-corner-degree part is not resolved by leading data alone.",
+    "The x-adic cascade is consistent at x-degrees 19, 18 and 17: its only obstruction there is the square of a linear form and is solvable.  That is positive evidence that the FULL-lattice system may even be non-empty; the vertices-only specialization being empty does not transfer."
   ],
   "what_would_decide": [
     "Solve (F0)-(F4) exactly: five univariate-polynomial identities in seven polynomials of degrees 8,8,8,12,12,12,12 (72 coefficients). This is an exact, complete reformulation, not a truncation.",
@@ -3926,7 +4377,8 @@
   "what_is_not_claimed": [
     "No emptiness statement is made.  The verdict is NOT_DECISIVE.",
     "No truncation of the support was used: the analysed support is the full 25 + 47 lattice-point support.",
-    "The x-degree-17 rank jump is a diagnostic computed at one generic parameter point; it is not a certificate."
+    "The x-adic cascade analysis covers x-degrees 19, 18 and 17 only; x-degrees 16..1 are not analysed, so no statement about the full system follows from it.",
+    "The (F0)-(F4) reformulation is exact and complete, but it is not solved: only its top block (F0) is reduced."
   ],
-  "elapsed_seconds": 6.554
+  "elapsed_seconds": 6.294
 }

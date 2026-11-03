@@ -1,0 +1,218 @@
+{
+  "corner": "F_2(3,5), j=1, (75,125)",
+  "delta_prime": [
+    [
+      0,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      0,
+      5
+    ]
+  ],
+  "reduced_unknowns": 32,
+  "verdict": "REDUCED",
+  "stage1": {
+    "construction": {
+      "abhyankar_4_3": "Abhyankar, TIFR Lectures 57, (4.2)-(4.3): f in R[Y] monic of degree n = m*d, d a unit in R; write f^{1/d} = theta^{-m} + a_1 theta^{-m+1} + ...; the d-th approximate root is Y^m + a_1 Y^{m-1} + ... + a_m, i.e. the polynomial part of f^{1/d}, characterised by deg_Y(f - g^d) < n - n/d.",
+      "moh_section1": "Moh 1983, section 1, p.148 (Definition): the d-th approximate root f_d(y) of a monic f(y) of degree n = m*d is y^m + a_1 y^{m-1} + ... + a_m, read off from the d-th root of f in R((theta)), theta = y^{-1}.",
+      "moh_pair_section2": "Moh 1983, section 2, pp.151-154: T_r is the d_r-th approximate root of the defining equation F(f,g)=0 over k[x]((g^{-1})), with f as the variable; T_r(f,g) = f^{n/d_r} + lower terms in f and deg_y T_r = -mu_r. The sequence {n, mu_1, ..., mu_r} is the characteristic data and gcd(n, mu_1, ..., mu_r) = d_{r+1}. Prop. 2.1: the specialisation psi: x -> 0 keeps T_r an approximate root (T*_r in k[f,g]).",
+      "moh_cost_appendixI": "Moh 1983, Appendix I, p.143: for the configurations surviving at degree <= 100 \"the number of coefficients of those possible counter-examples range from 3370 to 7328\"."
+    },
+    "local_sources": {
+      "moh_txt_present": true,
+      "moh_pdf_present": true,
+      "abhyankar_pdf_present": true,
+      "moh_definition_line": "m + a10~m+1 4- \u00b7\u00b7\u00b7 +\u03b1_\u03b9\u03b8+ \u00b7\u00b7\u00b7. Then the d-th approximate root fd(y) of",
+      "moh_specialized_line": "(cf. \u00a7 2). The polynomials Tf are specialized approximate roots of the defining equation",
+      "moh_coefficient_line": "examples r nge from 3370 to 7328. In Appendix II we give some theoretic arguments"
+    }
+  },
+  "stage2": {
+    "delta_prime": [
+      [
+        0,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        0,
+        5
+      ]
+    ],
+    "N_P": [
+      [
+        0,
+        0
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        0,
+        15
+      ]
+    ],
+    "N_Q": [
+      [
+        0,
+        0
+      ],
+      [
+        15,
+        0
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        0,
+        25
+      ]
+    ],
+    "lattice_P": 124,
+    "lattice_Q": 321,
+    "corner_unknowns": 445,
+    "degree": [
+      15,
+      25
+    ],
+    "top_edge_P": 13,
+    "top_edge_Q": 21,
+    "top_block_unknowns": 34,
+    "G_degree": 5,
+    "G_support": [
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        1
+      ]
+    ],
+    "G_free_shape_parameters": 4,
+    "leading_jacobian_identically_zero": true,
+    "G3_support_inside_NP": true,
+    "G5_support_inside_NQ": true,
+    "wronskian_identity_zero": true,
+    "wronskian_perturbed_nonzero": true,
+    "substituted_unknowns": 415,
+    "correction_P": 111,
+    "correction_Q": 300
+  },
+  "degree_37": {
+    "unknowns": 32,
+    "P14_unknowns": 12,
+    "Q24_unknowns": 20,
+    "equations": 38,
+    "rank": 20,
+    "dimension": 12,
+    "closed_form_ok": true,
+    "jacobian_identity_ok": true
+  },
+  "degree_36": {
+    "unknowns": 32,
+    "equations": 37,
+    "rank": 20,
+    "dimension": 17,
+    "left_nullity": 17,
+    "compatibility_conditions": 17,
+    "rhs_divisible_by_G2": false,
+    "nonzero_residuals": 0,
+    "G_divisible_branch": "P14 = G*u, deg u = 9, xdeg u <= 7",
+    "G_divisible_branch_dim": 8,
+    "branch_support_ok": true
+  },
+  "chain": {
+    "detJ_lattice_points": 789,
+    "levels_solved": [
+      38,
+      37,
+      36
+    ],
+    "levels_homogeneous": [
+      13,
+      38
+    ],
+    "first_inhomogeneous_level": 2,
+    "chain_rows": [
+      {
+        "degree": 38,
+        "new_P": 13,
+        "new_Q": 21,
+        "new": 34,
+        "monomials": 33
+      },
+      {
+        "degree": 37,
+        "new_P": 12,
+        "new_Q": 20,
+        "new": 32,
+        "monomials": 32
+      },
+      {
+        "degree": 36,
+        "new_P": 12,
+        "new_Q": 20,
+        "new": 32,
+        "monomials": 32
+      },
+      {
+        "degree": 35,
+        "new_P": 11,
+        "new_Q": 19,
+        "new": 30,
+        "monomials": 31
+      },
+      {
+        "degree": 34,
+        "new_P": 11,
+        "new_Q": 19,
+        "new": 30,
+        "monomials": 31
+      },
+      {
+        "degree": 33,
+        "new_P": 10,
+        "new_Q": 18,
+        "new": 28,
+        "monomials": 30
+      }
+    ]
+  },
+  "elapsed_s": 3.6
+}
