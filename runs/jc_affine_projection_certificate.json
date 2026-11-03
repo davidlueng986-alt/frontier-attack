@@ -1,0 +1,275 @@
+{
+  "schema": "jc-three-source-pairs-v1",
+  "cases": [
+    {
+      "schema": "jc-collision-plane-projection-v1",
+      "source": "problems/jacobian/jac.py:alpoge_counterexample",
+      "source_dimension": 3,
+      "collision_pair": [
+        0,
+        1
+      ],
+      "collision_points": [
+        [
+          "0",
+          "0",
+          "-1/4"
+        ],
+        [
+          "1",
+          "-3/2",
+          "13/2"
+        ]
+      ],
+      "finite_chart_direction": [
+        "0",
+        "1",
+        "t"
+      ],
+      "infinity_chart_direction": [
+        "0",
+        "0",
+        "1"
+      ],
+      "finite_bezout": [
+        {
+          "monomials": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "determinant": [
+            "59808"
+          ],
+          "multiplier": [
+            "1/59808"
+          ]
+        }
+      ],
+      "infinity": {
+        "monomials": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "determinant": "189/2"
+      },
+      "conclusion": "NO_NONZERO_CONSTANT_JACOBIAN_LINEAR_PROJECTION_ON_ANY_AFFINE_PLANE_THROUGH_THESE_TWO_POINTS",
+      "root_planar_JC": "OPEN",
+      "scope": "One supplied 3D source and one collision pair; all complex affine planes and all constant linear output projections"
+    },
+    {
+      "schema": "jc-collision-plane-projection-v1",
+      "source": "problems/jacobian/jac.py:alpoge_counterexample",
+      "source_dimension": 3,
+      "collision_pair": [
+        0,
+        2
+      ],
+      "collision_points": [
+        [
+          "0",
+          "0",
+          "-1/4"
+        ],
+        [
+          "-1",
+          "3/2",
+          "13/2"
+        ]
+      ],
+      "finite_chart_direction": [
+        "0",
+        "1",
+        "t"
+      ],
+      "infinity_chart_direction": [
+        "0",
+        "0",
+        "1"
+      ],
+      "finite_bezout": [
+        {
+          "monomials": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "determinant": [
+            "59808"
+          ],
+          "multiplier": [
+            "1/59808"
+          ]
+        }
+      ],
+      "infinity": {
+        "monomials": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "determinant": "189/2"
+      },
+      "conclusion": "NO_NONZERO_CONSTANT_JACOBIAN_LINEAR_PROJECTION_ON_ANY_AFFINE_PLANE_THROUGH_THESE_TWO_POINTS",
+      "root_planar_JC": "OPEN",
+      "scope": "One supplied 3D source and one collision pair; all complex affine planes and all constant linear output projections"
+    },
+    {
+      "schema": "jc-collision-plane-projection-v1",
+      "source": "problems/jacobian/jac.py:alpoge_counterexample",
+      "source_dimension": 3,
+      "collision_pair": [
+        1,
+        2
+      ],
+      "collision_points": [
+        [
+          "1",
+          "-3/2",
+          "13/2"
+        ],
+        [
+          "-1",
+          "3/2",
+          "13/2"
+        ]
+      ],
+      "finite_chart_direction": [
+        "0",
+        "1",
+        "t"
+      ],
+      "infinity_chart_direction": [
+        "0",
+        "0",
+        "1"
+      ],
+      "finite_bezout": [
+        {
+          "monomials": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              3
+            ]
+          ],
+          "determinant": [
+            "60569163/8",
+            "35290947/4",
+            "29696325/8",
+            "1151811/2",
+            "-207747/8",
+            "-66825/4",
+            "-10125/8"
+          ],
+          "multiplier": [
+            "-395173184176643359914374890980007/7389920241182361948016682506493952",
+            "-39664908171977185801114414168886093/192137926270741410648433745168842752",
+            "-3755782847603732703746924624397739/24017240783842676331054218146105344",
+            "-4602385153602387562266967511898055/96068963135370705324216872584421376",
+            "-69394494260165182561929530302721/10674329237263411702690763620491264",
+            "-19784866853567167066398207219575/64045975423580470216144581722947584"
+          ]
+        },
+        {
+          "monomials": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "determinant": [
+            "1815021/2",
+            "15303753/4",
+            "15593841/4",
+            "3509469/2",
+            "398565",
+            "177309/4",
+            "7425/4"
+          ],
+          "multiplier": [
+            "514307744579515286499860825293524263/1152827557624448463890602471013056512",
+            "416566468513320966396727390734386561/1152827557624448463890602471013056512",
+            "17391230455005169244662260885968989/192137926270741410648433745168842752",
+            "357549598653802241352980097461563/192137926270741410648433745168842752",
+            "-3452265783920770220579870853725/1581382109224209141139372388220928",
+            "-8993121297075985030181003281625/42697316949053646810763054481965056"
+          ]
+        }
+      ],
+      "infinity": {
+        "monomials": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "determinant": "-84375/2"
+      },
+      "conclusion": "NO_NONZERO_CONSTANT_JACOBIAN_LINEAR_PROJECTION_ON_ANY_AFFINE_PLANE_THROUGH_THESE_TWO_POINTS",
+      "root_planar_JC": "OPEN",
+      "scope": "One supplied 3D source and one collision pair; all complex affine planes and all constant linear output projections"
+    }
+  ],
+  "planar_JC": "OPEN"
+}

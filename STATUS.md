@@ -1,5 +1,22 @@
 # STATUS
 
+## Current root status and closed-attempt plan (2026-11-03)
+
+All three root problems remain OPEN in this project. The active root definitions, direct attempts,
+and evidence requirements are in [docs/CLOSED_ATTEMPTS.md](docs/CLOSED_ATTEMPTS.md).
+The prior snapshot below is historical: its pipeline slots are not currently running, its probabilities
+are not validated estimates, and its checker shortcuts are not sufficient for a solved claim.
+In particular, `tools/accept.py` does not yet actually replay HN proof files or BSD rank certificates;
+the legacy degree125 filter is not a mathematical definition of a planar counterexample.
+Old statements such as "CLOSED as a counterexample hunt" close only a method, not BSD itself.
+
+First direct attempt executed: all affine planes through the three listed source collision pairs,
+with all linear output projections, cannot yield a planar Keller map. Exact certificates and an
+independent chain-rule verifier are in `runs/jc_affine_projection_certificate.json` and
+`attempts/verify_jc_affine_projection.py`. This is a restricted-family exclusion, not planar JC CLOSED.
+
+## Historical snapshot
+
 One page. What we are doing, where we are, and what is running. Updated every
 time the pipeline moves.
 
