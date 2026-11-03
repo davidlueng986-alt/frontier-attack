@@ -1,5 +1,11 @@
 # frontier-attack
 
+**唯一成功條件：相應主問題 OPEN → CLOSED。** 局部定理與工具都是手段，不能代替 solved。
+
+研究入口：[成功規約](docs/MISSION.md) · [局部關口與驗收](docs/LOCAL_PROBLEMS.md) · [完整／半判定窮舉邊界](docs/EXHAUSTIVE_METHODS.md)。
+
+以下既有記錄保留；其外部baseline、成功機率與checker限制不等於已驗根證明。
+
 公開 repo：**https://github.com/davidlueng986-alt/frontier-attack**
 
 三個 2026 年仍然開放的具體問題，加上一套**反替換**的 agent 工作流。
