@@ -10,10 +10,13 @@ In particular, `tools/accept.py` does not yet actually replay HN proof files or 
 the legacy degree125 filter is not a mathematical definition of a planar counterexample.
 Old statements such as "CLOSED as a counterexample hunt" close only a method, not BSD itself.
 
-First direct attempt executed: all affine planes through the three listed source collision pairs,
+Calibration executed: all affine planes through the three listed source collision pairs,
 with all linear output projections, cannot yield a planar Keller map. Exact certificates and an
 independent chain-rule verifier are in `runs/jc_affine_projection_certificate.json` and
-`attempts/verify_jc_affine_projection.py`. This is a restricted-family exclusion, not planar JC CLOSED.
+`attempts/verify_jc_affine_projection.py`. The degree<=7 family was already excluded by known
+planar low-degree results and should have been screened out first. It is retained as a verifier
+calibration, not new main-goal progress or planar JC CLOSED. Quadratic embeddings are likewise
+not an admissible new lead (output degree<=14); see the degree-screened next-task contract.
 
 ## Historical snapshot
 

@@ -2,8 +2,11 @@
 
 2026-11-03. **Planar Jacobian conjecture remains OPEN.**
 
-This is a direct counterexample construction attempt with a complete negative answer for its
-specified family. It is not a global proof, a degree bound, or a statement about all nonlinear embeddings.
+This is a counterexample-construction calibration with a complete negative answer for its
+specified family. It is not new main-goal progress: affine domain restriction and linear output
+projection leave degree at most7, already within the established planar low-degree exclusion range.
+That theorem should have screened out this family before symbolic search. The artifacts are retained
+as exact verification controls, not a promising new research lead or a degree-bound improvement.
 
 ## Source and candidate family
 
@@ -73,7 +76,8 @@ Artifact: `runs/jc_affine_projection_certificate.json`. Standard Python plus Sym
 
 ## Decision
 
-Stop affine-plane/linear-projection sampling for these three source collision pairs: this family
-has been decided exactly. Nonlinear polynomial embeddings and other collision pairs are not covered.
-An unrestricted proof of planar JC has not been obtained. The proposed next direct family uses
-quadratic embeddings fixing the two collision points, with the full determinant identity retained.
+Stop affine-plane/linear-projection sampling for these three source collision pairs. Nonlinear
+embeddings and other pairs are not covered by this computation, but any new family must first
+survive known degree bounds. Quadratic embeddings give degree at most14 and are also excluded
+as new research leads. Higher degree alone is not sufficient: require a genuine curved polynomial
+image and the full determinant identity. An unrestricted proof or counterexample has not been obtained.

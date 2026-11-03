@@ -1,7 +1,7 @@
 # frontier-attack
 
 最新執行計畫：[Closed attempts](docs/CLOSED_ATTEMPTS.md)。三題主問題仍OPEN。
-首輪已精確排除一個直接Jacobian降維構造族，見 [證據與範圍](findings/2026-11-03-jc-affine-projection.md)。
+Jacobian降維族已作精確驗證校準，但該低degree族本已被既有定理排除，不計主研究進展；見 [證據與範圍](findings/2026-11-03-jc-affine-projection.md)。
 
 **唯一成功條件：相應主問題 OPEN → CLOSED。** 局部定理與工具都是手段，不能代替 solved。
 

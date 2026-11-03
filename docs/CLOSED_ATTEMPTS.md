@@ -56,25 +56,36 @@ statement；本環境尚未完成 Lean build 或 dependency axiom audit，不能
 所以每個固定 degree D 有一個完整有限係數方程問題；逐 D 搜尋可作反例半判定，
 沒有已證 degree 上界時，有限 D 的 emptiness 不是全域JC。
 
-### 已執行的第一個 direct attempt
+### 已執行的降維校準（不計主研究進展）
 
 從 repo 可精確驗算的三維 collision source 出發，對列出的三對碰撞點，
 完整檢查所有通過該兩點的複數 affine planes 和所有 constant linear output projections。
 多項式鏈式法則與 minors 的 exact Bezout 證書排除了整個構造族。
 見 [精確報告](../findings/2026-11-03-jc-affine-projection.md)。
-這不是平面JC證明；它確切關閉了這個降維方法，避免再做有限參數取樣。
+這不是平面JC證明。更重要的是，source的max degree是7，affine embedding與linear
+projection不會提高它，整個候選族已在已知平面低degree定理的排除範圍。
+因此這次完整計算只能歸為驗證校準，不該被選為有希望的新closure搜尋；不再重複或放大。
 
 ### 下一個 direct attempt
 
-允許 collision-preserving polynomial embeddings，例如對每個座標：
+先核實適用的已證degree界D；把「會產生deg≤D」的整個family移出探索隊列。
+這是分配研究資源的定理篩選，不是拒絕一份已通過全部exact反例檢查的理由。
 
-    H_i(u,v)=p_i+(q_i-p_i)u+a_i(u²-u)+b_i v+c_i uv+d_i v²。
+可研究真正提高degree的collision-preserving polynomial embeddings，例如對每個座標：
 
-它保證 H(0,0)=p、H(1,0)=q。組合已知三維 source 再作兩個線性輸出，
-得到的二維 map 自動是 polynomial 且保留碰撞；剩下直接解 det J=1 的完整係數系統。
-degree≤2 embedding 的12個係數加3個 output-minor weights 是有限代數問題。
-若找到候選，須重建實際兩個 linear forms，並獨立驗算二維 determinant、碰撞與座標。
-若有完整 emptiness 證書，只排除這個 bounded embedding family；timeout 是UNKNOWN。
+    H_i(u,v)=p_i+(q_i-p_i)u+u(u-1)A_i(u)+v B_i(u,v)。
+
+其中deg A_i≤m-2、deg B_i≤m-1。它保證H(0,0)=p、H(1,0)=q，並涵蓋degree≤m的
+所有此端點插值：H_i-p_i-(q_i-p_i)u在v=0時可被u(u-1)整除，剩餘項可被v整除。
+組合source再作兩個linear outputs，自動是polynomial並保留碰撞；剩下直接解det J=1。
+輸出degree≤7m，所以7m≤D的family整批不做。quadratic embedding至多degree14，
+同樣不是新的主線。更高degree也只是必要的存活條件，並非存在反例的證據。
+另外要排除只是affine plane重新參數化的高degreeH；那仍屬已關閉的同一幾何族。
+
+在通過上述關口後，先建立一個真正curved-image高degree族的完整determinant coefficient
+system，保留全部coupling，給hash與bounded elimination budget。這個族尚未聲稱可解或有效。
+若找到候選，須重建實際兩個linear forms，再獨立驗算二維determinant與碰撞。
+若有完整emptiness證書，只排除該族；timeout是UNKNOWN。
 不再以 vertices-only／leading-edge 系統可解，推論 full system 可解或可逆重建。
 
 全域 proof 路則必須給所有 degree 的推導橋樑或有效歸約界；沒有此橋樑，
@@ -105,6 +116,17 @@ full BSD 包含 rank equality 及 leading coefficient 等算術內容。
 環境目前有gcc，但gp/sage/mwrank尚未安裝，舊Windows工具限制不是永久數學障礙。
 先確認能取得何種嚴格 lower／upper 證據，再選曲線family；不先花算力做無法認證的掃描。
 若走「BSD為真」路，必須有適用所有 E/Q 的新一般性證明；有限曲線驗證不能替代。
+
+## 首批工作隊列
+
+1. **HN-H0：根見證驗收。** exact 2D geometry、六色CNF綁定hash、實際trace checker
+   重播及負控制；不需等no-five-coloring baseline核實，直接χ≥7路本身不依賴該下界。
+2. **J-J0：候選族存活關口。** degree定理的精確範圍、完整det J=1約束、真正curved
+   polynomial image、端點碰撞保留；不通過就不開始下一輪係數枚舉。
+3. **B-B0：separation證書管線。** 選一種可重播的rank lower證據與一種嚴格analytic
+   derivative upper證據，再選候選family；先證明verification interface可行，不做無法認證的掃描。
+
+以上尚未完成的項目維持OPEN／BLOCKED；不把這份計畫本身寫成成功。
 
 ## 每輪交付
 
